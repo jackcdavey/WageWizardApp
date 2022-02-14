@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jackcdavey/WageWizardApp">
-    <img src="src/assets/images/icons/logoLight.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/images/title.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
