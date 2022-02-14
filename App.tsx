@@ -9,10 +9,8 @@
  */
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import NavBar from './components/NavBar';
-import Tracking from './components/Track';
+import NavBar from './src/components/NavBar';
 import {
   SafeAreaView,
   ScrollView,
