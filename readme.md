@@ -29,8 +29,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/jackcdavey/WageWizardApp">
+    <img src="src/assets/images/icons/logoLight.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
