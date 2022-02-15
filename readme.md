@@ -199,7 +199,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 ## Acknowledgments
 
 * [Santa Clara Wage Theft Coalition](https://wagetheftcoalition.org/)
-* [(SCU Frugal Innovation Hub](https://www.scu.edu/engineering/labs--research/labs/frugal-innovation-hub/)
+* [SCU Frugal Innovation Hub](https://www.scu.edu/engineering/labs--research/labs/frugal-innovation-hub/)
 * [PAWIS](https://pawis-sv.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
