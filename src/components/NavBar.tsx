@@ -2,7 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import {COLORS} from '../styles/colors.js';
+import COLORS from '../styles/colors.js';
 
 import React from 'react';
 import Tracking from './Track';
