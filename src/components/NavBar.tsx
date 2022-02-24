@@ -9,6 +9,7 @@ import Tracking from './Track';
 import Resources from './Resources';
 import WorkLogs from './WorkLogs';
 import MyWage from './MyWage';
+import CustomIcon from './CustomIcon.js';
 
 import {
   SafeAreaView,
@@ -47,7 +48,7 @@ export default function NavBar() {
           }
 
           // You can return any component that you like here!
-          return <Tracking />;
+          return <Resources/>;
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
