@@ -1,6 +1,8 @@
 
 import { NavigationContainer } from '@react-navigation/native';
+import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image } from 'react-native';
 
 import COLORS from '../styles/colors.js';
 
@@ -50,14 +52,63 @@ export default function NavBar() {
           // You can return any component that you like here!
           return <Resources/>;
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: '#2374AB',
         tabBarInactiveTintColor: 'gray',
       })}
+      
       >
-        <Tab.Screen name="Tracking" component={Tracking} />
-        <Tab.Screen name="WorkLogs" component={WorkLogs} />
-        <Tab.Screen name="Resources" component={Resources} />
-        <Tab.Screen name="My Wage" component={MyWage} />
+        <Tab.Screen
+          name="Tracking" 
+          component={Tracking}
+          options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Image
+                  style={{ width: size, height: size }}
+                  source={require('../assets/images/icons/Stopwatch.png')}
+                />
+              );
+            }}
+        } />
+        <Tab.Screen 
+          name="WorkLogs" 
+          component={WorkLogs}
+          options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Image
+                  style={{ width: size, height: size }}
+                  source={require('../assets/images/icons/Notebook.png')}
+                />
+              );
+            }}
+      } />
+        <Tab.Screen 
+          name="Resources" 
+          component={Resources}
+          options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Image
+                  style={{ width: size, height: size }}
+                  source={require('../assets/images/icons/Info.png')}
+                />
+              );
+            }}
+    } />
+        <Tab.Screen 
+          name="My Wage" 
+          component={MyWage}
+          options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Image
+                  style={{ width: size, height: size }}
+                  source={require('../assets/images/icons/Money.png')}
+                />
+              );
+            }}
+    } />
       </Tab.Navigator>
     );
   }
