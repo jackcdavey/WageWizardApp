@@ -1,8 +1,7 @@
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import MapView from 'react-native-maps';
+
+import Map from './Map';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -14,29 +13,11 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-
-
 export default function Tracking() {
   return (
     <View style={styles.container}>
         <Text style={styles.elements}>Timer:   00 : 00</Text>
-      <MapView 
-        style={styles.map}
-        initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }} 
-      />
+          <Map />
          <Text style={styles.elements}>Job: Default Job</Text>
          <View style={styles.start} />
     </View>
@@ -51,8 +32,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
-
-
   },
  elements:{
     paddingBottom: Dimensions.get('window').height * 0.02,
