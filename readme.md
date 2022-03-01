@@ -105,15 +105,27 @@
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+### Prerequisites (MacOS)
+ 
+* homebrew
   ```sh
-  npm install npm@latest -g
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
+  * npm
+  ```sh
+  brew install node
+  ```
+  * watchman
+  ```sh
+  brew install watchman
+  ```
+  * Xcode CLI Tools
+  ```sh
+  xcode-select --install
+  ```
+  
 
-### Installation 
+### Installation (MacOS)
 
 1. Clone the repo
    ```sh
