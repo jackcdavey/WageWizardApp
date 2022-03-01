@@ -13,9 +13,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		4942E86E27A783210017E52D /* ForceBridgingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4942E86D27A783210017E52D /* ForceBridgingHeader.swift */; };
 		6172F2D35A4C3AA820D92908 /* libPods-WageWizard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-WageWizard.a */; };
+		6E1AD42285BCE5BC1BBE4735 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4066ACD3DE90B47FB246B8C /* ExpoModulesProvider.swift */; };
 		7EF68E3733C33B6898317E18 /* libPods-WageWizard-WageWizardTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-WageWizard-WageWizardTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BF471798D1E848CA80976B04 /* BCAlphapipeL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */; };
+		F990C413688351D0C75B5459 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B84FB31F3526C3D0502215 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		E5908A90527A4D95A86FF324 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EFED135D3D4A42EAA7A92F27 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		F1B84FB31F3526C3D0502215 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-WageWizard/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		F4066ACD3DE90B47FB246B8C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-WageWizard-WageWizardTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BCAlphapipeL-Regular.ttf"; path = "../src/assets/fonts/BCAlphapipeL-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,14 @@
 			name = WageWizard;
 			sourceTree = "<group>";
 		};
+		202A6A086170F20D241A3FDA /* WageWizardTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4066ACD3DE90B47FB246B8C /* ExpoModulesProvider.swift */,
+			);
+			name = WageWizardTests;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,15 @@
 				ABFE59519B596E51CEFDCCC0 /* libPods-WageWizard-WageWizardTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34E3627A1F1830BF8E5CEF1C /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				8ECB9936BF21BD82E6183FB6 /* WageWizard */,
+				202A6A086170F20D241A3FDA /* WageWizardTests */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		517F6853C52B43C2A176C888 /* Resources */ = {
@@ -170,6 +191,7 @@
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
 				4942E86C27A783200017E52D /* WageWizard-Bridging-Header.h */,
 				517F6853C52B43C2A176C888 /* Resources */,
+				34E3627A1F1830BF8E5CEF1C /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -183,6 +205,14 @@
 				00E356EE1AD99517003FC87E /* WageWizardTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8ECB9936BF21BD82E6183FB6 /* WageWizard */ = {
+			isa = PBXGroup;
+			children = (
+				F1B84FB31F3526C3D0502215 /* ExpoModulesProvider.swift */,
+			);
+			name = WageWizard;
 			sourceTree = "<group>";
 		};
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
@@ -452,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* WageWizardTests.m in Sources */,
+				6E1AD42285BCE5BC1BBE4735 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +493,7 @@
 				4942E86E27A783210017E52D /* ForceBridgingHeader.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				F990C413688351D0C75B5459 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +519,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WageWizardTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,7 +544,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = WageWizardTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +571,7 @@
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = WageWizard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,7 +599,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = WageWizard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,7 +666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -692,7 +724,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",

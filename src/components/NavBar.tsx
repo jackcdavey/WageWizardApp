@@ -6,6 +6,8 @@ import { Image } from 'react-native';
 
 import COLORS from '../styles/colors.js';
 
+
+
 import React from 'react';
 import Tracking from './Track';
 import Resources from './Resources';
