@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jackcdavey/WageWizardApp">
-    <img src="src/assets/images/title.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/images/title.png" alt="Logo" width="120" height="100">
   </a>
 
 <h3 align="center">Wage Wizard</h3>
@@ -81,8 +81,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](./src/assets/images/prototypeCapture.png)
+<img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
