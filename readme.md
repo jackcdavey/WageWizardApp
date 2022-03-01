@@ -81,7 +81,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70%>
+<img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70% align="center">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
