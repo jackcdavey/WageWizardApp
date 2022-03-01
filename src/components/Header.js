@@ -26,8 +26,8 @@ export default function Header(props) {
 const styles = StyleSheet.create({
     container: {
         height: 60, // Specify the height of your custom header
-        marginTop:40,
-        backgroundColor: "white",
+        marginTop: 0,
+        backgroundColor: COLORS.primary,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection:'row',

@@ -1,16 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import NavBar from './src/components/NavBar';
+import COLORS from './src/styles/colors.js';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -21,47 +13,11 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? COLORS.dark : COLORS.primary,
   };
 
 
@@ -69,17 +25,22 @@ const App = () => {
     <NavigationContainer>
 
     
-      <SafeAreaView style={backgroundStyle}>
+      <SafeAreaView style={{backgroundColor: COLORS.primary }}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
-          {/* <Header />
-          
-          </View> */}
+          {}
         </ScrollView>
       </SafeAreaView>
       <NavBar />
+      <View style={{ flexDirection: 'row', flex: 0 }}>
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+
+        </View>
       </NavigationContainer>
 
   );
