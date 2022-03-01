@@ -34,7 +34,7 @@ const App = () => {
         </ScrollView>
       </SafeAreaView>
       <NavBar />
-      <View style={{ flexDirection: 'row', flex: 0 }}>
+      <View style={{ flexDirection: 'row', flex: 0 }}> 
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
@@ -45,6 +45,7 @@ const App = () => {
 
   );
 };
+{/* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/}
 
 const styles = StyleSheet.create({
   sectionContainer: {
