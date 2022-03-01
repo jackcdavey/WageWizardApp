@@ -106,15 +106,15 @@ The simplest and fastest way to clone and run the project is using Expo. Follow 
 
 ### Prerequisites (MacOS)
  
-* homebrew
+* Homebrew
   ```sh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
-* npm
+* NPM
   ```sh
   brew install node
   ```
-* watchman
+* Watchman
   ```sh
   brew install watchman
   ```
