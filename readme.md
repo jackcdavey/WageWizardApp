@@ -111,15 +111,15 @@ To get a local copy up and running follow these simple example steps.
   ```sh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
-  * npm
+* npm
   ```sh
   brew install node
   ```
-  * watchman
+* watchman
   ```sh
   brew install watchman
   ```
-  * Xcode CLI Tools
+* Xcode CLI Tools
   ```sh
   xcode-select --install
   ```
