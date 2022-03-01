@@ -85,7 +85,7 @@
   <img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70%>
 </div
 
-<iframe src="https://drive.google.com/viewerng/viewer?url=https://raw.githubusercontent.com/degoes-consulting/lambdaconf-2015/master/speakers/jdegoes/intro-purescript/presentation.pdf" frameborder="0"></iframe>
+<iframe src="https://drive.google.com/viewerng/viewer?url=https://cdn.jsdelivr.net/gh/jackcdavey/WageWizardApp/src/assets/images/DesignThesis.pdf" frameborder="0"></iframe>
 
 
 ### Built With
