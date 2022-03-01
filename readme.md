@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jackcdavey/WageWizardApp">
-    <img src="src/assets/images/title.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/images/title.png" alt="Logo" width="180" height="130">
   </a>
 
 <h3 align="center">Wage Wizard</h3>
@@ -81,18 +81,18 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<div align="center">
+  <img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70%>
+</div
 
-[![Product Name Screen Shot][product-screenshot]](./src/assets/images/prototypeCapture.png)
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 ### Built With
 
 * [React Native](https://reactnative.dev/)
-* [Bootstrap](https://getbootstrap.com)
+* [Expo](https://expo.dev/)
+* [Figma](https://www.figma.com/)
 * [JQuery](https://jquery.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
