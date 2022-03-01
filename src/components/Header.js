@@ -20,7 +20,7 @@ export default function Header(props) {
 
 
   );
-}
+} 
 
 
 const styles = StyleSheet.create({
