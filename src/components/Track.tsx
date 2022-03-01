@@ -27,6 +27,7 @@ import {
 export default function Tracking() {
   return (
     <View style={styles.container}>
+        <Text style={styles.elements}>Timer:   00 : 00</Text>
       <MapView 
         style={styles.map}
         initialRegion={{
@@ -36,6 +37,8 @@ export default function Tracking() {
             longitudeDelta: 0.0421,
           }} 
       />
+         <Text style={styles.elements}>Job: Default Job</Text>
+         <View style={styles.start} />
     </View>
   );
 }
@@ -47,13 +50,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height*0.45,
+    height: Dimensions.get('window').height,
 
 
   },
+ elements:{
+    paddingBottom: Dimensions.get('window').height * 0.02,
+    paddingTop: Dimensions.get('window').height * 0.02,
+    fontSize: 40,
+  },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width * 0.9,
+    height: Dimensions.get('window').height * 0.35,
+  },
+  start: {
+    width: Dimensions.get('window').height * 0.2,
+    height: Dimensions.get('window').height * 0.2,
+    borderRadius: Dimensions.get('window').height * 0.2 / 2,
+    backgroundColor: "green",
   },
 });
 
