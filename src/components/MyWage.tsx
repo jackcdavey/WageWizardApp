@@ -1,6 +1,3 @@
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {
   SafeAreaView,
@@ -11,15 +8,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 
 export default function MyWage() {
   return (

@@ -1,4 +1,3 @@
-
 import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,8 +6,6 @@ import { Image } from 'react-native';
 
 import COLORS from '../styles/colors.js';
 
-
-
 import React from 'react';
 import Tracking from './Track';
 import Resources from './Resources';
@@ -16,20 +13,6 @@ import WorkLogs from './WorkLogs';
 import MyWage from './MyWage';
 import CustomIcon from './CustomIcon.js';
 import Header from './Header.js';
-
-
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-
-
 
 const Tab = createBottomTabNavigator();
 
@@ -57,16 +40,9 @@ export default function NavBar() {
           iconName = focused ? 'person' : 'person';
       }
 
-
-          // if (route.name === 'Resources') {
-          //   iconName = focused
-          //     ? 'ios-information-circle'
-          //     : 'ios-information-circle-outline';
-          // } else if (route.name === 'Tracking') {
-          //   iconName = focused ? 'ios-list-box' : 'ios-list';
-          // }
-
-          // You can return any component that you like here! -->>> SHOULD BE ICON THO?
+          // You can return any component that you like here! -->>> SHOULD BE ICON THO
+          //Currently, I'm just displaying each icon as a png as a workaround,
+          // eventually they will be accessed from /assets/fonts/CustomIcons.ttf
           return <Resources/>; //Temp placeholder
 
         },
