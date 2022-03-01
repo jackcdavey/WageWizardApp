@@ -11,8 +11,8 @@ export default function Header(props) {
         <View style={styles.container}> 
             <Text style={{
                 fontWeight:'bold',
-                fontStyle:'italic',
-                flex:4,
+                fontSize:30,
+                color:COLORS.secondary
             }}>{props.title}</Text>
 
         </View>
