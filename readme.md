@@ -85,7 +85,7 @@
   <img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70%>
 </div
 
-
+<iframe src="https://drive.google.com/viewerng/viewer?url=https://cdn.jsdelivr.net/gh/jackcdavey/WageWizardApp/src/assets/images/DesignThesis.pdf" frameborder="0"></iframe>
 
 
 ### Built With
@@ -102,31 +102,41 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The simplest and fastest way to clone and run the project is using Expo. Follow the steps below to get your development environment set up.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+### Prerequisites (MacOS)
+ 
+* Homebrew
   ```sh
-  npm install npm@latest -g
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
+* NPM
+  ```sh
+  brew install node
+  ```
+* Watchman
+  ```sh
+  brew install watchman
+  ```
+* Xcode CLI Tools
+  ```sh
+  xcode-select --install
+  ```
+  
 
-### Installation
+### Installation (MacOS)
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   gh repo clone jackcdavey/WageWizardApp
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Run in Expo
+   ```sh
+   npx expo start
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
