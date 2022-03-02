@@ -3,7 +3,7 @@ import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBar } from '@react-navigation/bottom-tabs';
 import { Alert, Button, Image, Text} from 'react-native';
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import COLORS from '../styles/colors.js';
 
@@ -57,11 +57,14 @@ export default function NavBar() {
           display: 'none',
         },
         headerRight: () => (
-          <Button
-            onPress={() => Alert.alert('This will navigate to account page')}
-            title="Account"
-            color={COLORS.secondary}
-          />
+          <Icon.Button
+            name="user"
+            onPress={() => {Alert.alert('This will navigate to account page')}} 
+            size={25} 
+            color={COLORS.secondary} 
+            backgroundColor={COLORS.primary}
+          ></Icon.Button>
+
         ),
         headerLeft: () => (
           <Header title={route.name} />
