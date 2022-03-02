@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Map from './Map';
 
 import {
@@ -12,6 +11,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+
+import COLORS from '../styles/colors.js';
 
 export default function Tracking() {
   return (
@@ -46,6 +47,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').height * 0.2,
     height: Dimensions.get('window').height * 0.2,
     borderRadius: Dimensions.get('window').height * 0.2 / 2,
+    borderColor: COLORS.dark,
+    borderWidth: 2,
     backgroundColor: "green",
   },
 });
