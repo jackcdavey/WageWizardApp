@@ -2,8 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBar } from '@react-navigation/bottom-tabs';
-import { Alert, Button, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { TouchableOpacity, Alert, Button, Image, Text} from 'react-native';
+
 
 import COLORS from '../styles/colors.js';
 
@@ -67,13 +67,18 @@ export default function NavBar() {
           display: 'none',
         },
         headerRight: () => (
-          <Icon.Button
-            name="user"
-            onPress={() => {Alert.alert('This will navigate to account page')}} 
-            size={25} 
-            color={COLORS.secondary} 
-            backgroundColor={COLORS.primary}
-          ></Icon.Button>
+          <TouchableOpacity onPress={() => Alert.alert('This will navigate to account page')}>
+            <View >
+              <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{width:30, marginTop:10, marginRight:10}}  resizeMode="contain"/>
+            </View>
+          </TouchableOpacity>
+          // <Icon.Button
+          //   name="user"
+          //   onPress={() => {Alert.alert('This will navigate to account page')}} 
+          //   size={25} 
+          //   color={COLORS.secondary} 
+          //   backgroundColor={COLORS.primary}
+          // ></Icon.Button>
 
         ),
         headerLeft: () => (

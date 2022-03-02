@@ -6,6 +6,9 @@ platform :ios, '12.0'
 
 target 'WageWizard' do
   use_expo_modules!
+
+
+
   post_integrate do |installer|
     begin
       expo_patch_react_imports!(installer)
@@ -21,7 +24,6 @@ target 'WageWizard' do
     :hermes_enabled => false
   )
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'WageWizardTests' do
     inherit! :complete

@@ -34,7 +34,6 @@
 		00E356EE1AD99517003FC87E /* WageWizardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WageWizardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* WageWizardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WageWizardTests.m; sourceTree = "<group>"; };
-		0721A3741A554D688CA029C7 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* WageWizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WageWizard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WageWizard/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WageWizard/AppDelegate.m; sourceTree = "<group>"; };
@@ -42,30 +41,15 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WageWizard/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WageWizard/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-WageWizard-WageWizardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard-WageWizardTests.release.xcconfig"; path = "Target Support Files/Pods-WageWizard-WageWizardTests/Pods-WageWizard-WageWizardTests.release.xcconfig"; sourceTree = "<group>"; };
-		1F9C89D2D5584773899DB40E /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		2618BCB6C6B445F08CB676C3 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		2E249E1C768640EF9428D1DC /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		346BEEAE326643F884F11A2B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		4942E86C27A783200017E52D /* WageWizard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WageWizard-Bridging-Header.h"; sourceTree = "<group>"; };
 		4942E86D27A783210017E52D /* ForceBridgingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForceBridgingHeader.swift; path = ../ForceBridgingHeader.swift; sourceTree = "<group>"; };
-		4A12B559A3AA4AB8AD06CF71 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		4F334AF7D949471CAA4C1D41 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		5A85CCFB06754F3C86EAB7BA /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-WageWizard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageWizard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6886A57AEFBC4AF589EC2DF0 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-WageWizard-WageWizardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard-WageWizardTests.debug.xcconfig"; path = "Target Support Files/Pods-WageWizard-WageWizardTests/Pods-WageWizard-WageWizardTests.debug.xcconfig"; sourceTree = "<group>"; };
-		71F8BE480AFB46C29A4DEA21 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		8180ACFDDBF94B2BB2932DAF /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WageWizard/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A70E2AA1E9CC481FA6FA5141 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-WageWizard-WageWizardTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageWizard-WageWizardTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE3B9CA3C0B24C3DB4F93A84 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-WageWizard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard.debug.xcconfig"; path = "Target Support Files/Pods-WageWizard/Pods-WageWizard.debug.xcconfig"; sourceTree = "<group>"; };
-		C9E76863B42C495BA345C544 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-WageWizard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard.release.xcconfig"; path = "Target Support Files/Pods-WageWizard/Pods-WageWizard.release.xcconfig"; sourceTree = "<group>"; };
-		E5908A90527A4D95A86FF324 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EFED135D3D4A42EAA7A92F27 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		F1B84FB31F3526C3D0502215 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-WageWizard/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		F4066ACD3DE90B47FB246B8C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-WageWizard-WageWizardTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BCAlphapipeL-Regular.ttf"; path = "../src/assets/fonts/BCAlphapipeL-Regular.ttf"; sourceTree = "<group>"; };
@@ -152,22 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */,
-				1F9C89D2D5584773899DB40E /* AntDesign.ttf */,
-				C9E76863B42C495BA345C544 /* Entypo.ttf */,
-				5A85CCFB06754F3C86EAB7BA /* EvilIcons.ttf */,
-				2618BCB6C6B445F08CB676C3 /* Feather.ttf */,
-				8180ACFDDBF94B2BB2932DAF /* FontAwesome.ttf */,
-				6886A57AEFBC4AF589EC2DF0 /* FontAwesome5_Brands.ttf */,
-				A70E2AA1E9CC481FA6FA5141 /* FontAwesome5_Regular.ttf */,
-				4A12B559A3AA4AB8AD06CF71 /* FontAwesome5_Solid.ttf */,
-				E5908A90527A4D95A86FF324 /* Fontisto.ttf */,
-				EFED135D3D4A42EAA7A92F27 /* Foundation.ttf */,
-				BE3B9CA3C0B24C3DB4F93A84 /* Ionicons.ttf */,
-				2E249E1C768640EF9428D1DC /* MaterialCommunityIcons.ttf */,
-				346BEEAE326643F884F11A2B /* MaterialIcons.ttf */,
-				4F334AF7D949471CAA4C1D41 /* Octicons.ttf */,
-				0721A3741A554D688CA029C7 /* SimpleLineIcons.ttf */,
-				71F8BE480AFB46C29A4DEA21 /* Zocial.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
