@@ -20,7 +20,6 @@ const App = () => {
     backgroundColor: isDarkMode ? COLORS.dark : COLORS.primary,
   };
 
-
   return (
     <NavigationContainer>
 
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 8,
     fontWeight: '600',
   },
   sectionDescription: {

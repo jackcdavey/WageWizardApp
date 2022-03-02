@@ -2,7 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBar } from '@react-navigation/bottom-tabs';
-import { Image } from 'react-native';
+import { Alert, Button, Image, Text} from 'react-native';
+
 
 import COLORS from '../styles/colors.js';
 
@@ -13,8 +14,10 @@ import WorkLogs from './WorkLogs';
 import MyWage from './MyWage';
 import CustomIcon from './CustomIcon.js';
 import Header from './Header.js';
+import { color } from 'react-native-reanimated';
 
 const Tab = createBottomTabNavigator();
+
 
 export default function NavBar() {
     return (
@@ -26,19 +29,19 @@ export default function NavBar() {
             iconName = focused
                 ? 'information-circle'
                 : 'information-circle-outline';
-        } 
-        else if (route.name === 'Track') {
-            iconName = focused ? 'stopwatch' : 'stopwatch';
+          } 
+          else if (route.name === 'Track') {
+              iconName = focused ? 'stopwatch' : 'stopwatch';
+          }
+          else if (route.name === 'My Wage') {
+              iconName = focused ? 'cash' : 'cash';
+          }
+          else if (route.name === 'Work Log') {
+              iconName = focused ? 'book' : 'book';
+          }
+          else if (route.name === 'Account') {
+            iconName = focused ? 'person' : 'person';
         }
-        else if (route.name === 'My Wage') {
-            iconName = focused ? 'cash' : 'cash';
-        }
-        else if (route.name === 'Work Log') {
-            iconName = focused ? 'book' : 'book';
-        }
-        else if (route.name === 'Account') {
-          iconName = focused ? 'person' : 'person';
-      }
 
           // You can return any component that you like here! -->>> SHOULD BE ICON THO
           //Currently, I'm just displaying each icon as a png as a workaround,
@@ -46,12 +49,27 @@ export default function NavBar() {
           return <Resources/>; //Temp placeholder
 
         },
-
-        header: ({ navigation, route, options }) => {
-          const title = getHeaderTitle(options, route.name);
-        
-          return <Header title={title} style={options.headerStyle} navigation={navigation}/>;
+       
+        headerStyle: {
+          backgroundColor: COLORS.primary,
         },
+        headerTitleStyle:{
+          display: 'none',
+        },
+        headerRight: () => (
+          <Button
+            onPress={() => Alert.alert('This will navigate to account page')}
+            title="Account"
+            color={COLORS.secondary}
+          />
+        ),
+        headerLeft: () => (
+          <Header title={route.name} />
+        ),
+       
+        
+
+        
 
         tabBarInactiveBackgroundColor:COLORS.primary,
             tabBarActiveBackgroundColor:COLORS.active,
