@@ -10,6 +10,8 @@ import {
   FlatList,
   View,
   Dimensions,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -39,16 +41,20 @@ export default function WorkLogs() {
     <View style={styles.container}>
       <FlatList
         data={[
-          { key: 'Log 1' },
-          { key: 'Log 2' },
-          { key: 'Log 3' },
-          { key: 'Log 4' },
-          { key: 'Log 5' },
-          { key: 'Log 6' },
-          { key: 'Log 7' },
+          { key: 'Job 1' },
+          { key: 'Job 2' },
+          { key: 'Job 3' },
+          { key: 'Job 4' },
+          { key: 'Job 5' },
+          { key: 'Job 6' },
+          { key: 'Job 7' },
         ]}
         renderItem={({item}) => 
-        <View style={styles.item}><Text style={styles.info}>{item.key}</Text></View>}
+        <TouchableOpacity onPress={() => Alert.alert('This will navigate to the ' + item.key + ' detailed work log')}>
+          <View style={styles.item}>
+            <Text style={styles.info}>{item.key}</Text>
+          </View>
+        </TouchableOpacity>}
       />
     </View>
   );

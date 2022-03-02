@@ -7,7 +7,7 @@ import COLORS from '../styles/colors'
 //Set color of status bar globally here, eventualy set to 'auto'
 export default function Header(props) {
   return (
-    <TouchableHighlight onPress={()=>{props.navigation.navigate('camera')}}>
+    //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
         <View style={styles.container}> 
         <StatusBar style="light" /> 
             <Text style={{
@@ -16,7 +16,7 @@ export default function Header(props) {
                 color:COLORS.secondary
             }}>{props.title}</Text>
         </View>
-    </TouchableHighlight>
+    //</TouchableHighlight>
   );
 } 
 
