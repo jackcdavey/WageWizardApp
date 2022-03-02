@@ -16,6 +16,16 @@ import CustomIcon from './CustomIcon.js';
 import Header from './Header.js';
 import { color } from 'react-native-reanimated';
 
+
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  useColorScheme,
+  View,
+} from 'react-native';
+
 const Tab = createBottomTabNavigator();
 
 
@@ -69,20 +79,17 @@ export default function NavBar() {
         headerLeft: () => (
           <Header title={route.name} />
         ),
-       
-        
 
-        
-
-        tabBarInactiveBackgroundColor:COLORS.primary,
-            tabBarActiveBackgroundColor:COLORS.active,
-            tabBarInactiveTintColor:COLORS.icon,
-            tabBarActiveTintColor:"black",
+      tabBarInactiveBackgroundColor:COLORS.primary,
+      tabBarActiveBackgroundColor:COLORS.active,
+      tabBarInactiveTintColor:COLORS.icon,
+      tabBarActiveTintColor:"black",
       })}
       tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,5)}}></BottomTabBar>}
 
       >
-        <Tab.Screen
+
+      <Tab.Screen
           name="Tracking" 
           component={Tracking}
           options={{
@@ -134,6 +141,15 @@ export default function NavBar() {
               );
             }}
     } />
+
+      {/* <View style={{ flexDirection: 'row', flex: 0 }}> 
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+
+      </View> */}
+
       </Tab.Navigator>
     );
   }

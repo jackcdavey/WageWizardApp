@@ -33,13 +33,13 @@ const App = () => {
         </ScrollView>
       </SafeAreaView>
       <NavBar />
-      <View style={{ flexDirection: 'row', flex: 0 }}> 
+      {/* <View style={{ flexDirection: 'row', flex: 0 }}> 
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
 
-        </View>
+      </View> */}
       </NavigationContainer>
 
   );
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
-    fontSize: 8,
+    fontSize: 24,
     fontWeight: '600',
   },
   sectionDescription: {
