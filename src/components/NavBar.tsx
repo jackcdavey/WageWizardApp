@@ -108,7 +108,7 @@ export default function NavBar() {
             }}
         } />
         <Tab.Screen 
-          name="WorkLogs" 
+          name="Work Logs" 
           component={WorkLogs}
           options={{
             tabBarIcon: ({size,focused,color}) => {
