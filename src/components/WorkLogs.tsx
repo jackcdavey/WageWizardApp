@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   container: {
    alignItems: 'center',
    flex: 1,
+   
   },
   item: {
     margin: 25,
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.active,
     fontSize: 18,
     height: 44,
+    
   },
 });
 
