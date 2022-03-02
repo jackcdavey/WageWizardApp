@@ -10,6 +10,8 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 
 import COLORS from '../styles/colors.js';
@@ -20,7 +22,9 @@ export default function Tracking() {
         <Text style={styles.elements}>Timer:   00 : 00</Text>
           <Map />
          <Text style={styles.elements}>Job: Default Job</Text>
-         <View style={styles.start} />
+         <TouchableOpacity onPress={() => Alert.alert('This will begin a tacking session')}>
+          <View style={styles.start} />
+         </TouchableOpacity>
     </View>
   );
 }

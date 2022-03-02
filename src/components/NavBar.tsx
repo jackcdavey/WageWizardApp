@@ -101,19 +101,36 @@ export default function NavBar() {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <Image
+                resizeMode="contain"
                   style={{ width: size, height: size }}
                   source={require('../assets/images/icons/Stopwatch.png')}
                 />
               );
             }}
         } />
+        
         <Tab.Screen 
+          name="My Wage" 
+          component={MyWage}
+          options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Image
+                resizeMode="contain"
+                  style={{ width: size, height: size }}
+                  source={require('../assets/images/icons/Money.png')}
+                />
+              );
+            }}
+    } />
+    <Tab.Screen 
           name="Work Logs" 
           component={WorkLogs}
           options={{
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <Image
+                  resizeMode="contain"
                   style={{ width: size, height: size }}
                   source={require('../assets/images/icons/Notebook.png')}
                 />
@@ -127,21 +144,9 @@ export default function NavBar() {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <Image
+                resizeMode="contain"
                   style={{ width: size, height: size }}
                   source={require('../assets/images/icons/Info.png')}
-                />
-              );
-            }}
-    } />
-        <Tab.Screen 
-          name="My Wage" 
-          component={MyWage}
-          options={{
-            tabBarIcon: ({size,focused,color}) => {
-              return (
-                <Image
-                  style={{ width: size, height: size }}
-                  source={require('../assets/images/icons/Money.png')}
                 />
               );
             }}

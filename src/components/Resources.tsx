@@ -9,6 +9,8 @@ import {
   useColorScheme,
   View,
   Dimensions,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -39,13 +41,22 @@ export default function Resources() {
       alignItems: 'center', 
       }}>
         <View>
+        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
           <View style={styles.article} />          
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
           <View style={styles.article} />          
+          </TouchableOpacity>
         </View>
 
         <View>
+        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
+
         <View style={styles.article} />          
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
         <View style={styles.article} />          
+        </TouchableOpacity>
         </View>
 
        
