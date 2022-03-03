@@ -33,40 +33,13 @@ export default function NavBar() {
     return (
       <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-          if (route.name === 'Resources') {
-            iconName = focused
-                ? 'information-circle'
-                : 'information-circle-outline';
-          } 
-          else if (route.name === 'Track') {
-              iconName = focused ? 'stopwatch' : 'stopwatch';
-          }
-          else if (route.name === 'My Wage') {
-              iconName = focused ? 'cash' : 'cash';
-          }
-          else if (route.name === 'Work Log') {
-              iconName = focused ? 'book' : 'book';
-          }
-          else if (route.name === 'Account') {
-            iconName = focused ? 'person' : 'person';
-        }
 
-          // You can return any component that you like here! -->>> SHOULD BE ICON THO
-          //Currently, I'm just displaying each icon as a png as a workaround,
-          // eventually they will be accessed from /assets/fonts/CustomIcons.ttf
-          return <Resources/>; //Temp placeholder
-
-        },
-       
         headerStyle: {
           backgroundColor: COLORS.primary,
         },
         headerTitleStyle:{
           display: 'none',
         },
-
         //For some reason touch target for account icon is too tall, abt double height
         headerRight: () => (
           <TouchableOpacity onPress={() => Alert.alert('This will navigate to account page')}>
@@ -84,8 +57,8 @@ export default function NavBar() {
       tabBarInactiveTintColor:COLORS.icon,
       tabBarActiveTintColor:"black",
       })}
-      tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,5)}}></BottomTabBar>}
 
+      tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,5)}}></BottomTabBar>}
       >
 
       <Tab.Screen

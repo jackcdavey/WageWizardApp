@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import NavBar from './src/components/NavBar';
+import Header from './src/components/Header';
 import COLORS from './src/styles/colors.js';
 
 import {
@@ -32,6 +33,11 @@ const App = () => {
           {}
         </ScrollView>
       </SafeAreaView>
+      
+      {/* Currently, the header is generated inside the NavBar component. This will need to be separated
+      to allow for navigation to the AccountView page  */}
+      {/* <Header /> */}
+
       <NavBar />
       {/* <View style={{ flexDirection: 'row', flex: 0 }}> 
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
