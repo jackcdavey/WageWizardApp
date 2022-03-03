@@ -23,7 +23,14 @@ export default function Tracking() {
           <Map />
          <Text style={styles.elements}>Job: Default Job</Text>
          <TouchableOpacity onPress={() => Alert.alert('This will begin a tacking session')}>
-          <View style={styles.start} />
+
+
+          <View style={styles.start} >
+            <Text style={styles.elements}>Start</Text>
+          </View>
+         
+         
+         
          </TouchableOpacity>
     </View>
   );
@@ -50,6 +57,8 @@ const styles = StyleSheet.create({
   start: {
     width: Dimensions.get('window').height * 0.2,
     height: Dimensions.get('window').height * 0.2,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: Dimensions.get('window').height * 0.2 / 2,
     borderColor: COLORS.dark,
     borderWidth: 2,
