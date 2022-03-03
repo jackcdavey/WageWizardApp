@@ -6,19 +6,19 @@ import COLORS from '../styles/colors'
 
 //Set color of status bar globally here, eventualy set to 'auto'
 export default function Header(props) {
-  return (
-    //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
-        <View style={styles.container}> 
-        <StatusBar style="light" /> 
+    return (
+        //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
+        <View style={styles.container}>
+            <StatusBar style="light" />
             <Text style={{
-                fontWeight:'bold',
-                fontSize:30,
-                color:COLORS.secondary
+                fontWeight: 'bold',
+                fontSize: 30,
+                color: COLORS.secondary
             }}>{props.title}</Text>
         </View>
-    //</TouchableHighlight>
-  );
-} 
+        //</TouchableHighlight>
+    );
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primary,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection:'row',
+        flexDirection: 'row',
 
     },
-    text:{
-        fontWeight:'bold',
-        fontStyle:'italic'
+    text: {
+        fontWeight: 'bold',
+        fontStyle: 'italic'
     }
 });
 

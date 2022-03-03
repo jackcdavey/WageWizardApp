@@ -24,18 +24,18 @@ const App = () => {
   return (
     <NavigationContainer>
 
-    
-      <SafeAreaView style={{backgroundColor: COLORS.primary }}>
+
+      <SafeAreaView style={{ backgroundColor: COLORS.primary }}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
-          {}
+          { }
         </ScrollView>
       </SafeAreaView>
-      
+
       {/* Currently, the header is generated inside the NavBar component. This will need to be separated
-      to allow for navigation to the AccountView page  */}
+      to allow for navigation to the iew page  */}
       {/* <Header /> */}
 
       <NavBar />
@@ -46,11 +46,11 @@ const App = () => {
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
 
       </View> */}
-      </NavigationContainer>
+    </NavigationContainer>
 
   );
 };
-{/* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/}
+{/* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/ }
 
 const styles = StyleSheet.create({
   sectionContainer: {

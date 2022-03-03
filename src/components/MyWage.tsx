@@ -15,13 +15,17 @@ import {
 
 const styles = StyleSheet.create({
   infoBox: {
-    width: Dimensions.get('window').width*0.9, 
-    height: Dimensions.get('window').width*0.2, 
-    margin:25,  
+    display: 'flex',
+    minWidth: Dimensions.get('window').width * 0.9,
+    minHeight: Dimensions.get('window').height * 0.07,
+    margin: 15,
+    padding: 10,
     backgroundColor: COLORS.secondary,
     borderRadius: 15,
     borderColor: COLORS.dark,
     borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   item: {
     margin: 25,
@@ -33,35 +37,49 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 23,
   },
-  infoTxt:{
+  infoTxt: {
     fontSize: 50,
   },
-  btn:{
-    width: Dimensions.get('window').width*0.6,
-    height: Dimensions.get('window').width*0.2, 
+  btn: {
+    width: Dimensions.get('window').width * 0.6,
+    height: Dimensions.get('window').width * 0.2,
     backgroundColor: COLORS.primary,
     borderRadius: 15,
     borderColor: COLORS.dark,
     borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnTxt: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: COLORS.secondary,
   }
 });
 
 export default function MyWage() {
   return (
-    <View style={{ 
+    <View style={{
       flexDirection: 'column',
-      flex: 1, 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      }}>
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
       <Text style={styles.label}>San Jose Minimum Wage:</Text>
       <Text style={styles.infoTxt}>$15.00</Text>
-      <View style={styles.infoBox} />          
+      <View style={styles.infoBox} >
+        <Text style={styles.label}>Weekly</Text>
+      </View>
+      <View style={styles.infoBox}>
+        <Text style={styles.label}>Total Time Worked This Week:</Text>
+        <Text style={styles.infoTxt}>18h, 36m</Text>
+      </View>
       <View style={styles.infoBox} />
-      <View style={styles.infoBox} />          
       <TouchableOpacity onPress={() => Alert.alert('Navigate to see all work logs')}>
-          <View style={styles.btn} />          
-        </TouchableOpacity>  
+        <View style={styles.btn} >
+          <Text style={styles.btnTxt}>See Recordings Here</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

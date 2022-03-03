@@ -19,19 +19,19 @@ import COLORS from '../styles/colors.js';
 export default function Tracking() {
   return (
     <View style={styles.container}>
-        <Text style={styles.elements}>Timer:   00 : 00</Text>
-          <Map />
-         <Text style={styles.elements}>Job: Default Job</Text>
-         <TouchableOpacity onPress={() => Alert.alert('This will begin a tacking session')}>
+      <Text style={styles.elements}>Timer:   00 : 00</Text>
+      <Map />
+      <Text style={styles.elements}>Job: Default Job</Text>
+      <TouchableOpacity onPress={() => Alert.alert('This will begin a tacking session')}>
 
 
-          <View style={styles.start} >
-            <Text style={styles.elements}>Start</Text>
-          </View>
-         
-         
-         
-         </TouchableOpacity>
+        <View style={styles.start} >
+          <Text style={styles.elements}>Start</Text>
+        </View>
+
+
+
+      </TouchableOpacity>
     </View>
   );
 }
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
- elements:{
+  elements: {
     paddingBottom: Dimensions.get('window').height * 0.02,
     paddingTop: Dimensions.get('window').height * 0.02,
     fontSize: 40,

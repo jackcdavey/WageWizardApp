@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBar } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity, Alert, Button, Image, Text} from 'react-native';
+import { TouchableOpacity, Alert, Button, Image, Text } from 'react-native';
 
 
 import COLORS from '../styles/colors.js';
@@ -30,21 +30,21 @@ const Tab = createBottomTabNavigator();
 
 
 export default function NavBar() {
-    return (
-      <Tab.Navigator
+  return (
+    <Tab.Navigator
       screenOptions={({ route }) => ({
 
         headerStyle: {
           backgroundColor: COLORS.primary,
         },
-        headerTitleStyle:{
+        headerTitleStyle: {
           display: 'none',
         },
         //For some reason touch target for account icon is too tall, abt double height
         headerRight: () => (
           <TouchableOpacity onPress={() => Alert.alert('This will navigate to account page')}>
             <View >
-              <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{width:30, marginTop:10, marginRight:10}}  resizeMode="contain"/>
+              <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{ width: 30, marginTop: 10, marginRight: 10 }} resizeMode="contain" />
             </View>
           </TouchableOpacity>
         ),
@@ -52,72 +52,76 @@ export default function NavBar() {
           <Header title={route.name} />
         ),
 
-      tabBarInactiveBackgroundColor:COLORS.primary,
-      tabBarActiveBackgroundColor:COLORS.active,
-      tabBarInactiveTintColor:COLORS.icon,
-      tabBarActiveTintColor:"black",
+        tabBarInactiveBackgroundColor: COLORS.primary,
+        tabBarActiveBackgroundColor: COLORS.active,
+        tabBarInactiveTintColor: COLORS.icon,
+        tabBarActiveTintColor: "black",
       })}
 
-      tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,5)}}></BottomTabBar>}
-      >
+      tabBar={props => <BottomTabBar {...props} state={{ ...props.state, routes: props.state.routes.slice(0, 5) }}></BottomTabBar>}
+    >
 
       <Tab.Screen
-          name="Tracking" 
-          component={Tracking}
-          options={{
-            tabBarIcon: ({size,focused,color}) => {
-              return (
-                <Image
+        name="Tracking"
+        component={Tracking}
+        options={{
+          tabBarIcon: ({ size, focused, color }) => {
+            return (
+              <Image
                 resizeMode="contain"
-                  style={{ width: size, height: size }}
-                  source={require('../assets/images/icons/Stopwatch.png')}
-                />
-              );
-            }}
+                style={{ width: size, height: size }}
+                source={require('../assets/images/icons/Stopwatch.png')}
+              />
+            );
+          }
+        }
         } />
-        
-        <Tab.Screen 
-          name="My Wage" 
-          component={MyWage}
-          options={{
-            tabBarIcon: ({size,focused,color}) => {
-              return (
-                <Image
+
+      <Tab.Screen
+        name="My Wage"
+        component={MyWage}
+        options={{
+          tabBarIcon: ({ size, focused, color }) => {
+            return (
+              <Image
                 resizeMode="contain"
-                  style={{ width: size, height: size }}
-                  source={require('../assets/images/icons/Money.png')}
-                />
-              );
-            }}
-    } />
-    <Tab.Screen 
-          name="Work Logs" 
-          component={WorkLogs}
-          options={{
-            tabBarIcon: ({size,focused,color}) => {
-              return (
-                <Image
-                  resizeMode="contain"
-                  style={{ width: size, height: size }}
-                  source={require('../assets/images/icons/Notebook.png')}
-                />
-              );
-            }}
-      } />
-        <Tab.Screen 
-          name="Resources" 
-          component={Resources}
-          options={{
-            tabBarIcon: ({size,focused,color}) => {
-              return (
-                <Image
+                style={{ width: size, height: size }}
+                source={require('../assets/images/icons/Money.png')}
+              />
+            );
+          }
+        }
+        } />
+      <Tab.Screen
+        name="Work Logs"
+        component={WorkLogs}
+        options={{
+          tabBarIcon: ({ size, focused, color }) => {
+            return (
+              <Image
                 resizeMode="contain"
-                  style={{ width: size, height: size }}
-                  source={require('../assets/images/icons/Info.png')}
-                />
-              );
-            }}
-    } />
+                style={{ width: size, height: size }}
+                source={require('../assets/images/icons/Notebook.png')}
+              />
+            );
+          }
+        }
+        } />
+      <Tab.Screen
+        name="Resources"
+        component={Resources}
+        options={{
+          tabBarIcon: ({ size, focused, color }) => {
+            return (
+              <Image
+                resizeMode="contain"
+                style={{ width: size, height: size }}
+                source={require('../assets/images/icons/Info.png')}
+              />
+            );
+          }
+        }
+        } />
 
       {/* <View style={{ flexDirection: 'row', flex: 0 }}> 
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
@@ -127,6 +131,6 @@ export default function NavBar() {
 
       </View> */}
 
-      </Tab.Navigator>
-    );
-  }
+    </Tab.Navigator>
+  );
+}
