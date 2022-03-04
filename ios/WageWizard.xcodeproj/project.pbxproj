@@ -8,15 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* WageWizardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WageWizardTests.m */; };
+		088FB622075E42D59977452A /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89BDCDF4CB5D4A91B6D4D16F /* Comfortaa-Light.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1E703C54C1524CE6A4A88C6B /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 565829CBA7874985845FA0E9 /* Comfortaa-Medium.ttf */; };
+		2201D3CBEDD440B3B14E7115 /* SFProRounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7035FA3AB53A4FC4A623B8EE /* SFProRounded-Regular.otf */; };
 		4942E86E27A783210017E52D /* ForceBridgingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4942E86D27A783210017E52D /* ForceBridgingHeader.swift */; };
 		6172F2D35A4C3AA820D92908 /* libPods-WageWizard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-WageWizard.a */; };
 		6E1AD42285BCE5BC1BBE4735 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4066ACD3DE90B47FB246B8C /* ExpoModulesProvider.swift */; };
+		6E9B41288AAE47329DA01EBA /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4F8D621A98D41A0B06BE44F /* Comfortaa-Bold.ttf */; };
 		7EF68E3733C33B6898317E18 /* libPods-WageWizard-WageWizardTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-WageWizard-WageWizardTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8230AA922C434EC1A2EB519D /* CustomIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673B7DF8865947D5A7F95DDD /* CustomIcons.ttf */; };
+		91B5B7A81B434E73BC28171C /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8256358A2EA4528AA83B5D5 /* Comfortaa-Regular.ttf */; };
 		BF471798D1E848CA80976B04 /* BCAlphapipeL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */; };
+		C650D316CBE243ECB95DD971 /* SFPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7D617D4A45C418A9D477DB0 /* SFPro-Regular.ttf */; };
+		D1AB13FA0D604D9D99D9B314 /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 456D85C65E8B408487C88A59 /* Comfortaa-SemiBold.ttf */; };
 		F990C413688351D0C75B5459 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B84FB31F3526C3D0502215 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +42,7 @@
 		00E356EE1AD99517003FC87E /* WageWizardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WageWizardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* WageWizardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WageWizardTests.m; sourceTree = "<group>"; };
+		1243D4D45DFF48C394248252 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* WageWizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WageWizard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WageWizard/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WageWizard/AppDelegate.m; sourceTree = "<group>"; };
@@ -41,15 +50,38 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WageWizard/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WageWizard/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-WageWizard-WageWizardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard-WageWizardTests.release.xcconfig"; path = "Target Support Files/Pods-WageWizard-WageWizardTests/Pods-WageWizard-WageWizardTests.release.xcconfig"; sourceTree = "<group>"; };
+		1E813A17A2AB4F6C8F027EBC /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		26B2B1240B8F4C02AD49AF38 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		378768D2DED64BBE9AA65B87 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		42D9330999664942BC5AE095 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		456D85C65E8B408487C88A59 /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comfortaa-SemiBold.ttf"; path = "../src/assets/fonts/Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; };
 		4942E86C27A783200017E52D /* WageWizard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WageWizard-Bridging-Header.h"; sourceTree = "<group>"; };
 		4942E86D27A783210017E52D /* ForceBridgingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForceBridgingHeader.swift; path = ../ForceBridgingHeader.swift; sourceTree = "<group>"; };
+		565829CBA7874985845FA0E9 /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comfortaa-Medium.ttf"; path = "../src/assets/fonts/Comfortaa-Medium.ttf"; sourceTree = "<group>"; };
+		56D312B8A9DA4AC4B28239D3 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-WageWizard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageWizard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		673B7DF8865947D5A7F95DDD /* CustomIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = CustomIcons.ttf; path = ../src/assets/fonts/CustomIcons.ttf; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-WageWizard-WageWizardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard-WageWizardTests.debug.xcconfig"; path = "Target Support Files/Pods-WageWizard-WageWizardTests/Pods-WageWizard-WageWizardTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7035FA3AB53A4FC4A623B8EE /* SFProRounded-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Regular.otf"; path = "../src/assets/fonts/SFProRounded-Regular.otf"; sourceTree = "<group>"; };
+		7093E07D113D47D995D9F7DD /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		7B22E922D7D04DA9BC6157C3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WageWizard/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83B7991BF3344A97B1ECB6D9 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		89BDCDF4CB5D4A91B6D4D16F /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comfortaa-Light.ttf"; path = "../src/assets/fonts/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		A66A325F466341F2AE71255C /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		AB18401926364636B5A5B364 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-WageWizard-WageWizardTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageWizard-WageWizardTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4F8D621A98D41A0B06BE44F /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comfortaa-Bold.ttf"; path = "../src/assets/fonts/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-WageWizard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard.debug.xcconfig"; path = "Target Support Files/Pods-WageWizard/Pods-WageWizard.debug.xcconfig"; sourceTree = "<group>"; };
+		C48B99AE60EA4C12BD4D50DB /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		C8256358A2EA4528AA83B5D5 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comfortaa-Regular.ttf"; path = "../src/assets/fonts/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		CB9CA0A6C79E4BA5B682AAF7 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-WageWizard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageWizard.release.xcconfig"; path = "Target Support Files/Pods-WageWizard/Pods-WageWizard.release.xcconfig"; sourceTree = "<group>"; };
+		D7D617D4A45C418A9D477DB0 /* SFPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SFPro-Regular.ttf"; path = "../src/assets/fonts/SFPro-Regular.ttf"; sourceTree = "<group>"; };
+		DE69D35024BB4928B3258039 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		EC1C5BCED4194388A2E078C1 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EFD042A090154971862766FE /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		F1B84FB31F3526C3D0502215 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-WageWizard/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		F4066ACD3DE90B47FB246B8C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-WageWizard-WageWizardTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BCAlphapipeL-Regular.ttf"; path = "../src/assets/fonts/BCAlphapipeL-Regular.ttf"; sourceTree = "<group>"; };
@@ -136,6 +168,30 @@
 			isa = PBXGroup;
 			children = (
 				F9B15AEC63C246589D8F36C8 /* BCAlphapipeL-Regular.ttf */,
+				B4F8D621A98D41A0B06BE44F /* Comfortaa-Bold.ttf */,
+				89BDCDF4CB5D4A91B6D4D16F /* Comfortaa-Light.ttf */,
+				565829CBA7874985845FA0E9 /* Comfortaa-Medium.ttf */,
+				C8256358A2EA4528AA83B5D5 /* Comfortaa-Regular.ttf */,
+				456D85C65E8B408487C88A59 /* Comfortaa-SemiBold.ttf */,
+				673B7DF8865947D5A7F95DDD /* CustomIcons.ttf */,
+				AB18401926364636B5A5B364 /* AntDesign.ttf */,
+				56D312B8A9DA4AC4B28239D3 /* Entypo.ttf */,
+				A66A325F466341F2AE71255C /* EvilIcons.ttf */,
+				CB9CA0A6C79E4BA5B682AAF7 /* Feather.ttf */,
+				42D9330999664942BC5AE095 /* FontAwesome.ttf */,
+				1243D4D45DFF48C394248252 /* FontAwesome5_Brands.ttf */,
+				DE69D35024BB4928B3258039 /* FontAwesome5_Regular.ttf */,
+				EC1C5BCED4194388A2E078C1 /* FontAwesome5_Solid.ttf */,
+				1E813A17A2AB4F6C8F027EBC /* Fontisto.ttf */,
+				378768D2DED64BBE9AA65B87 /* Foundation.ttf */,
+				83B7991BF3344A97B1ECB6D9 /* Ionicons.ttf */,
+				C48B99AE60EA4C12BD4D50DB /* MaterialCommunityIcons.ttf */,
+				EFD042A090154971862766FE /* MaterialIcons.ttf */,
+				7093E07D113D47D995D9F7DD /* Octicons.ttf */,
+				26B2B1240B8F4C02AD49AF38 /* SimpleLineIcons.ttf */,
+				7B22E922D7D04DA9BC6157C3 /* Zocial.ttf */,
+				7035FA3AB53A4FC4A623B8EE /* SFProRounded-Regular.otf */,
+				D7D617D4A45C418A9D477DB0 /* SFPro-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -291,6 +347,14 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				BF471798D1E848CA80976B04 /* BCAlphapipeL-Regular.ttf in Resources */,
+				6E9B41288AAE47329DA01EBA /* Comfortaa-Bold.ttf in Resources */,
+				088FB622075E42D59977452A /* Comfortaa-Light.ttf in Resources */,
+				1E703C54C1524CE6A4A88C6B /* Comfortaa-Medium.ttf in Resources */,
+				91B5B7A81B434E73BC28171C /* Comfortaa-Regular.ttf in Resources */,
+				D1AB13FA0D604D9D99D9B314 /* Comfortaa-SemiBold.ttf in Resources */,
+				8230AA922C434EC1A2EB519D /* CustomIcons.ttf in Resources */,
+				2201D3CBEDD440B3B14E7115 /* SFProRounded-Regular.otf in Resources */,
+				C650D316CBE243ECB95DD971 /* SFPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

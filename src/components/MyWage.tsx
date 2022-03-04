@@ -66,13 +66,13 @@ export default function MyWage() {
       alignItems: 'center',
     }}>
       <Text style={styles.label}>San Jose Minimum Wage:</Text>
-      <Text style={styles.infoTxt}>$15.00</Text>
+      <Text style={styles.infoTxt}>$XX.XX</Text>
       <View style={styles.infoBox} >
         <Text style={styles.label}>Weekly</Text>
       </View>
       <View style={styles.infoBox}>
         <Text style={styles.label}>Total Time Worked This Week:</Text>
-        <Text style={styles.infoTxt}>18h, 36m</Text>
+        <Text style={styles.infoTxt}>XXh, XXm</Text>
       </View>
       <View style={styles.infoBox} />
       <TouchableOpacity onPress={() => Alert.alert('Navigate to see all work logs')}>

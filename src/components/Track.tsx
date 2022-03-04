@@ -14,9 +14,11 @@ import {
   Alert,
 } from 'react-native';
 
+
 import COLORS from '../styles/colors.js';
 
 export default function Tracking() {
+  
   return (
     <View style={styles.container}>
       <Text style={styles.elements}>Timer:   00 : 00</Text>
@@ -37,6 +39,7 @@ export default function Tracking() {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
   elements: {
     paddingBottom: Dimensions.get('window').height * 0.02,
     paddingTop: Dimensions.get('window').height * 0.02,
+    fontFamily: 'SFPro-Regular',
     fontSize: 40,
   },
   map: {
