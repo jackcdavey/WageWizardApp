@@ -57,13 +57,6 @@ export default function Tracking() {
     setTime(0);
   };
 
-
-
-
-
-
-
-
   const handlePress  = ()=>{
     if (!isPressed){
       setPressed(true);
@@ -78,17 +71,12 @@ export default function Tracking() {
     }
   }
 
-
-
-
   return (
     <View style={styles.container}>
       <Text style={styles.elements}>Timer: {hours}: {minutes}: {seconds}</Text>
       <Map />
       <Text style={styles.elements}>Job: Default Job</Text>
       <TouchableOpacity>
-
-
         <View style={[styles.start,{backgroundColor: buttonColor}]} >
           <Text 
             style={styles.elements}
@@ -96,9 +84,6 @@ export default function Tracking() {
           >
             {buttonText}</Text>
         </View>
-
-
-
       </TouchableOpacity>
     </View>
   );
@@ -117,7 +102,7 @@ const styles = StyleSheet.create({
   elements: {
     paddingBottom: Dimensions.get('window').height * 0.02,
     paddingTop: Dimensions.get('window').height * 0.02,
-    //fontFamily: 'SFPro-Regular',
+    fontFamily: 'SFPro-Regular',
     fontSize: 40,
   },
   map: {

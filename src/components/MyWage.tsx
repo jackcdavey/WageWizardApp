@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function MyWage() {
+export default function MyWage({navigation}: {navigation: any}) {
+ 
   return (
     <View style={{
       flexDirection: 'column',
@@ -75,7 +76,7 @@ export default function MyWage() {
         <Text style={styles.infoTxt}>XXh, XXm</Text>
       </View>
       <View style={styles.infoBox} />
-      <TouchableOpacity onPress={() => Alert.alert('Navigate to see all work logs')}>
+      <TouchableOpacity onPress={() => navigation.navigate("Work Logs")}>
         <View style={styles.btn} >
           <Text style={styles.btnTxt}>See Recordings Here</Text>
         </View>
