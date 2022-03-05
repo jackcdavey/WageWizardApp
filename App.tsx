@@ -56,6 +56,7 @@ const App = () => {
       {/* <Header /> */}
 
       <NavBar />
+      <SafeAreaView style={{ backgroundColor: COLORS.primary }}/>
       {/* <View style={{ flexDirection: 'row', flex: 0 }}> 
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />

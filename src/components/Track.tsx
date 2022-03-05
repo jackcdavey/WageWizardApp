@@ -76,11 +76,10 @@ export default function Tracking() {
       <Text style={styles.elements}>Timer: {hours}: {minutes}: {seconds}</Text>
       <Map />
       <Text style={styles.elements}>Job: Default Job</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress = {()=>{handlePress()}}>
         <View style={[styles.start,{backgroundColor: buttonColor}]} >
           <Text 
             style={styles.elements}
-            onPress = {()=>{handlePress()}}
           >
             {buttonText}</Text>
         </View>
