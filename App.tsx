@@ -17,7 +17,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Tracking from './src/components/Track';
 
 
 
@@ -68,10 +67,10 @@ const App = () => {
       
       <SafeAreaView style={{ backgroundColor: COLORS.primary }}/>
        <View style={{ flexDirection: 'row', flex: 0 }}> 
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
+          {/* <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
           <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
+          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} /> */}
 
       </View> 
     </NavigationContainer>
