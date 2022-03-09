@@ -102,7 +102,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The simplest and fastest way to clone and run the project is using Expo. Follow the steps below to get your development environment set up.
+The simplest and fastest way to try out the project is by using Expo. Follow the steps below to get your development environment set up.
 
 ### Prerequisites (MacOS)
  
