@@ -11,7 +11,7 @@ export default function Header(props) {
         <View style={styles.container}>
             <StatusBar style="light" />
             <Text style={{
-                fontFamily: 'Comfortaa-Bold',
+                //fontFamily: 'Comfortaa-Bold',
                 fontSize: 30,
                 color: COLORS.secondary
             }}>{props.title}</Text>

@@ -11,6 +11,7 @@ import React from 'react';
 import Tracking from './Track';
 import Resources from './Resources';
 import WorkLogs from './WorkLogs';
+import Account from './Account';
 import MyWage from './MyWage';
 import CustomIcon from './CustomIcon.js';
 import Header from './Header.js';
@@ -60,7 +61,7 @@ export default function NavBar() {
 
       tabBar={props => <BottomTabBar {...props} state={{ ...props.state, routes: props.state.routes.slice(0, 5) }}></BottomTabBar>}
     >
-
+      
       <Tab.Screen
         name="Tracking"
         component={Tracking}
@@ -110,6 +111,21 @@ export default function NavBar() {
       <Tab.Screen
         name="Resources"
         component={Resources}
+        options={{
+          tabBarIcon: ({ size, focused, color }) => {
+            return (
+              <Image
+                resizeMode="contain"
+                style={{ width: size, height: size }}
+                source={require('../assets/images/icons/Info.png')}
+              />
+            );
+          }
+        }
+        } />
+        <Tab.Screen
+        name="Account"
+        component={Account}
         options={{
           tabBarIcon: ({ size, focused, color }) => {
             return (

@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   elements: {
     paddingBottom: Dimensions.get('window').height * 0.02,
     paddingTop: Dimensions.get('window').height * 0.02,
-    fontFamily: 'SFPro-Regular',
+    //fontFamily: 'SFPro-Regular',
     fontSize: 40,
   },
   map: {
