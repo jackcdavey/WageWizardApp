@@ -73,13 +73,13 @@ export default function Tracking() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.elements}>Timer: {hours}: {minutes}: {seconds}</Text>
+      <Text style={[styles.elements, global.globalCustomFontUse ? {fontFamily: 'SFPro-Regular'} : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
       <Map />
-      <Text style={styles.elements}>Job: Default Job</Text>
+      <Text style={[styles.elements, global.globalCustomFontUse ? {fontFamily: 'SFPro-Regular'} : {}]}>Job: Default Job</Text>
       <TouchableOpacity onPress = {()=>{handlePress()}}>
         <View style={[styles.start,{backgroundColor: buttonColor}]} >
           <Text 
-            style={styles.elements}
+            style={[styles.elements, global.globalCustomFontUse ? {fontFamily: 'SFPro-Regular'} : {}]}
           >
             {buttonText}</Text>
         </View>
@@ -88,8 +88,8 @@ export default function Tracking() {
   );
 }
 
+
 const styles = StyleSheet.create({
-  
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
   elements: {
     paddingBottom: Dimensions.get('window').height * 0.02,
     paddingTop: Dimensions.get('window').height * 0.02,
-    //fontFamily: 'SFPro-Regular',
     fontSize: 40,
   },
   map: {

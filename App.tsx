@@ -20,18 +20,19 @@ import {
 
 
 
+/////////////////// SET CUSTOM FONT USAGE //////////////////////
+
+//Custom fonts display properly in simulators, but trigger errors when run with Expo go.
+//To enable or disable custom fonts, set the following value
+global.globalCustomFontUse = false;
+
+/////////////////// SET CUSTOM FONT USAGE //////////////////////
+
+
+
+
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? COLORS.dark : COLORS.primary,
-  };
-
-  
-  
-
   const [IsReady, SetIsReady] = useState(false);
-
   const LoadFonts = async() => {
     await useFonts();
   };
@@ -48,19 +49,10 @@ const App = () => {
 
   return (
   <NavigationContainer>
-      <SafeAreaView style={{ backgroundColor: COLORS.primary }}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          { }
-        </ScrollView>
-      </SafeAreaView>
-
+      
       {/* Currently, the header is generated inside the NavBar component. This will need to be separated
       to allow for navigation to the iew page  */}
       {/* <Header />
-      <Text style={{fontFamily: "Comfortaa-Bold", fontSize: 100, color: COLORS.primary}}>TEST</Text>
       */}
       <NavBar />
       

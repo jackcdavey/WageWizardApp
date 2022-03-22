@@ -5,21 +5,32 @@ import COLORS from '../styles/colors'
 
 //Set color of status bar globally here, eventualy set to 'auto'
 
+
 export default function Header(props) {
+    if(global.globalCustomFontUse){
     return (
-        //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
         <View style={styles.container}>
             <StatusBar style="light" />
             <Text style={{
-                //fontFamily: 'Comfortaa-Bold',
+                fontFamily: 'Comfortaa-Bold',
                 fontSize: 30,
                 color: COLORS.secondary
             }}>{props.title}</Text>
         </View>
-        //</TouchableHighlight>
     );
+    }
+    else{
+        return (
+            <View style={styles.container}>
+                <StatusBar style="light" />
+                <Text style={{
+                    fontSize: 30,
+                    color: COLORS.secondary
+                }}>{props.title}</Text>
+            </View>
+        );
+    }
 }
-
 const styles = StyleSheet.create({
     container: {
         height: 40, // Specify the height of your custom header
