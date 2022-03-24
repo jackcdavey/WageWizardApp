@@ -1,7 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { getHeaderTitle } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomTabBar } from '@react-navigation/bottom-tabs';
 import { TouchableOpacity, Alert, Button, Image, Text } from 'react-native';
 
 
@@ -15,7 +12,6 @@ import Account from './Account';
 import MyWage from './MyWage';
 import CustomIcon from './CustomIcon.js';
 import Header from './Header.js';
-import { color } from 'react-native-reanimated';
 
 
 import {
@@ -30,7 +26,7 @@ import {
 const Tab = createBottomTabNavigator();
 
 
-export default function NavBar() {
+export default function NavBar({ navigation }: { navigation: any }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -43,7 +39,8 @@ export default function NavBar() {
         },
         //For some reason touch target for account icon is too tall, abt double height
         headerRight: () => (
-          <TouchableOpacity onPress={() => Alert.alert('This will navigate to account page')}>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
             <View >
               <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{ width: 30, marginRight: 10 }} resizeMode="contain" />
             </View>
@@ -59,9 +56,8 @@ export default function NavBar() {
         tabBarActiveTintColor: "black",
       })}
 
-      tabBar={props => <BottomTabBar {...props} state={{ ...props.state, routes: props.state.routes.slice(0, 5) }}></BottomTabBar>}
     >
-      
+
       <Tab.Screen
         name="Tracking"
         component={Tracking}
@@ -123,30 +119,6 @@ export default function NavBar() {
           }
         }
         } />
-        <Tab.Screen
-        name="Account"
-        component={Account}
-        options={{
-          tabBarIcon: ({ size, focused, color }) => {
-            return (
-              <Image
-                resizeMode="contain"
-                style={{ width: size, height: size }}
-                source={require('../assets/images/icons/ProfileDefault.png')}
-              />
-            );
-          }
-        }
-        } />
-
-      {/* <View style={{ flexDirection: 'row', flex: 0 }}> 
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
-
-      </View> */}
-
     </Tab.Navigator>
   );
 }

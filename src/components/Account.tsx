@@ -15,9 +15,9 @@ import {
 
 const styles = StyleSheet.create({
   article: {
-    width: Dimensions.get('window').width*0.3, 
-    height: Dimensions.get('window').width*0.2, 
-    margin:25,  
+    width: Dimensions.get('window').width * 0.3,
+    height: Dimensions.get('window').width * 0.2,
+    margin: 25,
     backgroundColor: COLORS.primary,
     borderRadius: 15,
     borderColor: COLORS.dark,
@@ -32,26 +32,28 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Resources() {
+export default function Account() {
   return (
-    <View style={{ 
-      flexDirection: 'row',
-      flex: 1, 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      }}>
-        <View>
-          <TouchableOpacity onPress={() => Alert.alert('This is a test')}>
-            <View style={styles.article}>
-              <Text style={styles.item}>
-                Article 1
-              </Text>
-            </View>
-            </TouchableOpacity>
-        </View>
+    //Display header in here
 
-       
-        
+    <View style={{
+      flexDirection: 'row',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+      <View>
+        <TouchableOpacity onPress={() => Alert.alert('This is a test')}>
+          <View style={styles.article}>
+            <Text style={styles.item}>
+              Article 1
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+
+
     </View>
   );
 }

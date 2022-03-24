@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import NavBar from './src/components/NavBar';
+import Account from './src/components/Account';
 import Header from './src/components/Header';
 import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
@@ -17,6 +18,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 
@@ -28,12 +30,11 @@ global.globalCustomFontUse = false;
 
 /////////////////// SET CUSTOM FONT USAGE //////////////////////
 
-
-
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [IsReady, SetIsReady] = useState(false);
-  const LoadFonts = async() => {
+  const LoadFonts = async () => {
     await useFonts();
   };
   if (!IsReady) {
@@ -41,36 +42,24 @@ const App = () => {
       <AppLoading
         startAsync={LoadFonts}
         onFinish={() => SetIsReady(true)}
-        onError={() => {}}
+        onError={() => { }}
       />
     );
   }
-  
+
 
   return (
-  <NavigationContainer>
-      
-      {/* Currently, the header is generated inside the NavBar component. This will need to be separated
-      to allow for navigation to the iew page  */}
-      {/* <Header />
-      */}
-      <NavBar />
-      
-      
-      <SafeAreaView style={{ backgroundColor: COLORS.primary }}/>
-       <View style={{ flexDirection: 'row', flex: 0 }}> 
-          {/* <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.active }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} />
-          <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} /> */}
-
-      </View> 
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={NavBar} options={{ headerShown: false }} />
+        <Stack.Screen name="Account" component={Account} />
+      </Stack.Navigator>
     </NavigationContainer>
 
   );
 }
 
-/* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/ 
+/* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/
 
 const styles = StyleSheet.create({
   sectionContainer: {

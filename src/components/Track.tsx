@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Map from './Map';
 
 import {
@@ -33,8 +33,8 @@ export default function Tracking() {
   let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
   let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
 
-  useEffect(()=>{
-    let interval = setInterval(()=>{},0);
+  useEffect(() => {
+    let interval = setInterval(() => { }, 0);
     if (isActive && isPaused === false) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 1);
@@ -46,9 +46,9 @@ export default function Tracking() {
       clearInterval(interval);
     };
 
-  },[isActive,isPaused]); 
+  }, [isActive, isPaused]);
 
-  const handleStart = ()=>{
+  const handleStart = () => {
     setIsActive(true);
     setIsPaused(false);
   }
@@ -57,13 +57,13 @@ export default function Tracking() {
     setTime(0);
   };
 
-  const handlePress  = ()=>{
-    if (!isPressed){
+  const handlePress = () => {
+    if (!isPressed) {
       setPressed(true);
       setButtonText('Stop');
       setButtonColor(COLORS.trackTimerStop);
       handleStart();
-    }else{
+    } else {
       setPressed(false);
       setButtonText('Start');
       setButtonColor(COLORS.trackTimerStart);
@@ -73,13 +73,13 @@ export default function Tracking() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.elements, global.globalCustomFontUse ? {fontFamily: 'SFPro-Regular'} : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
+      <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
       <Map />
-      <Text style={[styles.elements, global.globalCustomFontUse ? {fontFamily: 'SFPro-Regular'} : {}]}>Job: Default Job</Text>
-      <TouchableOpacity onPress = {()=>{handlePress()}}>
-        <View style={[styles.start,{backgroundColor: buttonColor}]} >
-          <Text 
-            style={[styles.elements, global.globalCustomFontUse ? {fontFamily: 'SFPro-Regular'} : {}]}
+      <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text>
+      <TouchableOpacity onPress={() => { handlePress() }}>
+        <View style={[styles.start, { backgroundColor: buttonColor }]} >
+          <Text
+            style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}
           >
             {buttonText}</Text>
         </View>
