@@ -51,8 +51,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={NavBar} options={{ headerShown: false }} />
-        <Stack.Screen name="Account" component={Account} />
+        <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
+        <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

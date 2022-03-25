@@ -1,5 +1,6 @@
 import COLORS from '../styles/colors.js';
 import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   SafeAreaView,
   ScrollView,
@@ -32,28 +33,72 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Account() {
-  return (
-    //Display header in here
+import Header from './Header.js';
 
-    <View style={{
-      flexDirection: 'row',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
+const Tab = createBottomTabNavigator();
+
+
+
+
+//Account Page Content
+const AcccountView = () => {
+  return (
+    <View>
       <View>
         <TouchableOpacity onPress={() => Alert.alert('This is a test')}>
           <View style={styles.article}>
             <Text style={styles.item}>
-              Article 1
+              Account items will be shown here.
             </Text>
           </View>
         </TouchableOpacity>
       </View>
-
-
-
     </View>
+  );
+}
+
+
+
+
+//Handles stack navigation settings for account//
+export default function Account({ navigation }: { navigation: any }) {
+
+  navigation.setOptions({
+    tabBarStyle: { display: 'none' },
+  });
+
+  return (
+    //Display header in here
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerStyle: {
+          backgroundColor: COLORS.primary,
+        },
+        headerTitleStyle: {
+          display: 'none',
+        },
+        //For some reason touch target for account icon is too tall, abt double height
+        headerRight: () => (
+
+          <Header title="Account Info" />
+
+        ),
+        headerLeft: () => (
+          <TouchableOpacity style={{ backgroundColor: COLORS.secondary, marginLeft: 10, padding: 2 }} onPress={() => navigation.goBack()}>
+            <Text style={{ fontSize: 20, fontWeight: "800" }}>[BACK BTN HERE]</Text>
+          </TouchableOpacity>
+        ),
+
+
+      })}
+    >
+      <Tab.Screen
+        name="accountView"
+        component={AcccountView}
+        options={{
+          tabBarStyle: { display: 'none' },
+        }}
+      />
+    </Tab.Navigator>
   );
 }

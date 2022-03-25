@@ -4,9 +4,6 @@ import React from 'react';
 import COLORS from '../styles/colors'
 
 //Set color of status bar globally here, eventualy set to 'auto'
-
-
-
 export default function Header(props) {
     return (
         //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
@@ -22,15 +19,18 @@ export default function Header(props) {
 const styles = StyleSheet.create({
     container: {
         height: 40, // Specify the height of your custom header
+        width: '100%', // Specify the width of your custom header
         paddingLeft: 20,
         marginTop: 0,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'left',
         flexDirection: 'row',
+
+        backgroundColor: COLORS.primary,
     },
     txt: {
         fontSize: 30,
-        color: COLORS.secondary
+        color: COLORS.secondary,
     },
 });
 
