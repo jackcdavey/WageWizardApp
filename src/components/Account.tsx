@@ -62,11 +62,6 @@ const AcccountView = () => {
 
 //Handles stack navigation settings for account//
 export default function Account({ navigation }: { navigation: any }) {
-
-  navigation.setOptions({
-    tabBarStyle: { display: 'none' },
-  });
-
   return (
     //Display header in here
     <Tab.Navigator
