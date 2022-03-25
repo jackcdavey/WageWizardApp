@@ -16,19 +16,18 @@ import {
 
 const styles = StyleSheet.create({
   article: {
-    width: Dimensions.get('window').width * 0.3,
-    height: Dimensions.get('window').width * 0.2,
     margin: 25,
     backgroundColor: COLORS.primary,
     borderRadius: 15,
     borderColor: COLORS.dark,
     borderWidth: 2,
+    alignItems: 'center',
   },
   item: {
     margin: 25,
     padding: 10,
-    backgroundColor: COLORS.active,
-    fontSize: 18,
+    color: COLORS.secondary,
+    fontSize: 20,
     height: 44,
   },
 });
@@ -41,7 +40,7 @@ const Tab = createBottomTabNavigator();
 
 
 //Account Page Content
-const AcccountView = () => {
+const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
       <View>
@@ -49,6 +48,14 @@ const AcccountView = () => {
           <View style={styles.article}>
             <Text style={styles.item}>
               Account items will be shown here.
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => Alert.alert('Will Navigate to Job Setup')}>
+          <View style={styles.article}>
+            <Text style={styles.item}>
+              Add New Job
             </Text>
           </View>
         </TouchableOpacity>
@@ -74,9 +81,7 @@ export default function Account({ navigation }: { navigation: any }) {
         },
         //For some reason touch target for account icon is too tall, abt double height
         headerRight: () => (
-
           <Header title="Account Info" />
-
         ),
         headerLeft: () => (
           <TouchableOpacity style={{ backgroundColor: COLORS.secondary, marginLeft: 10, padding: 2 }} onPress={() => navigation.goBack()}>

@@ -19,6 +19,7 @@ import {
   View,
 } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import JobSetupView from './src/components/JobSetupView';
 
 
 
@@ -53,6 +54,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
         <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
+        <Stack.Screen name="Job Setup" component={JobSetupView} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 
