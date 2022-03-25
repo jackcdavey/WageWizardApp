@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function MyWage({navigation}: {navigation: any}) {
- 
+export default function MyWage({ navigation }: { navigation: any }) {
+
   return (
     <View style={{
       flexDirection: 'column',

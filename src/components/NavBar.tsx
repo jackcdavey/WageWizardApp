@@ -25,7 +25,6 @@ import {
 
 const Tab = createBottomTabNavigator();
 
-
 export default function NavBar({ navigation }: { navigation: any }) {
   return (
     <Tab.Navigator
@@ -37,12 +36,14 @@ export default function NavBar({ navigation }: { navigation: any }) {
         headerTitleStyle: {
           display: 'none',
         },
-        //For some reason touch target for account icon is too tall, abt double height
         headerRight: () => (
-
           <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-            <View >
-              <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{ width: 30, marginRight: 10 }} resizeMode="contain" />
+            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: 10, paddingRight: 10 }}>
+              <View>
+                <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>[User]'s</Text>
+                <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>Account</Text>
+              </View>
+              <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{ width: 40, maxHeight: 40 }} resizeMode="contain" />
             </View>
           </TouchableOpacity>
         ),
