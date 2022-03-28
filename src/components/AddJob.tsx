@@ -18,7 +18,7 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             alignItems: 'center',
         }}>
             <View style={styles.directionsWrap}>
-                <Text style={styles.title}>Add A Job</Text>
+                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
             </View>
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
@@ -41,11 +41,12 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             </View>
 
             <View style={styles.buttonWrap}>
-                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('This will save info and navigate')}>
-                    <Text>Submit</Text>
-                </TouchableOpacity>
+
                 <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
                     <Text>Back</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('This will save info and navigate')}>
+                    <Text style={{ color: COLORS.secondary }}>Submit</Text>
                 </TouchableOpacity>
             </View>
 
@@ -72,32 +73,32 @@ const styles = StyleSheet.create({
         height: 44,
     },
     input: {
-        width: Dimensions.get('window').width * 0.7,
+        width: Dimensions.get('window').width * 0.8,
         borderRadius: 15,
-        margin: 12,
+        marginTop: 20,
         borderColor: COLORS.primary,
         borderWidth: 2,
         padding: 10,
     },
     title: {
         fontSize: 40,
-        fontWeight: 'bold',
-
+        color: COLORS.dark,
     },
     directions: {
         fontSize: 20,
+        fontWeight: '300',
         textAlign: 'center',
-
+        color: COLORS.dark,
     },
     directionsWrap: {
         width: Dimensions.get('window').width * 0.8,
-        margin: 20,
+        marginTop: 20,
         alignItems: 'center',
     },
     buttonWrap: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        paddingTop: Dimensions.get('window').height * 0.2,
+        paddingTop: Dimensions.get('window').height * 0.3,
         //This is a temp fix to force the buttons to be on the bottom of the screen
         //Content is cut off at some screen sizes, but "flex-end" doesn't work
     },
