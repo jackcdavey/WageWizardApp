@@ -50,7 +50,7 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
 
             <View style={styles.buttonWrap}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("JobSetup")}>
-                    <Text style={{ color: COLORS.secondary }}>Next -- </Text>
+                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
 

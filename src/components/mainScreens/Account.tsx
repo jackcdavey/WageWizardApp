@@ -15,7 +15,15 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  article: {
+  info: {
+    margin: 25,
+    backgroundColor: COLORS.secondary,
+    borderRadius: 15,
+    //borderColor: COLORS.primary,
+    borderWidth: 2,
+    alignItems: 'center',
+  },
+  btn: {
     margin: 25,
     backgroundColor: COLORS.primary,
     borderRadius: 15,
@@ -26,9 +34,18 @@ const styles = StyleSheet.create({
   item: {
     margin: 25,
     padding: 10,
-    color: COLORS.secondary,
+    color: COLORS.dark,
     fontSize: 20,
     height: 44,
+    fontWeight: 'bold',
+  },
+  testBtn: {
+    margin: 25,
+    backgroundColor: 'red',
+    borderRadius: 15,
+    borderColor: COLORS.primary,
+    borderWidth: 2,
+    alignItems: 'center',
   },
 });
 
@@ -44,7 +61,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
       <View>
-        <View style={styles.article}>
+        <View style={styles.info}>
           <Text style={styles.item}>
             Account items will be shown here.
           </Text>
@@ -52,7 +69,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
 
 
         <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
-          <View style={styles.article}>
+          <View style={styles.btn}>
             <Text style={styles.item}>
               Add New Job
             </Text>
@@ -60,7 +77,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
-          <View style={styles.article}>
+          <View style={styles.testBtn}>
             <Text style={styles.item}>
               [TEST - Trigger Setup]
             </Text>

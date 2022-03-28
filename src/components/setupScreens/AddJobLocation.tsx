@@ -34,7 +34,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                     <Text>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SetupComplete")}>
-                    <Text style={{ color: COLORS.secondary }}>Submit</Text>
+                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
 
