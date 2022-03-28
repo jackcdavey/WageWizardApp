@@ -2,16 +2,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TouchableOpacity, Alert, Button, Image, Text } from 'react-native';
 
 
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 
 import React from 'react';
-import Tracking from './Track';
-import Resources from './Resources';
-import WorkLogs from './WorkLogs';
-import Account from './Account';
-import MyWage from './MyWage';
-import CustomIcon from './CustomIcon.js';
-import Header from './Header.js';
+import Tracking from '../mainScreens/Track';
+import Resources from '../mainScreens/Resources';
+import WorkLogs from '../mainScreens/WorkLogs';
+import Account from '../mainScreens/Account';
+import MyWage from '../mainScreens/MyWage';
+import CustomIcon from '../elements/CustomIcon';
+import Header from '../elements/Header.js';
 
 
 import {
@@ -43,7 +43,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
                 <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>[User]'s</Text>
                 <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>Account</Text>
               </View>
-              <Image source={require('../assets/images/icons/ProfileDefault.png')} style={{ width: 40, maxHeight: 40 }} resizeMode="contain" />
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 40, maxHeight: 40 }} resizeMode="contain" />
             </View>
           </TouchableOpacity>
         ),
@@ -68,7 +68,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
               <Image
                 resizeMode="contain"
                 style={{ width: size, height: size }}
-                source={require('../assets/images/icons/Stopwatch.png')}
+                source={require('../../assets/images/icons/Stopwatch.png')}
               />
             );
           }
@@ -84,7 +84,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
               <Image
                 resizeMode="contain"
                 style={{ width: size, height: size }}
-                source={require('../assets/images/icons/Money.png')}
+                source={require('../../assets/images/icons/Money.png')}
               />
             );
           }
@@ -99,7 +99,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
               <Image
                 resizeMode="contain"
                 style={{ width: size, height: size }}
-                source={require('../assets/images/icons/Notebook.png')}
+                source={require('../../assets/images/icons/Notebook.png')}
               />
             );
           }
@@ -114,7 +114,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
               <Image
                 resizeMode="contain"
                 style={{ width: size, height: size }}
-                source={require('../assets/images/icons/Info.png')}
+                source={require('../../assets/images/icons/Info.png')}
               />
             );
           }

@@ -1,4 +1,4 @@
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import React from 'react';
 import {
   SafeAreaView,

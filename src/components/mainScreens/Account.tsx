@@ -1,4 +1,4 @@
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-import Header from './Header.js';
+import Header from '../elements/Header.js';
 
 const Tab = createBottomTabNavigator();
 

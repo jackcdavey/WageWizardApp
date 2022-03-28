@@ -1,13 +1,10 @@
-// gonna be useful: https://reactnavigation.org/docs/hiding-tabbar-in-screens
-// as will this https://reactnavigation.org/docs/stack-navigator/
-
-import 'react-native-gesture-handler';
 import React from 'react';
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
 
-export default function InitialSetupView({ navigation }: { navigation: any }) {
+
+export default function JobSetup({ navigation }: { navigation: any }) {
     return (
         <View style={{
             flexDirection: 'column',
@@ -15,39 +12,37 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
             alignItems: 'center',
         }}>
             <View style={styles.directionsWrap}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Welcome to Wage Wizard!</Text>
+                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
             </View>
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
-                    Please enter the information
-                    below.  Required fields are
-                    denoted by a red arrow. [ARROW HERE]</Text>
+                    Provide the information below to set up your first job. All fields are optional, but incomplete information may limit functionality.
+                </Text>
             </View>
             <View>
-                <Text> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Full Name" />
+                <TextInput style={styles.input} placeholder="Job Title" />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Email Address" />
+                <TextInput style={styles.input} placeholder="Employer Name" />
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="Birthday" />
-            </View>
-
-            <View>
-                <TextInput style={styles.input} placeholder="Pin" />
+                <TextInput style={styles.input} placeholder="City (Of Work)" />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Confirm Pin" />
+                <TextInput style={styles.input} placeholder="Other Info" />
             </View>
 
             <View style={styles.buttonWrap}>
 
-
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("JobSetup")}>
-                    <Text style={{ color: COLORS.secondary }}>Next -- </Text>
+                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
+                    {/* This does not properly navigate to previous screen, always returns to account page
+                    even when accessed through InitialSetupView */}
+                    <Text>Back</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('JobLocationSetup')}>
+                    <Text style={{ color: COLORS.secondary }}>Submit</Text>
                 </TouchableOpacity>
             </View>
 

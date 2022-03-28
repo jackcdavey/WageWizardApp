@@ -4,10 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Text } from "react-native";
-import Header from './Header';
+import Header from '../elements/Header';
 import JobSetup from './AddJob';
 import JobLocationSetup from './AddJobLocation';
 import InitialSetupView from './InitialSetupView';

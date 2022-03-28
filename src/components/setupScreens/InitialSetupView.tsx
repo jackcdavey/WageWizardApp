@@ -1,35 +1,53 @@
 // gonna be useful: https://reactnavigation.org/docs/hiding-tabbar-in-screens
 // as will this https://reactnavigation.org/docs/stack-navigator/
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import 'react-native-gesture-handler';
 import React from 'react';
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
-import Header from './Header';
-import { NavigationContainer } from '@react-navigation/native';
-import Map from './Map';
 
-
-export default function SetupComplete({ navigation }: { navigation: any }) {
+export default function InitialSetupView({ navigation }: { navigation: any }) {
     return (
         <View style={{
             flexDirection: 'column',
             flex: 1,
             alignItems: 'center',
         }}>
-            <View style={styles.container}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Setup Complete!</Text>
+            <View style={styles.directionsWrap}>
+                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Welcome to Wage Wizard!</Text>
             </View>
-            <View style={styles.container}>
+            <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
-                    Congratulations! You're ready to start using Wage Wizard to
-                    track your work, and defend against wage theft.
-                </Text>
+                    Please enter the information
+                    below.  Required fields are
+                    denoted by a red arrow. [ARROW HERE]</Text>
+            </View>
+            <View>
+                <Text> [ARROW]</Text>
+                <TextInput style={styles.input} placeholder="Full Name" />
+            </View>
+
+            <View>
+                <TextInput style={styles.input} placeholder="Email Address" />
+            </View>
+            <View>
+                <TextInput style={styles.input} placeholder="Birthday" />
+            </View>
+
+            <View>
+                <TextInput style={styles.input} placeholder="Pin" />
+            </View>
+
+            <View>
+                <TextInput style={styles.input} placeholder="Confirm Pin" />
+            </View>
+
+            <View style={styles.buttonWrap}>
 
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Main")}>
-                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("JobSetup")}>
+                    <Text style={{ color: COLORS.secondary }}>Next -- </Text>
                 </TouchableOpacity>
             </View>
 
@@ -73,7 +91,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: COLORS.dark,
     },
-    container: {
+    directionsWrap: {
         width: Dimensions.get('window').width * 0.8,
         marginTop: 20,
         alignItems: 'center',

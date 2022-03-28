@@ -1,5 +1,5 @@
 import React from 'react';
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,8 +16,8 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-   alignItems: 'center',
-   flex: 1,
+    alignItems: 'center',
+    flex: 1,
   },
   item: {
     alignItems: 'center',
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.dark,
     borderWidth: 2,
   },
-  info:{
+  info: {
     fontSize: 20,
   }
 });
@@ -49,12 +49,12 @@ export default function WorkLogs() {
           { key: 'Job 6' },
           { key: 'Job 7' },
         ]}
-        renderItem={({item}) => 
-        <TouchableOpacity onPress={() => Alert.alert('This will navigate to the ' + item.key + ' detailed work log')}>
-          <View style={styles.item}>
-            <Text style={styles.info}>{item.key}</Text>
-          </View>
-        </TouchableOpacity>}
+        renderItem={({ item }) =>
+          <TouchableOpacity onPress={() => Alert.alert('This will navigate to the ' + item.key + ' detailed work log')}>
+            <View style={styles.item}>
+              <Text style={styles.info}>{item.key}</Text>
+            </View>
+          </TouchableOpacity>}
       />
     </View>
   );

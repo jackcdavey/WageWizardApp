@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 //import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import NavBar from './src/components/NavBar';
-import Account from './src/components/Account';
-import Header from './src/components/Header';
+import NavBar from './src/components/elements/NavBar';
+import Account from './src/components/mainScreens/Account';
+import Header from './src/components/elements/Header';
 import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
 
@@ -19,7 +19,7 @@ import {
   View,
 } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SetupNav from './src/components/SetupNav';
+import SetupNav from './src/components/setupScreens/SetupNav';
 
 
 

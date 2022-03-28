@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Map from './Map';
+import Map from '../elements/Map';
 
 import {
   SafeAreaView,
@@ -18,7 +18,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 
 export default function Tracking() {
   let testNumber = 7190;

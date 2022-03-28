@@ -1,17 +1,10 @@
-// gonna be useful: https://reactnavigation.org/docs/hiding-tabbar-in-screens
-// as will this https://reactnavigation.org/docs/stack-navigator/
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import COLORS from '../styles/colors.js';
+import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
-import Header from './Header';
-import { NavigationContainer } from '@react-navigation/native';
-import Map from './Map';
 
 
-export default function JobLocationSetup({ navigation }: { navigation: any }) {
+export default function SetupComplete({ navigation }: { navigation: any }) {
     return (
         <View style={{
             flexDirection: 'column',
@@ -19,28 +12,17 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
             alignItems: 'center',
         }}>
             <View style={styles.container}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
+                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Setup Complete!</Text>
             </View>
             <View style={styles.container}>
                 <Text style={styles.directions}>
-                    To configure automatic tracking,
-                    adjust the cicle below until your
-                    place of work is inside.
+                    Congratulations! You're ready to start using Wage Wizard to
+                    track your work, and defend against wage theft.
                 </Text>
-            </View>
-            <View>
-                <TextInput style={styles.input} placeholder="Search Address..." />
-            </View>
-            <View style={styles.container}>
-                <Map />
-            </View>
-            <View style={styles.buttonWrap}>
 
-                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                    <Text>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SetupComplete")}>
-                    <Text style={{ color: COLORS.secondary }}>Submit</Text>
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Main")}>
+                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
 
