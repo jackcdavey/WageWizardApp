@@ -29,7 +29,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-
+        lazy: false,
         headerStyle: {
           backgroundColor: COLORS.primary,
         },

@@ -44,13 +44,12 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
       <View>
-        <TouchableOpacity onPress={() => Alert.alert('This is a test')}>
-          <View style={styles.article}>
-            <Text style={styles.item}>
-              Account items will be shown here.
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.article}>
+          <Text style={styles.item}>
+            Account items will be shown here.
+          </Text>
+        </View>
+
 
         <TouchableOpacity onPress={() => navigation.navigate("Job Setup")}>
           <View style={styles.article}>

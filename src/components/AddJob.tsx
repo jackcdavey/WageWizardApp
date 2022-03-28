@@ -18,7 +18,7 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             alignItems: 'center',
         }}>
             <View style={styles.directionsWrap}>
-                <Text style={styles.title}> Job Setup</Text>
+                <Text style={styles.title}>Add A Job</Text>
             </View>
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
