@@ -11,6 +11,7 @@ import Header from './Header';
 import JobSetup from './AddJob';
 import JobLocationSetup from './AddJobLocation';
 import InitialSetupView from './InitialSetupView';
+import SetupComplete from './SetupComplete';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,6 +53,13 @@ export default function SetupNav({ navigation }: { navigation: any }) {
             <Tab.Screen
                 name="JobLocationSetup"
                 component={JobLocationSetup}
+                options={{
+                    tabBarStyle: { display: 'none' },
+                }}
+            />
+            <Tab.Screen
+                name="SetupComplete"
+                component={SetupComplete}
                 options={{
                     tabBarStyle: { display: 'none' },
                 }}
