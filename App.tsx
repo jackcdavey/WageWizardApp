@@ -54,7 +54,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
         <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
-        <Stack.Screen name="Job Setup" component={SetupNav} options={{ headerShown: false }} />
+        <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

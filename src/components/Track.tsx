@@ -15,6 +15,8 @@ import {
   Alert,
 } from 'react-native';
 
+import { Picker } from '@react-native-picker/picker';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import COLORS from '../styles/colors.js';
 
@@ -28,6 +30,18 @@ export default function Tracking() {
   const [isPressed, setPressed] = useState(false);
   const [buttonText, setButtonText] = useState('Start');
   const [buttonColor, setButtonColor] = useState(COLORS.trackTimerStart);
+
+  const [open, setOpen] = useState(false);
+  //Something messy going on with setValue being passed to the dropdown picker,
+  //triggering warnings in editor but not in app.
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: 'Job One', value: 'jobone' },
+    { label: 'Job Two', value: 'jobtwo' },
+    { label: 'Job Three', value: 'jobthree' },
+    { label: 'Job Four', value: 'jobfour' },
+  ]);
+
 
   let seconds = ("0" + ((time / 1) % 60)).slice(-2)
   let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
@@ -71,11 +85,33 @@ export default function Tracking() {
     }
   }
 
+  //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
+  //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
+  //with proper elements.
+
   return (
     <View style={styles.container}>
       <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
       <Map />
-      <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text>
+
+      {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
+      <DropDownPicker
+        style={[styles.picker]}
+        containerStyle={styles.pickerContainer}
+        open={open}
+        value={value}
+        items={items}
+        setOpen={setOpen}
+        //Still seems to work properly despite undeclared setValue property warning
+        setValue={setValue}
+        setItems={setItems}
+
+        onSelectItem={(item) => {
+          //This is where we'll record the job selection and pass to 'ActiveTracking' DB
+          console.log(item);
+        }}
+      />
+
       <TouchableOpacity onPress={() => { handlePress() }}>
         <View style={[styles.start, { backgroundColor: buttonColor }]} >
           <Text
@@ -117,6 +153,25 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "green",
   },
+  picker: {
+    //width: Dimensions.get('window').width * 0.9,
+    //height: Dimensions.get('window').height * 0.07,
+    margin: 15, padding: 10,
+    backgroundColor: COLORS.secondary,
+    borderRadius: 15,
+    borderColor: COLORS.dark,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pickerContainer: {
+    width: Dimensions.get('window').width * 0.9,
+    height: Dimensions.get('window').height * 0.07,
+    margin: 15, padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  }
 });
 
 

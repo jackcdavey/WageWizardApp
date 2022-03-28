@@ -1,16 +1,13 @@
 // gonna be useful: https://reactnavigation.org/docs/hiding-tabbar-in-screens
 // as will this https://reactnavigation.org/docs/stack-navigator/
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import 'react-native-gesture-handler';
 import React from 'react';
 import COLORS from '../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
-import Header from './Header';
-import { NavigationContainer } from '@react-navigation/native';
 
-
-export default function JobSetup({ navigation }: { navigation: any }) {
+export default function InitialSetupView({ navigation }: { navigation: any }) {
     return (
         <View style={{
             flexDirection: 'column',
@@ -18,14 +15,16 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             alignItems: 'center',
         }}>
             <View style={styles.directionsWrap}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
+                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Welcome to Wage Wizard!</Text>
             </View>
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
-                    Provide the information below to set up your first job. All fields are optional, but incomplete information may limit functionality.
-                </Text>
+                    Please enter the information
+                    below.  Required fields are
+                    denoted by a red arrow. [ARROW HERE]</Text>
             </View>
             <View>
+                <Text> [ARROW]</Text>
                 <TextInput style={styles.input} placeholder="Job Title" />
             </View>
 

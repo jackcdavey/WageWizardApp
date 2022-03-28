@@ -9,6 +9,7 @@ import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Text } from "react-native";
 import Header from './Header';
 import JobSetup from './AddJob';
+import InitialSetupView from './InitialSetupView';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +37,13 @@ export default function SetupNav({ navigation }: { navigation: any }) {
             <Tab.Screen
                 name="JobSetup"
                 component={JobSetup}
+                options={{
+                    tabBarStyle: { display: 'none' },
+                }}
+            />
+            <Tab.Screen
+                name="InitialSetup"
+                component={InitialSetupView}
                 options={{
                     tabBarStyle: { display: 'none' },
                 }}

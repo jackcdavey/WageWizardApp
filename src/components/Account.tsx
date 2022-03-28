@@ -51,10 +51,18 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
         </View>
 
 
-        <TouchableOpacity onPress={() => navigation.navigate("Job Setup")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
           <View style={styles.article}>
             <Text style={styles.item}>
               Add New Job
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+          <View style={styles.article}>
+            <Text style={styles.item}>
+              [TEST - Trigger Setup]
             </Text>
           </View>
         </TouchableOpacity>
