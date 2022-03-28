@@ -52,7 +52,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => Alert.alert('Will Navigate to Job Setup')}>
+        <TouchableOpacity onPress={() => navigation.navigate("Job Setup")}>
           <View style={styles.article}>
             <Text style={styles.item}>
               Add New Job
