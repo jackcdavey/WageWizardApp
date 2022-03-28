@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   pickerContainer: {
-    //width: Dimensions.get('window').width * 0.9,
+    width: Dimensions.get('window').width * 0.9,
     height: Dimensions.get('window').height * 0.07,
-    margin: 15, padding: 10,
+    margin: 15,
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: COLORS.primary,

@@ -23,29 +23,32 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
                     below.  Required fields are
                     denoted by a red arrow. [ARROW HERE]</Text>
             </View>
-            <View>
-                <Text> [ARROW]</Text>
+            <View style={styles.field}>
+                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
                 <TextInput style={styles.input} placeholder="Full Name" />
             </View>
 
-            <View>
+            <View style={styles.field}>
+                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
                 <TextInput style={styles.input} placeholder="Email Address" />
             </View>
-            <View>
+
+            <View style={styles.field}>
+                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
                 <TextInput style={styles.input} placeholder="Birthday" />
             </View>
 
-            <View>
+            <View style={styles.field}>
+                {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
                 <TextInput style={styles.input} placeholder="Pin" />
             </View>
 
-            <View>
+            <View style={styles.field}>
+                {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
                 <TextInput style={styles.input} placeholder="Confirm Pin" />
             </View>
 
             <View style={styles.buttonWrap}>
-
-
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("JobSetup")}>
                     <Text style={{ color: COLORS.secondary }}>Next -- </Text>
                 </TouchableOpacity>
@@ -57,33 +60,28 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
 }
 
 const styles = StyleSheet.create({
-    article: {
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').width * 0.2,
-        margin: 25,
-        backgroundColor: COLORS.primary,
-        borderRadius: 15,
-        borderColor: COLORS.dark,
-        borderWidth: 2,
-    },
-    item: {
-        margin: 25,
-        padding: 10,
-        backgroundColor: COLORS.active,
-        fontSize: 18,
-        height: 44,
+
+    field: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: Dimensions.get('window').width * 0.9,
+
     },
     input: {
-        width: Dimensions.get('window').width * 0.8,
+        width: Dimensions.get('window').width * 0.7,
         borderRadius: 15,
-        marginTop: 20,
+        margin: 10,
         borderColor: COLORS.primary,
         borderWidth: 2,
         padding: 10,
+        alignItems: 'center',
     },
     title: {
         fontSize: 40,
         color: COLORS.dark,
+        textAlign: 'center',
     },
     directions: {
         fontSize: 20,
