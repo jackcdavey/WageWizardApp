@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * 0.7,
         borderRadius: 15,
         margin: 12,
-        borderWidth: 1,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
         padding: 10,
     },
     title: {
@@ -94,17 +95,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonWrap: {
+        flexDirection: 'row',
         justifyContent: 'flex-end',
+        paddingTop: Dimensions.get('window').height * 0.2,
+        //This is a temp fix to force the buttons to be on the bottom of the screen
+        //Content is cut off at some screen sizes, but "flex-end" doesn't work
     },
     button: {
         width: Dimensions.get('window').width * 0.3,
         height: Dimensions.get('window').width * 0.1,
         backgroundColor: COLORS.primary,
         borderRadius: 15,
-        borderColor: COLORS.dark,
+        borderColor: COLORS.primary,
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-
+        margin: 10,
     }
 });
