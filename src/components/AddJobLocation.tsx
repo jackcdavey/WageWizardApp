@@ -8,47 +8,38 @@ import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
 import Header from './Header';
 import { NavigationContainer } from '@react-navigation/native';
-import JobLocationSetup from './AddJobLocation.js';
+import Map from './Map';
 
 
-export default function JobSetup({ navigation }: { navigation: any }) {
+export default function JobLocationSetup({ navigation }: { navigation: any }) {
     return (
         <View style={{
             flexDirection: 'column',
             flex: 1,
             alignItems: 'center',
         }}>
-            <View style={styles.directionsWrap}>
+            <View style={styles.container}>
                 <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
             </View>
-            <View style={styles.directionsWrap}>
+            <View style={styles.container}>
                 <Text style={styles.directions}>
-                    Provide the information below to set up your first job. All fields are optional, but incomplete information may limit functionality.
+                    To configure automatic tracking,
+                    adjust the cicle below until your
+                    place of work is inside.
                 </Text>
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="Job Title" />
+                <TextInput style={styles.input} placeholder="Search Address..." />
             </View>
-
-            <View>
-                <TextInput style={styles.input} placeholder="Employer Name" />
+            <View style={styles.container}>
+                <Map />
             </View>
-            <View>
-                <TextInput style={styles.input} placeholder="City (Of Work)" />
-            </View>
-
-            <View>
-                <TextInput style={styles.input} placeholder="Other Info" />
-            </View>
-
             <View style={styles.buttonWrap}>
 
                 <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                    {/* This does not properly navigate to previous screen, always returns to account page
-                    even when accessed through InitialSetupView */}
                     <Text>Back</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('JobLocationSetup')}>
+                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('This will save info and navigate')}>
                     <Text style={{ color: COLORS.secondary }}>Submit</Text>
                 </TouchableOpacity>
             </View>
@@ -93,7 +84,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: COLORS.dark,
     },
-    directionsWrap: {
+    container: {
         width: Dimensions.get('window').width * 0.8,
         marginTop: 20,
         alignItems: 'center',

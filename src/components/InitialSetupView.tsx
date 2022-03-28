@@ -25,27 +25,29 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
             </View>
             <View>
                 <Text> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Job Title" />
+                <TextInput style={styles.input} placeholder="Full Name" />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Employer Name" />
+                <TextInput style={styles.input} placeholder="Email Address" />
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="City (Of Work)" />
+                <TextInput style={styles.input} placeholder="Birthday" />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Other Info" />
+                <TextInput style={styles.input} placeholder="Pin" />
+            </View>
+
+            <View>
+                <TextInput style={styles.input} placeholder="Confirm Pin" />
             </View>
 
             <View style={styles.buttonWrap}>
 
-                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                    <Text>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('This will save info and navigate')}>
-                    <Text style={{ color: COLORS.secondary }}>Submit</Text>
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("JobSetup")}>
+                    <Text style={{ color: COLORS.secondary }}>Next -- </Text>
                 </TouchableOpacity>
             </View>
 
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     buttonWrap: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        paddingTop: Dimensions.get('window').height * 0.3,
+        //paddingTop: Dimensions.get('window').height * 0.3,
         //This is a temp fix to force the buttons to be on the bottom of the screen
         //Content is cut off at some screen sizes, but "flex-end" doesn't work
     },

@@ -96,8 +96,9 @@ export default function Tracking() {
 
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
       <DropDownPicker
-        style={[styles.picker]}
+        style={styles.picker}
         containerStyle={styles.pickerContainer}
+        labelStyle={styles.pickerLabel}
         open={open}
         value={value}
         items={items}
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     margin: 15, padding: 10,
     backgroundColor: COLORS.secondary,
     borderRadius: 15,
-    borderColor: COLORS.dark,
+    borderColor: COLORS.primary,
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
@@ -170,8 +171,15 @@ const styles = StyleSheet.create({
     margin: 15, padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: COLORS.primary,
     zIndex: 1,
-  }
+  },
+  pickerLabel: {
+    //Not working??
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: COLORS.primary,
+  },
 });
 
 
