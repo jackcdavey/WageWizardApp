@@ -10,6 +10,9 @@ import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
+import {store} from './src/reduxLogic/store';
+import {Provider} from 'react-redux';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -51,14 +54,16 @@ const App = () => {
 
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
-        <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
-        <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
-        <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store = {store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
+          <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
+          <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
+          <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
 
   );
 }
