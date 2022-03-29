@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Map from '../elements/Map';
+import Map from '../elements/Map.js';
 
 import {
   SafeAreaView,

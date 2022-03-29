@@ -11,7 +11,7 @@ const LONGITUDE_DELTA = 0.0421;
 
 class Map extends React.Component {
 
-  map: MapView;
+  //map: MapView;
 
   async getCamera() {
     const camera = await this.map.getCamera();
@@ -23,7 +23,7 @@ class Map extends React.Component {
     camera.zoom = 200;
   }
 
-  constructor(props: any) {
+  constructor(props) {
     super(props);
 
     this.state = {
