@@ -8,6 +8,7 @@ import Account from './src/components/mainScreens/Account';
 import Header from './src/components/elements/Header';
 import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
+import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
 import {
   SafeAreaView,
@@ -55,6 +56,7 @@ const App = () => {
         <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
         <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
         <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
+        <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

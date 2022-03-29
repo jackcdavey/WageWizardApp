@@ -14,6 +14,33 @@ import {
   Alert,
 } from 'react-native';
 
+
+export default function WorkLogs({ navigation }: { navigation: any }) {
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={[
+          { key: 'Job 1' },
+          { key: 'Job 2' },
+          { key: 'Job 3' },
+          { key: 'Job 4' },
+          { key: 'Job 5' },
+          { key: 'Job 6' },
+          { key: 'Job 7' },
+        ]}
+
+        renderItem={({ item }) =>
+          <TouchableOpacity onPress={() => navigation.navigate('DetailedLog')}>
+            {/* Alert.alert('This will navigate to the ' + item.key + ' detailed work log') */}
+            <View style={styles.item}>
+              <Text style={styles.info}>{item.key}</Text>
+            </View>
+          </TouchableOpacity>}
+      />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -35,27 +62,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   }
 });
-
-export default function WorkLogs() {
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={[
-          { key: 'Job 1' },
-          { key: 'Job 2' },
-          { key: 'Job 3' },
-          { key: 'Job 4' },
-          { key: 'Job 5' },
-          { key: 'Job 6' },
-          { key: 'Job 7' },
-        ]}
-        renderItem={({ item }) =>
-          <TouchableOpacity onPress={() => Alert.alert('This will navigate to the ' + item.key + ' detailed work log')}>
-            <View style={styles.item}>
-              <Text style={styles.info}>{item.key}</Text>
-            </View>
-          </TouchableOpacity>}
-      />
-    </View>
-  );
-}
