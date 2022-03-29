@@ -1,21 +1,70 @@
-import * as React from 'react';
-import MapView from 'react-native-maps';
+import React from 'react';
+import MapView, { ProviderPropType } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import COLORS from '../../styles/colors.js';
+import { PinchGestureHandler } from 'react-native-gesture-handler';
 
-export default function Map() {
-  return (
-    <MapView
-      style={styles.map}
-      initialRegion={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}
-    />
-  );
+const LATITUDE = 37.78825;
+const LONGITUDE = -122.4324;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = 0.0421;
+
+class Map extends React.Component {
+
+  map: MapView;
+
+  async getCamera() {
+    const camera = await this.map.getCamera();
+  }
+
+  async animateCamera() {
+    const camera = await this.map.getCamera();
+    camera.pitch = 60;
+    camera.zoom = 200;
+  }
+
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      region: {
+        latitude: LATITUDE,
+        longitude: LONGITUDE,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
+      },
+      coordinate: {
+        latitude: LATITUDE,
+        longitude: LONGITUDE
+      }
+
+    };
+  }
+
+
+  render() {
+    return (
+      <MapView
+        provider={this.props.provider}
+        ref={ref => { this.map = ref; }}
+        style={styles.map}
+        showsScale={true}
+        rotateEnabled={false}
+        // ref={ref => { this.map = ref }}
+        onLayout={() => { }}
+
+        initialRegion={{
+          latitude: LATITUDE,
+          longitude: LONGITUDE,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }
+        }
+      />
+    );
+  }
 }
+
 
 const styles = StyleSheet.create({
   map: {
@@ -26,3 +75,5 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.35,
   },
 });
+
+export default Map;

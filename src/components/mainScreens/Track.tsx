@@ -15,7 +15,6 @@ import {
   Alert,
 } from 'react-native';
 
-import { Picker } from '@react-native-picker/picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 import COLORS from '../../styles/colors.js';

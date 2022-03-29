@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * 0.8,
         borderRadius: 15,
         marginTop: 20,
+        backgroundColor: COLORS.secondary,
         borderColor: COLORS.primary,
         borderWidth: 2,
         padding: 10,

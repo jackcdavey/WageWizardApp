@@ -61,6 +61,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 40,
         color: COLORS.dark,
+        textAlign: 'center',
+
     },
     directions: {
         fontSize: 20,
