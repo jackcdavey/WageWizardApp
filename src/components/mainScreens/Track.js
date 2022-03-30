@@ -22,7 +22,6 @@ const trackView = (props) => {
 
 
 
-  const [locationData, setLocationData] = useState({longitude: 37.78825, latitude: -122.432 })
 
   useEffect(() => {
     (async () => {
@@ -34,7 +33,6 @@ const trackView = (props) => {
 
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-      setLocationData(location)
     })();
   }, []);
 
@@ -122,11 +120,12 @@ const trackView = (props) => {
 
     
 
-//      <Map longitude = {37.78825} latitude = {-122.4324}/>
+//           <Map longitude = {location.longitude} latitude = {location.latitude}/>
 
     <View style={styles.container}>
       <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
-      <Map longitude = {locationData.longitude} latitude = {locationData.latitude}/>
+ 
+      <Map longitude = {37.78825} latitude = {-122.4324}/>
 
       
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
