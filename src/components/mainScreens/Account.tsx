@@ -6,15 +6,35 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
+  TextInput,
   Text,
   useColorScheme,
   View,
   Dimensions,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 
 const styles = StyleSheet.create({
+  field: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.7,
+
+  },
+  input: {
+    width: Dimensions.get('window').width * 0.6,
+    borderRadius: 15,
+    margin: 10,
+    borderColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
+    borderWidth: 2,
+    padding: 10,
+    alignItems: 'center',
+  },
   info: {
     margin: 25,
     backgroundColor: COLORS.secondary,
@@ -60,11 +80,29 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
+      
       <View>
-        <View style={styles.info}>
-          <Text style={styles.item}>
-            Account items will be shown here.
-          </Text>
+        <View style={{
+          flexDirection: 'row',
+          paddingTop: 25,
+        }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 15, paddingTop: 20 }}>
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 115, maxHeight: 115 }} resizeMode="contain" />
+            </View>
+          </TouchableOpacity>
+          <View>
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Full Name" />
+            </View>
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Email Address" />
+            </View>
+
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Birthday" />
+            </View>
+          </View>
         </View>
 
 
