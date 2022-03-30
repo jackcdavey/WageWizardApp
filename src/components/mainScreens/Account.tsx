@@ -87,7 +87,6 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
       
-      <View>
         <View style={{
           flexDirection: 'row',
           paddingTop: 25,
@@ -110,7 +109,9 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
             </View>
           </View>
         </View>
-
+      <View style ={{
+        justifyContent: 'center',
+      }}>
         <View style={{ 
           justifyContent: 'center',
           alignItems: 'center',
