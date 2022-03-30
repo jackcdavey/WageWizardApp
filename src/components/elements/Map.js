@@ -4,8 +4,9 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import COLORS from '../../styles/colors.js';
 import { PinchGestureHandler } from 'react-native-gesture-handler';
 
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+
+//const LATITUDE = 37.78825;
+//const LONGITUDE = -122.4324;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = 0.0421;
 
@@ -24,14 +25,14 @@ class Map extends React.Component {
 
     this.state = {
       region: {
-        latitude: LATITUDE,
-        longitude: LONGITUDE,
+        latitude: this.props.latitude,
+        longitude: this.props.longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
       },
       coordinate: {
-        latitude: LATITUDE,
-        longitude: LONGITUDE
+        latitude: this.props.latitude,
+        longitude: this.props.longitude
       }
     };
   }
@@ -49,8 +50,8 @@ class Map extends React.Component {
         onLayout={() => { }}
 
         initialRegion={{
-          latitude: LATITUDE,
-          longitude: LONGITUDE,
+          latitude: this.props.latitude,
+          longitude: this.props.longitude,
           latitudeDelta: LATITUDE_DELTA,
           longitudeDelta: LONGITUDE_DELTA,
         }

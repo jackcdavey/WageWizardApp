@@ -1,3 +1,15 @@
 {
-  "name": "WageWizard"
+  "expo": {
+    "name": "WageWizard",
+    "ios": {
+      
+      "infoPlist": {
+        
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      }
+    }
+  }
 }
