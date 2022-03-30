@@ -17,6 +17,9 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
+  infoTxt: {
+    fontSize: 50,
+  },
   field: {
     display: 'flex',
     flexDirection: 'row',
@@ -50,6 +53,9 @@ const styles = StyleSheet.create({
     borderColor: COLORS.primary,
     borderWidth: 2,
     alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.5,
+    height: Dimensions.get('window').height * 0.06,
   },
   item: {
     margin: 25,
@@ -105,10 +111,23 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
           </View>
         </View>
 
+        <View style={{ 
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
+        </View>
 
         <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
           <View style={styles.btn}>
-            <Text style={styles.item}>
+            <Text style={{
+              margin: 5,
+              padding: 10,
+              color: COLORS.light,
+              fontSize: 20,
+              height: 44,
+              fontWeight: 'bold',
+              }}>
               Add New Job
             </Text>
           </View>
