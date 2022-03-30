@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.7,
+    width: Dimensions.get('window').width * 0.6,
 
   },
   input: {
-    width: Dimensions.get('window').width * 0.6,
+    width: Dimensions.get('window').width * 0.5,
     borderRadius: 15,
     margin: 10,
     borderColor: COLORS.primary,
@@ -87,8 +87,8 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
           paddingTop: 25,
         }}>
           <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 15, paddingTop: 20 }}>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 115, maxHeight: 115 }} resizeMode="contain" />
+            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
             </View>
           </TouchableOpacity>
           <View>
