@@ -6,15 +6,38 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
+  TextInput,
   Text,
   useColorScheme,
   View,
   Dimensions,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 
 const styles = StyleSheet.create({
+  infoTxt: {
+    fontSize: 50,
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.6,
+
+  },
+  input: {
+    width: Dimensions.get('window').width * 0.5,
+    borderRadius: 15,
+    margin: 10,
+    borderColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
+    borderWidth: 2,
+    padding: 10,
+    alignItems: 'center',
+  },
   info: {
     margin: 25,
     backgroundColor: COLORS.secondary,
@@ -30,6 +53,9 @@ const styles = StyleSheet.create({
     borderColor: COLORS.primary,
     borderWidth: 2,
     alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.5,
+    height: Dimensions.get('window').height * 0.06,
   },
   item: {
     margin: 25,
@@ -60,17 +86,49 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
-      <View>
-        <View style={styles.info}>
-          <Text style={styles.item}>
-            Account items will be shown here.
-          </Text>
-        </View>
 
+      <View style={{
+        flexDirection: 'row',
+        paddingTop: 25,
+      }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
+            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
+          </View>
+        </TouchableOpacity>
+        <View>
+          <View style={styles.field}>
+            <TextInput style={styles.input} placeholder="Full Name" />
+          </View>
+          <View style={styles.field}>
+            <TextInput style={styles.input} placeholder="Email Address" />
+          </View>
+
+          <View style={styles.field}>
+            <TextInput style={styles.input} placeholder="Birthday" />
+          </View>
+        </View>
+      </View>
+      <View style={{
+        justifyContent: 'center',
+      }}>
+        <View style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
+        </View>
 
         <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
           <View style={styles.btn}>
-            <Text style={styles.item}>
+            <Text style={{
+              margin: 5,
+              padding: 10,
+              color: COLORS.light,
+              fontSize: 20,
+              height: 44,
+              fontWeight: 'bold',
+            }}>
               Add New Job
             </Text>
           </View>

@@ -1,30 +1,66 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {connect} from 'react-redux';
-
-import {SafeAreaView, ScrollView, StatusBar,Dimensions,StyleSheet,Text,useColorScheme,View,TouchableOpacity,Alert,} from 'react-native';
+import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+
+//redux logic
+import { startTimer, pauseTimer, resumeTimer, endTimer } from '../../reduxLogic/actions'
+import { connect } from 'react-redux';
+
 import Map from '../elements/Map.js';
 import COLORS from '../../styles/colors.js';
 
-import {startTimer, pauseTimer, resumeTimer, endTimer} from '../../reduxLogic/actions'
-
-
-
-
+//geofencing loccation
+import * as Location from 'expo-location';
 
 
 const trackView = (props) => {
 
+  /**********GEOFENCING LOGIC *****************/
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+
+
+  const [locationData, setLocationData] = useState({ longitude: 37.78825, latitude: -122.432 })
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+      setLocationData(location)
+    })();
+  }, []);
+
+  let text = 'Waiting..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+
+  }
+
+
+  /********************************************/
+
+
+  /*********** TIMER LOGIC **********************/
   let testNumber = 7190; // set to to test number to get to 1:59:50 starting time
+  //const [time,settime] useState(testNumber)
   const [time, setTime] = useState(0);
   let seconds = ("0" + ((time / 1) % 60)).slice(-2)
   let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
   let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
- 
+
   //redux state variables
-  const {isIdle, isRunning, isPaused, startTimer, pauseTimer, resumeTimer,endTimer} = props;
-  
+  const { isIdle, isRunning, isPaused, startTimer, pauseTimer, resumeTimer, endTimer } = props;
+
   useEffect(() => {
     let interval = setInterval(() => { }, 0);
     if (isRunning) {
@@ -41,19 +77,20 @@ const trackView = (props) => {
   }, [isIdle, isRunning, isPaused]);
 
   //helper function to handle the timer's state, we will be addding more in these functions (geofencing, recording entry to the database)
-  const handleStart = () =>{
+  const handleStart = () => {
     startTimer();
   }
-  const handlePause = () =>{
+  const handlePause = () => {
     pauseTimer();
   }
-  const handleResume = () =>{
+  const handleResume = () => {
     resumeTimer();
   }
-  const handleEnd = () =>{
+  const handleEnd = () => {
     endTimer()
     setTime(0);
   }
+  /*******END OF TIMER LOGIC ********************/
 
 
 
@@ -81,11 +118,17 @@ const trackView = (props) => {
   //with proper elements.
 
   return (
-    
+
+
+
+
+    //      <Map longitude = {37.78825} latitude = {-122.4324}/>
+
     <View style={styles.container}>
       <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
-      <Map />
-      
+      <Map longitude={locationData.longitude} latitude={locationData.latitude} />
+
+
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
       <DropDownPicker
         style={styles.picker}
@@ -109,22 +152,25 @@ const trackView = (props) => {
       />
 
       {/* Overhauled the control buttons to match the new state logic */}
-      <TouchableOpacity onPress = {handleStart}>
+      <TouchableOpacity onPress={handleStart}>
         <Text>Start</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress = {handlePause}>
+      <TouchableOpacity onPress={handlePause}>
         <Text>Pause</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress = {handleResume}>
+      <TouchableOpacity onPress={handleResume}>
         <Text>Resume</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress = {handleEnd}>
+      <TouchableOpacity onPress={handleEnd}>
         <Text>End</Text>
       </TouchableOpacity>
-      
+
+      <Text>Location: </Text>
+      <Text>{text}</Text>
+
     </View>
   );
 }
@@ -190,11 +236,11 @@ const styles = StyleSheet.create({
 
 //Connecting our component to the redux store
 
-const mapStateToProps = (state,props) =>{
-  const {isIdle, isRunning, isPaused} = state;
-  return {isIdle, isRunning, isPaused};
+const mapStateToProps = (state, props) => {
+  const { isIdle, isRunning, isPaused } = state;
+  return { isIdle, isRunning, isPaused };
 }
-const mapDispatchToProps = (dispatch,props)=>{
+const mapDispatchToProps = (dispatch, props) => {
   return {
     startTimer: () => dispatch(startTimer()),
     pauseTimer: () => dispatch(pauseTimer()),
