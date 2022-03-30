@@ -60,11 +60,6 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'left', paddingBottom: 10, paddingRight: 10 }}>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 115, maxHeight: 115 }} resizeMode="contain" />
-            </View>
-      </TouchableOpacity>
       <View>
         <View style={styles.info}>
           <Text style={styles.item}>
