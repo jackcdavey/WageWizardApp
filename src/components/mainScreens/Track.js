@@ -11,33 +11,74 @@ import Map from '../elements/Map.js';
 import COLORS from '../../styles/colors.js';
 
 //geofencing loccation
-import * as Location from 'expo-location';
+import * as TaskManager from "expo-task-manager"
+import * as Location from "expo-location"
+import { JsonSerializationReplacer } from 'realm';
+
+const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
+let foregroundSubscription = null
 
 
 const trackView = (props) => {
 
   /**********GEOFENCING LOGIC *****************/
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
 
+  const [position, setPosition] = useState(null)
 
+  useEffect(()=>{
+    const requestPermissions = async ()=>{
+        const foreground = await Location.requestForegroundPermissionsAsync()
+        if (foreground.granted){
+            Alert.alert("Foreground Permission Given")
+            const background = await Location.requestBackgroundPermissionsAsync()
+            if(!background.granted){
+                //background permission not granted
+                Alert.alert("Background Location Permission Not Granted!");
+            }
+            else{
+              Alert.alert("Background Permission Given")
+            }
+        } else{
+            //forground permission not granted
+            Alert.alert("Foreground Location Permission Not Granted!");
+        }
+    }
+    requestPermissions();
+},[])
 
-  const [locationData, setLocationData] = useState({ longitude: 37.78825, latitude: -122.432 })
+const startForegroundUpdate = async () => {
+  // Check if foreground permission is granted
+  const { granted } = await Location.getForegroundPermissionsAsync()
+  if (!granted) {
+    Alert.alert("Foreground Location Tracking Denied!")
+    return
+  }
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
+  // Make sure that foreground location tracking is not running
+  foregroundSubscription?.remove()
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-      setLocationData(location)
-    })();
-  }, []);
+  // Start watching position in real-time
+  Alert.alert("Foreground Location Tracking Started!")
+  foregroundSubscription = await Location.watchPositionAsync(
+    {
+      // For better logs, we set the accuracy to the most sensitive option
+      accuracy: Location.Accuracy.BestForNavigation,
+      timeInterval: 10000
 
+    },
+    location => {
+      setPosition(location.coords)
+    }
+  )
+}
+
+const stopForegroundUpdate = () => {
+  Alert.alert("Foreground Location Tracking Stopped!")
+  foregroundSubscription?.remove()
+  setPosition(null)
+}
+
+/*
   let text = 'Waiting..';
   if (errorMsg) {
     text = errorMsg;
@@ -45,6 +86,7 @@ const trackView = (props) => {
     text = JSON.stringify(location);
 
   }
+*/
 
 
   /********************************************/
@@ -90,6 +132,24 @@ const trackView = (props) => {
     endTimer()
     setTime(0);
   }
+
+  const [locationTracking, setLocationTracking] = useState(false)
+  const [locationButtonColor, setLocationButtonColor] = useState('green')
+  const [locationButtonText, setLocationButtonText] = useState('Start Tracking Location')
+  const handleLocationButton = ()=>{
+    if(!locationTracking){
+      setLocationTracking(true)
+      setLocationButtonColor('red')
+      setLocationButtonText('Stop Tracking Location')
+      startForegroundUpdate();
+    }else{
+      setLocationTracking(false)
+      setLocationButtonColor('green')
+      setLocationButtonText('Start Tracking Location')
+      stopForegroundUpdate();
+    }
+
+  }
   /*******END OF TIMER LOGIC ********************/
 
 
@@ -123,10 +183,29 @@ const trackView = (props) => {
 
 
     //      <Map longitude = {37.78825} latitude = {-122.4324}/>
+    //<Map longitude={locationData.longitude} latitude={locationData.latitude} />
+
 
     <View style={styles.container}>
       <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
-      <Map longitude={locationData.longitude} latitude={locationData.latitude} />
+      <TouchableOpacity onPress={handleStart}>
+        <Text>Start</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={handlePause}>
+        <Text>Pause</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={handleResume}>
+        <Text>Resume</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={handleEnd}>
+        <Text>End</Text>
+      </TouchableOpacity>
+      
+      <Map longitude = {37.78825} latitude = {-122.4324}/>
+
 
 
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
@@ -152,24 +231,13 @@ const trackView = (props) => {
       />
 
       {/* Overhauled the control buttons to match the new state logic */}
-      <TouchableOpacity onPress={handleStart}>
-        <Text>Start</Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity onPress={handlePause}>
-        <Text>Pause</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={handleResume}>
-        <Text>Resume</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={handleEnd}>
-        <Text>End</Text>
+      <TouchableOpacity style = {{backgroundColor:locationButtonColor}} onPress={handleLocationButton}>
+        <Text>{locationButtonText}</Text>
       </TouchableOpacity>
 
       <Text>Location: </Text>
-      <Text>{text}</Text>
+      <Text>{JSON.stringify(position)}</Text>
     </View>
   );
 }
