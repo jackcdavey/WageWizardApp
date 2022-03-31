@@ -4,14 +4,36 @@ import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
 import { UpdateMode } from 'realm';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
-//import saveJob from '../../userData/saveJob.js';
-
+//import saveJob from '../../userData/saveJob';
+import realm from './../../userData/realm';
 
 export default function JobSetup({ navigation }: { navigation: any }) {
-    const [id, setId] = useState('');
-    const [employer, setEmployer] = useState('');
-    const [client, setClient] = useState('');
-    const [location, setLocation] = useState('');
+    const [id, setId] = useState(0);
+    const [employer, setEmployer] = useState('Test Employer');
+    const [client, setClient] = useState('Test Client');
+    const [location, setLocation] = useState('Test Location');
+
+    let newJob;
+    try {
+        if (realm) {
+            realm.write(() => {
+                var allJobs = realm.objects('Job');
+                console.log('allJobs', allJobs);
+                realm.delete(allJobs);
+            });
+            realm.write(() => {
+                newJob = realm.create('Job', {
+                    id: id,
+                    employer: employer,
+                    client: client,
+                    location: location
+                });
+                console.log(newJob);
+            });
+        }
+    } catch (error) {
+        console.log(error);
+    }
     return (
         <View style={{
             flexDirection: 'column',
@@ -43,7 +65,7 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             </View>
 
             <View style={styles.buttonWrap}>
-                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => Alert.alert("saveJob() test")}>
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => Alert.alert("saveJob()")}>
                     {/* This does not properly navigate to previous screen, always returns to account page
                     even when accessed through InitialSetupView */}
                     <Text>DB Test</Text>
