@@ -8,88 +8,16 @@ import { startTimer, pauseTimer, resumeTimer, endTimer } from '../../reduxLogic/
 import { connect } from 'react-redux';
 
 import Map from '../elements/Map.js';
+import LocationMap from '../elements/LocationTrackingMap'
 import COLORS from '../../styles/colors.js';
 
-//geofencing loccation
-import * as TaskManager from "expo-task-manager"
-import * as Location from "expo-location"
-import { JsonSerializationReplacer } from 'realm';
 
-const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
-let foregroundSubscription = null
+
 
 
 const trackView = (props) => {
 
-  /**********GEOFENCING LOGIC *****************/
 
-  const [position, setPosition] = useState(null)
-
-  useEffect(()=>{
-    const requestPermissions = async ()=>{
-        const foreground = await Location.requestForegroundPermissionsAsync()
-        if (foreground.granted){
-            Alert.alert("Foreground Permission Given")
-            const background = await Location.requestBackgroundPermissionsAsync()
-            if(!background.granted){
-                //background permission not granted
-                Alert.alert("Background Location Permission Not Granted!");
-            }
-            else{
-              Alert.alert("Background Permission Given")
-            }
-        } else{
-            //forground permission not granted
-            Alert.alert("Foreground Location Permission Not Granted!");
-        }
-    }
-    requestPermissions();
-},[])
-
-const startForegroundUpdate = async () => {
-  // Check if foreground permission is granted
-  const { granted } = await Location.getForegroundPermissionsAsync()
-  if (!granted) {
-    Alert.alert("Foreground Location Tracking Denied!")
-    return
-  }
-
-  // Make sure that foreground location tracking is not running
-  foregroundSubscription?.remove()
-
-  // Start watching position in real-time
-  Alert.alert("Foreground Location Tracking Started!")
-  foregroundSubscription = await Location.watchPositionAsync(
-    {
-      // For better logs, we set the accuracy to the most sensitive option
-      accuracy: Location.Accuracy.BestForNavigation,
-      timeInterval: 10000
-
-    },
-    location => {
-      setPosition(location.coords)
-    }
-  )
-}
-
-const stopForegroundUpdate = () => {
-  Alert.alert("Foreground Location Tracking Stopped!")
-  foregroundSubscription?.remove()
-  setPosition(null)
-}
-
-/*
-  let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-
-  }
-*/
-
-
-  /********************************************/
 
 
   /*********** TIMER LOGIC **********************/
@@ -133,23 +61,7 @@ const stopForegroundUpdate = () => {
     setTime(0);
   }
 
-  const [locationTracking, setLocationTracking] = useState(false)
-  const [locationButtonColor, setLocationButtonColor] = useState('green')
-  const [locationButtonText, setLocationButtonText] = useState('Start Tracking Location')
-  const handleLocationButton = ()=>{
-    if(!locationTracking){
-      setLocationTracking(true)
-      setLocationButtonColor('red')
-      setLocationButtonText('Stop Tracking Location')
-      startForegroundUpdate();
-    }else{
-      setLocationTracking(false)
-      setLocationButtonColor('green')
-      setLocationButtonText('Start Tracking Location')
-      stopForegroundUpdate();
-    }
 
-  }
   /*******END OF TIMER LOGIC ********************/
 
 
@@ -185,6 +97,8 @@ const stopForegroundUpdate = () => {
     //      <Map longitude = {37.78825} latitude = {-122.4324}/>
     //<Map longitude={locationData.longitude} latitude={locationData.latitude} />
 
+      //<Map longitude = {37.78825} latitude = {-122.4324}/> temporarily removed
+
 
     <View style={styles.container}>
       <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
@@ -204,7 +118,8 @@ const stopForegroundUpdate = () => {
         <Text>End</Text>
       </TouchableOpacity>
       
-      <Map longitude = {37.78825} latitude = {-122.4324}/>
+    
+    
 
 
 
@@ -230,14 +145,11 @@ const stopForegroundUpdate = () => {
         }}
       />
 
-      {/* Overhauled the control buttons to match the new state logic */}
+      <LocationMap/>
 
-      <TouchableOpacity style = {{backgroundColor:locationButtonColor}} onPress={handleLocationButton}>
-        <Text>{locationButtonText}</Text>
-      </TouchableOpacity>
 
-      <Text>Location: </Text>
-      <Text>{JSON.stringify(position)}</Text>
+
+
     </View>
   );
 }

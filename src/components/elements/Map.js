@@ -1,8 +1,11 @@
 import React from 'react';
 import MapView, { ProviderPropType } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import COLORS from '../../styles/colors.js';
+import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
+import COLORS from '../../styles/colors';
 import { PinchGestureHandler } from 'react-native-gesture-handler';
+
+
+
 
 
 //const LATITUDE = 37.78825;
@@ -36,6 +39,12 @@ class Map extends React.Component {
       }
     };
   }
+
+
+  /////here//
+  
+
+  /////
 
 
   render() {
