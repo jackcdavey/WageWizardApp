@@ -10,8 +10,9 @@ import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
-import {store} from './src/reduxLogic/store';
-import {Provider} from 'react-redux';
+import { store } from './src/reduxLogic/store';
+import { Provider } from 'react-redux';
+
 
 import {
   SafeAreaView,
@@ -54,7 +55,7 @@ const App = () => {
 
 
   return (
-    <Provider store = {store}>
+    <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />

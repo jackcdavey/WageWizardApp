@@ -9,6 +9,8 @@ target 'WageWizard' do
 
 
 
+  pod 'RealmJS', :path => '../node_modules/realm'
+
   post_integrate do |installer|
     begin
       expo_patch_react_imports!(installer)

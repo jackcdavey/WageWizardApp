@@ -1,5 +1,6 @@
 import COLORS from '../../styles/colors.js';
 import React from 'react';
+import realm from '../../userData/db.js';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   SafeAreaView,
@@ -86,33 +87,33 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
-      
-        <View style={{
-          flexDirection: 'row',
-          paddingTop: 25,
-        }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
-            </View>
-          </TouchableOpacity>
-          <View>
-            <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Full Name" />
-            </View>
-            <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Email Address" />
-            </View>
 
-            <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Birthday" />
-            </View>
+      <View style={{
+        flexDirection: 'row',
+        paddingTop: 25,
+      }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
+            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
+          </View>
+        </TouchableOpacity>
+        <View>
+          <View style={styles.field}>
+            <TextInput style={styles.input} placeholder="Full Name" />
+          </View>
+          <View style={styles.field}>
+            <TextInput style={styles.input} placeholder="Email Address" />
+          </View>
+
+          <View style={styles.field}>
+            <TextInput style={styles.input} placeholder="Birthday" />
           </View>
         </View>
-      <View style ={{
+      </View>
+      <View style={{
         justifyContent: 'center',
       }}>
-        <View style={{ 
+        <View style={{
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -128,7 +129,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
               fontSize: 20,
               height: 44,
               fontWeight: 'bold',
-              }}>
+            }}>
               Add New Job
             </Text>
           </View>

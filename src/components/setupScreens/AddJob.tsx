@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
+import { UpdateMode } from 'realm';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
+//import saveJob from '../../userData/saveJob.js';
 
 
 export default function JobSetup({ navigation }: { navigation: any }) {
+    const [id, setId] = useState('');
+    const [employer, setEmployer] = useState('');
+    const [client, setClient] = useState('');
+    const [location, setLocation] = useState('');
     return (
         <View style={{
             flexDirection: 'column',
@@ -20,14 +27,15 @@ export default function JobSetup({ navigation }: { navigation: any }) {
                 </Text>
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="Job Title" />
+                <TextInput style={styles.input} placeholder="Employer Name" onChangeText={newText => setEmployer(newText)} defaultValue={employer} />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Employer Name" />
+                <TextInput style={styles.input} placeholder="Client Name" onChangeText={newText => setClient(newText)} defaultValue={client} />
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="City (Of Work)" />
+                <TextInput style={styles.input} placeholder="City (Of Work)" onChangeText={newText => setLocation(newText)} defaultValue={location} />
+                {/* this will be changed in future build */}
             </View>
 
             <View>
@@ -35,7 +43,11 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             </View>
 
             <View style={styles.buttonWrap}>
-
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => Alert.alert("saveJob() test")}>
+                    {/* This does not properly navigate to previous screen, always returns to account page
+                    even when accessed through InitialSetupView */}
+                    <Text>DB Test</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
                     {/* This does not properly navigate to previous screen, always returns to account page
                     even when accessed through InitialSetupView */}
@@ -50,6 +62,8 @@ export default function JobSetup({ navigation }: { navigation: any }) {
         </View>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     article: {
