@@ -2,6 +2,7 @@
   "name": "WageWizard",
   "expo": {
     "name": "WageWizard",
+    "jsEngine": "hermes",
     "ios": {
       "infoPlist": {
         "UIBackgroundModes": [

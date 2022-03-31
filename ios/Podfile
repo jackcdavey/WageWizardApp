@@ -9,7 +9,6 @@ target 'WageWizard' do
 
 
 
-  pod 'RealmJS', :path => '../node_modules/realm'
 
   post_integrate do |installer|
     begin
@@ -23,7 +22,7 @@ target 'WageWizard' do
   use_react_native!(
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods
-    :hermes_enabled => false
+    :hermes_enabled => true
   )
 
 
