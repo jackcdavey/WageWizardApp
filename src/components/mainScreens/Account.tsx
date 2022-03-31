@@ -86,7 +86,6 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
-<<<<<<< HEAD
         <View style={{
           flexDirection: 'row',
           paddingTop: 25,
@@ -104,29 +103,27 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
         </View>
       <View style ={{
         justifyContent: 'center',
-      }}>
+        }}>
         <View style={{ 
-=======
+          flexDirection: 'row',
+          paddingTop: 25,
+          }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
+            </View>
+          </TouchableOpacity>
+          <View>
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Full Name" />
+            </View>
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Email Address" />
+            </View>
 
-      <View style={{
-        flexDirection: 'row',
-        paddingTop: 25,
-      }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
-            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
-          </View>
-        </TouchableOpacity>
-        <View>
-          <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Full Name" />
-          </View>
-          <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Email Address" />
-          </View>
-
-          <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Birthday" />
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Birthday" />
+            </View>
           </View>
         </View>
       </View>
@@ -134,7 +131,6 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
         justifyContent: 'center',
       }}>
         <View style={{
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -150,11 +146,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
               fontSize: 20,
               height: 44,
               fontWeight: 'bold',
-<<<<<<< HEAD
               }}>
-=======
-            }}>
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
               Add New Job
             </Text>
           </View>
