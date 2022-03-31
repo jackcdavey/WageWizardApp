@@ -5,13 +5,24 @@ import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text 
 import { UpdateMode } from 'realm';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
-import realm from './../../userData/realm';
+import realm from '../../userData/realm';
 
-export default function JobSetup({ navigation }: { navigation: any }) {
+export default function JobSetup({ navigation }) {
+
+
+
+    //default values for job
+    //id should be checked and auto-incremented
     const [id, setId] = useState(0);
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
+
+    const submitInfo = () => {
+        //Save job to realm here
+        navigation.navigate('JobLocationSetup');
+    }
+
 
     let newJob;
     try {
@@ -65,17 +76,13 @@ export default function JobSetup({ navigation }: { navigation: any }) {
             </View>
 
             <View style={styles.buttonWrap}>
-                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => Alert.alert("saveJob()")}>
-                    {/* This does not properly navigate to previous screen, always returns to account page
-                    even when accessed through InitialSetupView */}
-                    <Text>DB Test</Text>
-                </TouchableOpacity>
+
                 <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
                     {/* This does not properly navigate to previous screen, always returns to account page
                     even when accessed through InitialSetupView */}
                     <Text>Back</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('JobLocationSetup')}>
+                <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
                     <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
@@ -84,6 +91,7 @@ export default function JobSetup({ navigation }: { navigation: any }) {
         </View>
     )
 }
+
 
 
 

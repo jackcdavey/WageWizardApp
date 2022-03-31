@@ -11,7 +11,7 @@ import Map from '../elements/Map.js';
 import LocationMap from '../elements/LocationTrackingMap'
 import COLORS from '../../styles/colors.js';
 
-
+import realm from '../../userData/realm';
 
 
 
@@ -97,7 +97,7 @@ const trackView = (props) => {
     //      <Map longitude = {37.78825} latitude = {-122.4324}/>
     //<Map longitude={locationData.longitude} latitude={locationData.latitude} />
 
-      //<Map longitude = {37.78825} latitude = {-122.4324}/> temporarily removed
+    //<Map longitude = {37.78825} latitude = {-122.4324}/> temporarily removed
 
 
     <View style={styles.container}>
@@ -117,9 +117,9 @@ const trackView = (props) => {
       <TouchableOpacity onPress={handleEnd}>
         <Text>End</Text>
       </TouchableOpacity>
-      
-    
-    
+
+
+
 
 
 
@@ -145,7 +145,7 @@ const trackView = (props) => {
         }}
       />
 
-      <LocationMap/>
+      <LocationMap />
 
 
 
