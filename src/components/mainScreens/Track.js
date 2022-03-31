@@ -11,7 +11,7 @@ import Map from '../elements/Map.js';
 import LocationMap from '../elements/LocationTrackingMap'
 import COLORS from '../../styles/colors.js';
 
-import realm from '../../userData/realm';
+//import realm from '../../userData/realm';
 
 
 
