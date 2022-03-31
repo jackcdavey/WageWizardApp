@@ -86,28 +86,11 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
+      
         <View style={{
           flexDirection: 'row',
           paddingTop: 25,
         }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
-            </View>
-          </TouchableOpacity>
-          <View> {/* Text fields */}
-            <View style={styles.field}><TextInput style={styles.input} placeholder="Full Name" /></View>
-            <View style={styles.field}><TextInput style={styles.input} placeholder="Email Address" /></View>
-            <View style={styles.field}><TextInput style={styles.input} placeholder="Birthday" /></View>
-          </View>
-        </View>
-      <View style ={{
-        justifyContent: 'center',
-        }}>
-        <View style={{ 
-          flexDirection: 'row',
-          paddingTop: 25,
-          }}>
           <TouchableOpacity onPress={() => navigation.navigate('Account')}>
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
               <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
@@ -126,11 +109,10 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
             </View>
           </View>
         </View>
-      </View>
-      <View style={{
+      <View style ={{
         justifyContent: 'center',
       }}>
-        <View style={{
+        <View style={{ 
           justifyContent: 'center',
           alignItems: 'center',
         }}>
