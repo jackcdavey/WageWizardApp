@@ -1,6 +1,6 @@
 import COLORS from '../../styles/colors.js';
 import React from 'react';
-import realm from '../../userData/db.js';
+import realm from '../../userData/realm.js';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   SafeAreaView,
