@@ -25,14 +25,14 @@ class Map extends React.Component {
 
     this.state = {
       region: {
-        latitude: this.props.latitude && 37.78825,
-        longitude: this.props.longitude && -122.4324,
+        latitude: this.props.latitude,
+        longitude: this.props.longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
       },
       coordinate: {
-        latitude: this.props.latitude && 37.78825,
-        longitude: this.props.longitude && -122.4324
+        latitude: this.props.latitude,
+        longitude: this.props.longitude
       }
     };
   }
