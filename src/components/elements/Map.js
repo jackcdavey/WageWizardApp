@@ -25,39 +25,71 @@ class Map extends React.Component {
 
     this.state = {
       region: {
-        latitude: this.props.latitude,
-        longitude: this.props.longitude,
+        latitude: this.props.latitude && 37.78825,
+        longitude: this.props.longitude && -122.4324,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
       },
       coordinate: {
-        latitude: this.props.latitude,
-        longitude: this.props.longitude
+        latitude: this.props.latitude && 37.78825,
+        longitude: this.props.longitude && -122.4324
       }
     };
   }
 
 
   render() {
-    return (
-      <MapView
-        provider={this.props.provider}
-        ref={ref => { this.map = ref; }}
-        style={styles.map}
-        showsScale={true}
-        rotateEnabled={false}
-        // ref={ref => { this.map = ref }}
-        onLayout={() => { }}
+    if (this.props.latitude && this.props.longitude) {
+      return (
+        <MapView
+          provider={this.props.provider}
+          ref={ref => { this.map = ref; }}
+          style={styles.map}
+          showsScale={true}
+          rotateEnabled={false}
+          // ref={ref => { this.map = ref }}
+          onLayout={() => { }}
 
-        initialRegion={{
-          latitude: this.props.latitude,
-          longitude: this.props.longitude,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
-        }
-        }
-      />
-    );
+
+          //   if(this.props.latitude && this.props.longitude){
+
+          // else {
+          //   latitude: 37.78825,
+          //     longitude: -122.4324,
+          //     }
+
+          initialRegion={{
+            latitude: this.props.latitude,
+            longitude: this.props.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+          }
+          }
+        />
+      );
+    }
+    else {
+      return (
+        <MapView
+          provider={this.props.provider}
+          ref={ref => { this.map = ref; }}
+          style={styles.map}
+          showsScale={true}
+          rotateEnabled={false}
+          // ref={ref => { this.map = ref }}
+          onLayout={() => { }}
+
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+          }
+          }
+        />
+      );
+
+    }
   }
 }
 
