@@ -1,20 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
-import {SafeAreaView, ScrollView, StatusBar,Dimensions,StyleSheet,Text,useColorScheme,View,TouchableOpacity,Alert,} from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-
-//redux logic
-import {startTimer, pauseTimer, resumeTimer, endTimer} from '../../reduxLogic/actions'
-import {connect} from 'react-redux';
-=======
 import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //redux logic
 import { startTimer, pauseTimer, resumeTimer, endTimer } from '../../reduxLogic/actions'
 import { connect } from 'react-redux';
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
 
 import Map from '../elements/Map.js';
 import COLORS from '../../styles/colors.js';
@@ -31,34 +22,6 @@ const trackView = (props) => {
 
 
 
-<<<<<<< HEAD
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-
-  }
-  
-
-  /********************************************/
-  
-
-=======
   const [locationData, setLocationData] = useState({ longitude: 37.78825, latitude: -122.432 })
 
   useEffect(() => {
@@ -87,7 +50,6 @@ const trackView = (props) => {
   /********************************************/
 
 
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
   /*********** TIMER LOGIC **********************/
   let testNumber = 7190; // set to to test number to get to 1:59:50 starting time
   //const [time,settime] useState(testNumber)
@@ -128,11 +90,7 @@ const trackView = (props) => {
     endTimer()
     setTime(0);
   }
-<<<<<<< HEAD
-/*******END OF TIMER LOGIC ********************/
-=======
   /*******END OF TIMER LOGIC ********************/
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
 
 
 
@@ -160,20 +118,6 @@ const trackView = (props) => {
   //with proper elements.
 
   return (
-<<<<<<< HEAD
-    
-
-    
-
-//           <Map longitude = {location.longitude} latitude = {location.latitude}/>
-
-    <View style={styles.container}>
-      <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
- 
-      <Map longitude = {37.78825} latitude = {-122.4324}/>
-
-      
-=======
 
 
 
@@ -185,7 +129,6 @@ const trackView = (props) => {
       <Map longitude={locationData.longitude} latitude={locationData.latitude} />
 
 
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
       <DropDownPicker
         style={styles.picker}
@@ -227,11 +170,6 @@ const trackView = (props) => {
 
       <Text>Location: </Text>
       <Text>{text}</Text>
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
     </View>
   );
 }
