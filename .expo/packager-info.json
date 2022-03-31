@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "expoServerPort": 19000,
+=======
+  "expoServerPort": null,
+>>>>>>> 37a49b76b14d5f07916a8acf6774bb96b3aba9fc
   "packagerPort": 19000,
   "packagerPid": null,
   "expoServerNgrokUrl": null,
