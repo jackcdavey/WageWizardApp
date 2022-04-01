@@ -17,65 +17,6 @@ import {
   Image,
 } from 'react-native';
 
-const styles = StyleSheet.create({
-  infoTxt: {
-    fontSize: 50,
-  },
-  field: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.6,
-
-  },
-  input: {
-    width: Dimensions.get('window').width * 0.5,
-    borderRadius: 15,
-    margin: 10,
-    borderColor: COLORS.primary,
-    backgroundColor: COLORS.secondary,
-    borderWidth: 2,
-    padding: 10,
-    alignItems: 'center',
-  },
-  info: {
-    margin: 25,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 15,
-    //borderColor: COLORS.primary,
-    borderWidth: 2,
-    alignItems: 'center',
-  },
-  btn: {
-    margin: 25,
-    backgroundColor: COLORS.primary,
-    borderRadius: 15,
-    borderColor: COLORS.primary,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.5,
-    height: Dimensions.get('window').height * 0.06,
-  },
-  item: {
-    margin: 25,
-    padding: 10,
-    color: COLORS.dark,
-    fontSize: 20,
-    height: 44,
-    fontWeight: 'bold',
-  },
-  testBtn: {
-    margin: 25,
-    backgroundColor: 'red',
-    borderRadius: 15,
-    borderColor: COLORS.primary,
-    borderWidth: 2,
-    alignItems: 'center',
-  },
-});
-
 import Header from '../elements/Header.js';
 
 const Tab = createBottomTabNavigator();
@@ -87,16 +28,12 @@ const Tab = createBottomTabNavigator();
 const AcccountView = ({ navigation }: { navigation: any }) => {
   return (
     <View>
-
-      <View style={{
-        flexDirection: 'row',
-        paddingTop: 25,
-      }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Account')}>
-          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 20, paddingTop: 20 }}>
-            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} resizeMode="contain" />
-          </View>
-        </TouchableOpacity>
+      <View style={{ flexDirection: 'row', paddingTop: 25 }}>
+        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
+          <TouchableOpacity onPress={() => Alert.alert("Edit Profile Picture")}>
+            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} />
+          </TouchableOpacity>
+        </View>
         <View>
           <View style={styles.field}>
             <TextInput style={styles.input} placeholder="Full Name" />
@@ -110,16 +47,10 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
           </View>
         </View>
       </View>
-      <View style={{
-        justifyContent: 'center',
-      }}>
-        <View style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+      <View style={{ justifyContent: 'center' }}>
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
           <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
         </View>
-
         <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
           <View style={styles.btn}>
             <Text style={{
@@ -185,3 +116,63 @@ export default function Account({ navigation }: { navigation: any }) {
     </Tab.Navigator>
   );
 }
+
+
+const styles = StyleSheet.create({
+  infoTxt: {
+    fontSize: 50,
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.6,
+
+  },
+  input: {
+    width: Dimensions.get('window').width * 0.5,
+    borderRadius: 15,
+    margin: 10,
+    borderColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
+    borderWidth: 2,
+    padding: 10,
+    alignItems: 'center',
+  },
+  info: {
+    margin: 25,
+    backgroundColor: COLORS.secondary,
+    borderRadius: 15,
+    //borderColor: COLORS.primary,
+    borderWidth: 2,
+    alignItems: 'center',
+  },
+  btn: {
+    margin: 25,
+    backgroundColor: COLORS.primary,
+    borderRadius: 15,
+    borderColor: COLORS.primary,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.5,
+    height: Dimensions.get('window').height * 0.06,
+  },
+  item: {
+    margin: 25,
+    padding: 10,
+    color: COLORS.dark,
+    fontSize: 20,
+    height: 44,
+    fontWeight: 'bold',
+  },
+  testBtn: {
+    margin: 25,
+    backgroundColor: 'red',
+    borderRadius: 15,
+    borderColor: COLORS.primary,
+    borderWidth: 2,
+    alignItems: 'center',
+  },
+});
