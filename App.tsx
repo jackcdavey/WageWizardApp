@@ -29,13 +29,15 @@ import SetupNav from './src/components/setupScreens/SetupNav';
 //For future implementation of user authentication & biometric usage:
 //https://github.com/oblador/react-native-keychain
 
-/////////////////// SET CUSTOM FONT USAGE //////////////////////
+/////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 
-//Custom fonts display properly in simulators, but trigger errors when run with Expo go.
-//To enable or disable custom fonts, set the following value
+//Custom fonts display properly in simulators, but trigger errors when run with Expo Go.
 global.globalCustomFontUse = false;
 
-/////////////////// SET CUSTOM FONT USAGE //////////////////////
+//Realm DB has limited compatibility with Expo, so disable it when compiling for Expo Go.
+global.globalRealmDBUse = false;
+
+/////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 
 const Stack = createNativeStackNavigator();
 

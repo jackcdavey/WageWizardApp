@@ -1,5 +1,6 @@
 declare global {
-    var globalCustomFontUse: boolean;
-  }
-  
-  export {}
+  var globalCustomFontUse: boolean;
+  var globalRealmDBUse: boolean;
+}
+
+export { }

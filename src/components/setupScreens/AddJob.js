@@ -7,13 +7,10 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
 //import realm from '../../userData/realm';
 
-let useDB = false;
-
-if (useDB) {
-    realm = require('../../userData/realm');
-}
 export default function JobSetup({ navigation }) {
-
+    if (global.globalRealmDBUse) {
+        realm = require('../../userData/realm').default;
+    }
 
     //default values for job
     //id should be checked and auto-incremented
