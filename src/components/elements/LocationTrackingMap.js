@@ -1,7 +1,13 @@
 import * as React from 'react';
-import MapView from 'react-native-maps';
+import MapView, { Circle } from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Polygon } from 'react-native-maps';
+
+
+import { connect } from 'react-redux';
+import { store } from '../../reduxLogic/store';
+import { startTimer, locationUpdate, endTimer } from '../../reduxLogic/actions'
+
 
 
 import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
@@ -12,61 +18,116 @@ import COLORS from '../../styles/colors';
 //geofencing loccation
 import * as TaskManager from "expo-task-manager"
 import * as Location from "expo-location"
+import { GeofencingEventType } from 'expo-location';
 import { JsonSerializationReplacer } from 'realm';
 
 const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
+const GEOFENCE_TRACKING = "GEOFENCE_TRACKING "
+
 let foregroundSubscription = null
+
+const nobili = {
+  center: {
+    latitude: 37.348899,
+    longitude: -121.942312
+  },
+  radius: 30
+}
+
+const scdi = {
+  center: {
+    latitude: 37.349036,
+    longitude: -121.938545
+  },
+  radius: 30
+}
+
+const heafey = {
+  center: {
+    latitude: 37.349090,
+    longitude: -121.939589
+  },
+  radius: 30
+}
+
+
+const benson = {
+  center: {
+    latitude: 37.347578,
+    longitude: -121.939423
+  },
+  radius: 40
+}
+
+const geofences = [
+  {
+    latitude:nobili.center.latitude,
+    longitude:nobili.center.longitude,
+    radius:nobili.radius
+  },
+  {
+    latitude:scdi.center.latitude,
+    longitude:scdi.center.longitude,
+    radius:scdi.radius
+  },
+  {
+    latitude:benson.center.latitude,
+    longitude:benson.center.longitude,
+    radius:benson.radius
+  },
+  {
+    latitude:heafey.center.latitude,
+    longitude:heafey.center.longitude,
+    radius:heafey.radius
+  }
+]
+
+TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
+  if (error) {
+    console.error(error)
+    return
+  }
+  if (data) {
+    // Extract location coordinates from data
+    const { locations } = data
+    const location = locations[0]
+    if (location) {
+      console.log("Location in background", location.coords)
+      store.dispatch(locationUpdate(location.coords.latitude,location.coords.longitude))
+    }
+  }
+})
+
+TaskManager.defineTask(GEOFENCE_TRACKING, ({ data: { eventType, region }, error }) => {
+  if (error) {
+    // check `error.message` for more details.
+    return;
+  }
+  if (eventType === GeofencingEventType.Enter) {
+    console.log("You've entered region:", region);
+    store.dispatch(startTimer())
+  } else if (eventType === GeofencingEventType.Exit) {
+    console.log("You've left region:", region);
+    store.dispatch(endTimer())
+  }
+});
 
 const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
-const heafey = [
-    {latitude:37.349328,longitude:-121.939938},
-    {latitude:37.349439,longitude:-121.939642},
-    {latitude:37.348811,longitude:-121.939293},
-    {latitude:37.348684,longitude:-121.939840}
-    
-]
-
-const scdi = [
-    {latitude:37.349400,longitude:-121.939233},
-    {latitude:37.349774,longitude:-121.938308},
-    {latitude:37.348773,longitude:-121.937745},
-    {latitude:37.348507,longitude:-121.938735}
-    
-]
-
-const kenna = [
-    {latitude:37.348378,longitude:-121.940388},
-    {latitude:37.348631,longitude:-121.939641},
-    {latitude:37.348430,longitude:-121.939603},
-    {latitude:37.348226,longitude:-121.940280}
-    
-]
-
-const benson = [
-    {latitude:37.347885,longitude:-121.939971},
-    {latitude:37.348227,longitude:-121.938994},
-    {latitude:37.347582,longitude:-121.938632},
-    {latitude:37.347225,longitude:-121.939679}
-    
-]
-
-const nobili = [
-    {latitude:37.349194,longitude:-121.942696},
-    {latitude:37.349262,longitude:-121.942437},
-    {latitude:37.348686,longitude:-121.942109},
-    {latitude:37.348592,longitude:-121.942361}
-    
-]
 
 
-export default function LocationMap() {
 
+
+
+
+const _LocationMap = (props) =>{
   /**********GEOFENCING LOGIC *****************/
 
+  const { isIdle, isRunning, isPaused, region, startTimer, endTimer} = props;
+
   const [position, setPosition] = useState(null)
-  const [region, setRegion] = useState(
+  const [regions, setRegions] = useState(
       {
         latitude: 37.78825,
         longitude: -122.4324,
@@ -118,7 +179,7 @@ const startForegroundUpdate = async () => {
     },
     location => {
       setPosition(location)
-      setRegion({
+      setRegions({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
         latitudeDelta: LATITUDE_DELTA,
@@ -134,6 +195,78 @@ const stopForegroundUpdate = () => {
   setPosition(null)
 }
 
+  // Start location tracking in background
+  const startBackgroundUpdate = async () => {
+    // Don't track position if permission is not granted
+    const { granted } = await Location.getBackgroundPermissionsAsync()
+    if (!granted) {
+      console.log("location tracking denied")
+      return
+    }
+
+    // Make sure the task is defined otherwise do not start tracking
+    const isTaskDefined = await TaskManager.isTaskDefined(BACKROUND_LOCATION_TRACKING)
+    if (!isTaskDefined) {
+      console.log("Task is not defined")
+      return
+    }
+    const isGeofenceTaskDefined = await TaskManager.isTaskDefined(GEOFENCE_TRACKING)
+    if (!isGeofenceTaskDefined) {
+      console.log("Task is not defined")
+      return
+    }
+    
+
+    // Don't track if it is already running in background
+    const hasStarted = await Location.hasStartedLocationUpdatesAsync(
+      BACKROUND_LOCATION_TRACKING
+    )
+    if (hasStarted) {
+      console.log("Already started")
+      return
+    }
+    const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
+      GEOFENCE_TRACKING
+    )
+    if (hasGeofenceStarted) {
+      console.log("Already started")
+      return
+    }
+
+    await Location.startLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING, {
+      // For better logs, we set the accuracy to the most sensitive option
+      accuracy: Location.Accuracy.BestForNavigation,
+      // Make sure to enable this notification if you want to consistently track in the background
+      showsBackgroundLocationIndicator: true,
+      foregroundService: {
+        notificationTitle: "Location",
+        notificationBody: "Location tracking in background",
+        notificationColor: "#fff",
+      },
+    })
+
+    await Location.startGeofencingAsync(GEOFENCE_TRACKING,geofences)
+  }
+
+  // Stop location tracking in background
+  const stopBackgroundUpdate = async () => {
+    const hasStarted = await Location.hasStartedLocationUpdatesAsync(
+      BACKROUND_LOCATION_TRACKING
+    )
+    if (hasStarted) {
+      await Location.stopLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING)
+      console.log("Location tacking stopped")
+    }
+    const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
+      GEOFENCE_TRACKING
+    )
+    if (hasGeofenceStarted) {
+      await Location.stopGeofencingAsync(GEOFENCE_TRACKING)
+      console.log("Location tacking stopped")
+    }
+
+  }
+
 /*
   let text = 'Waiting..';
   if (errorMsg) {
@@ -147,7 +280,7 @@ const stopForegroundUpdate = () => {
 
   /********************************************/
 
-    const [locationTracking, setLocationTracking] = useState(false)
+  const [locationTracking, setLocationTracking] = useState(false)
   const [locationButtonColor, setLocationButtonColor] = useState('green')
   const [locationButtonText, setLocationButtonText] = useState('Start Tracking Location')
   const handleLocationButton = ()=>{
@@ -155,12 +288,16 @@ const stopForegroundUpdate = () => {
       setLocationTracking(true)
       setLocationButtonColor('red')
       setLocationButtonText('Stop Tracking Location')
-      startForegroundUpdate();
+      //startForegroundUpdate();
+      //Alert.alert(regions)
+      Alert.alert(JSON.stringify(region))
+      startBackgroundUpdate();
     }else{
       setLocationTracking(false)
       setLocationButtonColor('green')
       setLocationButtonText('Start Tracking Location')
-      stopForegroundUpdate();
+      //stopForegroundUpdate();
+      stopBackgroundUpdate();
     }
 
   }
@@ -183,11 +320,11 @@ const stopForegroundUpdate = () => {
             <Marker
                 coordinate = {{latitude:region.latitude , longitude:region.longitude}}
             />
-            <Polygon coordinates = {heafey} strokeWidth = {3} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
-            <Polygon coordinates = {scdi} strokeWidth = {3} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
-            <Polygon coordinates = {kenna} strokeWidth = {3} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
-            <Polygon coordinates = {benson} strokeWidth = {3} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
-            <Polygon coordinates = {nobili} strokeWidth = {3} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
+            <Circle center={nobili.center} radius = {nobili.radius} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
+            <Circle center={benson.center} radius = {benson.radius} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
+            <Circle center={scdi.center} radius = {scdi.radius} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
+            <Circle center={heafey.center} radius = {heafey.radius} fillColor = {'rgba(245, 40, 145, 0.35)'}/>
+
 
         </MapView>
         <TouchableOpacity style = {{backgroundColor:locationButtonColor}} onPress={handleLocationButton}>
@@ -195,12 +332,30 @@ const stopForegroundUpdate = () => {
         </TouchableOpacity>
 
         <Text>Location: </Text>
-        <Text>{JSON.stringify(position)}</Text>
+        <Text>{JSON.stringify(region)}</Text>
 
       </View>
 
   );
 }
+
+
+const mapStateToProps = (state, props) => {
+
+  const { isIdle, isRunning, isPaused, region } = state;
+  return { isIdle, isRunning, isPaused, region };
+
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    startTimer: () => dispatch(startTimer()),
+    endTimer: () => dispatch(endTimer()),
+  }
+}
+
+const LocationMap = connect(mapStateToProps,mapDispatchToProps)(_LocationMap);
+export default LocationMap
 
 const styles = StyleSheet.create({
     map: {

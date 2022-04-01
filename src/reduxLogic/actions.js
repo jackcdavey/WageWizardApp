@@ -14,3 +14,7 @@ export function resumeTimer(){
 export function endTimer(){
     return {type: "END_TIMER", isIdle: true, isRunning: false, isPaused: false}
 }
+
+export function locationUpdate(latitude, longitude){
+    return {type: "LOCATION_UPDATE", latitude:latitude, longitude:longitude}
+}
