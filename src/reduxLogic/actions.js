@@ -15,6 +15,10 @@ export function endTimer(){
     return {type: "END_TIMER", isIdle: true, isRunning: false, isPaused: false}
 }
 
+export function incrementTime(){
+    return {type: "INCREMENT_TIME"}
+}
+
 export function locationUpdate(latitude, longitude){
     return {type: "LOCATION_UPDATE", latitude:latitude, longitude:longitude}
 }

@@ -3,68 +3,14 @@ import { useState, useEffect } from 'react';
 import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-//redux logic
-import { startTimer, pauseTimer, resumeTimer, endTimer } from '../../reduxLogic/actions'
-import { connect } from 'react-redux';
-
-import Map from '../elements/Map.js';
-import LocationMap from '../elements/LocationTrackingMap'
+//import Map from '../elements/Map.js';
+import Timer from '../elements/Timer'
+import LocationMap from '../locationTracking/LocationTrackingMap'
 import COLORS from '../../styles/colors.js';
 
 //import realm from '../../userData/realm';
 
-
-
-const trackView = (props) => {
-
-
-
-
-  /*********** TIMER LOGIC **********************/
-  let testNumber = 7190; // set to to test number to get to 1:59:50 starting time
-  //const [time,settime] useState(testNumber)
-  const [time, setTime] = useState(0);
-  let seconds = ("0" + ((time / 1) % 60)).slice(-2)
-  let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
-  let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
-
-  //redux state variables
-  const { isIdle, isRunning, isPaused, startTimer, pauseTimer, resumeTimer, endTimer } = props;
-
-  useEffect(() => {
-    let interval = setInterval(() => { }, 0);
-    if (isRunning) {
-      interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
-      }, 1000);
-    } else {
-      clearInterval(interval);
-    }
-    return () => {
-      clearInterval(interval);
-    };
-
-  }, [isIdle, isRunning, isPaused]);
-
-  //helper function to handle the timer's state, we will be addding more in these functions (geofencing, recording entry to the database)
-  const handleStart = () => {
-    startTimer();
-  }
-  const handlePause = () => {
-    pauseTimer();
-  }
-  const handleResume = () => {
-    resumeTimer();
-  }
-  const handleEnd = () => {
-    endTimer()
-    setTime(0);
-  }
-
-
-  /*******END OF TIMER LOGIC ********************/
-
-
+const Tracking = () => {
 
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
@@ -77,53 +23,15 @@ const trackView = (props) => {
     { label: 'Job Four', value: 'jobfour' },
   ]);
 
-
-
-
-
-
-
-
-
   //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
   //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
   //with proper elements.
 
   return (
 
-
-
-
-    //      <Map longitude = {37.78825} latitude = {-122.4324}/>
-    //<Map longitude={locationData.longitude} latitude={locationData.latitude} />
-
-    //<Map longitude = {37.78825} latitude = {-122.4324}/> temporarily removed
-
-
     <View style={styles.container}>
-      <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
-      <TouchableOpacity onPress={handleStart}>
-        <Text>Start</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={handlePause}>
-        <Text>Pause</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={handleResume}>
-        <Text>Resume</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={handleEnd}>
-        <Text>End</Text>
-      </TouchableOpacity>
-
-
-
-
-
-
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
+      <Timer/>
       <DropDownPicker
         style={styles.picker}
         placeholder="Select a Job"
@@ -146,15 +54,9 @@ const trackView = (props) => {
       />
 
       <LocationMap />
-
-
-
-
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -212,20 +114,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-//Connecting our component to the redux store
-
-const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused } = state;
-  return { isIdle, isRunning, isPaused };
-}
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    startTimer: () => dispatch(startTimer()),
-    pauseTimer: () => dispatch(pauseTimer()),
-    resumeTimer: () => dispatch(resumeTimer()),
-    endTimer: () => dispatch(endTimer()),
-  }
-}
-const Tracking = connect(mapStateToProps, mapDispatchToProps)(trackView);
 export default Tracking;

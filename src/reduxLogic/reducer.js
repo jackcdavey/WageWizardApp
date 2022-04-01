@@ -1,17 +1,16 @@
 
-//const LATITUDE = 37.78825;
-//const LONGITUDE = -122.4324;
+
 const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
-
 const initialState = {
+    time:0,
     isIdle: true,
     isRunning: false,
     isPaused: false,
     region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: 37.347934,
+        longitude: -121.940310,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
     }
@@ -49,6 +48,13 @@ export default function Reducer(state = initialState, action){
                 isIdle: action.isIdle,
                 isRunning: action.isRunning,
                 isPaused: action.isPaused,
+                time:0
+            }
+        }
+        case 'INCREMENT_TIME':{
+            return {
+                ...state,
+                time:state.time+=1
             }
         }
 
