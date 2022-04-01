@@ -8,13 +8,17 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import realm from '../../userData/realm';
 
 export default function JobSetup({ navigation }) {
+    var jobIndex = 0;
+
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
+        jobIndex = realm.objects('Job').length;
     }
 
     //default values for job
     //id should be checked and auto-incremented
-    const [id, setId] = useState(0);
+
+    const [id, setId] = useState(jobIndex + 1);
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
@@ -22,30 +26,31 @@ export default function JobSetup({ navigation }) {
     const submitInfo = () => {
         //Save job to realm here
         navigation.navigate('JobLocationSetup');
-    }
-
-
-    let newJob;
-    try {
-        if (realm) {
-            realm.write(() => {
-                var allJobs = realm.objects('Job');
-                console.log('allJobs', allJobs);
-                realm.delete(allJobs);
-            });
-            realm.write(() => {
-                newJob = realm.create('Job', {
-                    id: id,
-                    employer: employer,
-                    client: client,
-                    location: location
+        let newJob;
+        try {
+            if (realm) {
+                realm.write(() => {
+                    var allJobs = realm.objects('Job');
+                    console.log('allJobs', allJobs);
+                    //realm.delete(allJobs);
                 });
-                console.log(newJob);
-            });
+                realm.write(() => {
+                    if (id != jobIndex) {
+                        newJob = realm.create('Job', {
+                            id: id,
+                            employer: employer,
+                            client: client,
+                            location: location
+                        });
+                        console.log(newJob);
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error);
         }
-    } catch (error) {
-        console.log(error);
     }
+
     return (
         <View style={{
             flexDirection: 'column',
