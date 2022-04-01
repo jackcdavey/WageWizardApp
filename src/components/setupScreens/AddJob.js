@@ -5,10 +5,14 @@ import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text 
 import { UpdateMode } from 'realm';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
-import realm from '../../userData/realm';
+//import realm from '../../userData/realm';
 
+let useDB = false;
+
+if (useDB) {
+    realm = require('../../userData/realm');
+}
 export default function JobSetup({ navigation }) {
-
 
 
     //default values for job
