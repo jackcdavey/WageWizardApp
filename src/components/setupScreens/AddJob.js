@@ -23,6 +23,21 @@ export default function JobSetup({ navigation }) {
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
 
+    const clearJobs = () => {
+        try {
+            if (realm) {
+                realm.write(() => {
+                    var allJobs = realm.objects('Job');
+                    realm.delete(allJobs);
+                    Alert.alert('All jobs have been deleted.');
+                });
+            }
+        }
+        catch (error) {
+            Alert.alert('Error deleting jobs.');
+        }
+    }
+
     const submitInfo = () => {
         //Save job to realm here
         navigation.navigate('JobLocationSetup');
@@ -32,6 +47,7 @@ export default function JobSetup({ navigation }) {
                 realm.write(() => {
                     var allJobs = realm.objects('Job');
                     console.log('allJobs', allJobs);
+                    Alert.alert('allJobs', JSON.stringify(allJobs));
                     //realm.delete(allJobs);
                 });
                 realm.write(() => {
@@ -92,6 +108,9 @@ export default function JobSetup({ navigation }) {
                     <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
+            <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearJobs()}>
+                <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
+            </TouchableOpacity>
 
 
         </View>
