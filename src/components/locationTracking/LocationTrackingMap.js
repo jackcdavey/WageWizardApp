@@ -5,7 +5,7 @@ import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useC
 
 //location/geofencing imports
 import * as Location from "expo-location"
-import { GeofencingEventType } from 'expo-location';
+import { GeofencingEventType, GeofencingRegionState  } from 'expo-location';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import * as TaskManager from "expo-task-manager"
 import {establishment, generateGeofence} from './establishments'
@@ -53,7 +53,7 @@ TaskManager.defineTask(GEOFENCE_TRACKING, ({ data: { eventType, region }, error 
     // check `error.message` for more details.
     return;
   }
-  if (eventType === GeofencingEventType.Enter) {
+  if (eventType === GeofencingEventType.Enter || GeofencingRegionState.Inside === 1) {
     console.log("You've entered region:", region);
     store.dispatch(startTimer())
   } else if (eventType === GeofencingEventType.Exit) {
@@ -198,6 +198,7 @@ const _LocationMap = (props) =>{
         setLocationButtonColor('green')
         setLocationButtonText('Start Tracking Location')
         stopBackgroundUpdate();
+        endTimer();
         }
 
     }
