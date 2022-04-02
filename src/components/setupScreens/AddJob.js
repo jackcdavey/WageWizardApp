@@ -7,12 +7,13 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
 //import realm from '../../userData/realm';
 
-var jobIndex = 1;
+//Eventually this will need to listen to the route –
+//If the user has pushed the back button from the job location setup screen, the last 
+//job should be deleted.
 export default function JobSetup({ navigation }) {
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
-        jobIndex = realm.objects('Job').length;
-        Alert.alert('There are ' + jobIndex + ' jobs in the database.');
+        Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
     }
 
     //default values for job
@@ -53,15 +54,19 @@ export default function JobSetup({ navigation }) {
                     //realm.delete(allJobs);
                 });
                 realm.write(() => {
+                    if (id != realm.objects('Job').length) {
+                        newJob = realm.create('Job', {
+                            id: id,
+                            employer: employer,
+                            client: client,
+                            location: location
+                        });
+                        Alert.alert('New job created: ', JSON.stringify(newJob));
+                        console.log(newJob);
+                    } else {
+                        Alert.alert('Job already exists.');
+                    }
 
-                    newJob = realm.create('Job', {
-                        id: id,
-                        employer: employer,
-                        client: client,
-                        location: location
-                    });
-                    Alert.alert('New job created: ', JSON.stringify(newJob));
-                    console.log(newJob);
 
 
                 });
