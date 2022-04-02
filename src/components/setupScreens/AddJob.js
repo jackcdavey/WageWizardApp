@@ -7,7 +7,7 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
 //import realm from '../../userData/realm';
 
-var jobIndex = 0;
+var jobIndex = 1;
 export default function JobSetup({ navigation }) {
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
@@ -18,7 +18,7 @@ export default function JobSetup({ navigation }) {
     //default values for job
     //id should be checked and auto-incremented
 
-    const [id, setId] = useState(jobIndex + 1);
+    const [id, setId] = useState(realm.objects('Job').length + 1);
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
@@ -30,6 +30,8 @@ export default function JobSetup({ navigation }) {
                     var allJobs = realm.objects('Job');
                     realm.delete(allJobs);
                     Alert.alert('All jobs have been deleted.');
+                    console.log('Remaining jobs: ', allJobs);
+                    setId(0);
                 });
             }
         }
@@ -51,16 +53,17 @@ export default function JobSetup({ navigation }) {
                     //realm.delete(allJobs);
                 });
                 realm.write(() => {
-                    if (id != jobIndex) {
-                        newJob = realm.create('Job', {
-                            id: id,
-                            employer: employer,
-                            client: client,
-                            location: location
-                        });
-                        Alert.alert('New job created: ', JSON.stringify(newJob));
-                        console.log(newJob);
-                    }
+
+                    newJob = realm.create('Job', {
+                        id: id,
+                        employer: employer,
+                        client: client,
+                        location: location
+                    });
+                    Alert.alert('New job created: ', JSON.stringify(newJob));
+                    console.log(newJob);
+
+
                 });
             }
         } catch (error) {
