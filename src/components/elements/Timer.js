@@ -46,21 +46,7 @@ const _Timer = (props) => {
         <View>
             <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
             
-            <TouchableOpacity onPress={handleStart}>
-            <Text>Start</Text>
-            </TouchableOpacity>
-    
-            <TouchableOpacity onPress={handlePause}>
-            <Text>Pause</Text>
-            </TouchableOpacity>
-    
-            <TouchableOpacity onPress={handleResume}>
-            <Text>Resume</Text>
-            </TouchableOpacity>
-    
-            <TouchableOpacity onPress={handleEnd}>
-            <Text>End</Text>
-            </TouchableOpacity>
+  
         </View>
     )
 }

@@ -227,9 +227,6 @@ const _LocationMap = (props) =>{
                 <Text>{locationButtonText}</Text>
             </TouchableOpacity>
 
-            <Text>Location: </Text>
-            <Text>{JSON.stringify(region)}</Text>
-
         </View>
 
     );
