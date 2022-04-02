@@ -2,12 +2,71 @@
 // as will this https://reactnavigation.org/docs/stack-navigator/
 
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
 
-export default function InitialSetupView({ navigation }: { navigation: any }) {
+export default function InitialSetupView({ navigation }) {
+    var userExists = false;
+    if (global.globalRealmDBUse) {
+        realm = require('../../userData/realm').default;
+        userExists = realm.objects('User').length > 0;
+    }
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [birthday, setBirthday] = useState('');
+    const [pin, setPin] = useState(0);
+    const [useBiometric, setUseBiometric] = useState(false);
+
+    const submitInfo = () => {
+        navigation.navigate("JobSetup");
+        let newUser;
+        try {
+            if (realm) {
+                realm.write(() => {
+                    var allUsers = realm.objects('User');
+                    console.log('allUsers', allUsers);
+                    Alert.alert('allUsers', JSON.stringify(allUsers));
+                });
+                realm.write(() => {
+                    if (!userExists) {
+                        newUser = realm.create('User', {
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            birthday: birthday,
+                            pin: pin,
+                            useBiometric: useBiometric
+                        });
+                    }
+                });
+            }
+        }
+        catch (error) {
+            Alert.alert('Error saving user.');
+        }
+    }
+
+    const clearUsers = () => {
+        try {
+            if (realm) {
+                realm.write(() => {
+                    var allUsers = realm.objects('User');
+                    realm.delete(allUsers);
+                    Alert.alert('All users have been deleted.');
+                });
+            }
+        }
+        catch (error) {
+            Alert.alert('Error deleting users.');
+        }
+    }
+
+
+
     return (
         <View style={{
             flexDirection: 'column',
@@ -25,7 +84,12 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
             </View>
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Full Name" />
+                <TextInput style={styles.input} placeholder="First Name" onChangeText={newText => setFirstName(newText)} />
+            </View>
+
+            <View style={styles.field}>
+                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
+                <TextInput style={styles.input} placeholder="Last Name" />
             </View>
 
             <View style={styles.field}>
@@ -41,6 +105,7 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
             <View style={styles.field}>
                 {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
                 <TextInput style={styles.input} placeholder="Pin" />
+                {/* Needs to be a number import, breaking account saving */}
             </View>
 
             <View style={styles.field}>
@@ -49,8 +114,11 @@ export default function InitialSetupView({ navigation }: { navigation: any }) {
             </View>
 
             <View style={styles.buttonWrap}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("JobSetup")}>
+                <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
                     <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearUsers()}>
+                    <Text style={{ color: COLORS.secondary }}>DELETE PROFILE DATA</Text>
                 </TouchableOpacity>
             </View>
 

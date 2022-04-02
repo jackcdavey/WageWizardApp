@@ -1,6 +1,5 @@
 import COLORS from '../../styles/colors.js';
-import React from 'react';
-import realm from '../../userData/realm.js';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   SafeAreaView,
@@ -23,9 +22,26 @@ const Tab = createBottomTabNavigator();
 
 
 
-
 //Account Page Content
-const AcccountView = ({ navigation }: { navigation: any }) => {
+const AcccountView = ({ navigation }) => {
+  var userExists = false;
+  if (global.globalRealmDBUse) {
+    realm = require('../../userData/realm').default;
+    userExists = realm.objects('User').length > 0;
+
+    if (userExists) {
+      const [firstName] = useState(realm.objects('User')[0].firstName);
+      const [lastName] = useState(realm.objects('User')[0].lastName);
+      const [birthday] = useState(realm.objects('User')[0].birthday);
+      const [email] = useState(realm.objects('User')[0].email);
+    }
+  }
+  const firstName = 'None';
+  const lastName = 'None';
+  const birthday = 'None';
+  const email = 'None';
+
+
   return (
     <View>
       <View style={{ flexDirection: 'row', paddingTop: 25 }}>
@@ -36,14 +52,14 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
         </View>
         <View>
           <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Full Name" />
+            <TextInput style={styles.input} placeholder="Full Name" defaultValue={firstName} />
           </View>
           <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Email Address" />
+            <TextInput style={styles.input} placeholder="Email Address" defaultValue={email} />
           </View>
 
           <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Birthday" />
+            <TextInput style={styles.input} placeholder="Birthday" defaultValue={birthday} />
           </View>
         </View>
       </View>
@@ -82,7 +98,7 @@ const AcccountView = ({ navigation }: { navigation: any }) => {
 
 
 //Handles stack navigation settings for account//
-export default function Account({ navigation }: { navigation: any }) {
+export default function Account({ navigation }) {
   return (
     //Display header in here
     <Tab.Navigator
