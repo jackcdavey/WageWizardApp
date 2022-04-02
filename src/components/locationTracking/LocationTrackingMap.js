@@ -13,7 +13,7 @@ import {establishment, generateGeofence} from './establishments'
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer } from '../../reduxLogic/actions'
 
 //standardized styling import
 import COLORS from '../../styles/colors';
@@ -74,6 +74,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
       startTimer: () => dispatch(startTimer()),
+      pauseTimer: () => dispatch(pauseTimer()),
+      resumeTimer: () => dispatch(resumeTimer()),
       endTimer: () => dispatch(endTimer()),
     }
 }
@@ -87,7 +89,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) =>{
   
     //grabing all of the redux states and dispatches from the props
-    const { isIdle, isRunning, isPaused, region, startTimer, endTimer} = props;
+    const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer} = props;
 
     //useEffect to ask the user for location permissions, must be run first 
     useEffect(()=>{
@@ -200,7 +202,21 @@ const _LocationMap = (props) =>{
         stopBackgroundUpdate();
         endTimer();
         }
+    }
 
+    const handleStart = ()=>{
+      startBackgroundUpdate();
+    }
+
+    const handleResume = ()=>{
+      resumeTimer();
+    }
+    const handlePause = ()=>{
+      pauseTimer();
+    }
+    const handleEnd = ()=>{
+      stopBackgroundUpdate();
+      endTimer();
     }
 
     return (
@@ -223,9 +239,27 @@ const _LocationMap = (props) =>{
 
             </MapView>
 
-            <TouchableOpacity style = {{backgroundColor:locationButtonColor}} onPress={handleLocationButton}>
-                <Text>{locationButtonText}</Text>
-            </TouchableOpacity>
+
+           
+            {isIdle
+              ? <TouchableOpacity style = {{backgroundColor:locationButtonColor}} onPress={handleStart}>
+                  <Text>Start Tracking</Text>
+                </TouchableOpacity>
+              : <View>
+                  <TouchableOpacity onPress={handlePause}>
+                  <Text>Pause</Text>
+                  </TouchableOpacity>
+          
+                  <TouchableOpacity onPress={handleResume}>
+                  <Text>Resume</Text>
+                  </TouchableOpacity>
+          
+                  <TouchableOpacity onPress={handleEnd}>
+                  <Text>End</Text>
+                  </TouchableOpacity>
+                </View>
+            }
+            
 
         </View>
 
