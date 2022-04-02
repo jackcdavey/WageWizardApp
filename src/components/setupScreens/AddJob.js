@@ -44,12 +44,7 @@ export default function JobSetup({ navigation }) {
         let newJob;
         try {
             if (realm) {
-                realm.write(() => {
-                    var allJobs = realm.objects('Job');
-                    console.log('allJobs', allJobs);
-                    Alert.alert('allJobs', JSON.stringify(allJobs));
-                    //realm.delete(allJobs);
-                });
+
                 realm.write(() => {
                     if (id != jobIndex) {
                         newJob = realm.create('Job', {
@@ -60,6 +55,12 @@ export default function JobSetup({ navigation }) {
                         });
                         console.log(newJob);
                     }
+                });
+                realm.write(() => {
+                    var allJobs = realm.objects('Job');
+                    console.log('allJobs', allJobs);
+                    Alert.alert('allJobs', JSON.stringify(allJobs));
+                    //realm.delete(allJobs);
                 });
             }
         } catch (error) {
