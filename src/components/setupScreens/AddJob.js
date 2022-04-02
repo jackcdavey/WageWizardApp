@@ -7,18 +7,19 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
 //import realm from '../../userData/realm';
 
-var jobIndex = 0;
+//Eventually this will need to listen to the route –
+//If the user has pushed the back button from the job location setup screen, the last 
+//job should be deleted.
 export default function JobSetup({ navigation }) {
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
-        jobIndex = realm.objects('Job').length;
-        Alert.alert('There are ' + jobIndex + ' jobs in the database.');
+        Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
     }
 
     //default values for job
     //id should be checked and auto-incremented
 
-    const [id, setId] = useState(jobIndex + 1);
+    const [id, setId] = useState(realm.objects('Job').length + 1);
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
@@ -30,6 +31,8 @@ export default function JobSetup({ navigation }) {
                     var allJobs = realm.objects('Job');
                     realm.delete(allJobs);
                     Alert.alert('All jobs have been deleted.');
+                    console.log('Remaining jobs: ', allJobs);
+                    setId(0);
                 });
             }
         }
@@ -51,7 +54,7 @@ export default function JobSetup({ navigation }) {
                     //realm.delete(allJobs);
                 });
                 realm.write(() => {
-                    if (id != jobIndex) {
+                    if (id != realm.objects('Job').length) {
                         newJob = realm.create('Job', {
                             id: id,
                             employer: employer,
@@ -60,7 +63,12 @@ export default function JobSetup({ navigation }) {
                         });
                         Alert.alert('New job created: ', JSON.stringify(newJob));
                         console.log(newJob);
+                    } else {
+                        Alert.alert('Job already exists.');
                     }
+
+
+
                 });
             }
         } catch (error) {
