@@ -7,12 +7,12 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
 //import realm from '../../userData/realm';
 
+var jobIndex = 0;
 export default function JobSetup({ navigation }) {
-    var jobIndex = 0;
-
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
         jobIndex = realm.objects('Job').length;
+        Alert.alert('There are ' + jobIndex + ' jobs in the database.');
     }
 
     //default values for job
@@ -44,7 +44,12 @@ export default function JobSetup({ navigation }) {
         let newJob;
         try {
             if (realm) {
-
+                realm.write(() => {
+                    var allJobs = realm.objects('Job');
+                    console.log('allJobs', allJobs);
+                    //Alert.alert('allJobs', JSON.stringify(allJobs));
+                    //realm.delete(allJobs);
+                });
                 realm.write(() => {
                     if (id != jobIndex) {
                         newJob = realm.create('Job', {
@@ -53,14 +58,9 @@ export default function JobSetup({ navigation }) {
                             client: client,
                             location: location
                         });
+                        Alert.alert('New job created: ', JSON.stringify(newJob));
                         console.log(newJob);
                     }
-                });
-                realm.write(() => {
-                    var allJobs = realm.objects('Job');
-                    console.log('allJobs', allJobs);
-                    Alert.alert('allJobs', JSON.stringify(allJobs));
-                    //realm.delete(allJobs);
                 });
             }
         } catch (error) {
