@@ -31,8 +31,10 @@ const AcccountView = ({ navigation }) => {
 
   var firstName = 'no First Name';
   var lastName = 'no Last Name';
+  var fullName = 'no Name Stuff';
   var birthday = 'no Birthday';
   var email = 'no Email';
+
 
 
   if (global.globalRealmDBUse) {
@@ -46,8 +48,10 @@ const AcccountView = ({ navigation }) => {
 
       firstName = user[0].firstName;
       lastName = user[0].lastName;
+      fullName = firstName + ' ' + lastName;
       birthday = user[0].birthday;
       email = user[0].email;
+
 
     }
   }
@@ -67,7 +71,7 @@ const AcccountView = ({ navigation }) => {
           </View>
           <View>
             <View style={styles.field}>
-              <Text style={styles.input}>{firstName}</Text>
+              <Text style={styles.input}>{fullName}</Text>
             </View>
             <View style={styles.field}>
               <Text style={styles.input}>{email}</Text>
@@ -127,7 +131,7 @@ const AcccountView = ({ navigation }) => {
           </View>
           <View>
             <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Full Name" defaultValue={firstName} />
+              <TextInput style={styles.input} placeholder="Full Name" defaultValue={fullName} />
             </View>
             <View style={styles.field}>
               <TextInput style={styles.input} placeholder="Email Address" defaultValue={email} />
