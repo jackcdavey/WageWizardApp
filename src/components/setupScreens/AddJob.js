@@ -11,24 +11,21 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //If the user has pushed the back button from the job location setup screen, the last 
 //job should be deleted.
 export default function JobSetup({ navigation }) {
-    const employer = 'Empty Employer';
-    const client = 'Empty Client';
-    const location = 'Empty Location';
 
+    var id = -1;
+    const [employer, setEmployer] = useState('Test Employer');
+    const [client, setClient] = useState('Test Client');
+    const [location, setLocation] = useState('Test Location');
 
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
         Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
-
-
         //default values for job
         //id should be checked and auto-incremented
-
-        const [id, setId] = useState(realm.objects('Job').length + 1);
-        const [employer, setEmployer] = useState('Test Employer');
-        const [client, setClient] = useState('Test Client');
-        const [location, setLocation] = useState('Test Location');
+        id = realm.objects('Job').length + 1;
     }
+
+
 
     const clearJobs = () => {
         try {
@@ -98,14 +95,14 @@ export default function JobSetup({ navigation }) {
                 </Text>
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="Employer Name" onChangeText={newText => setEmployer(newText)} defaultValue={employer} />
+                <TextInput style={styles.input} placeholder="Employer Name" onChangeText={newText => setEmployer(newText)} />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Client Name" onChangeText={newText => setClient(newText)} defaultValue={client} />
+                <TextInput style={styles.input} placeholder="Client Name" onChangeText={newText => setClient(newText)} />
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="City (Of Work)" onChangeText={newText => setLocation(newText)} defaultValue={location} />
+                <TextInput style={styles.input} placeholder="City (Of Work)" onChangeText={newText => setLocation(newText)} />
                 {/* this will be changed in future build */}
             </View>
 
