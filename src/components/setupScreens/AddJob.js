@@ -11,18 +11,24 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //If the user has pushed the back button from the job location setup screen, the last 
 //job should be deleted.
 export default function JobSetup({ navigation }) {
+    const employer = 'Empty Employer';
+    const client = 'Empty Client';
+    const location = 'Empty Location';
+
+
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
         Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
+
+
+        //default values for job
+        //id should be checked and auto-incremented
+
+        const [id, setId] = useState(realm.objects('Job').length + 1);
+        const [employer, setEmployer] = useState('Test Employer');
+        const [client, setClient] = useState('Test Client');
+        const [location, setLocation] = useState('Test Location');
     }
-
-    //default values for job
-    //id should be checked and auto-incremented
-
-    const [id, setId] = useState(realm.objects('Job').length + 1);
-    const [employer, setEmployer] = useState('Test Employer');
-    const [client, setClient] = useState('Test Client');
-    const [location, setLocation] = useState('Test Location');
 
     const clearJobs = () => {
         try {
@@ -75,6 +81,7 @@ export default function JobSetup({ navigation }) {
             console.log(error);
         }
     }
+
 
     return (
         <View style={{

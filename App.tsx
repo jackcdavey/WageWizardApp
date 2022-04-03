@@ -32,10 +32,10 @@ import SetupNav from './src/components/setupScreens/SetupNav';
 /////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 
 //Custom fonts display properly in simulators, but trigger errors when run with Expo Go.
-global.globalCustomFontUse = true;
+global.globalCustomFontUse = false;
 
 //Realm DB has limited compatibility with Expo, so disable it when compiling for Expo Go.
-global.globalRealmDBUse = true;
+global.globalRealmDBUse = false;
 
 /////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 
