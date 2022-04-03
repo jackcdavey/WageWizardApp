@@ -27,6 +27,7 @@ export default function JobSetup({ navigation }) {
 
 
 
+
     const clearJobs = () => {
         try {
             if (realm) {
@@ -35,7 +36,7 @@ export default function JobSetup({ navigation }) {
                     realm.delete(allJobs);
                     Alert.alert('All jobs have been deleted.');
                     console.log('Remaining jobs: ', allJobs);
-                    //setId(0);
+                    id = realm.objects('Job').length + 1;
                 });
             } else {
                 Alert.alert('Realm not initialized.');
@@ -59,7 +60,7 @@ export default function JobSetup({ navigation }) {
                     //realm.delete(allJobs);
                 });
                 realm.write(() => {
-                    if (id != realm.objects('Job').length) {
+                    if (id != realm.objects('Job').length && !realm.objectForPrimaryKey('Job', id)) {
                         newJob = realm.create('Job', {
                             id: id,
                             employer: employer,
