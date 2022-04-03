@@ -35,7 +35,7 @@ export default function JobSetup({ navigation }) {
                     realm.delete(allJobs);
                     Alert.alert('All jobs have been deleted.');
                     console.log('Remaining jobs: ', allJobs);
-                    setId(0);
+                    //setId(0);
                 });
             } else {
                 Alert.alert('Realm not initialized.');

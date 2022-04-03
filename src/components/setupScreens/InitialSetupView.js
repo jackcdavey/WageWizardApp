@@ -26,11 +26,7 @@ export default function InitialSetupView({ navigation }) {
         let newUser;
         try {
             if (realm) {
-                realm.write(() => {
-                    var allUsers = realm.objects('User');
-                    console.log('allUsers', allUsers);
-                    Alert.alert('allUsers', JSON.stringify(allUsers));
-                });
+
                 realm.write(() => {
                     if (!userExists) {
                         newUser = realm.create('User', {
@@ -42,6 +38,11 @@ export default function InitialSetupView({ navigation }) {
                             useBiometric: useBiometric
                         });
                     }
+                });
+                realm.write(() => {
+                    var allUsers = realm.objects('User');
+                    console.log('allUsers', allUsers);
+                    Alert.alert('allUsers', JSON.stringify(allUsers));
                 });
             }
         }
