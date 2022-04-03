@@ -10,8 +10,7 @@ import Resources from '../mainScreens/Resources';
 import WorkLogs from '../mainScreens/WorkLogs';
 import Account from '../mainScreens/Account';
 import MyWage from '../mainScreens/MyWage';
-import CustomIcon from '../elements/CustomIcon';
-import Header from '../elements/Header.js';
+import Header from './Header.js';
 
 
 import {
@@ -25,7 +24,14 @@ import {
 
 const Tab = createBottomTabNavigator();
 
-export default function NavBar({ navigation }: { navigation: any }) {
+export default function NavBar({ navigation }) {
+  var userName = 'no Name';
+  if (global.globalRealmDBUse) {
+    realm = require('../../userData/realm').default;
+    const user = realm.objects('User');
+    userName = user[0].firstName;
+  }
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -40,7 +46,7 @@ export default function NavBar({ navigation }: { navigation: any }) {
           <TouchableOpacity onPress={() => navigation.navigate('Account')}>
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: 10, paddingRight: 10 }}>
               <View>
-                <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>[User]'s</Text>
+                <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>{userName}'s</Text>
                 <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>Account</Text>
               </View>
               <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 40, maxHeight: 40 }} resizeMode="contain" />

@@ -124,21 +124,12 @@ const AcccountView = ({ navigation }) => {
     );
   } else {
 
-
-
-
-
-
-
-
-
-
-
     //Editable version of the page
 
     //IMPORTANT
     //This will need to be updated as the static version is updated.
     //
+
 
     return (
       <View>
