@@ -11,7 +11,6 @@ export default function InitialSetupView({ navigation }) {
     var userExists = false;
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
-        userExists = realm.objects('User').length > 0;
     }
 
     const [firstName, setFirstName] = useState('');
@@ -22,12 +21,14 @@ export default function InitialSetupView({ navigation }) {
     const [useBiometric, setUseBiometric] = useState(false);
 
     const submitInfo = () => {
-        navigation.navigate("JobSetup");
+
         let newUser;
         try {
             if (realm) {
 
                 realm.write(() => {
+                    userExists = realm.objects('User').length > 0;
+
                     if (!userExists) {
                         newUser = realm.create('User', {
                             firstName: firstName,
@@ -37,14 +38,26 @@ export default function InitialSetupView({ navigation }) {
                             pin: pin,
                             useBiometric: useBiometric
                         });
+                        navigation.navigate("JobSetup");
+                    }
+                    else {
+                        Alert.alert('A user already exists, clear profile data first to create a new user.');
                     }
                 });
+
+                //Get rid of this later 
                 realm.write(() => {
                     var allUsers = realm.objects('User');
                     console.log('allUsers', allUsers);
-                    Alert.alert('allUsers', JSON.stringify(allUsers));
+                    // Alert.alert('allUsers', JSON.stringify(allUsers));
                 });
+                //
             }
+            else {
+                Alert.alert('Realm is not defined, navigating anyway');
+                navigation.navigate("JobSetup");
+            }
+
         }
         catch (error) {
             Alert.alert('Error saving user.');
