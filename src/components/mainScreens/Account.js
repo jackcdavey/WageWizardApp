@@ -1,5 +1,5 @@
 import COLORS from '../../styles/colors.js';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   SafeAreaView,
@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 
 import Header from '../elements/Header.js';
+import { color } from 'react-native-reanimated';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,76 +25,158 @@ const Tab = createBottomTabNavigator();
 
 //Account Page Content
 const AcccountView = ({ navigation }) => {
+
   var userExists = false;
+  const [isEditing, setIsEditing] = useState(false);
+  // const [firstName, setFirstName] = useState('Empty Name');
+  // const [lastName, setLastName] = useState('Empty Last Name');
+  // const [birthday, setBirthday] = useState('Empty Birthday');
+  // const [email, setEmail] = useState('Empty Email');
+  var firstName = 'Empty Name';
+  var lastName = 'Empty Last Name';
+  var birthday = 'Empty Birthday';
+  var email = 'Empty Email';
+
+
   if (global.globalRealmDBUse) {
     realm = require('../../userData/realm').default;
     userExists = realm.objects('User').length > 0;
+    const user = realm.objects('User');
 
     if (userExists) {
-      const [firstName] = useState(realm.objects('User')[0].firstName);
-      const [lastName] = useState(realm.objects('User')[0].lastName);
-      const [birthday] = useState(realm.objects('User')[0].birthday);
-      const [email] = useState(realm.objects('User')[0].email);
+      //Alert.alert('There is a user in the database.');
+      //Alert.alert('User: ' + JSON.stringify(user));
+
+      useEffect(() => {
+        firstName = JSON.stringify(user.firstName);
+        lastName = JSON.stringify(user.lastName);
+        birthday = JSON.stringify(user.birthday);
+        email = JSON.stringify(user.email);
+      }, [user]);
     }
   }
-  const firstName = 'None';
-  const lastName = 'None';
-  const birthday = 'None';
-  const email = 'None';
 
+  //If editButtonPressed is true, then render the version of the page with the TextInputs 
+  //rather than Text elements.
+  if (!isEditing) {
+    //Static version of the page
+    return (
+      <><View>
 
-  return (
-    <View>
-      <View style={{ flexDirection: 'row', paddingTop: 25 }}>
-        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
-          <TouchableOpacity onPress={() => Alert.alert("Edit Profile Picture")}>
-            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} />
+        <View style={{ flexDirection: 'row', paddingTop: 25 }}>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
+            <TouchableOpacity onPress={() => Alert.alert("Edit Profile Picture")}>
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <View style={styles.field}>
+              <Text style={styles.input}>{firstName}</Text>
+            </View>
+            <View style={styles.field}>
+              <Text style={styles.input}>{email}</Text>
+            </View>
+
+            <View style={styles.field}>
+              <Text style={styles.input}>{birthday}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{ justifyContent: 'center' }}>
+          <TouchableOpacity onPress={() => setIsEditing(true)}>
+            <View style={styles.btn}>
+              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+                Edit
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
-        <View>
-          <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Full Name" defaultValue={firstName} />
+        <View style={{ justifyContent: 'center' }}>
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
           </View>
-          <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Email Address" defaultValue={email} />
-          </View>
+          <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
+            <View style={styles.btn}>
+              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+                Add New Job
+              </Text>
+            </View>
+          </TouchableOpacity>
 
-          <View style={styles.field}>
-            <TextInput style={styles.input} placeholder="Birthday" defaultValue={birthday} />
+          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+            <View style={styles.testBtn}>
+              <Text style={styles.item}>
+                [TEST - Trigger Setup]
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View></>
+    );
+  } else {
+    //Editable version of the page
+    return (
+      <View>
+        <View style={{ flexDirection: 'row', paddingTop: 25 }}>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
+            <TouchableOpacity onPress={() => Alert.alert("Edit Profile Picture")}>
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Full Name" defaultValue={firstName} />
+            </View>
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Email Address" defaultValue={email} />
+            </View>
+
+            <View style={styles.field}>
+              <TextInput style={styles.input} placeholder="Birthday" defaultValue={birthday} />
+            </View>
           </View>
         </View>
-      </View>
-      <View style={{ justifyContent: 'center' }}>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
+        <View style={{ justifyContent: 'center' }}>
+          <TouchableOpacity onPress={() => setIsEditing(false)}>
+            <View style={styles.btn}>
+              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+                Done Editing
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
-          <View style={styles.btn}>
-            <Text style={{
-              margin: 5,
-              padding: 10,
-              color: COLORS.light,
-              fontSize: 20,
-              height: 44,
-              fontWeight: 'bold',
-            }}>
-              Add New Job
-            </Text>
+        <View style={{ justifyContent: 'center' }}>
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
           </View>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
+            <View style={styles.btn}>
+              <Text style={{
+                margin: 5,
+                padding: 10,
+                color: COLORS.light,
+                fontSize: 20,
+                height: 44,
+                fontWeight: 'bold',
+              }}>
+                Add New Job
+              </Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
-          <View style={styles.testBtn}>
-            <Text style={styles.item}>
-              [TEST - Trigger Setup]
-            </Text>
-          </View>
-        </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+            <View style={styles.testBtn}>
+              <Text style={styles.item}>
+                [TEST - Trigger Setup]
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
-
 
 
 
