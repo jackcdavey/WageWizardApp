@@ -26,6 +26,8 @@ const Tab = createBottomTabNavigator();
 //Account Page Content
 const AcccountView = ({ navigation }) => {
 
+  const profilePicDimensions = Dimensions.get('window').width * 0.35;
+
   var userExists = false;
   const [isEditing, setIsEditing] = useState(false);
 
@@ -64,9 +66,9 @@ const AcccountView = ({ navigation }) => {
       <><View>
 
         <View style={{ flexDirection: 'row', paddingTop: 25 }}>
-          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20, maxHeight: profilePicDimensions }}>
             <TouchableOpacity onPress={() => Alert.alert("Edit Profile Picture")}>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} />
+              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
             </TouchableOpacity>
           </View>
           <View>
@@ -82,6 +84,7 @@ const AcccountView = ({ navigation }) => {
             </View>
           </View>
         </View>
+
         <View style={{ justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => setIsEditing(true)}>
             <View style={styles.btn}>
