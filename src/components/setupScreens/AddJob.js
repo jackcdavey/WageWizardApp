@@ -71,7 +71,7 @@ export default function JobSetup({ navigation }) {
                         Alert.alert('New job created: ', JSON.stringify(newJob));
                         console.log(newJob);
                     } else {
-                        Alert.alert('Job already exists. (Dont use the back button rn)');
+                        Alert.alert('Job already exists. (idk how that is possible)');
                     }
 
 

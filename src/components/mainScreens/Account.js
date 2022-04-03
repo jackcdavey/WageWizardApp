@@ -28,14 +28,11 @@ const AcccountView = ({ navigation }) => {
 
   var userExists = false;
   const [isEditing, setIsEditing] = useState(false);
-  // const [firstName, setFirstName] = useState('Empty Name');
-  // const [lastName, setLastName] = useState('Empty Last Name');
-  // const [birthday, setBirthday] = useState('Empty Birthday');
-  // const [email, setEmail] = useState('Empty Email');
-  var firstName = 'Empty Name';
-  var lastName = 'Empty Last Name';
-  var birthday = 'Empty Birthday';
-  var email = 'Empty Email';
+
+  var firstName = 'no First Name';
+  var lastName = 'no Last Name';
+  var birthday = 'no Birthday';
+  var email = 'no Email';
 
 
   if (global.globalRealmDBUse) {
@@ -45,14 +42,13 @@ const AcccountView = ({ navigation }) => {
 
     if (userExists) {
       //Alert.alert('There is a user in the database.');
-      //Alert.alert('User: ' + JSON.stringify(user));
+      //Alert.alert('User: ' + user[0].firstName);
 
-      useEffect(() => {
-        firstName = JSON.stringify(user.firstName);
-        lastName = JSON.stringify(user.lastName);
-        birthday = JSON.stringify(user.birthday);
-        email = JSON.stringify(user.email);
-      }, [user]);
+      firstName = user[0].firstName;
+      lastName = user[0].lastName;
+      birthday = user[0].birthday;
+      email = user[0].email;
+
     }
   }
 
@@ -114,7 +110,13 @@ const AcccountView = ({ navigation }) => {
       </View></>
     );
   } else {
+
     //Editable version of the page
+
+    //IMPORTANT
+    //This will need to be updated as the static version is updated.
+    //
+
     return (
       <View>
         <View style={{ flexDirection: 'row', paddingTop: 25 }}>
