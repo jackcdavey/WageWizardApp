@@ -36,7 +36,7 @@ export default function JobSetup({ navigation }) {
                     realm.delete(allJobs);
                     Alert.alert('All jobs have been deleted.');
                     console.log('Remaining jobs: ', allJobs);
-                    id = realm.objects('Job').length + 1;
+
                 });
             } else {
                 Alert.alert('Realm not initialized.');
@@ -60,6 +60,7 @@ export default function JobSetup({ navigation }) {
                     //realm.delete(allJobs);
                 });
                 realm.write(() => {
+                    id = realm.objects('Job').length + 1;
                     if (id != realm.objects('Job').length && !realm.objectForPrimaryKey('Job', id)) {
                         newJob = realm.create('Job', {
                             id: id,
