@@ -58,6 +58,8 @@ export default function InitialSetupView({ navigation }) {
                     realm.delete(allUsers);
                     Alert.alert('All users have been deleted.');
                 });
+            } else {
+                Alert.alert('Realm not initialized.');
             }
         }
         catch (error) {
@@ -89,17 +91,17 @@ export default function InitialSetupView({ navigation }) {
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Last Name" />
+                <TextInput style={styles.input} placeholder="Last Name" onChangeText={newText => setLastName(newText)} />
             </View>
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Email Address" />
+                <TextInput style={styles.input} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
             </View>
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Birthday" />
+                <TextInput style={styles.input} placeholder="Birthday" onChangeText={newText => setBirthday(newText)} />
             </View>
 
             <View style={styles.field}>

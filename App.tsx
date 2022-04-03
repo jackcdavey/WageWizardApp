@@ -29,6 +29,10 @@ import SetupNav from './src/components/setupScreens/SetupNav';
 //For future implementation of user authentication & biometric usage:
 //https://github.com/oblador/react-native-keychain
 
+//Will need to be implemented globally for better text input on Anrdoid/iOS
+//https://reactnative.dev/docs/textinput
+
+
 /////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 
 //Custom fonts display properly in simulators, but trigger errors when run with Expo Go.

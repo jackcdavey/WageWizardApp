@@ -19,7 +19,7 @@ export default function JobSetup({ navigation }) {
 
     if (global.globalRealmDBUse) {
         realm = require('../../userData/realm').default;
-        Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
+        //Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
         //default values for job
         //id should be checked and auto-incremented
         id = realm.objects('Job').length + 1;
@@ -37,6 +37,8 @@ export default function JobSetup({ navigation }) {
                     console.log('Remaining jobs: ', allJobs);
                     setId(0);
                 });
+            } else {
+                Alert.alert('Realm not initialized.');
             }
         }
         catch (error) {
