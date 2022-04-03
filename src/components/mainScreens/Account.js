@@ -19,6 +19,7 @@ import {
 import Header from '../elements/Header.js';
 import { color } from 'react-native-reanimated';
 
+
 const Tab = createBottomTabNavigator();
 
 
@@ -36,6 +37,8 @@ const AcccountView = ({ navigation }) => {
   var fullName = 'no Name Stuff';
   var birthday = 'no Birthday';
   var email = 'no Email';
+  var jobList = [];
+
 
 
 
@@ -43,6 +46,7 @@ const AcccountView = ({ navigation }) => {
     realm = require('../../userData/realm').default;
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
+    jobList = JSON.stringify(realm.objects('Job'));
 
     if (userExists) {
       //Alert.alert('There is a user in the database.');
@@ -56,8 +60,9 @@ const AcccountView = ({ navigation }) => {
 
 
     }
+  } else {
+    Alert.alert('Realm is not defined, navigating anyway');
   }
-
   //If editButtonPressed is true, then render the version of the page with the TextInputs 
   //rather than Text elements.
   if (!isEditing) {
@@ -98,6 +103,7 @@ const AcccountView = ({ navigation }) => {
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
           </View>
+          <Text> {jobList}</Text>
           <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
             <View style={styles.btn}>
               <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
@@ -117,6 +123,16 @@ const AcccountView = ({ navigation }) => {
       </View></>
     );
   } else {
+
+
+
+
+
+
+
+
+
+
 
     //Editable version of the page
 
