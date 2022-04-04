@@ -220,9 +220,8 @@ export default function Account({ navigation }) {
           <Header title="Account" />
         ),
         headerLeft: () => (
-          <TouchableOpacity style={{ marginLeft: 20, padding: 5 }} onPress={() => navigation.goBack()}>
+          <TouchableOpacity style={{ marginLeft: 20, paddingBottom: 5 }} onPress={() => navigation.goBack()}>
             <Image source={require('../../assets/images/icons/Back.png')} style={{ width: Dimensions.get('window').width * 0.04, maxHeight: Dimensions.get('window').width * 0.07 }} />
-
           </TouchableOpacity>
         ),
 
