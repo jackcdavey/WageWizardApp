@@ -27,11 +27,19 @@ const Tracking = () => {
   //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
   //with proper elements.
 
+  if (global.globalRealmDBUse) {
+    realm = require('../../userData/realm').default;
+    //    const jobExists = realm.objects('Job').length > 0;
+    const allJobs = realm.objects('Job');
+  }
+
+
   return (
 
     <View style={styles.container}>
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
-      <Timer/>
+      <Timer />
+
       <DropDownPicker
         style={styles.picker}
         placeholder="Select a Job"

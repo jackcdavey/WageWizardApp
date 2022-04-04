@@ -44,7 +44,7 @@ import SetupNav from './src/components/setupScreens/SetupNav';
 global.globalCustomFontUse = true;
 
 //Realm DB has limited compatibility with Expo, so disable it when compiling for Expo Go.
-global.globalRealmDBUse = false;
+global.globalRealmDBUse = true;
 
 /////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 

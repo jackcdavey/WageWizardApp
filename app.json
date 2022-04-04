@@ -5,6 +5,8 @@
     "jsEngine": "hermes",
     "ios": {
       "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "To enable automated logging of work sessions based on your location",
+        "NSLocationAlwaysUsageDescription": "To enable background start & stop of Work Log recording",
         "UIBackgroundModes": [
           "location",
           "fetch"
