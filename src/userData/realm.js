@@ -52,6 +52,7 @@ class WorkLog extends Realm.Object { }
 WorkLog.schema = {
     name: 'WorkLogModel',
     properties: {
+        logId: 'int',
         jobId: 'int',
         notes: 'string',
         startTime: 'date',
@@ -65,7 +66,7 @@ WorkLog.schema = {
 };
 
 
-export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 2 });
+export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 3 });
 
 // async function startRealm() {
 //     let realm = await Realm.open({

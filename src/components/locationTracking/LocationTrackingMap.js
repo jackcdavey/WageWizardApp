@@ -96,7 +96,9 @@ const _LocationMap = (props) => {
     const requestPermissions = async () => {
       const foreground = await Location.requestForegroundPermissionsAsync()
       if (foreground.granted) {
-        Alert.alert("Foreground Permission Given")
+        //Alert.alert("Foreground Permission Given")
+        //I needed to disable this for sanity, feel free to reenable
+        console.log("Foreground Permission Given")
         const background = await Location.requestBackgroundPermissionsAsync()
         if (!background.granted) {
           //background permission not granted
@@ -224,7 +226,7 @@ const _LocationMap = (props) => {
   //Realm Stuff
   if (global.globalRealmDBUse) {
     realm = require('../../userData/realm').default;
-    const currLog = ' '; //Logic for determining current job or new job here
+    const currLog = ' '; //realm.getObjectByPrimaryKey(getCurrLogID()) - Logic for determining current job or new job here
     const currJob = ' '; //Logic for determining chosen job from picker here
   }
 
@@ -232,7 +234,6 @@ const _LocationMap = (props) => {
     //Triggered when a log needs to be updated after a pause
     try {
       if (realm) {
-
 
       }
     } catch (error) {
@@ -244,13 +245,16 @@ const _LocationMap = (props) => {
     //Triggered when a new log needs to be created
     try {
       if (realm) {
-        const logSize = realm.objects('Log').length;
+        const logSize = realm.objects('WorkLog').length;
         realm.write(() => {
-          realm.create('Log', {
-            id: logSize + 1,
-            job: currJob,
-            log: currLog,
-            date: new Date(),
+          realm.create('WorkLog', {
+            logId: logSize + 1,
+            jobId: currJob.id,
+            notes: "Notes from Tracking",
+            startTime: new Date(), //Change to initial start time of log
+            endTime: new Date(),
+            breakCount: 0, //Logic for determining break count here
+            totalBreakTime: 0, //Logic for determining total break time here
           })
         });
       }
