@@ -7,6 +7,8 @@ import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text, Switch, Image } from "react-native";
 
+import { launchImageLibrary } from 'react-native-image-picker';
+
 export default function InitialSetupView({ navigation }) {
     var userExists = false;
     if (global.globalRealmDBUse) {
@@ -23,6 +25,36 @@ export default function InitialSetupView({ navigation }) {
     const [useBiometric, setUseBiometric] = useState(false);
     const togglePin = () => setUsePin(!usePin);
     const toggleBiometric = () => setUseBiometric(!useBiometric);
+
+    const setProfilePicture = () => {
+        launchImageLibrary({
+            noData: true,
+            mediaType: 'photo',
+            quality: 0.5,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        }).then(response => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+                // this.setState({
+                //     profilePicture: source,
+                // });
+                console.log(response);
+            }
+        });
+    }
+
 
     const submitInfo = () => {
 
@@ -92,9 +124,7 @@ export default function InitialSetupView({ navigation }) {
         }
     }
 
-    const setProfilePicture = () => {
-        Alert.alert('Set profile picture here');
-    }
+
 
 
     return (
