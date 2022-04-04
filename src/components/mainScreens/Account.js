@@ -99,6 +99,7 @@ const AcccountView = ({ navigation }) => {
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={{ justifyContent: 'center' }}>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
@@ -122,6 +123,7 @@ const AcccountView = ({ navigation }) => {
               </View>
             </TouchableOpacity>
           </View>
+
         </View>
       </View></>
     );
@@ -215,11 +217,12 @@ export default function Account({ navigation }) {
         },
         //For some reason touch target for account icon is too tall, abt double height
         headerRight: () => (
-          <Header title="Account Info" />
+          <Header title="Account" />
         ),
         headerLeft: () => (
-          <TouchableOpacity style={{ backgroundColor: COLORS.secondary, marginLeft: 10, padding: 2 }} onPress={() => navigation.goBack()}>
-            <Text style={{ fontSize: 20, fontWeight: "800" }}>[BACK BTN HERE]</Text>
+          <TouchableOpacity style={{ marginLeft: 20, padding: 5 }} onPress={() => navigation.goBack()}>
+            <Image source={require('../../assets/images/icons/Back.png')} style={{ width: Dimensions.get('window').width * 0.04, maxHeight: Dimensions.get('window').width * 0.07 }} />
+
           </TouchableOpacity>
         ),
 
