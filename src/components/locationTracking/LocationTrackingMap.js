@@ -95,10 +95,22 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
     if (location) {
       //location state used for the maps is stored in the redux store, 
       //update that store according to background locaiton updates
+
+      //first check for geofences:
       checkIfInsideAnyGeofence({latitude:location.coords.latitude, longitude:location.coords.longitude},geofences)
-      store.dispatch(checkDistance(find_distance(37.379903,location.coords.latitude,-121.851886,location.coords.longitude)))
-      //store.dispatch(checkDistance((37.379903 - location.coords.latitude)*(37.379903 - location.coords.latitude) + (-121.851886 - location.coords.longitude)*(-121.851886 - location.coords.longitude)));
-      //store.dispatch(checkRadius(50*50))
+      
+      if (store.getState().isInsideGeofence){
+        if(store.getState().isTracking){
+          if(store.getState().isIdle){
+            store.dispatch(startTimer())
+          }
+        }
+      }else{
+        if(!store.getState().isIdle){
+          store.dispatch(endTimer())
+        }
+      }
+
       store.dispatch(locationUpdate(location.coords.latitude, location.coords.longitude))
     }
   }
@@ -263,6 +275,8 @@ const _LocationMap = (props) => {
       setIsTracking(false)
       setLocationButtonColor('green')
       setLocationButtonText('Start Tracking Location')
+      //if person is not tracking, timer should end as there is no proof of their location
+      endTimer();
       stopBackgroundUpdate();
     }
   }
@@ -350,13 +364,40 @@ const _LocationMap = (props) => {
       </MapView>
 
 
-      <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-          <Text>{locationButtonText}</Text>
-      </TouchableOpacity>
+
+
+      {isTracking
+        ?isInsideGeofence
+          ?<View>
+            <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+              <Text>{locationButtonText}</Text>
+            </TouchableOpacity>
+            {isPaused
+              ?<TouchableOpacity  onPress={handleResume}>
+                <Text>Resume</Text>
+               </TouchableOpacity>
+              :<TouchableOpacity  onPress={handlePause}>
+                <Text>Pause</Text>
+              </TouchableOpacity>
+            }
+          </View>
+          :<View>
+            <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+                <Text>{locationButtonText}</Text>
+            </TouchableOpacity>
+            <Text>---Tracking---</Text>
+          </View>
+          :<TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+            <Text>{locationButtonText}</Text>
+          </TouchableOpacity>
+      }
+
+
 
       <Text>--------------DEBUG_INFO---------------</Text>
       <Text>isInsideGeofence: {isInsideGeofence.toString()}</Text>
       <Text>isTracking: {isTracking.toString()}</Text>
+      <Text>isIdle: {isIdle.toString()}</Text>
 
 
     </View>

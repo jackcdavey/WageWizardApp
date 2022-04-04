@@ -31,7 +31,7 @@ const establishment = {
         {
             name: "my_house",
             latLng: {latitude: 37.379903,longitude: -121.851886},
-            radius: 10
+            radius: 30
         },
     ]
 }
