@@ -32,6 +32,7 @@ export default function InitialSetupView({ navigation }) {
         try {
             if (realm) {
 
+
                 realm.write(() => {
                     userExists = realm.objects('User').length > 0;
 
@@ -44,6 +45,10 @@ export default function InitialSetupView({ navigation }) {
                             pin: pin,
                             useBiometric: useBiometric
                         });
+                        if (usePin) {
+                            Alert.alert('Navigate to pin screen');
+                            //Navigate here
+                        }
                         navigation.navigate("JobSetup");
                     }
                     else {
@@ -133,12 +138,14 @@ export default function InitialSetupView({ navigation }) {
                 />
             </View>
             <View style={styles.field}>
+                {/* Prevent interaction until usePin is true */}
                 <Text style={{ marginRight: 25 }}>Use Biometrics?</Text>
 
                 <Switch
                     trackColor={{ false: COLORS.red, true: COLORS.green }}
                     onValueChange={toggleBiometric}
                     value={useBiometric}
+                    disabled={!usePin}
                 />
             </View>
 
