@@ -13,7 +13,7 @@ import { establishment, generateGeofence } from './establishments'
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer,setIsInsideGeofence,checkDistance,checkRadius } from '../../reduxLogic/actions'
 
 //standardized styling import
 import COLORS from '../../styles/colors';
@@ -29,6 +29,59 @@ import { JsonSerializationReplacer } from 'realm';
 const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
 const GEOFENCE_TRACKING = "GEOFENCE_TRACKING "
 
+//geofencing function that takes the coord object {lat,long} and regions list [{lat,long,rad}...]
+
+function find_distance(lat1,lat2, lon1, lon2)
+{
+
+  // The math module contains a function
+  // named toRadians which converts from
+  // degrees to radians.
+  lon1 =  lon1 * Math.PI / 180;
+  lon2 = lon2 * Math.PI / 180;
+  lat1 = lat1 * Math.PI / 180;
+  lat2 = lat2 * Math.PI / 180;
+
+  // Haversine formula
+  let dlon = lon2 - lon1;
+  let dlat = lat2 - lat1;
+  let a = Math.pow(Math.sin(dlat / 2), 2)
+  + Math.cos(lat1) * Math.cos(lat2)
+  * Math.pow(Math.sin(dlon / 2),2);
+
+  let c = 2 * Math.asin(Math.sqrt(a));
+
+  // Radius of earth in kilometers. Use 3956
+  // for miles
+  let r = 6371;
+
+  // calculate the result
+  return((c * r)*1000);
+}
+
+function checkIfInsideAnyGeofence(coord, regions){
+  let cookies = false;
+  regions.forEach((item)=>{
+    
+    if (find_distance(item.latitude,coord.latitude,item.longitude,coord.longitude)<item.radius){
+      //set the the state as inside the geofence
+      store.dispatch(setIsInsideGeofence(true))
+      cookies = true;
+    }
+    //store.dispatch(setIsInsideGeofence(((item.latitude-coord.latitude)*(item.latitude-coord.latitude)+(item.longitude-coord.longitude)*(item.longitude-coord.longitude))<(item.radius*item.radius)))
+  });
+  if (cookies === false){
+    store.dispatch(setIsInsideGeofence(false))
+  }
+  //else thet state is outside the geofence
+  //set the state as outside the geofence
+
+}
+
+
+const geofences = generateGeofence(establishment)
+
+
 //Background Location Tracker
 TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
   if (error) {
@@ -42,6 +95,10 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
     if (location) {
       //location state used for the maps is stored in the redux store, 
       //update that store according to background locaiton updates
+      checkIfInsideAnyGeofence({latitude:location.coords.latitude, longitude:location.coords.longitude},geofences)
+      store.dispatch(checkDistance(find_distance(37.379903,location.coords.latitude,-121.851886,location.coords.longitude)))
+      //store.dispatch(checkDistance((37.379903 - location.coords.latitude)*(37.379903 - location.coords.latitude) + (-121.851886 - location.coords.longitude)*(-121.851886 - location.coords.longitude)));
+      //store.dispatch(checkRadius(50*50))
       store.dispatch(locationUpdate(location.coords.latitude, location.coords.longitude))
     }
   }
@@ -67,8 +124,8 @@ TaskManager.defineTask(GEOFENCE_TRACKING, ({ data: { eventType, region }, error 
 /************************************************************** */
 
 const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused, region } = state;
-  return { isIdle, isRunning, isPaused, region };
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, distance, radius } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, distance, radius};
 }
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -89,7 +146,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer } = props;
+  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, distance, radius} = props;
 
   //useEffect to ask the user for location permissions, must be run first 
   useEffect(() => {
@@ -130,11 +187,14 @@ const _LocationMap = (props) => {
       console.log("Task is not defined")
       return
     }
+
+    /*
     const isGeofenceTaskDefined = await TaskManager.isTaskDefined(GEOFENCE_TRACKING)
     if (!isGeofenceTaskDefined) {
       console.log("Task is not defined")
       return
     }
+    */
 
     // Don't track if it is already running in background
     const hasStarted = await Location.hasStartedLocationUpdatesAsync(
@@ -144,13 +204,14 @@ const _LocationMap = (props) => {
       console.log("Already started")
       return
     }
+    /*
     const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
       GEOFENCE_TRACKING
     )
     if (hasGeofenceStarted) {
       console.log("Already started")
       return
-    }
+    }*/
 
     await Location.startLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING, {
       // For better logs, we set the accuracy to the most sensitive option
@@ -164,8 +225,7 @@ const _LocationMap = (props) => {
       },
     })
 
-    const geofences = generateGeofence(establishment)
-    await Location.startGeofencingAsync(GEOFENCE_TRACKING, geofences)
+    //await Location.startGeofencingAsync(GEOFENCE_TRACKING, geofences)
   }
 
   //Stop Background Location Updates and Geofencing updates
@@ -177,13 +237,14 @@ const _LocationMap = (props) => {
       await Location.stopLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING)
       console.log("Location tacking stopped")
     }
-    const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
+    /*const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
       GEOFENCE_TRACKING
     )
     if (hasGeofenceStarted) {
       await Location.stopGeofencingAsync(GEOFENCE_TRACKING)
       console.log("Location tacking stopped")
     }
+    */
 
   }
 
@@ -283,6 +344,8 @@ const _LocationMap = (props) => {
         <Circle center={establishment.locations[1].latLng} radius={establishment.locations[1].radius} fillColor={establishment.color} />
         <Circle center={establishment.locations[2].latLng} radius={establishment.locations[2].radius} fillColor={establishment.color} />
         <Circle center={establishment.locations[3].latLng} radius={establishment.locations[3].radius} fillColor={establishment.color} />
+        <Circle center={establishment.locations[4].latLng} radius={establishment.locations[4].radius} fillColor={establishment.color} />
+
 
       </MapView>
 
@@ -306,6 +369,9 @@ const _LocationMap = (props) => {
           </TouchableOpacity>
         </View>
       }
+      <Text>{isInsideGeofence.toString()}</Text>
+      <Text>{distance}</Text>
+      <Text>{radius}</Text>
 
 
     </View>

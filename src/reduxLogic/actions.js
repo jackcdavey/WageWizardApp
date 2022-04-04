@@ -22,3 +22,16 @@ export function incrementTime(){
 export function locationUpdate(latitude, longitude){
     return {type: "LOCATION_UPDATE", latitude:latitude, longitude:longitude}
 }
+
+export function setIsInsideGeofence(isInsideGeofence){
+    return {type: "SET_IS_INSIDE_GEOFENCE", isInsideGeofence:isInsideGeofence}
+}
+
+export function checkDistance(distance){
+    return {type: "CHECK_DISTANCE", distance:distance}
+}
+
+export function checkRadius(radius){
+    return {type: "CHECK_RADIUS", radius:radius}
+}
+

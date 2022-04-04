@@ -4,6 +4,9 @@ const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
 const initialState = {
+    distance: 0,
+    radius: 0,
+    isInsideGeofence: false,
     time:0,
     isIdle: true,
     isRunning: false,
@@ -67,6 +70,27 @@ export default function Reducer(state = initialState, action){
                     latitudeDelta: LATITUDE_DELTA,
                     longitudeDelta: LONGITUDE_DELTA
                 }
+            }
+        }
+
+        case 'SET_IS_INSIDE_GEOFENCE': {
+            return {
+                ...state,
+                isInsideGeofence: action.isInsideGeofence
+            }
+        }
+        
+        case 'CHECK_DISTANCE': {
+            return {
+                ...state,
+                distance: action.distance
+            }
+        }
+
+        case 'CHECK_RADIUS': {
+            return {
+                ...state,
+                radius: action.radius
             }
         }
         default:
