@@ -29,6 +29,8 @@ import { JsonSerializationReplacer } from 'realm';
 const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
 const GEOFENCE_TRACKING = "GEOFENCE_TRACKING "
 
+const debug_info = true;
+
 //geofencing function that takes the coord object {lat,long} and regions list [{lat,long,rad}...]
 
 function find_distance(lat1,lat2, lon1, lon2)
@@ -393,11 +395,21 @@ const _LocationMap = (props) => {
       }
 
 
+      {
+        debug_info
+        ?
+        <View>
+          <Text>--------------DEBUG_INFO---------------</Text>
+          <Text>isInsideGeofence: {isInsideGeofence.toString()}</Text>
+          <Text>isTracking: {isTracking.toString()}</Text>
+          <Text>isIdle: {isIdle.toString()}</Text>
+          <Text>coordinates: {region.latitude}, {region.longitude}</Text>
+        </View>
+        :
+        <Text></Text>
+      }
 
-      <Text>--------------DEBUG_INFO---------------</Text>
-      <Text>isInsideGeofence: {isInsideGeofence.toString()}</Text>
-      <Text>isTracking: {isTracking.toString()}</Text>
-      <Text>isIdle: {isIdle.toString()}</Text>
+
 
 
     </View>
