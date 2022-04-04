@@ -11,6 +11,8 @@ import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
+import Testing from './src/components/testing.js';
+
 import { store } from './src/reduxLogic/store';
 import { Provider } from 'react-redux';
 
@@ -77,6 +79,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
+          <Stack.Screen name="Testing" component={Testing} options={{ headerShown: false }} />
           <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
           <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
           <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />

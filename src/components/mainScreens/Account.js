@@ -115,10 +115,10 @@ const AcccountView = ({ navigation }) => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+            <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
               <View style={styles.testBtn}>
                 <Text style={styles.item}>
-                  [SETUP]
+                  TESTING
                 </Text>
               </View>
             </TouchableOpacity>

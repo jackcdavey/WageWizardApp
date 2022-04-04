@@ -28,8 +28,10 @@ export default function NavBar({ navigation }) {
   var userName = 'no Name';
   if (global.globalRealmDBUse) {
     realm = require('../../userData/realm').default;
-    const user = realm.objects('User');
-    userName = user[0].firstName;
+    if (realm.objects('User').length > 0) {
+      const user = realm.objects('User');
+      userName = user[0].firstName;
+    }
   }
 
   return (
