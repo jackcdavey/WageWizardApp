@@ -4,8 +4,13 @@ const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
 const initialState = {
+
+    //trash states
     distance: 0,
     radius: 0,
+
+
+    isTracking: false,
     isInsideGeofence: false,
     time:0,
     isIdle: true,
@@ -77,6 +82,13 @@ export default function Reducer(state = initialState, action){
             return {
                 ...state,
                 isInsideGeofence: action.isInsideGeofence
+            }
+        }
+
+        case 'SET_IS_TRACKING': {
+            return{
+                ...state,
+                isTracking: action.isTracking
             }
         }
         

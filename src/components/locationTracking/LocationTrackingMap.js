@@ -13,7 +13,7 @@ import { establishment, generateGeofence } from './establishments'
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer,setIsInsideGeofence,checkDistance,checkRadius } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer,setIsInsideGeofence,checkDistance,checkRadius, setIsTracking } from '../../reduxLogic/actions'
 
 //standardized styling import
 import COLORS from '../../styles/colors';
@@ -124,8 +124,8 @@ TaskManager.defineTask(GEOFENCE_TRACKING, ({ data: { eventType, region }, error 
 /************************************************************** */
 
 const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, distance, radius } = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, distance, radius};
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, distance, radius } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, distance, radius};
 }
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -134,6 +134,7 @@ const mapDispatchToProps = (dispatch, props) => {
     pauseTimer: () => dispatch(pauseTimer()),
     resumeTimer: () => dispatch(resumeTimer()),
     endTimer: () => dispatch(endTimer()),
+    setIsTracking: (bool_val)=>dispatch(setIsTracking(bool_val))
   }
 }
 
@@ -146,7 +147,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, distance, radius} = props;
+  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, distance, radius} = props;
 
   //useEffect to ask the user for location permissions, must be run first 
   useEffect(() => {
@@ -249,21 +250,20 @@ const _LocationMap = (props) => {
   }
 
   //code to handle the location tracking button, pressing the button starts/stops location tracking and geofencing
-  const [tackingLocation, setTrackingLocation] = useState(false)
+  //const [tackingLocation, setTrackingLocation] = useState(false)
   const [locationButtonColor, setLocationButtonColor] = useState('green')
   const [locationButtonText, setLocationButtonText] = useState('Start Tracking Location')
   const handleLocationButton = () => {
-    if (!tackingLocation) {
-      setTrackingLocation(true)
+    if (!isTracking) {
+      setIsTracking(true)
       setLocationButtonColor('red')
       setLocationButtonText('Stop Tracking Location')
       startBackgroundUpdate();
     } else {
-      setTrackingLocation(false)
+      setIsTracking(false)
       setLocationButtonColor('green')
       setLocationButtonText('Start Tracking Location')
       stopBackgroundUpdate();
-      endTimer();
     }
   }
 
@@ -350,28 +350,13 @@ const _LocationMap = (props) => {
       </MapView>
 
 
+      <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+          <Text>{locationButtonText}</Text>
+      </TouchableOpacity>
 
-      {isIdle
-        ? <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleStart}>
-          <Text>Start Tracking</Text>
-        </TouchableOpacity>
-        : <View>
-          <TouchableOpacity onPress={handlePause}>
-            <Text>Pause</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={handleResume}>
-            <Text>Resume</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={handleEnd}>
-            <Text>End</Text>
-          </TouchableOpacity>
-        </View>
-      }
-      <Text>{isInsideGeofence.toString()}</Text>
-      <Text>{distance}</Text>
-      <Text>{radius}</Text>
+      <Text>--------------DEBUG_INFO---------------</Text>
+      <Text>isInsideGeofence: {isInsideGeofence.toString()}</Text>
+      <Text>isTracking: {isTracking.toString()}</Text>
 
 
     </View>

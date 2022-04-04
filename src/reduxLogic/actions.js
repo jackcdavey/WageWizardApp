@@ -27,6 +27,11 @@ export function setIsInsideGeofence(isInsideGeofence){
     return {type: "SET_IS_INSIDE_GEOFENCE", isInsideGeofence:isInsideGeofence}
 }
 
+export function setIsTracking(isTracking){
+    return {type: "SET_IS_TRACKING", isTracking:isTracking}
+}
+
+//trash tester functions
 export function checkDistance(distance){
     return {type: "CHECK_DISTANCE", distance:distance}
 }
