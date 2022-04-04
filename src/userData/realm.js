@@ -51,13 +51,13 @@ Job.schema = {
 
 class WorkLog extends Realm.Object { }
 WorkLog.schema = {
-    name: 'WorkLogModel',
+    name: 'WorkLog',
     properties: {
         logId: 'int',
         jobId: 'int',
         notes: 'string',
-        startTime: 'date',
-        endTime: 'date',
+        startTime: 'int', //will be a date
+        endTime: 'int', //will be a date
         breakCount: 'int',
         totalBreakTime: 'int',
         //Perhaps store breaks in an array to allow for multiple breaks with fewer lines of code
@@ -67,7 +67,7 @@ WorkLog.schema = {
 };
 
 
-export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 4 });
+export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 6 });
 
 // async function startRealm() {
 //     let realm = await Realm.open({

@@ -43,6 +43,24 @@ const clearUsers = () => {
     }
 }
 
+const clearLogs = () => {
+    try {
+        if (realm) {
+            realm.write(() => {
+                var allLogs = realm.objects('WorkLog');
+                realm.delete(allLogs);
+                Alert.alert('All logs have been deleted.');
+            });
+        } else {
+            Alert.alert('Realm not initialized.');
+        }
+    }
+    catch (error) {
+        Alert.alert('Error deleting logs.');
+    }
+}
+
+
 const createLog = () => {
     var newLogId = -1;
     try {
@@ -55,8 +73,8 @@ const createLog = () => {
                         logId: newLogId,
                         jobId: 1,
                         notes: '',
-                        startTime: new Date(),
-                        endTime: new Date(),
+                        startTime: 1,
+                        endTime: 5,
                         breakCount: 0,
                         totalBreakTime: 0,
                     });
@@ -71,6 +89,7 @@ const createLog = () => {
     }
     catch (error) {
         Alert.alert('Error creating log.');
+        console.log('Error creating log: ', error);
     }
 }
 
@@ -102,7 +121,11 @@ const TestingView = ({ navigation }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btn} onPress={() => createLog()}>
-                    <Text style={{ color: COLORS.secondary }}>CREATE LOG</Text>
+                    <Text style={{ color: COLORS.secondary }}>CREATE EMPTY LOG</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btn} onPress={() => clearLogs()}>
+                    <Text style={{ color: COLORS.secondary }}>DELETE ALL LOGS</Text>
                 </TouchableOpacity>
             </View>
         </>
