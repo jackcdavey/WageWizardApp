@@ -2,7 +2,7 @@
 // as will this https://reactnavigation.org/docs/stack-navigator/
 import React from 'react';
 import Header from '../elements/Header';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, Alert } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, Alert, Image } from "react-native";
 import 'react-native-gesture-handler';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import COLORS from '../../styles/colors';
@@ -13,10 +13,13 @@ export default function DetailedLogView({ navigation }: { navigation: any }) {
     return (
         <>
             {/* Implement card styling here */}
-            <View style={{ backgroundColor: COLORS.primary, paddingTop: Dimensions.get('window').height * 0.04 }}>
-                <SafeAreaView>
-                    <Header title="Detailed Log View" />
-                </SafeAreaView>
+            <View style={{ display: 'flex', flexDirection: 'row', backgroundColor: COLORS.primary, paddingTop: Dimensions.get('window').height * 0.06 }}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={(require('../../assets/images/icons/Back.png'))} style={{ marginLeft: 25, width: Dimensions.get('window').width * 0.04, height: Dimensions.get('window').width * 0.07 }} />
+                </TouchableOpacity>
+
+                <Header title="Detailed Log View" />
+
             </View>
 
             {/*This is all temporary data for prototyping purposes. Eventually logs will be 
@@ -53,9 +56,7 @@ export default function DetailedLogView({ navigation }: { navigation: any }) {
 
             </View>
             <View style={styles.buttonWrap}>
-                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                    <Text>Go Back</Text>
-                </TouchableOpacity>
+
                 <TouchableOpacity style={styles.button} onPress={() => Alert.alert("This will summon the OS sharesheet")}>
                     <Text style={{ color: COLORS.secondary }}>Export</Text>
                 </TouchableOpacity>
