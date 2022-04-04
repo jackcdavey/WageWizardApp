@@ -5,6 +5,8 @@ import COLORS from '../../styles/colors'
 
 //Set color of status bar globally here, eventualy set to 'auto'
 export default function Header(props) {
+
+
     return (
         //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
         <View style={styles.container}>

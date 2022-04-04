@@ -5,7 +5,7 @@ import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
+import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text, Switch } from "react-native";
 
 export default function InitialSetupView({ navigation }) {
     var userExists = false;
@@ -18,10 +18,16 @@ export default function InitialSetupView({ navigation }) {
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
     const [pin, setPin] = useState(0);
+
+    const [usePin, setUsePin] = useState(false);
     const [useBiometric, setUseBiometric] = useState(false);
+    const togglePin = () => setUsePin(!usePin);
+    const toggleBiometric = () => setUseBiometric(!useBiometric);
 
     const submitInfo = () => {
 
+        //Check usePin and useBiometric
+        //if usePin is true, navigate to pin setup screen
         let newUser;
         try {
             if (realm) {
@@ -117,17 +123,31 @@ export default function InitialSetupView({ navigation }) {
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
                 <TextInput style={styles.input} placeholder="Birthday" onChangeText={newText => setBirthday(newText)} />
             </View>
-
             <View style={styles.field}>
-                {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
-                <TextInput style={styles.input} placeholder="Pin" />
-                {/* Needs to be a number import, breaking account saving */}
+                <Text style={{ marginRight: 25 }}>Use Pin?</Text>
+
+                <Switch
+                    trackColor={{ false: COLORS.red, true: COLORS.green }}
+                    onValueChange={togglePin}
+                    value={usePin}
+                />
+            </View>
+            <View style={styles.field}>
+                <Text style={{ marginRight: 25 }}>Use Biometrics?</Text>
+
+                <Switch
+                    trackColor={{ false: COLORS.red, true: COLORS.green }}
+                    onValueChange={toggleBiometric}
+                    value={useBiometric}
+                />
             </View>
 
-            <View style={styles.field}>
-                {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
-                <TextInput style={styles.input} placeholder="Confirm Pin" />
-            </View>
+
+            {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
+            {/* <TextInput style={styles.input} placeholder="Pin" /> */}
+            {/* Needs to be a number import, breaking account saving */}
+
+
 
             <View style={styles.buttonWrap}>
                 <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
