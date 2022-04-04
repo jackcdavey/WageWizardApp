@@ -13,6 +13,8 @@ import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 import { store } from './src/reduxLogic/store';
 import { Provider } from 'react-redux';
 
+import * as LocalAuthentication from 'expo-local-authentication';
+
 
 import {
   SafeAreaView,
