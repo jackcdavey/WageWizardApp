@@ -8,7 +8,6 @@ import * as Location from "expo-location"
 import { GeofencingEventType, GeofencingRegionState } from 'expo-location';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import * as TaskManager from "expo-task-manager"
-import { establishment, generateGeofence } from './establishments'
 
 //redux logic imports
 import { connect } from 'react-redux';
@@ -72,6 +71,18 @@ function checkIfInsideAnyGeofence(coord, regions){
   //else thet state is outside the geofence
   //set the state as outside the geofence
 
+}
+
+const generateGeofence = (selectedJob)=>{
+  const geofences = selectedJob.locations.map((location)=>{
+      return {
+          latitude:location.latLng.latitude,
+          longitude:location.latLng.longitude,
+          radius:location.radius
+      }
+  })
+  console.log(geofences)
+  return geofences
 }
 
 /************************************************************** */
