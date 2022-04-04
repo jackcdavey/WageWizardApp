@@ -5,7 +5,7 @@ import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text, Switch } from "react-native";
+import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text, Switch, Image } from "react-native";
 
 export default function InitialSetupView({ navigation }) {
     var userExists = false;
@@ -92,6 +92,9 @@ export default function InitialSetupView({ navigation }) {
         }
     }
 
+    const setProfilePicture = () => {
+        Alert.alert('Set profile picture here');
+    }
 
 
     return (
@@ -109,6 +112,13 @@ export default function InitialSetupView({ navigation }) {
                     below.  Required fields are
                     denoted by a red arrow. [ARROW HERE]</Text>
             </View>
+
+            <View style={{ padding: 10 }} >
+                <TouchableOpacity onPress={() => setProfilePicture()}>
+                    <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').width * 0.3 }} />
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
                 <TextInput style={styles.input} placeholder="First Name" onChangeText={newText => setFirstName(newText)} />
