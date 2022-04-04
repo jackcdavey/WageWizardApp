@@ -31,12 +31,11 @@ export function setIsTracking(isTracking){
     return {type: "SET_IS_TRACKING", isTracking:isTracking}
 }
 
-//trash tester functions
-export function checkDistance(distance){
-    return {type: "CHECK_DISTANCE", distance:distance}
+export function setSelectedJob(selectedJob){
+    return {type: 'SET_SELECTED_JOB', selectedJob:selectedJob}
 }
 
-export function checkRadius(radius){
-    return {type: "CHECK_RADIUS", radius:radius}
-}
+
+
+
 

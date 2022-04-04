@@ -13,26 +13,20 @@ import { establishment, generateGeofence } from './establishments'
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer,setIsInsideGeofence,checkDistance,checkRadius, setIsTracking } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer,setIsInsideGeofence, setIsTracking, setSelectedJob } from '../../reduxLogic/actions'
 
 //standardized styling import
 import COLORS from '../../styles/colors';
 
 //realms db import
 import { JsonSerializationReplacer } from 'realm';
-
-
-/************************************************************** */
-/* GLOBAL SCOPE TASK MANGEMENT FOR BACKGROUND LOCATION SERVICES */
-/************************************************************** */
-
-const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
-const GEOFENCE_TRACKING = "GEOFENCE_TRACKING "
-
 const debug_info = true;
 
-//geofencing function that takes the coord object {lat,long} and regions list [{lat,long,rad}...]
 
+
+/************************************************************** */
+/*** GEOFENCING FUNCTIONS USED IN BACKGROUND LOCATION TRACKING***/
+/************************************************************** */
 function find_distance(lat1,lat2, lon1, lon2)
 {
 
@@ -60,19 +54,19 @@ function find_distance(lat1,lat2, lon1, lon2)
   // calculate the result
   return((c * r)*1000);
 }
-
+//geofencing function that takes the coord object {lat,long} and regions list [{lat,long,rad}...]
 function checkIfInsideAnyGeofence(coord, regions){
-  let cookies = false;
+  let isInsideAnyGeofence = false;
   regions.forEach((item)=>{
     
     if (find_distance(item.latitude,coord.latitude,item.longitude,coord.longitude)<item.radius){
       //set the the state as inside the geofence
       store.dispatch(setIsInsideGeofence(true))
-      cookies = true;
+      isInsideAnyGeofence = true;
     }
     //store.dispatch(setIsInsideGeofence(((item.latitude-coord.latitude)*(item.latitude-coord.latitude)+(item.longitude-coord.longitude)*(item.longitude-coord.longitude))<(item.radius*item.radius)))
   });
-  if (cookies === false){
+  if (isInsideAnyGeofence === false){
     store.dispatch(setIsInsideGeofence(false))
   }
   //else thet state is outside the geofence
@@ -80,10 +74,11 @@ function checkIfInsideAnyGeofence(coord, regions){
 
 }
 
-
-const geofences = generateGeofence(establishment)
-
-
+/************************************************************** */
+/* GLOBAL SCOPE TASK MANGEMENT FOR BACKGROUND LOCATION SERVICES */
+/************************************************************** */
+const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
+const geofences = generateGeofence(store.getState().selectedJob)
 //Background Location Tracker
 TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
   if (error) {
@@ -118,28 +113,15 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
   }
 })
 
-//Background Geofencing
-TaskManager.defineTask(GEOFENCE_TRACKING, ({ data: { eventType, region }, error }) => {
-  if (error) {
-    // check `error.message` for more details.
-    return;
-  }
-  if (eventType === GeofencingEventType.Enter || GeofencingRegionState.Inside === 1) {
-    console.log("You've entered region:", region);
-    store.dispatch(startTimer())
-  } else if (eventType === GeofencingEventType.Exit) {
-    console.log("You've left region:", region);
-    store.dispatch(endTimer())
-  }
-});
+
 
 /************************************************************** */
 /**************** REDUX STORE CONNECTION ************************/
 /************************************************************** */
 
 const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, distance, radius } = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, distance, radius};
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob} = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob};
 }
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -148,7 +130,8 @@ const mapDispatchToProps = (dispatch, props) => {
     pauseTimer: () => dispatch(pauseTimer()),
     resumeTimer: () => dispatch(resumeTimer()),
     endTimer: () => dispatch(endTimer()),
-    setIsTracking: (bool_val)=>dispatch(setIsTracking(bool_val))
+    setIsTracking: (bool_val)=>dispatch(setIsTracking(bool_val)),
+    setSelectedJob: (selectedJob)=>dispatch(setSelectedJob(selectedJob))
   }
 }
 
@@ -161,7 +144,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, distance, radius} = props;
+  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob} = props;
 
   //useEffect to ask the user for location permissions, must be run first 
   useEffect(() => {
@@ -203,14 +186,6 @@ const _LocationMap = (props) => {
       return
     }
 
-    /*
-    const isGeofenceTaskDefined = await TaskManager.isTaskDefined(GEOFENCE_TRACKING)
-    if (!isGeofenceTaskDefined) {
-      console.log("Task is not defined")
-      return
-    }
-    */
-
     // Don't track if it is already running in background
     const hasStarted = await Location.hasStartedLocationUpdatesAsync(
       BACKROUND_LOCATION_TRACKING
@@ -219,14 +194,6 @@ const _LocationMap = (props) => {
       console.log("Already started")
       return
     }
-    /*
-    const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
-      GEOFENCE_TRACKING
-    )
-    if (hasGeofenceStarted) {
-      console.log("Already started")
-      return
-    }*/
 
     await Location.startLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING, {
       // For better logs, we set the accuracy to the most sensitive option
@@ -239,8 +206,6 @@ const _LocationMap = (props) => {
         notificationColor: "#fff",
       },
     })
-
-    //await Location.startGeofencingAsync(GEOFENCE_TRACKING, geofences)
   }
 
   //Stop Background Location Updates and Geofencing updates
@@ -252,19 +217,9 @@ const _LocationMap = (props) => {
       await Location.stopLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING)
       console.log("Location tacking stopped")
     }
-    /*const hasGeofenceStarted = await Location.hasStartedGeofencingAsync(
-      GEOFENCE_TRACKING
-    )
-    if (hasGeofenceStarted) {
-      await Location.stopGeofencingAsync(GEOFENCE_TRACKING)
-      console.log("Location tacking stopped")
-    }
-    */
-
   }
 
   //code to handle the location tracking button, pressing the button starts/stops location tracking and geofencing
-  //const [tackingLocation, setTrackingLocation] = useState(false)
   const [locationButtonColor, setLocationButtonColor] = useState('green')
   const [locationButtonText, setLocationButtonText] = useState('Start Tracking Location')
   const handleLocationButton = () => {
@@ -356,18 +311,16 @@ const _LocationMap = (props) => {
         region={region}
       >
         <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
-        <Circle center={establishment.locations[0].latLng} radius={establishment.locations[0].radius} fillColor={establishment.color} />
-        <Circle center={establishment.locations[1].latLng} radius={establishment.locations[1].radius} fillColor={establishment.color} />
-        <Circle center={establishment.locations[2].latLng} radius={establishment.locations[2].radius} fillColor={establishment.color} />
-        <Circle center={establishment.locations[3].latLng} radius={establishment.locations[3].radius} fillColor={establishment.color} />
-        <Circle center={establishment.locations[4].latLng} radius={establishment.locations[4].radius} fillColor={establishment.color} />
+        <Circle center={selectedJob.locations[0].latLng} radius={selectedJob.locations[0].radius} fillColor={selectedJob.color} />
+        <Circle center={selectedJob.locations[1].latLng} radius={selectedJob.locations[1].radius} fillColor={selectedJob.color} />
+        <Circle center={selectedJob.locations[2].latLng} radius={selectedJob.locations[2].radius} fillColor={selectedJob.color} />
+        <Circle center={selectedJob.locations[3].latLng} radius={selectedJob.locations[3].radius} fillColor={selectedJob.color} />
+        <Circle center={selectedJob.locations[4].latLng} radius={selectedJob.locations[4].radius} fillColor={selectedJob.color} />
 
 
       </MapView>
 
-
-
-
+      {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
       {isTracking
         ?isInsideGeofence
           ?<View>
@@ -394,7 +347,7 @@ const _LocationMap = (props) => {
           </TouchableOpacity>
       }
 
-
+      {/*DUBUG_INFO STATS*/}
       {
         debug_info
         ?

@@ -3,19 +3,47 @@
 const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
+const sampleJob = {
+    name: "Santa Clara University",
+    //for drawing in the map
+    color: 'rgba(245, 40, 145, 0.35)',
+    locations: [
+        {
+            name: "nobili",
+            latLng: {latitude: 37.348899, longitude: -121.942312},
+            radius: 30
+        },
+        {
+            name: "scdi",
+            latLng: {latitude: 37.349036, longitude: -121.938545},
+            radius: 30
+        },
+        {
+            name: "heafey",
+            latLng: {latitude: 37.349090, longitude: -121.939589},
+            radius: 30
+        },
+        {
+            name: "benson",
+            latLng: {latitude: 37.347578,longitude: -121.939423},
+            radius: 40
+        },
+        {
+            name: "my_house",
+            latLng: {latitude: 37.379903,longitude: -121.851886},
+            radius: 30
+        },
+    ]
+}
+
 const initialState = {
-
-    //trash states
-    distance: 0,
-    radius: 0,
-
-
     isTracking: false,
     isInsideGeofence: false,
     time:0,
     isIdle: true,
     isRunning: false,
     isPaused: false,
+    selectedJob: sampleJob,
     region: {
         latitude: 37.347934,
         longitude: -121.940310,
@@ -91,20 +119,14 @@ export default function Reducer(state = initialState, action){
                 isTracking: action.isTracking
             }
         }
-        
-        case 'CHECK_DISTANCE': {
-            return {
-                ...state,
-                distance: action.distance
-            }
-        }
 
-        case 'CHECK_RADIUS': {
-            return {
+        case 'SET_SELECTED_JOB': {
+            return{
                 ...state,
-                radius: action.radius
+                selectedJob: action.selectedJob
             }
         }
+        
         default:
             return state
     }
