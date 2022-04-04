@@ -6,6 +6,7 @@ import AppLoading from 'expo-app-loading';
 import NavBar from './src/components/elements/NavBar';
 import Account from './src/components/mainScreens/Account';
 import Header from './src/components/elements/Header';
+import VerifyPin from './src/components/elements/verifyPin';
 import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
@@ -62,6 +63,11 @@ const App = () => {
     );
   }
 
+  //if (global.globalRealmDBUse) {
+  ////if(realm)
+  //////if(realm.objects('User').length > 0)
+  ////////if(realm.objects('User')[0].usePin==true)
+  ////////  return <VerifyPin navigation={navigation} />
 
   return (
     <Provider store={store}>
