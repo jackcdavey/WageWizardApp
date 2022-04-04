@@ -43,6 +43,32 @@ const clearUsers = () => {
     }
 }
 
+const createLog = () => {
+    try {
+        if (realm) {
+            var allLogs = realm.objects('WorkLog');
+            realm.write(() => {
+                newLog = realm.create('WorkLog', {
+                    logId: allLogs.length + 1,
+                    jobId: -1,
+                    notes: '',
+                    startTime: new Date(),
+                    endTime: new Date(),
+                    breakCount: 0,
+                    totalBreakTime: 0,
+                });
+                Alert.alert('New log created: ', JSON.stringify(newLog));
+            });
+        } else {
+            Alert.alert('Realm not initialized.');
+        }
+    }
+    catch (error) {
+        Alert.alert('Error creating log.');
+    }
+}
+
+
 
 const TestingView = ({ navigation }) => {
     if (global.globalRealmDBUse) {
@@ -61,12 +87,16 @@ const TestingView = ({ navigation }) => {
 
                 <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
                     <Text style={{ color: COLORS.secondary }}>
-                        Begin Initial Setup
+                        START INITIAL SETUP
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btn} onPress={() => clearJobs()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btn} onPress={() => createLog()}>
+                    <Text style={{ color: COLORS.secondary }}>CREATE LOG</Text>
                 </TouchableOpacity>
             </View>
         </>
