@@ -75,6 +75,7 @@ export default function InitialSetupView({ navigation }) {
                             email: email,
                             birthday: birthday,
                             pin: pin,
+                            usePin: usePin,
                             useBiometric: useBiometric
                         });
                         if (usePin) {

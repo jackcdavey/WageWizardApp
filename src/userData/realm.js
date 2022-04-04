@@ -15,7 +15,8 @@ User.schema = {
         lastName: 'string',
         email: 'string',
         birthday: 'string',//will be a date
-        pin: 'int?',
+        pin: 'int?', //Remove this later, will be handled by verifyPin component
+        usePin: 'bool',
         useBiometric: 'bool',
     },
     primaryKey: 'firstName',
@@ -66,7 +67,7 @@ WorkLog.schema = {
 };
 
 
-export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 3 });
+export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 4 });
 
 // async function startRealm() {
 //     let realm = await Realm.open({
