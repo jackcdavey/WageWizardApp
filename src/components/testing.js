@@ -44,20 +44,26 @@ const clearUsers = () => {
 }
 
 const createLog = () => {
+    var newLogId = -1;
     try {
         if (realm) {
             var allLogs = realm.objects('WorkLog');
+            newLogId = allLogs.length + 1;
             realm.write(() => {
-                newLog = realm.create('WorkLog', {
-                    logId: allLogs.length + 1,
-                    jobId: -1,
-                    notes: '',
-                    startTime: new Date(),
-                    endTime: new Date(),
-                    breakCount: 0,
-                    totalBreakTime: 0,
-                });
-                Alert.alert('New log created: ', JSON.stringify(newLog));
+                if (newLogId != allLogs.length && !realm.objectForPrimaryKey('WorkLog', newLogId)) {
+                    newLog = realm.create('WorkLog', {
+                        logId: newLogId,
+                        jobId: 1,
+                        notes: '',
+                        startTime: new Date(),
+                        endTime: new Date(),
+                        breakCount: 0,
+                        totalBreakTime: 0,
+                    });
+                    Alert.alert('New log created: ', JSON.stringify(newLog));
+                } else {
+                    Alert.alert('Log already exists. (idk how that is possible)');
+                }
             });
         } else {
             Alert.alert('Realm not initialized.');
