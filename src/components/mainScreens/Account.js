@@ -68,7 +68,7 @@ const AcccountView = ({ navigation }) => {
   if (!isEditing) {
     //Static version of the page
     return (
-      <><View>
+      <><View style={{ alignItems: 'center' }}>
 
         <View style={{ flexDirection: 'row', paddingTop: 25 }}>
           <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20, maxHeight: profilePicDimensions }}>
@@ -104,21 +104,24 @@ const AcccountView = ({ navigation }) => {
             <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
           </View>
           <Text> {jobList}</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
-            <View style={styles.btn}>
-              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
-                Add New Job
-              </Text>
-            </View>
-          </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
-            <View style={styles.testBtn}>
-              <Text style={styles.item}>
-                [TEST - Trigger Setup]
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
+              <View style={styles.btn}>
+                <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+                  Add New Job
+                </Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+              <View style={styles.testBtn}>
+                <Text style={styles.item}>
+                  [SETUP]
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View></>
     );
@@ -127,10 +130,12 @@ const AcccountView = ({ navigation }) => {
     //Editable version of the page
 
     //IMPORTANT
-    //This will need to be updated as the static version is updated.
+    //This:
+    //  - will need to be updated as the static version is updated.
+    //  - does not currently update user info
+    //  
+    //There is definitely a better way to do this.
     //
-
-
     return (
       <View>
         <View style={{ flexDirection: 'row', paddingTop: 25 }}>
@@ -184,7 +189,7 @@ const AcccountView = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
             <View style={styles.testBtn}>
               <Text style={styles.item}>
-                [TEST - Trigger Setup]
+                [SETUP]
               </Text>
             </View>
           </TouchableOpacity>
@@ -259,7 +264,6 @@ const styles = StyleSheet.create({
     margin: 25,
     backgroundColor: COLORS.secondary,
     borderRadius: 15,
-    //borderColor: COLORS.primary,
     borderWidth: 2,
     alignItems: 'center',
   },
@@ -271,7 +275,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.5,
+    width: Dimensions.get('window').width * 0.4,
     height: Dimensions.get('window').height * 0.06,
   },
   item: {
@@ -289,5 +293,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.primary,
     borderWidth: 2,
     alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * 0.4,
+    height: Dimensions.get('window').height * 0.06,
   },
 });
