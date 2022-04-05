@@ -157,41 +157,44 @@ const _LocationMap = (props) => {
   const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
-  useEffect(() => {
-    const requestPermissions = async () => {
 
-      //Check if the user has granted fg & bg location permissions
-      let { foreground } = await Location.requestForegroundPermissionsAsync();
-      let { background } = await Location.requestBackgroundPermissionsAsync();
+  const requestPermissions = async () => {
 
-      if (foreground !== 'granted') {
-        console.log("Foreground Permission Not Given");
-        return;
-      } else {
-        console.log("Foreground Permission Given");
-      }
-      if (background !== 'granted') {
-        console.log("Background Permission Not Given")
-        return;
-      } else {
-        console.log("Background Permission Given")
-      }
+    //Check if the user has granted fg & bg location permissions
+    const foreground = await Location.requestForegroundPermissionsAsync();
+    const background = await Location.requestBackgroundPermissionsAsync();
 
-      let location = await Location.getCurrentPositionAsync({});
-      console.log('Current location: ' + location);
-
-
+    if (foreground.status !== 'granted') {
+      console.log("Foreground Permission Not Given");
+      console.log("Foreground value:  " + foreground);
+      return;
+    } else {
+      console.log("Foreground Permission Given");
     }
-    requestPermissions();
-  }, [])
+    if (background.status !== 'granted') {
+      console.log("Background Permission Not Given");
+      console.log("Background value:  " + background);
+      return;
+    } else {
+      console.log("Background Permission Given")
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    console.log('Current location: ' + location);
+
+
+  }
+
 
   //Start Background Location Updates and Geofencing updates
   const startBackgroundUpdate = async () => {
 
     // Don't track position if permission is not granted
-    const { granted } = await Location.getBackgroundPermissionsAsync()
-    if (granted !== 'granted') {
+    const background = await Location.getBackgroundPermissionsAsync();
+    if (background.status !== 'granted') {
+      console.log("Yeah uh:  " + JSON.stringify(background));
       console.log("location tracking denied")
+      requestPermissions();
       return
     }
     // Make sure the task is defined otherwise do not start tracking
