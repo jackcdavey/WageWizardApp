@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import AppLoading from 'expo-app-loading';
 import Header from './elements/Header.js';
+import { addGeofence, clearGeofences } from '../userData/geofences.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,7 @@ const clearUsers = () => {
                 var allUsers = realm.objects('User');
                 realm.delete(allUsers);
                 Alert.alert('All users have been deleted.');
+                console.log('All users have been deleted: ', allUsers);
             });
         } else {
             Alert.alert('Realm not initialized.');
@@ -40,6 +42,7 @@ const clearUsers = () => {
     }
     catch (error) {
         Alert.alert('Error deleting users.');
+        console.log('Error deleting users: ', error);
     }
 }
 
@@ -50,6 +53,7 @@ const clearLogs = () => {
                 var allLogs = realm.objects('WorkLog');
                 realm.delete(allLogs);
                 Alert.alert('All logs have been deleted.');
+                console.log('All logs have been deleted: ', allLogs);
             });
         } else {
             Alert.alert('Realm not initialized.');
@@ -57,6 +61,7 @@ const clearLogs = () => {
     }
     catch (error) {
         Alert.alert('Error deleting logs.');
+        console.log('Error deleting logs: ', error);
     }
 }
 
@@ -127,6 +132,15 @@ const TestingView = ({ navigation }) => {
                 <TouchableOpacity style={styles.btn} onPress={() => clearLogs()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE ALL LOGS</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btn} onPress={() => addGeofence()}>
+                    <Text style={{ color: COLORS.secondary }}>ADD GEOFENCE</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btn} onPress={() => clearGeofences()}>
+                    <Text style={{ color: COLORS.secondary }}>CLEAR GEOFENCES</Text>
+                </TouchableOpacity>
+
             </View>
         </>
     );
