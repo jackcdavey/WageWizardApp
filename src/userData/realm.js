@@ -57,7 +57,6 @@ GeofenceLocation.schema = {
         latitude: 'double',
         longitude: 'double',
         radius: 'double',
-        //Eventually location should be an array of lat/long + diameter(or maybe z-index of map?)
     },
     primaryKey: 'id',
 };
