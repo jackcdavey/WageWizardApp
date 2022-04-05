@@ -8,34 +8,39 @@ if (global.globalRealmDBUse) {
 
 export const addGeofence = () => {
   const [currentJobId, setCurrentJobId] = useState(0);
+  const [longitude, setLongitude] = useState(0.0);
+  const [latitude, setLatitude] = useState(0.0);
+  const [radius, setRadius] = useState(0.0);
+
   try {
     let newGeofence;
     if (realm) {
       //Just add geofences to the most recent job.
       //Will need to be dependent on the picked job.
       realm.write(() => {
-        if (realm.objects('Job').length > 0) {
-          setCurrentJobId(realm.objects('Job')[realm.objects('Job').length - 1].id);
+        id = realm.objects('GeofenceLocation').length + 1;
+        if (id != realm.objects('GeofenceLocation').length && !realm.objectForPrimaryKey('GeofenceLocation', id)) {
+          newGeofence = realm.create('GeofenceLocation', {
+            id: id,
+            jobId: currentJobId,
+            longitude: longitude,
+            latitude: latitude,
+            radius: radius
+          });
+          Alert.alert('New geofence created: ', JSON.stringify(newGeofence));
         } else {
-          setCurrentJobId(-1);
+          Alert.alert('Geofence already exists. (idk how that is possible)');
         }
-
-        newGeofence = realm.create('GeofenceLocation', {
-          id: realm.objects('GeofenceLocation').length + 1,
-          jobId: currentJobId,
-          name: '',
-          latitude: 0,
-          longitude: 0,
-          radius: 0,
-          isActive: false,
-        });
-        console.log('New geofence created: ', JSON.stringify(newGeofence));
       });
+    } else {
+      Alert.alert('Realm not initialized.');
     }
   } catch (error) {
+    Alert.alert('Error creating geofence.');
     console.log('Error creating geofence: ', error);
   }
-}
+};
+
 
 export const clearGeofences = () => {
   try {

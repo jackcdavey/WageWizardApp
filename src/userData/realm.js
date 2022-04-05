@@ -79,6 +79,20 @@ WorkLog.schema = {
     primaryKey: 'id',
 };
 
+class LogNote extends Realm.Object { }
+LogNote.schema = {
+    name: 'LogNote',
+    properties: {
+        id: 'int',
+        workLogId: 'int',
+        text: 'string',
+    },
+    primaryKey: 'id',
+};
+//Currently, Realm does not support arrays within object schema properties,
+//making it impossible to store an unknown number of file attachment objects
+//Instead, we will store all attachments in a separate file, associate each file
+//with a workLogId, and store the file name in the LogNote object
 
 export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 7 });
 

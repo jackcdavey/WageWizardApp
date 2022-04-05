@@ -10,6 +10,8 @@ import COLORS from '../../styles/colors.js';
 
 //import realm from '../../userData/realm';
 
+var jobsLoaded = false;
+
 const Tracking = () => {
 
   const [open, setOpen] = useState(false);
@@ -19,18 +21,24 @@ const Tracking = () => {
   const [items, setItems] = useState([
     { label: 'Job One', value: 'jobone' },
     { label: 'Job Two', value: 'jobtwo' },
-    { label: 'Job Three', value: 'jobthree' },
-    { label: 'Job Four', value: 'jobfour' },
   ]);
 
   //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
   //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
   //with proper elements.
 
-  if (global.globalRealmDBUse) {
+  if (global.globalRealmDBUse && !jobsLoaded) {
     realm = require('../../userData/realm').default;
     //    const jobExists = realm.objects('Job').length > 0;
+
     const allJobs = realm.objects('Job');
+    const jobList = [items];
+
+    for (Job of allJobs) {
+      jobList.push({ label: Job.employer, value: Job.id });
+    }
+    //setItems(Job.name);
+    jobsLoaded = true;
   }
 
 

@@ -103,10 +103,7 @@ const createLog = () => {
 const TestingView = ({ navigation }) => {
     if (global.globalRealmDBUse) {
         realm = require('../userData/realm').default;
-
     }
-
-
     return (
         <>
             <View>
