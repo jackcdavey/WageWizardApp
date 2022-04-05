@@ -34,7 +34,7 @@ const Tracking = () => {
     const allJobs = realm.objects('Job');
     const jobList = [items];
 
-    for (Job of allJobs) {
+    for (let Job of allJobs) {
       jobList.push({ label: Job.employer, value: Job.id });
     }
     //setItems(Job.name);
