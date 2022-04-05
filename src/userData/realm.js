@@ -48,12 +48,26 @@ Job.schema = {
 //     primaryKey: 'id',
 // };
 
+class GeofenceLocation extends Realm.Object { }
+GeofenceLocation.schema = {
+    name: "GeofenceLocation",
+    properties: {
+        id: 'int',
+        jobId: 'int',
+        latitude: 'double',
+        longitude: 'double',
+        radius: 'double',
+        //Eventually location should be an array of lat/long + diameter(or maybe z-index of map?)
+    },
+    primaryKey: 'id',
+};
+
 
 class WorkLog extends Realm.Object { }
 WorkLog.schema = {
     name: 'WorkLog',
     properties: {
-        logId: 'int',
+        id: 'int',
         jobId: 'int',
         notes: 'string',
         startTime: 'int', //will be a date
@@ -63,11 +77,11 @@ WorkLog.schema = {
         //Perhaps store breaks in an array to allow for multiple breaks with fewer lines of code
         //Orrr create a new model for breaks
     },
-    primaryKey: 'jobId',
+    primaryKey: 'id',
 };
 
 
-export default new Realm({ schema: [User, Job, WorkLog], schemaVersion: 6 });
+export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 7 });
 
 // async function startRealm() {
 //     let realm = await Realm.open({

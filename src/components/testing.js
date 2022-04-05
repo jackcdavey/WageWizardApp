@@ -70,7 +70,7 @@ const createLog = () => {
             realm.write(() => {
                 if (newLogId != allLogs.length && !realm.objectForPrimaryKey('WorkLog', newLogId)) {
                     newLog = realm.create('WorkLog', {
-                        logId: newLogId,
+                        id: newLogId,
                         jobId: 1,
                         notes: '',
                         startTime: 1,

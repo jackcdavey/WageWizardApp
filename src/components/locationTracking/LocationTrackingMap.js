@@ -298,7 +298,7 @@ const _LocationMap = (props) => {
         const logSize = realm.objects('WorkLog').length;
         realm.write(() => {
           realm.create('WorkLog', {
-            logId: logSize + 1,
+            id: logSize + 1,
             jobId: currJob.id,
             notes: "Notes from Tracking",
             startTime: new Date(), //Change to initial start time of log
