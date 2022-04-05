@@ -12,7 +12,7 @@ import * as TaskManager from "expo-task-manager"
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer,setIsInsideGeofence, setIsTracking, setSelectedJob } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, setSelectedJob } from '../../reduxLogic/actions'
 
 //standardized styling import
 import COLORS from '../../styles/colors';
@@ -26,13 +26,12 @@ const debug_info = true;
 /************************************************************** */
 /*** GEOFENCING FUNCTIONS USED IN BACKGROUND LOCATION TRACKING***/
 /************************************************************** */
-function find_distance(lat1,lat2, lon1, lon2)
-{
+function find_distance(lat1, lat2, lon1, lon2) {
 
   // The math module contains a function
   // named toRadians which converts from
   // degrees to radians.
-  lon1 =  lon1 * Math.PI / 180;
+  lon1 = lon1 * Math.PI / 180;
   lon2 = lon2 * Math.PI / 180;
   lat1 = lat1 * Math.PI / 180;
   lat2 = lat2 * Math.PI / 180;
@@ -41,8 +40,8 @@ function find_distance(lat1,lat2, lon1, lon2)
   let dlon = lon2 - lon1;
   let dlat = lat2 - lat1;
   let a = Math.pow(Math.sin(dlat / 2), 2)
-  + Math.cos(lat1) * Math.cos(lat2)
-  * Math.pow(Math.sin(dlon / 2),2);
+    + Math.cos(lat1) * Math.cos(lat2)
+    * Math.pow(Math.sin(dlon / 2), 2);
 
   let c = 2 * Math.asin(Math.sqrt(a));
 
@@ -51,21 +50,21 @@ function find_distance(lat1,lat2, lon1, lon2)
   let r = 6371;
 
   // calculate the result
-  return((c * r)*1000);
+  return ((c * r) * 1000);
 }
 //geofencing function that takes the coord object {lat,long} and regions list [{lat,long,rad}...]
-function checkIfInsideAnyGeofence(coord, regions){
+function checkIfInsideAnyGeofence(coord, regions) {
   let isInsideAnyGeofence = false;
-  regions.forEach((item)=>{
-    
-    if (find_distance(item.latitude,coord.latitude,item.longitude,coord.longitude)<item.radius){
+  regions.forEach((item) => {
+
+    if (find_distance(item.latitude, coord.latitude, item.longitude, coord.longitude) < item.radius) {
       //set the the state as inside the geofence
       store.dispatch(setIsInsideGeofence(true))
       isInsideAnyGeofence = true;
     }
     //store.dispatch(setIsInsideGeofence(((item.latitude-coord.latitude)*(item.latitude-coord.latitude)+(item.longitude-coord.longitude)*(item.longitude-coord.longitude))<(item.radius*item.radius)))
   });
-  if (isInsideAnyGeofence === false){
+  if (isInsideAnyGeofence === false) {
     store.dispatch(setIsInsideGeofence(false))
   }
   //else thet state is outside the geofence
@@ -73,13 +72,13 @@ function checkIfInsideAnyGeofence(coord, regions){
 
 }
 
-const generateGeofence = (selectedJob)=>{
-  const geofences = selectedJob.locations.map((location)=>{
-      return {
-          latitude:location.latLng.latitude,
-          longitude:location.latLng.longitude,
-          radius:location.radius
-      }
+const generateGeofence = (selectedJob) => {
+  const geofences = selectedJob.locations.map((location) => {
+    return {
+      latitude: location.latLng.latitude,
+      longitude: location.latLng.longitude,
+      radius: location.radius
+    }
   })
   console.log(geofences)
   return geofences
@@ -105,16 +104,16 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
       //update that store according to background locaiton updates
 
       //first check for geofences:
-      checkIfInsideAnyGeofence({latitude:location.coords.latitude, longitude:location.coords.longitude},geofences)
-      
-      if (store.getState().isInsideGeofence){
-        if(store.getState().isTracking){
-          if(store.getState().isIdle){
+      checkIfInsideAnyGeofence({ latitude: location.coords.latitude, longitude: location.coords.longitude }, geofences)
+
+      if (store.getState().isInsideGeofence) {
+        if (store.getState().isTracking) {
+          if (store.getState().isIdle) {
             store.dispatch(startTimer())
           }
         }
-      }else{
-        if(!store.getState().isIdle){
+      } else {
+        if (!store.getState().isIdle) {
           store.dispatch(endTimer())
         }
       }
@@ -131,8 +130,8 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
 /************************************************************** */
 
 const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob} = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob};
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob };
 }
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -141,8 +140,8 @@ const mapDispatchToProps = (dispatch, props) => {
     pauseTimer: () => dispatch(pauseTimer()),
     resumeTimer: () => dispatch(resumeTimer()),
     endTimer: () => dispatch(endTimer()),
-    setIsTracking: (bool_val)=>dispatch(setIsTracking(bool_val)),
-    setSelectedJob: (selectedJob)=>dispatch(setSelectedJob(selectedJob))
+    setIsTracking: (bool_val) => dispatch(setIsTracking(bool_val)),
+    setSelectedJob: (selectedJob) => dispatch(setSelectedJob(selectedJob))
   }
 }
 
@@ -155,28 +154,33 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob} = props;
+  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
   useEffect(() => {
     const requestPermissions = async () => {
-      const foreground = await Location.requestForegroundPermissionsAsync()
-      if (foreground.granted) {
-        //Alert.alert("Foreground Permission Given")
-        //I needed to disable this for sanity, feel free to reenable
-        console.log("Foreground Permission Given")
-        const background = await Location.requestBackgroundPermissionsAsync()
-        if (!background.granted) {
-          //background permission not granted
-          Alert.alert("Background Location Permission Not Granted!");
-        }
-        else {
-          Alert.alert("Background Permission Given")
-        }
+
+      //Check if the user has granted fg & bg location permissions
+      let { foreground } = await Location.requestForegroundPermissionsAsync();
+      let { background } = await Location.requestBackgroundPermissionsAsync();
+
+      if (foreground !== 'granted') {
+        console.log("Foreground Permission Not Given");
+        return;
       } else {
-        //forground permission not granted
-        Alert.alert("Foreground Location Permission Not Granted!");
+        console.log("Foreground Permission Given");
       }
+      if (background !== 'granted') {
+        console.log("Background Permission Not Given")
+        return;
+      } else {
+        console.log("Background Permission Given")
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      console.log('Current location: ' + location);
+
+
     }
     requestPermissions();
   }, [])
@@ -186,7 +190,7 @@ const _LocationMap = (props) => {
 
     // Don't track position if permission is not granted
     const { granted } = await Location.getBackgroundPermissionsAsync()
-    if (!granted) {
+    if (granted !== 'granted') {
       console.log("location tracking denied")
       return
     }
@@ -333,44 +337,44 @@ const _LocationMap = (props) => {
 
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
       {isTracking
-        ?isInsideGeofence
-          ?<View>
+        ? isInsideGeofence
+          ? <View>
             <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
               <Text>{locationButtonText}</Text>
             </TouchableOpacity>
             {isPaused
-              ?<TouchableOpacity  onPress={handleResume}>
+              ? <TouchableOpacity onPress={handleResume}>
                 <Text>Resume</Text>
-               </TouchableOpacity>
-              :<TouchableOpacity  onPress={handlePause}>
+              </TouchableOpacity>
+              : <TouchableOpacity onPress={handlePause}>
                 <Text>Pause</Text>
               </TouchableOpacity>
             }
           </View>
-          :<View>
+          : <View>
             <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-                <Text>{locationButtonText}</Text>
+              <Text>{locationButtonText}</Text>
             </TouchableOpacity>
             <Text>---Tracking---</Text>
           </View>
-          :<TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-            <Text>{locationButtonText}</Text>
-          </TouchableOpacity>
+        : <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+          <Text>{locationButtonText}</Text>
+        </TouchableOpacity>
       }
 
       {/*DUBUG_INFO STATS*/}
       {
         debug_info
-        ?
-        <View>
-          <Text>--------------DEBUG_INFO---------------</Text>
-          <Text>isInsideGeofence: {isInsideGeofence.toString()}</Text>
-          <Text>isTracking: {isTracking.toString()}</Text>
-          <Text>isIdle: {isIdle.toString()}</Text>
-          <Text>coordinates: {region.latitude}, {region.longitude}</Text>
-        </View>
-        :
-        <Text></Text>
+          ?
+          <View>
+            <Text>--------------DEBUG_INFO---------------</Text>
+            <Text>isInsideGeofence: {isInsideGeofence.toString()}</Text>
+            <Text>isTracking: {isTracking.toString()}</Text>
+            <Text>isIdle: {isIdle.toString()}</Text>
+            <Text>coordinates: {region.latitude}, {region.longitude}</Text>
+          </View>
+          :
+          <Text></Text>
       }
 
 

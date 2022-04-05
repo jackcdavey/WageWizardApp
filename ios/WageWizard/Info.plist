@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to use FaceID</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To enable background start &amp; stop of Work Log recording</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To enable automated logging of work sessions based on your location</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use FaceID</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To add photo attachments to your work logs</string>
 	<key>NSCameraUsageDescription</key>
@@ -45,8 +47,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To enable automated logging of work sessions based on your location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BCAlphapipeL-Regular.ttf</string>
