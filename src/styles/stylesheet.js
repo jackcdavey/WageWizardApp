@@ -1,6 +1,52 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 const styles = StyleSheet.create({
+
+
+
+    //Thisll get messy really fast, so we'll need a way to organize the styles
+    //Maybe like this?
+
+
+    //INTERACTIVE ELEMENTS
+    //Buttons//
+
+    //Buttons//
+
+
+    //Switches//
+
+    //Switches//
+
+
+    //Pickers//
+
+    //Pickers//
+
+
+    //STATIC ELEMENTS
+    //Text//
+
+    //Text//
+
+
+    //Labels//
+
+    //Labels//
+
+
+    //Images//
+
+    //Images//
+
+
+    //CONTAINERS
+    //Views//
+
+    //Views//
+
+    /////////////OLD STYLES BELOW//////////////
+
     container: {
         flex: 1,
         backgroundColor: '#fff',
