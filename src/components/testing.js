@@ -1,10 +1,10 @@
 import { TabActions } from '@react-navigation/native';
 import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Alert, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import React, { useState } from 'react';
 import AppLoading from 'expo-app-loading';
 import Header from './elements/Header.js';
-import { addGeofence, clearGeofences } from '../userData/geofences.js';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -95,6 +95,54 @@ const createLog = () => {
     catch (error) {
         Alert.alert('Error creating log.');
         console.log('Error creating log: ', error);
+    }
+}
+
+
+const addGeofence = () => {
+    try {
+        let newGeofence;
+        if (realm) {
+            //Just add geofences to the most recent job.
+            //Will need to be dependent on the picked job.
+            realm.write(() => {
+                id = realm.objects('GeofenceLocation').length + 1;
+                if (id != realm.objects('GeofenceLocation').length && !realm.objectForPrimaryKey('GeofenceLocation', id)) {
+                    newGeofence = realm.create('GeofenceLocation', {
+                        id: id,
+                        jobId: 1,
+                        longitude: 0.0,
+                        latitude: 0.0,
+                        radius: 50
+                    });
+                    Alert.alert('New geofence created: ', JSON.stringify(newGeofence));
+                } else {
+                    Alert.alert('Geofence already exists. (idk how that is possible)');
+                }
+            });
+        } else {
+            Alert.alert('Realm not initialized.');
+        }
+    } catch (error) {
+        Alert.alert('Error creating geofence.');
+        console.log('Error creating geofence: ', error);
+    }
+};
+
+
+const clearGeofences = () => {
+    try {
+        if (realm) {
+            realm.write(() => {
+                var allGeofences = realm.objects('GeofenceLocation');
+                realm.delete(allGeofences);
+                console.log('All geofences deleted.');
+            });
+        } else {
+            console.log('Realm not initialized.');
+        }
+    } catch (error) {
+        console.log('Error deleting geofences: ', error);
     }
 }
 
