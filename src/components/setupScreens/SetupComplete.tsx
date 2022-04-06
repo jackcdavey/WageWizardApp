@@ -1,7 +1,7 @@
 import React from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Dimensions, Text } from "react-native";
 
 //Eventually, the route will need to be checked to ensure this screen only appears 
 //on first time setup. Currently, it is shown every time a job is added.

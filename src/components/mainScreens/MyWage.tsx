@@ -1,19 +1,7 @@
 import COLORS from '../../styles/colors.js';
 import React from 'react';
-import { useState, useEffect } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  Dimensions,
-  View,
-  TouchableOpacity,
-  Alert,
-
-} from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, Dimensions, View, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function MyWage({ navigation }: { navigation: any }) {

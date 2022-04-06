@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
-import { UpdateMode } from 'realm';
-import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 //import saveJob from '../../userData/saveJob';
 //import realm from '../../userData/realm';
 

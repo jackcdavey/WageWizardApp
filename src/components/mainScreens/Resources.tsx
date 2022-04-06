@@ -1,17 +1,6 @@
 import COLORS from '../../styles/colors.js';
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Dimensions,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import { StyleSheet, View, Dimensions, TouchableOpacity, Alert } from 'react-native';
 
 const styles = StyleSheet.create({
   article: {

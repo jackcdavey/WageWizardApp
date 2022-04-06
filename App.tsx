@@ -1,13 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useState } from 'react';
-//import { useFonts } from 'expo-font';
-import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import NavBar from './src/components/elements/NavBar';
 import Account from './src/components/mainScreens/Account';
-import Header from './src/components/elements/Header';
-//import VerifyPin from './src/components/elements/loginView';
-import COLORS from './src/styles/colors.js';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
@@ -19,15 +14,7 @@ import { Provider } from 'react-redux';
 import * as LocalAuthentication from 'expo-local-authentication';
 
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SetupNav from './src/components/setupScreens/SetupNav';
 
@@ -49,7 +36,7 @@ global.globalRealmDBUse = true;
 /////////////////// GLOBAL PRODUCTION TESTING VARIABLES //////////////////////
 
 const Stack = createNativeStackNavigator();
-var authenticated = false;
+
 
 const App = () => {
   const [IsReady, SetIsReady] = useState(false);

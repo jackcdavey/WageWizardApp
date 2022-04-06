@@ -1,12 +1,11 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
+import { useState } from 'react';
+import { View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
 import Timer from '../elements/Timer'
 import LocationMap from '../locationTracking/LocationTrackingMap'
-import COLORS from '../../styles/colors.js';
 
 import styles from '../../styles/stylesheet';
 
