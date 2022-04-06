@@ -52,12 +52,6 @@ export default function JobSetup({ navigation }) {
         try {
             if (realm) {
                 realm.write(() => {
-                    var allJobs = realm.objects('Job');
-                    console.log('allJobs', allJobs);
-                    //Alert.alert('allJobs', JSON.stringify(allJobs));
-                    //realm.delete(allJobs);
-                });
-                realm.write(() => {
                     id = realm.objects('Job').length + 1;
                     if (id != realm.objects('Job').length && !realm.objectForPrimaryKey('Job', id)) {
                         newJob = realm.create('Job', {

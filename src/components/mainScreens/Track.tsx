@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
@@ -8,20 +8,22 @@ import Timer from '../elements/Timer'
 import LocationMap from '../locationTracking/LocationTrackingMap'
 
 import styles from '../../styles/stylesheet';
+import JobLocationSetup from '../setupScreens/AddJobLocation';
 
 //import realm from '../../userData/realm';
 
-var jobsLoaded = false;
+
 
 const Tracking = () => {
-
+  var jobsLoaded = false;
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'Job One', value: 'jobone' },
-    { label: 'Job Two', value: 'jobtwo' },
+    { label: 'No Jobs', value: -1 },
+    { label: 'No Jobs', value: -2 },
+    { label: 'No Jobs', value: -3 },
   ]);
 
   //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
@@ -30,18 +32,34 @@ const Tracking = () => {
 
   if (global.globalRealmDBUse && !jobsLoaded) {
     realm = require('../../userData/realm').default;
-    //    const jobExists = realm.objects('Job').length > 0;
+    const jobExists = realm.objects('Job').length > 0;
 
-    const allJobs = realm.objects('Job');
-    const jobList = [items];
+    if (jobExists) {
+      const allJobs = realm.objects('Job');
+      const numJobs = allJobs.length;
+      const jobList = [];
 
-    for (let Job of allJobs) {
-      jobList.push({ label: Job.employer, value: Job.id });
+      for (let Job of allJobs) {
+        const a = { label: Job.employer, value: Job.id };
+        jobList.push({ label: Job.employer, value: Job.id });
+        //Still not working
+        //This position should technically cause only the last job to be displayed, but that doesnt work either...
+
+        //{ () => setItems(items => ({ ...items, label: Job.employer, value: Job.id })) };
+      }
+
+      //console.log('label: ' + jobList[0].label);
+      //console.log('value: ' + jobList[0].value);
+
+      console.log('Jobs in picker: ' + JSON.stringify(jobList));
+      //console.log('Job options for tracking: ', JSON.stringify(allJobs));
+
+      //setItems(Job.name);
+      jobsLoaded = true;
     }
-    //setItems(Job.name);
-    jobsLoaded = true;
   }
 
+  //setItems([{ label: 'No Jobs', value: -5 },]);
 
   return (
 

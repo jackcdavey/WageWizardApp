@@ -155,7 +155,6 @@ const TestingView = ({ navigation }) => {
     return (
         <>
             <View>
-
                 <TouchableOpacity style={styles.btn} onPress={() => clearUsers()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE PROFILE DATA</Text>
                 </TouchableOpacity>
@@ -256,7 +255,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     btn: {
-        margin: 25,
+        margin: 15,
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.primary,
