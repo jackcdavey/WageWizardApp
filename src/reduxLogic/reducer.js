@@ -33,6 +33,12 @@ const sampleJob = {
             latLng: {latitude: 37.379903,longitude: -121.851886},
             radius: 30
         },
+        {
+            name: "cassa",
+            latLng: {latitude: 37.347120,longitude: -121.935115},
+            radius: 30
+        },
+
     ]
 }
 

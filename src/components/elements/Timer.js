@@ -4,6 +4,7 @@ import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useC
 
 import { startTimer, pauseTimer, resumeTimer, endTimer, incrementTime } from '../../reduxLogic/actions'
 import { connect } from 'react-redux';
+import BackgroundTimer from 'react-native-background-timer';
 
 const _Timer = (props) => {
 
@@ -13,7 +14,7 @@ const _Timer = (props) => {
     let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
     let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
   
-    useEffect(() => {
+    /*useEffect(() => {
       let interval = setInterval(() => { }, 0);
       if (isRunning) {
         interval = setInterval(() => {
@@ -26,6 +27,17 @@ const _Timer = (props) => {
         clearInterval(interval);
       };
   
+    }, [isIdle, isRunning, isPaused]);*/
+
+    useEffect(() => {
+      if(isRunning){
+        BackgroundTimer.runBackgroundTimer(()=>{
+          incrementTime()
+        },1000)
+      }else{
+        BackgroundTimer.stopBackgroundTimer();
+      }
+
     }, [isIdle, isRunning, isPaused]);
   
     //helper function to handle the timer's state, we will be addding more in these functions (geofencing, recording entry to the database)

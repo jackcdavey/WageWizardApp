@@ -334,6 +334,7 @@ const _LocationMap = (props) => {
         <Circle center={selectedJob.locations[2].latLng} radius={selectedJob.locations[2].radius} fillColor={selectedJob.color} />
         <Circle center={selectedJob.locations[3].latLng} radius={selectedJob.locations[3].radius} fillColor={selectedJob.color} />
         <Circle center={selectedJob.locations[4].latLng} radius={selectedJob.locations[4].radius} fillColor={selectedJob.color} />
+        <Circle center={selectedJob.locations[5].latLng} radius={selectedJob.locations[5].radius} fillColor={selectedJob.color} />
 
 
       </MapView>
