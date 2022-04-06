@@ -130,6 +130,10 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    //code to fix kyle's problem
+    dexOptions {
+       javaMaxHeapSize "3g"
+    }
     defaultConfig {
         applicationId "com.wagewizard"
         minSdkVersion rootProject.ext.minSdkVersion
