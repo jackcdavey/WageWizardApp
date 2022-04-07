@@ -155,9 +155,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 30,
-    }
+    },
 
     ////////////////Initial Setup View Styles///////////////
+
+
+    ////////////////Header Styles///////////////
+    headerContainer: {
+        height: Dimensions.get('window').height * 0.05,
+        width: Dimensions.get('window').width,
+        paddingLeft: 20,
+        marginTop: 0,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: COLORS.primary,
+    },
+    headerTxt: {
+        fontSize: 30,
+        color: COLORS.secondary,
+        fontFamily: 'Comfortaa-Bold',
+    },
+
+
+    ////////////////Header Styles///////////////
 
 
 });

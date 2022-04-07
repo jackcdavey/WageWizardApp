@@ -12,7 +12,7 @@ export default function Header(props) {
         //<TouchableHighlight onPress={()=>{props.navigation.navigate('Tracking')}}>
         <View style={styles.headerContainer}>
             <StatusBar style="light" />
-            <Text style={[styles.headerTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>{props.title}</Text>
+            <Text style={styles.headerTxt}>{props.title}</Text>
 
         </View>
         //</TouchableHighlight>

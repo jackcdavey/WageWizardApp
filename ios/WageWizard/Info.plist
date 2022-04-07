@@ -2,20 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To automatically start $ stop Work Log recording..</string>
-	<key>NSLocationUsageDescription</key>
-	<string>To automatically start &amp; stop Work Log recording.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To enable background start &amp; stop of Work Log recording</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To enable automated logging of work sessions based on your location</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to use FaceID</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To add photo attachments to your work logs</string>
-	<key>NSCameraUsageDescription</key>
-	<string>To quickly add photos to work logs</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -51,6 +37,20 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>To quickly add photos to work logs</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use FaceID</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To automatically start $ stop Work Log recording..</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To enable background start &amp; stop of Work Log recording</string>
+	<key>NSLocationUsageDescription</key>
+	<string>To automatically start &amp; stop Work Log recording.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To enable automated logging of work sessions based on your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To add photo attachments to your work logs</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BCAlphapipeL-Regular.ttf</string>
@@ -77,8 +77,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
