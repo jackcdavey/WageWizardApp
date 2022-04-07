@@ -5,6 +5,8 @@ import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text 
 //import saveJob from '../../userData/saveJob';
 import realm from '../../userData/realm';
 
+import styles from '../../styles/stylesheet.js';
+
 //Eventually this will need to listen to the route –
 //If the user has pushed the back button from the job location setup screen, the last 
 //job should be deleted.
@@ -76,11 +78,7 @@ export default function JobSetup({ navigation }) {
 
 
     return (
-        <View style={{
-            flexDirection: 'column',
-            flex: 1,
-            alignItems: 'center',
-        }}>
+        <View style={styles.container}>
             <View style={styles.directionsWrap}>
                 <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
             </View>
@@ -89,20 +87,22 @@ export default function JobSetup({ navigation }) {
                     Provide the information below to set up your first job. All fields are optional, but incomplete information may limit functionality.
                 </Text>
             </View>
-            <View>
-                <TextInput style={styles.input} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
-            </View>
+            <View style={styles.userSetupFieldsContainer}>
+                <View>
+                    <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
+                </View>
 
-            <View>
-                <TextInput style={styles.input} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
-            </View>
-            <View>
-                <TextInput style={styles.input} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
-                {/* this will be changed in future build */}
-            </View>
+                <View>
+                    <TextInput style={styles.setupTextField} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
+                </View>
+                <View>
+                    <TextInput style={styles.setupTextField} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
+                    {/* this will be changed in future build */}
+                </View>
 
-            <View>
-                <TextInput style={styles.input} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
+                <View>
+                    <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
+                </View>
             </View>
 
             <View style={styles.buttonWrap}>
@@ -116,7 +116,7 @@ export default function JobSetup({ navigation }) {
                     <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearJobs()}>
+            <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
                 <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
             </TouchableOpacity>
 
@@ -128,63 +128,63 @@ export default function JobSetup({ navigation }) {
 
 
 
-const styles = StyleSheet.create({
-    article: {
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').width * 0.2,
-        margin: 25,
-        backgroundColor: COLORS.primary,
-        borderRadius: 15,
-        borderColor: COLORS.dark,
-        borderWidth: 2,
-    },
-    item: {
-        margin: 25,
-        padding: 10,
-        backgroundColor: COLORS.active,
-        fontSize: 18,
-        height: 44,
-    },
-    input: {
-        width: Dimensions.get('window').width * 0.8,
-        borderRadius: 15,
-        marginTop: 20,
-        backgroundColor: COLORS.secondary,
-        borderColor: COLORS.primary,
-        borderWidth: 2,
-        padding: 10,
-    },
-    title: {
-        fontSize: 40,
-        color: COLORS.dark,
-    },
-    directions: {
-        fontSize: 20,
-        fontWeight: '300',
-        textAlign: 'center',
-        color: COLORS.dark,
-    },
-    directionsWrap: {
-        width: Dimensions.get('window').width * 0.8,
-        marginTop: 20,
-        alignItems: 'center',
-    },
-    buttonWrap: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        //paddingTop: Dimensions.get('window').height * 0.3,
-        //This is a temp fix to force the buttons to be on the bottom of the screen
-        //Content is cut off at some screen sizes, but "flex-end" doesn't work
-    },
-    button: {
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').width * 0.1,
-        backgroundColor: COLORS.primary,
-        borderRadius: 15,
-        borderColor: COLORS.primary,
-        borderWidth: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 30,
-    }
-});
+// const styles = StyleSheet.create({
+//     article: {
+//         width: Dimensions.get('window').width * 0.3,
+//         height: Dimensions.get('window').width * 0.2,
+//         margin: 25,
+//         backgroundColor: COLORS.primary,
+//         borderRadius: 15,
+//         borderColor: COLORS.dark,
+//         borderWidth: 2,
+//     },
+//     item: {
+//         margin: 25,
+//         padding: 10,
+//         backgroundColor: COLORS.active,
+//         fontSize: 18,
+//         height: 44,
+//     },
+//     input: {
+//         width: Dimensions.get('window').width * 0.8,
+//         borderRadius: 15,
+//         marginTop: 20,
+//         backgroundColor: COLORS.secondary,
+//         borderColor: COLORS.primary,
+//         borderWidth: 2,
+//         padding: 10,
+//     },
+//     title: {
+//         fontSize: 40,
+//         color: COLORS.dark,
+//     },
+//     directions: {
+//         fontSize: 20,
+//         fontWeight: '300',
+//         textAlign: 'center',
+//         color: COLORS.dark,
+//     },
+//     directionsWrap: {
+//         width: Dimensions.get('window').width * 0.8,
+//         marginTop: 20,
+//         alignItems: 'center',
+//     },
+//     buttonWrap: {
+//         flexDirection: 'row',
+//         justifyContent: 'flex-end',
+//         //paddingTop: Dimensions.get('window').height * 0.3,
+//         //This is a temp fix to force the buttons to be on the bottom of the screen
+//         //Content is cut off at some screen sizes, but "flex-end" doesn't work
+//     },
+//     button: {
+//         width: Dimensions.get('window').width * 0.3,
+//         height: Dimensions.get('window').width * 0.1,
+//         backgroundColor: COLORS.primary,
+//         borderRadius: 15,
+//         borderColor: COLORS.primary,
+//         borderWidth: 2,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         margin: 30,
+//     }
+// });

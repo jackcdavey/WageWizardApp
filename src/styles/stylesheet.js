@@ -21,7 +21,28 @@ const styles = EStyleSheet.create({
 
     //INTERACTIVE ELEMENTS
     //Buttons//
+    searchButton: {
+        width: '15%',
+        height: '100%',
+        backgroundColor: COLORS.primary,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 
+    testButton: {
+        width: Dimensions.get('window').width * 0.3,
+        height: Dimensions.get('window').height * 0.05,
+        backgroundColor: 'red',
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
     //Buttons//
 
 
@@ -33,6 +54,30 @@ const styles = EStyleSheet.create({
     //Pickers//
 
     //Pickers//
+
+    //TextInputs//
+    searchText: {
+        width: '80%',
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
+        borderWidth: 2,
+        padding: 10,
+        alignItems: 'center',
+    },
+
+    setupTextField: {
+        width: Dimensions.get('window').width * 0.8,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
+        borderWidth: 2,
+        padding: 10,
+        margin: '1%',
+        alignItems: 'center',
+    },
+
+    //TextInputs//
 
 
     //STATIC ELEMENTS
@@ -52,9 +97,19 @@ const styles = EStyleSheet.create({
 
 
     //CONTAINERS
-    //Views//
+    searchContainer: {
+        width: '90%',
+        height: '5%',
+        display: 'flex',
+        flexDirection: 'row',
+        margin: '5%',
+    },
 
-    //Views//
+    userSetupFieldsContainer: {
+        width: '100%',
+        alignItems: 'center',
+    },
+
 
     /////////////OLD STYLES BELOW//////////////
 
@@ -147,10 +202,8 @@ const styles = EStyleSheet.create({
         color: COLORS.dark,
     },
     directionsWrap: {
-        width: '90%',
-
-        //height: '20%',
-        //marginTop: 20,
+        width: Dimensions.get('window').width * 0.8,
+        marginTop: 20,
         alignItems: 'center',
     },
     buttonWrap: {

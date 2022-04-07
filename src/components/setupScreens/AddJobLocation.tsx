@@ -4,6 +4,8 @@ import 'react-native-gesture-handler';
 import { View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Text } from "react-native";
 import Map from '../elements/Map.js';
 
+import styles from '../../styles/stylesheet.js';
+
 
 let searchtext = '500 El Camino Real San Jose CA';
 function getCoordinatesFromAddress(searchtext: string) {
@@ -58,25 +60,24 @@ async function fetchCoordinates(searchtext: string) {
 export default function JobLocationSetup({ navigation }: { navigation: any }) {
     //fetchCoordinates(searchtext);
     return (
-        <View style={{
-            flexDirection: 'column',
-            flex: 1,
-            alignItems: 'center',
-        }}>
-            <View style={styles.container}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
+        <View style={styles.container}>
+            <View style={styles.directionsWrap}>
+                <Text style={styles.title}>Add A Job</Text>
             </View>
-            <View style={styles.container}>
+            <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
                     To configure automatic tracking,
                     adjust the cicle below until your
                     place of work is inside.
                 </Text>
             </View>
-            <View>
-                <TextInput style={styles.input} placeholder="Search Address..." placeholderTextColor={COLORS.lightPlaceholder} />
+            <View style={styles.searchContainer}>
+                <TextInput style={styles.searchText} placeholder="Search Address..." placeholderTextColor={COLORS.lightPlaceholder} />
+                <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates(searchtext)}>
+                    <Text>Search</Text>
+                </TouchableOpacity>
             </View>
-            <View style={styles.container}>
+            <View>
                 <Map />
             </View>
             <View style={styles.buttonWrap}>
@@ -93,64 +94,3 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    article: {
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').width * 0.2,
-        margin: 25,
-        backgroundColor: COLORS.primary,
-        borderRadius: 15,
-        borderColor: COLORS.dark,
-        borderWidth: 2,
-    },
-    item: {
-        margin: 25,
-        padding: 10,
-        backgroundColor: COLORS.active,
-        fontSize: 18,
-        height: 44,
-    },
-    input: {
-        width: Dimensions.get('window').width * 0.8,
-        borderRadius: 15,
-        marginTop: 20,
-        backgroundColor: COLORS.secondary,
-        borderColor: COLORS.primary,
-        borderWidth: 2,
-        padding: 10,
-    },
-    title: {
-        fontSize: 40,
-        color: COLORS.dark,
-    },
-    directions: {
-        fontSize: 20,
-        fontWeight: '300',
-        textAlign: 'center',
-        color: COLORS.dark,
-    },
-    container: {
-        width: Dimensions.get('window').width * 0.8,
-        marginTop: 20,
-        alignItems: 'center',
-    },
-    buttonWrap: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        //paddingTop: Dimensions.get('window').height * 0.3,
-        //This is a temp fix to force the buttons to be on the bottom of the screen
-        //Content is cut off at some screen sizes, but "flex-end" doesn't work
-    },
-    button: {
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').width * 0.1,
-        backgroundColor: COLORS.primary,
-        borderRadius: 15,
-        borderColor: COLORS.primary,
-        borderWidth: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 30,
-    }
-});
