@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
@@ -16,8 +16,24 @@ import realm from '../../userData/realm';
 
 var jobsLoaded = false;
 
-const Tracking = () => {
+import { connect } from 'react-redux';
+import { setJobId } from '../../reduxLogic/actions'
 
+const mapStateToProps = (state, props) => {
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId };
+}
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    setJobId: (jobId)=>{dispatch(setJobId(jobId))}
+  }
+}
+
+const debugInfo = false;
+
+const _Tracking = (props) => {
+
+  const {setJobId,jobId} = props
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.
@@ -66,6 +82,18 @@ const Tracking = () => {
     <View style={styles.container}>
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
       <Timer />
+      {
+        debugInfo
+        ?
+          <View>
+            <TouchableOpacity onPress={()=>{setJobId(3)}}>
+              <Text>changeJobId</Text>
+            </TouchableOpacity>
+            <Text>jobId: {jobId}</Text>
+          </View>
+        : <View></View>
+      }
+
 
       <DropDownPicker
         style={styles.picker}
@@ -93,4 +121,5 @@ const Tracking = () => {
   );
 }
 
+const Tracking= connect(mapStateToProps,mapDispatchToProps)(_Tracking);
 export default Tracking;
