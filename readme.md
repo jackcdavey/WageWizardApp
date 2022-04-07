@@ -19,9 +19,10 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![DeepScan grade](https://deepscan.io/api/teams/17323/projects/20675/branches/570240/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17323&pid=20675&bid=570240)
+
 
 -->
+[![DeepScan grade](https://deepscan.io/api/teams/17323/projects/20675/branches/570240/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17323&pid=20675&bid=570240)
 
 <!-- PROJECT LOGO -->
 <br />
