@@ -15,12 +15,38 @@ import { launchImageLibrary } from 'react-native-image-picker';
 //Account activation is pending so API requests are currently denied.
 //Function is currently incomplete, object returned from promise must be handled
 //and be passeed as coordinates to MapView
+
+let searchtext = '500 El Camino Real San Jose CA';
 function getCoordinatesFromAddress({ searchtext }) {
     return new Promise((resolve) => {
-        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + '1%20Main%20Salinas%20CA' + '&&apiKey=VyBjmC6PoIXhlNzKVm5r7eWr5-qoZbWVJaSoGCUrKGw'
-
+        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + { searchtext } + '&&apiKey=VyBjmC6PoIXhlNzKVm5r7eWr5-qoZbWVJaSoGCUrKGw';
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson
+                    && responseJson.Response
+                    && responseJson.Response.View
+                    && responseJson.Response.View[0]
+                    && responseJson.Response.View[0].Result
+                    && responseJson.Response.View[0].Result[0]
+                    && responseJson.Response.View[0].Result[0].Location
+                    && responseJson.Response.View[0].Result[0].Location.DisplayPosition) {
+                    resolve({
+                        latitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Latitude,
+                        longitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+                    });
+                } else {
+                    resolve();
+                }
+            })
+            .catch((error) => {
+                console.error('Error looking up coordinates for address: ' + error);
+            })
     })
 }
+
+const responseCoordinates = getCoordinatesFromAddress({ searchtext });
+console.log('Coordinates of searchtext: ' + JSON.stringify(responseCoordinates));
 
 export default function InitialSetupView({ navigation }) {
     var userExists = false;
