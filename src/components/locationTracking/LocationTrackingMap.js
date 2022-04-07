@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
 import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, setSelectedJob } from '../../reduxLogic/actions'
 
+import realm from '../../userData/realm.js';
+
 //standardized styling import
 import COLORS from '../../styles/colors';
 
@@ -272,8 +274,7 @@ const _LocationMap = (props) => {
 
 
   //Realm Stuff
-  if (global.globalRealmDBUse) {
-    realm = require('../../userData/realm').default;
+  if (realm) {
     const currLog = ' '; //realm.getObjectByPrimaryKey(getCurrLogID()) - Logic for determining current job or new job here
     const currJob = ' '; //Logic for determining chosen job from picker here
   }
