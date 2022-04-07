@@ -10,6 +10,18 @@ import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text,
 
 import { launchImageLibrary } from 'react-native-image-picker';
 
+
+//function to get coordinates from an address search
+//Account activation is pending so API requests are currently denied.
+//Function is currently incomplete, object returned from promise must be handled
+//and be passeed as coordinates to MapView
+function getCoordinatesFromAddress({ searchtext }) {
+    return new Promise((resolve) => {
+        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + '1%20Main%20Salinas%20CA' + '&&apiKey=VyBjmC6PoIXhlNzKVm5r7eWr5-qoZbWVJaSoGCUrKGw'
+
+    })
+}
+
 export default function InitialSetupView({ navigation }) {
     var userExists = false;
     if (global.globalRealmDBUse) {
@@ -51,7 +63,7 @@ export default function InitialSetupView({ navigation }) {
                 // this.setState({
                 //     profilePicture: source,
                 // });
-                console.log(response);
+                console.log('Selected image uri: ' + response.assets[0].uri);
             }
         });
     }
