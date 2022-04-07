@@ -8,7 +8,9 @@ import Map from '../elements/Map.js';
 let searchtext = '500 El Camino Real San Jose CA';
 function getCoordinatesFromAddress(searchtext: string) {
     return new Promise((resolve) => {
-        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + { searchtext } + '&&apiKey=APIKEY';
+        const txt = JSON.stringify(searchtext);
+        console.log('Searchtext: ' + txt);
+        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + txt + '&&apiKey=VyBjmC6PoIXhlNzKVm5r7eWr5-qoZbWVJaSoGCUrKGw';
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -23,7 +25,8 @@ function getCoordinatesFromAddress(searchtext: string) {
                     && responseJson.Response.View[0].Result[0].Location
                     && responseJson.Response.View[0].Result[0].Location.DisplayPosition
                 ) {
-                    console.log('Response good:' + responseJson)
+                    console.log('Location search API response good');
+                    //console.log('Response good:' + JSON.stringify(responseJson))
                     resolve({
                         latitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Latitude,
                         longitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Longitude
@@ -53,7 +56,7 @@ async function fetchCoordinates(searchtext: string) {
 
 
 export default function JobLocationSetup({ navigation }: { navigation: any }) {
-    fetchCoordinates(searchtext);
+    //fetchCoordinates(searchtext);
     return (
         <View style={{
             flexDirection: 'column',
