@@ -5,7 +5,55 @@ import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text 
 import Map from '../elements/Map.js';
 
 
+let searchtext = '500 El Camino Real San Jose CA';
+function getCoordinatesFromAddress(searchtext: string) {
+    return new Promise((resolve) => {
+        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + { searchtext } + '&&apiKey=VyBjmC6PoIXhlNzKVm5r7eWr5-qoZbWVJaSoGCUrKGw';
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log('URL Used: ' + url);
+                console.log('Response: ' + JSON.stringify(responseJson));
+                if (responseJson
+                    && responseJson.Response
+                    && responseJson.Response.View
+                    && responseJson.Response.View[0]
+                    && responseJson.Response.View[0].Result
+                    && responseJson.Response.View[0].Result[0]
+                    && responseJson.Response.View[0].Result[0].Location
+                    && responseJson.Response.View[0].Result[0].Location.DisplayPosition
+                ) {
+                    console.log('Response good:' + responseJson)
+                    resolve({
+                        latitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Latitude,
+                        longitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+                    });
+                } else {
+                    console.log('Response bad:' + responseJson)
+                    resolve({
+                        latitude: 0,
+                        longitude: 0
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error('Error looking up coordinates for address: ' + error);
+            })
+    })
+}
+
+async function fetchCoordinates(searchtext: string) {
+    const coordinates = await getCoordinatesFromAddress(searchtext);
+    console.log('Coordinates: ' + JSON.stringify(coordinates));
+}
+
+
+//const responseCoordinates = await getCoordinatesFromAddress(searchtext);
+//console.log('Coordinates of searchtext: ' + JSON.stringify(responseCoordinates));
+
+
 export default function JobLocationSetup({ navigation }: { navigation: any }) {
+    fetchCoordinates(searchtext);
     return (
         <View style={{
             flexDirection: 'column',
