@@ -11,6 +11,7 @@ import WorkLogs from '../mainScreens/WorkLogs';
 import MyWage from '../mainScreens/MyWage';
 import Header from './Header.js';
 
+import realm from '../../userData/realm.js';
 
 import {
   View,
@@ -19,9 +20,8 @@ import {
 const Tab = createBottomTabNavigator();
 
 export default function NavBar({ navigation }) {
-  var userName = 'no Name';
-  if (global.globalRealmDBUse) {
-    realm = require('../../userData/realm').default;
+  var userName = 'no name';
+  if (realm) {
     if (realm.objects('User').length > 0) {
       const user = realm.objects('User');
       userName = user[0].firstName;

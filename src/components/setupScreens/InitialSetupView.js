@@ -10,6 +10,8 @@ import { View, TouchableOpacity, Alert, Dimensions, TextInput, Text, Switch, Ima
 
 import { launchImageLibrary } from 'react-native-image-picker';
 
+import realm from '../../userData/realm.js';
+
 
 //function to get coordinates from an address search
 //Account activation is pending so API requests are currently denied.
@@ -19,9 +21,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 
 export default function InitialSetupView({ navigation }) {
     var userExists = false;
-    if (global.globalRealmDBUse) {
-        realm = require('../../userData/realm').default;
-    }
+
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -71,11 +71,8 @@ export default function InitialSetupView({ navigation }) {
         let newUser;
         try {
             if (realm) {
-
-
                 realm.write(() => {
                     userExists = realm.objects('User').length > 0;
-
                     if (!userExists) {
                         newUser = realm.create('User', {
                             firstName: firstName,

@@ -11,10 +11,10 @@ import Testing from './src/components/testing.js';
 import { store } from './src/reduxLogic/store';
 import { Provider } from 'react-redux';
 
-import * as LocalAuthentication from 'expo-local-authentication';
+//import * as LocalAuthentication from 'expo-local-authentication';
 
 
-import { StyleSheet, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SetupNav from './src/components/setupScreens/SetupNav';
 
@@ -56,14 +56,6 @@ const App = () => {
       />
     );
   }
-
-
-
-  //if (global.globalRealmDBUse) {
-  ////if(realm)
-  //////if(realm.objects('User').length > 0)
-  ////////if(realm.objects('User')[0].usePin==true)
-  ////////  return <VerifyPin navigation={navigation} />
 
   return (
     <Provider store={store}>

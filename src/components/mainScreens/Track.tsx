@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Alert, View } from 'react-native';
+import { View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
@@ -8,7 +8,9 @@ import Timer from '../elements/Timer'
 import LocationMap from '../locationTracking/LocationTrackingMap'
 
 import styles from '../../styles/stylesheet';
-import JobLocationSetup from '../setupScreens/AddJobLocation';
+//import JobLocationSetup from '../setupScreens/AddJobLocation';
+
+import realm from '../../userData/realm';
 
 //import realm from '../../userData/realm';
 
@@ -30,10 +32,8 @@ const Tracking = () => {
   //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
   //with proper elements.
 
-  if (global.globalRealmDBUse && !jobsLoaded) {
-    realm = require('../../userData/realm').default;
+  if (realm && !jobsLoaded) {
     const jobExists = realm.objects('Job').length > 0;
-
     if (jobExists) {
       const allJobs = realm.objects('Job');
       const numJobs = allJobs.length;

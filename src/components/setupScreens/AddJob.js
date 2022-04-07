@@ -3,7 +3,7 @@ import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, StyleSheet, Dimensions, TextInput, Text } from "react-native";
 //import saveJob from '../../userData/saveJob';
-//import realm from '../../userData/realm';
+import realm from '../../userData/realm';
 
 //Eventually this will need to listen to the route –
 //If the user has pushed the back button from the job location setup screen, the last 
@@ -15,8 +15,7 @@ export default function JobSetup({ navigation }) {
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
 
-    if (global.globalRealmDBUse) {
-        realm = require('../../userData/realm').default;
+    if (realm) {
         //Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
         //default values for job
         //id should be checked and auto-incremented

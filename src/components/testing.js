@@ -1,8 +1,10 @@
-import { TabActions } from '@react-navigation/native';
+
 import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Alert, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Header from './elements/Header.js';
+
+import realm from '../userData/realm.js';
 
 
 const Tab = createBottomTabNavigator();
@@ -148,9 +150,6 @@ const clearGeofences = () => {
 
 
 const TestingView = ({ navigation }) => {
-    if (global.globalRealmDBUse) {
-        realm = require('../userData/realm').default;
-    }
     return (
         <>
             <View>

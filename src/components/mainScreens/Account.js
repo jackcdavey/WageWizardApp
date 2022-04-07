@@ -14,6 +14,8 @@ import {
 
 import Header from '../elements/Header.js';
 
+import realm from '../../userData/realm.js';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -34,15 +36,10 @@ const AcccountView = ({ navigation }) => {
   var email = 'no Email';
   var jobList = [];
 
-
-
-
-  if (global.globalRealmDBUse) {
-    realm = require('../../userData/realm').default;
+  if (realm) {
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
     jobList = JSON.stringify(realm.objects('Job'));
-
     if (userExists) {
       //Alert.alert('There is a user in the database.');
       //Alert.alert('User: ' + user[0].firstName);
@@ -52,8 +49,6 @@ const AcccountView = ({ navigation }) => {
       fullName = firstName + ' ' + lastName;
       birthday = user[0].birthday;
       email = user[0].email;
-
-
     }
   } else {
     Alert.alert('Realm is not defined, navigating anyway');
