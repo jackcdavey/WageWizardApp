@@ -31,11 +31,13 @@ function getCoordinatesFromAddress({ searchtext }) {
                     && responseJson.Response.View[0].Result[0]
                     && responseJson.Response.View[0].Result[0].Location
                     && responseJson.Response.View[0].Result[0].Location.DisplayPosition) {
+                    console.log('Response good:' + responseJson)
                     resolve({
                         latitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Latitude,
                         longitude: responseJson.Response.View[0].Result[0].Location.DisplayPosition.Longitude
                     });
                 } else {
+                    console.log('Response bad:' + responseJson)
                     resolve();
                 }
             })
@@ -45,8 +47,8 @@ function getCoordinatesFromAddress({ searchtext }) {
     })
 }
 
-const responseCoordinates = getCoordinatesFromAddress({ searchtext });
-console.log('Coordinates of searchtext: ' + JSON.stringify(responseCoordinates));
+//const responseCoordinates = getCoordinatesFromAddress({ searchtext });
+//console.log('Coordinates of searchtext: ' + JSON.stringify(responseCoordinates));
 
 export default function InitialSetupView({ navigation }) {
     var userExists = false;

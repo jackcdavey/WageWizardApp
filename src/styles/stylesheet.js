@@ -133,7 +133,6 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         padding: 10,
         alignItems: 'center',
-        placeholderTextColor: COLORS.primary,
     },
     title: {
         fontSize: '35rem',
