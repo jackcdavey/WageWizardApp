@@ -13,15 +13,20 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 
-[![Contributors][contributors-shield]][contributors-url]
+
 [![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+
+
+Add each of our linkedin profiles with these
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![DeepScan grade](https://deepscan.io/api/teams/17323/projects/20675/branches/570240/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17323&pid=20675&bid=570240)
+
 
 -->
+[![DeepScan grade](https://deepscan.io/api/teams/17323/projects/20675/branches/570240/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17323&pid=20675&bid=570240)
+[![Contributors][contributors-shield]][contributors-url]
+[![MIT License][license-shield]][license-url]
+[![Stargazers][stars-shield]][stars-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -215,12 +220,12 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/jackcdavey/WageWizardApp.svg?style=for-the-badge
 [contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
 [forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
+[stars-shield]: https://img.shields.io/github/stars/jackcdavey/WageWizardApp.svg?style=for-the-badge
+[stars-url]: https://github.com/jackcdavey/WageWizardApp/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
 [issues-url]: https://github.com/github_username/repo_name/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
