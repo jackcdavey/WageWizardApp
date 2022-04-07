@@ -49,6 +49,7 @@ const initialState = {
     isIdle: true,
     isRunning: false,
     isPaused: false,
+    jobId: 0,
     selectedJob: sampleJob,
     region: {
         latitude: 37.347934,
@@ -132,6 +133,14 @@ export default function Reducer(state = initialState, action){
                 selectedJob: action.selectedJob
             }
         }
+        
+        case 'SET_JOBID': {
+            return{
+                ...state,
+                jobId: action.jobId
+            }
+        }
+
         
         default:
             return state

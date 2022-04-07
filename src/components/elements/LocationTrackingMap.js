@@ -130,8 +130,8 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
 /************************************************************** */
 
 const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob } = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob };
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId };
 }
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -154,7 +154,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob } = props;
+  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob, jobId } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -333,7 +333,6 @@ const _LocationMap = (props) => {
         <Circle center={selectedJob.locations[2].latLng} radius={selectedJob.locations[2].radius} fillColor={selectedJob.color} />
         <Circle center={selectedJob.locations[3].latLng} radius={selectedJob.locations[3].radius} fillColor={selectedJob.color} />
         <Circle center={selectedJob.locations[4].latLng} radius={selectedJob.locations[4].radius} fillColor={selectedJob.color} />
-        <Circle center={selectedJob.locations[5].latLng} radius={selectedJob.locations[5].radius} fillColor={selectedJob.color} />
 
 
       </MapView>
@@ -375,6 +374,7 @@ const _LocationMap = (props) => {
             <Text>isTracking: {isTracking.toString()}</Text>
             <Text>isIdle: {isIdle.toString()}</Text>
             <Text>coordinates: {region.latitude}, {region.longitude}</Text>
+            <Text>jobId: {jobId}</Text>
           </View>
           :
           <Text></Text>
