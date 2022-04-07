@@ -14,9 +14,13 @@ import { Provider } from 'react-redux';
 import * as LocalAuthentication from 'expo-local-authentication';
 
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SetupNav from './src/components/setupScreens/SetupNav';
+
+import EStyleSheet from "react-native-extended-stylesheet";
+EStyleSheet.build({ $rem: Dimensions.get('window').width / 380 });
+
 
 //For future implementation of user authentication & biometric usage:
 //https://github.com/oblador/react-native-keychain

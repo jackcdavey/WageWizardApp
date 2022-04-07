@@ -132,7 +132,7 @@ export default function InitialSetupView({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.directionsWrap}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Welcome to Wage Wizard!</Text>
+                <Text style={styles.title}>Welcome to Wage Wizard!</Text>
             </View>
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>

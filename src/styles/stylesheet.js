@@ -1,6 +1,16 @@
+//Useful resources:
+//https://medium.com/@shanerudolfworktive/7-tips-to-develop-react-native-uis-for-all-screen-sizes-7ec5271be25c
+
+//TODO:
+//1. Transfer all remaining styles from separate files
+//2. Switch (almost) every px to %, rem, & Dimensions.get('window')
+//3. Check content sizing on different screen sizes
+//4. Check accessibility setting behavior
+
+import EStyleSheet from "react-native-extended-stylesheet";
 import { StyleSheet, Dimensions } from "react-native";
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 
 
 
@@ -124,7 +134,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-        fontSize: 40,
+        fontSize: '35rem',
+        fontFamily: 'Comfortaa-Bold',
         color: COLORS.dark,
         textAlign: 'center',
     },
