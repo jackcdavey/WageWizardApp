@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
+        paddingTop: Dimensions.get('window').height * 0.05,
     },
     elements: {
         paddingBottom: Dimensions.get('window').height * 0.02,
@@ -101,6 +102,62 @@ const styles = StyleSheet.create({
         color: COLORS.primary,
     },
     ////////////////Track View Styles///////////////
+
+    ////////////////Initial Setup View Styles///////////////
+
+    field: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '90%',
+        maxHeight: '10%',
+        margin: '2%',
+    },
+    input: {
+        width: '80%',
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
+        borderWidth: 2,
+        padding: 10,
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 40,
+        color: COLORS.dark,
+        textAlign: 'center',
+    },
+    directions: {
+        fontSize: 20,
+        fontWeight: '300',
+        textAlign: 'center',
+        color: COLORS.dark,
+    },
+    directionsWrap: {
+        width: '90%',
+
+        //height: '20%',
+        //marginTop: 20,
+        alignItems: 'center',
+    },
+    buttonWrap: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+    },
+    button: {
+        width: '30%',
+        height: '23%',
+        backgroundColor: COLORS.primary,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 30,
+    }
+
+    ////////////////Initial Setup View Styles///////////////
 
 
 });

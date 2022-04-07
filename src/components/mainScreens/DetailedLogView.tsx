@@ -3,7 +3,6 @@
 import React from 'react';
 import Header from '../elements/Header';
 import { View, Text, SafeAreaView, StyleSheet, Dimensions, Alert, Image } from "react-native";
-import 'react-native-gesture-handler';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import COLORS from '../../styles/colors';
 
