@@ -5,7 +5,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
 import Timer from '../elements/Timer'
-import LocationMap from '../locationTracking/LocationTrackingMap'
+import LocationMap from '../elements/LocationTrackingMap'
 
 import styles from '../../styles/stylesheet';
 //import JobLocationSetup from '../setupScreens/AddJobLocation';
