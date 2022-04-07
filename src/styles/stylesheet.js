@@ -8,7 +8,7 @@
 //4. Check accessibility setting behavior
 
 import EStyleSheet from "react-native-extended-stylesheet";
-import { StyleSheet, Dimensions } from "react-native";
+import { Dimensions } from "react-native";
 //import COLORS from "../styles/colors.js";
 
 const styles = EStyleSheet.create({

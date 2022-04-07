@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableHighlight, Dimensions } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
-import COLORS from '../../styles/colors'
 import styles from '../../styles/stylesheet.js';
 
 //Set color of status bar globally here, eventualy set to 'auto'

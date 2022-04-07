@@ -2,7 +2,7 @@
 // as will this https://reactnavigation.org/docs/stack-navigator/
 import React from 'react';
 import Header from '../elements/Header';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, Dimensions, Alert, Image } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import COLORS from '../../styles/colors';
 

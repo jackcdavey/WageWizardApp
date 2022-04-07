@@ -1,8 +1,7 @@
 import { TabActions } from '@react-navigation/native';
 import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Alert, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useState } from 'react';
-import AppLoading from 'expo-app-loading';
+import React from 'react';
 import Header from './elements/Header.js';
 
 

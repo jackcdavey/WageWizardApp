@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { StyleSheet, Text, View, Button, Alert } from "react-native"
+import { useEffect, useState } from "react"
+import { Alert } from "react-native"
 
 
 //we will need this ////////////////////////////////////////////

@@ -1,11 +1,9 @@
-import react from 'react';
 import {
     hasHardwareAsync,
     isEnrolledAsync,
     authenticateAsync,
 } from 'expo-local-authentication';
 import { View, Text } from 'react-native';
-import { TabActions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 

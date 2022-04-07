@@ -1,14 +1,10 @@
 import COLORS from '../../styles/colors.js';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   TextInput,
   Text,
-  useColorScheme,
   View,
   Dimensions,
   TouchableOpacity,
@@ -17,7 +13,6 @@ import {
 } from 'react-native';
 
 import Header from '../elements/Header.js';
-import { color } from 'react-native-reanimated';
 
 
 const Tab = createBottomTabNavigator();

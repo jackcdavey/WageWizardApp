@@ -1,8 +1,7 @@
 import React from 'react';
-import MapView, { ProviderPropType } from 'react-native-maps';
-import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
+import MapView from 'react-native-maps';
+import { Dimensions, StyleSheet } from 'react-native';
 import COLORS from '../../styles/colors';
-import { PinchGestureHandler } from 'react-native-gesture-handler';
 
 
 
@@ -42,7 +41,7 @@ class Map extends React.Component {
 
 
   /////here//
-  
+
 
   /////
 

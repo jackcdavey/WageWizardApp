@@ -1,17 +1,12 @@
 import React from 'react';
 import COLORS from '../../styles/colors.js';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   FlatList,
   View,
   Dimensions,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
 
 
