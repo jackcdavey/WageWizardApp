@@ -1,5 +1,4 @@
 import Realm from "realm";
-import realm from "realm";
 
 //Helpful resources:
 //https://stackoverflow.com/questions/66449256/realm-with-fully-offline-work-never-online?rq=1

@@ -14,10 +14,10 @@ import realm from '../../userData/realm';
 
 //import realm from '../../userData/realm';
 
-
+var jobsLoaded = false;
 
 const Tracking = () => {
-  var jobsLoaded = false;
+
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.

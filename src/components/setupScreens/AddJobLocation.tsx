@@ -8,7 +8,7 @@ import Map from '../elements/Map.js';
 let searchtext = '500 El Camino Real San Jose CA';
 function getCoordinatesFromAddress(searchtext: string) {
     return new Promise((resolve) => {
-        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + { searchtext } + '&&apiKey=VyBjmC6PoIXhlNzKVm5r7eWr5-qoZbWVJaSoGCUrKGw';
+        const url = 'https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=' + { searchtext } + '&&apiKey=APIKEY';
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
