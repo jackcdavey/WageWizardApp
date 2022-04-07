@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity, Alert, Button, Image, Text } from 'react-native';
+import { TouchableOpacity, Image, Text } from 'react-native';
 
 
 import COLORS from '../../styles/colors.js';
@@ -8,17 +8,11 @@ import React from 'react';
 import Tracking from '../mainScreens/Track';
 import Resources from '../mainScreens/Resources';
 import WorkLogs from '../mainScreens/WorkLogs';
-import Account from '../mainScreens/Account';
 import MyWage from '../mainScreens/MyWage';
 import Header from './Header.js';
 
 
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
   View,
 } from 'react-native';
 

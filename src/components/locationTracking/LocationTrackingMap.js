@@ -1,11 +1,10 @@
 //standard react location imports
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, Dimensions, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert, } from 'react-native';
+import { useState } from 'react';
+import { Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 //location/geofencing imports
 import * as Location from "expo-location"
-import { GeofencingEventType, GeofencingRegionState } from 'expo-location';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import * as TaskManager from "expo-task-manager"
 
@@ -18,7 +17,6 @@ import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsIns
 import COLORS from '../../styles/colors';
 
 //realms db import
-import { JsonSerializationReplacer } from 'realm';
 const debug_info = true;
 
 
