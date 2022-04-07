@@ -6,5 +6,6 @@ export default COLORS = {
     active: '#91BAD5',
     icon: "#F0F8FF",
     trackTimerStart: 'green',
-    trackTimerStop: 'red'
+    trackTimerStop: 'red',
+    lightPlaceholder: 'grey',
 };

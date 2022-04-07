@@ -149,22 +149,22 @@ export default function InitialSetupView({ navigation }) {
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="First Name" onChangeText={newText => setFirstName(newText)} />
+                <TextInput style={styles.input} placeholder="First Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
             </View>
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Last Name" onChangeText={newText => setLastName(newText)} />
+                <TextInput style={styles.input} placeholder="Last Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
             </View>
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
+                <TextInput style={styles.input} placeholderTextColor={COLORS.lightPlaceholder} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
             </View>
 
             <View style={styles.field}>
                 <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Birthday" onChangeText={newText => setBirthday(newText)} />
+                <TextInput style={styles.input} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setBirthday(newText)} />
             </View>
             <View style={styles.field}>
                 <Text style={{ marginRight: 25 }}>Use Pin?</Text>

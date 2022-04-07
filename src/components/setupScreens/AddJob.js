@@ -91,19 +91,19 @@ export default function JobSetup({ navigation }) {
                 </Text>
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="Employer Name" onChangeText={newText => setEmployer(newText)} />
+                <TextInput style={styles.input} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Client Name" onChangeText={newText => setClient(newText)} />
+                <TextInput style={styles.input} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="City (Of Work)" onChangeText={newText => setLocation(newText)} />
+                <TextInput style={styles.input} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
                 {/* this will be changed in future build */}
             </View>
 
             <View>
-                <TextInput style={styles.input} placeholder="Other Info" />
+                <TextInput style={styles.input} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
             </View>
 
             <View style={styles.buttonWrap}>

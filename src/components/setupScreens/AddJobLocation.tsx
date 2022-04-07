@@ -23,7 +23,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                 </Text>
             </View>
             <View>
-                <TextInput style={styles.input} placeholder="Search Address..." />
+                <TextInput style={styles.input} placeholder="Search Address..." placeholderTextColor={COLORS.lightPlaceholder} />
             </View>
             <View style={styles.container}>
                 <Map />

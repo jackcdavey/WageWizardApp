@@ -9,6 +9,7 @@
 
 import EStyleSheet from "react-native-extended-stylesheet";
 import { StyleSheet, Dimensions } from "react-native";
+//import COLORS from "../styles/colors.js";
 
 const styles = EStyleSheet.create({
 
@@ -132,6 +133,7 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         padding: 10,
         alignItems: 'center',
+        placeholderTextColor: COLORS.primary,
     },
     title: {
         fontSize: '35rem',
@@ -140,7 +142,7 @@ const styles = EStyleSheet.create({
         textAlign: 'center',
     },
     directions: {
-        fontSize: 20,
+        fontSize: '15rem',
         fontWeight: '300',
         textAlign: 'center',
         color: COLORS.dark,
