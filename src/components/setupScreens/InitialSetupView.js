@@ -152,25 +152,25 @@ export default function InitialSetupView({ navigation }) {
             </View>
 
             <View style={styles.field}>
-                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="First Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
+                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <TextInput style={styles.setupTextField} placeholder="First Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
             </View>
 
             <View style={styles.field}>
-                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Last Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
+                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <TextInput style={styles.setupTextField} placeholder="Last Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
             </View>
 
             <View style={styles.field}>
-                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholderTextColor={COLORS.lightPlaceholder} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
+                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <TextInput style={styles.setupTextField} placeholderTextColor={COLORS.lightPlaceholder} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
             </View>
 
             <View style={styles.field}>
-                <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text>
-                <TextInput style={styles.input} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setBirthday(newText)} />
+                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setBirthday(newText)} />
             </View>
-            <View style={styles.field}>
+            <View style={[styles.field, { padding: '2%' }]}>
                 <Text style={{ marginRight: 25 }}>Use Pin?</Text>
 
                 <Switch

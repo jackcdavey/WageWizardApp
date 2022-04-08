@@ -56,6 +56,24 @@ async function fetchCoordinates(searchtext: string) {
 //const responseCoordinates = await getCoordinatesFromAddress(searchtext);
 //console.log('Coordinates of searchtext: ' + JSON.stringify(responseCoordinates));
 
+const JobLocationSetupMap = () => {
+    return (
+        <>
+            <Map
+                //style={styles.setupMap}
+                initialRegion={{
+                    latitude: 38.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            />
+        </>
+    );
+}
+
+
+
 
 export default function JobLocationSetup({ navigation }: { navigation: any }) {
     //fetchCoordinates(searchtext);
@@ -71,6 +89,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                     place of work is inside.
                 </Text>
             </View>
+
             <View style={styles.searchContainer}>
                 <TextInput style={styles.searchText} placeholder="Search Address..." placeholderTextColor={COLORS.lightPlaceholder} />
                 <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates(searchtext)}>
@@ -78,7 +97,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                 </TouchableOpacity>
             </View>
             <View>
-                <Map />
+                <JobLocationSetupMap />
             </View>
             <View style={styles.buttonWrap}>
 
