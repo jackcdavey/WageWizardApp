@@ -228,18 +228,21 @@ const styles = EStyleSheet.create({
 
     ////////////////Header Styles///////////////
     headerContainer: {
-        height: Dimensions.get('window').height * 0.05,
+        height: Dimensions.get('window').height * 0.06,
         width: Dimensions.get('window').width * 0.5,
-        paddingLeft: 20,
-        marginTop: 0,
+        paddingLeft: '10%',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: COLORS.primary,
+
+
     },
     headerTxt: {
-        fontSize: 30,
+        fontSize: '30rem',
         color: COLORS.secondary,
         fontFamily: 'Comfortaa-Bold',
+
+        alignContent: 'flex-start',
+        //marginBottom: 5,
     },
 
 
