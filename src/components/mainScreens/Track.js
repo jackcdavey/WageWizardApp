@@ -82,6 +82,7 @@ const _Tracking = (props) => {
   const [jobsAdded,setJobsAdded] = useState(false);
   const [allJobs,getAllJobs] = useState([]);
   const [test,setTest] = useState([]);
+  const [localJobId, setLocalJobId] = useState(new ObjectId())
   useEffect(()=>{
     if (jobsAdded){
       setItems(allJobs.map((e)=>{
@@ -90,6 +91,10 @@ const _Tracking = (props) => {
       ))
     }
   },[jobsAdded])
+
+  useEffect(()=>{
+    setJobId(localJobId.toString())
+  },[localJobId])
 
   const job1 = {
     id: new ObjectId(),
@@ -142,6 +147,10 @@ const _Tracking = (props) => {
     ))
   }
 
+  const updateJobId = (jobId) =>{
+    setJobId(jobId);
+  }
+
 
   return (
 
@@ -155,7 +164,8 @@ const _Tracking = (props) => {
             <TouchableOpacity onPress={()=>{setJobId(3)}}>
               <Text>changeJobId</Text>
             </TouchableOpacity>
-            <Text>jobId: {jobId}</Text>
+            <Text>localJobId: {JSON.stringify(localJobId)}</Text>
+            <Text>jobId: {JSON.stringify(jobId)}</Text>
             <Text>JobsArray: {JSON.stringify(items)}</Text>
             <Text>Jobs: {JSON.stringify(allJobs)}</Text>
 
@@ -184,6 +194,7 @@ const _Tracking = (props) => {
 
           onSelectItem={(item) => {
             //This is where we'll record the job selection and pass to 'ActiveTracking' DB
+            setLocalJobId(item.value);
             console.log(item);
           }}
           //displaying the jobs:
