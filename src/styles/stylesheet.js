@@ -30,6 +30,7 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
+        marginLeft: '5%',
     },
 
     testButton: {
@@ -204,7 +205,7 @@ const styles = EStyleSheet.create({
     },
     directionsWrap: {
         width: Dimensions.get('window').width * 0.8,
-        marginTop: 20,
+        marginBottom: '5%',
         alignItems: 'center',
     },
     buttonWrap: {

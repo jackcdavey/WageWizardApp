@@ -74,7 +74,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
             <View style={styles.searchContainer}>
                 <TextInput style={styles.searchText} placeholder="Search Address..." placeholderTextColor={COLORS.lightPlaceholder} />
                 <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates(searchtext)}>
-                    <Text>Search</Text>
+                    <Text style={{ color: COLORS.secondary }}>Search</Text>
                 </TouchableOpacity>
             </View>
             <View>
