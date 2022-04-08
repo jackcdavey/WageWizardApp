@@ -1,7 +1,7 @@
 import React from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Text } from "react-native";
+import { View, TouchableOpacity, TextInput, Text } from "react-native";
 import Map from '../elements/Map.js';
 
 import styles from '../../styles/stylesheet.js';

@@ -103,6 +103,7 @@ const styles = EStyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         margin: '5%',
+        alignItems: 'center',
     },
 
     userSetupFieldsContainer: {
