@@ -25,7 +25,7 @@ class Job extends Realm.Object { }
 Job.schema = {
     name: "Job",
     properties: {
-        id: 'objectId',
+        id: 'int',
         employer: 'string',
         client: 'string',
         color: 'string',
@@ -93,7 +93,7 @@ LogNote.schema = {
 //Instead, we will store all attachments in a separate file, associate each file
 //with a workLogId, and store the file name in the LogNote object
  
-export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 7 });
+export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 9 });
  
 // async function startRealm() {
 //     let realm = await Realm.open({

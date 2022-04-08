@@ -2,9 +2,9 @@
 
 const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
-import {ObjectId} from 'bson'
 
-const initialJobId = new ObjectId();
+
+
 
 const sampleJob = {
     name: "Santa Clara University",
@@ -52,7 +52,7 @@ const initialState = {
     isIdle: true,
     isRunning: false,
     isPaused: false,
-    jobId: 'cookies73455fdg23df',
+    jobId: -5,
     selectedJob: sampleJob,
     region: {
         latitude: 37.347934,

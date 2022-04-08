@@ -40,9 +40,9 @@ const _Tracking = (props) => {
   //triggering warnings in editor but not in app.
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'No Jobs', value: new ObjectId() },
-    { label: 'No Jobs', value: new ObjectId() },
-    { label: 'No Jobs', value: new ObjectId() },
+    { label: 'No Jobs', value: 9 },
+    { label: 'No Jobs', value: 0 },
+    { label: 'No Jobs', value: 7 },
   ]);
 
 
@@ -81,8 +81,9 @@ const _Tracking = (props) => {
   //setItems([{ label: 'No Jobs', value: -5 },]);
   const [jobsAdded,setJobsAdded] = useState(false);
   const [allJobs,getAllJobs] = useState([]);
-  const [test,setTest] = useState([]);
-  const [localJobId, setLocalJobId] = useState(new ObjectId())
+  const [localJobId, setLocalJobId] = useState(jobId)
+
+
   useEffect(()=>{
     if (jobsAdded){
       setItems(allJobs.map((e)=>{
@@ -97,19 +98,19 @@ const _Tracking = (props) => {
   },[localJobId])
 
   const job1 = {
-    id: new ObjectId(),
+    id: 1,
     employer: 'Kyle',
     client: 'elyk',
     color: 'rgba(245, 40, 145, 0.35)'
   }
   const job2 = {
-    id: new ObjectId(),
+    id: 2,
     employer: 'Jack',
     client: 'kcaj',
     color: 'rgba(245, 40, 145, 0.35)'
   }
   const job3 = {
-    id: new ObjectId(),
+    id: 3,
     employer: 'Brett',
     client: 'tterb',
     color: 'rgba(245, 40, 145, 0.35)'
