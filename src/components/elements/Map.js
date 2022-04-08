@@ -14,7 +14,7 @@ const LONGITUDE_DELTA = 0.0421;
 
 class Map extends React.Component {
   async getCamera() {
-    const camera = await this.map.getCamera();
+    //const camera = await this.map.getCamera();
   }
 
   async animateCamera() {

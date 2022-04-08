@@ -229,7 +229,7 @@ const styles = EStyleSheet.create({
     ////////////////Header Styles///////////////
     headerContainer: {
         height: Dimensions.get('window').height * 0.05,
-        width: Dimensions.get('window').width,
+        width: Dimensions.get('window').width * 0.5,
         paddingLeft: 20,
         marginTop: 0,
         alignItems: 'center',
