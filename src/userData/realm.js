@@ -1,11 +1,11 @@
 import Realm from "realm";
-
+ 
 //Helpful resources:
 //https://stackoverflow.com/questions/66449256/realm-with-fully-offline-work-never-online?rq=1
 //https://www.mongodb.com/docs/realm/sdk/react-native/examples/open-and-close-a-realm/#open-a-local--non-synced--realm
 //https://www.mongodb.com/docs/realm/sdk/react-native/quick-start-local/
 //https://zhuinden.medium.com/designing-the-schema-of-realm-effectively-and-other-realm-tips-feb76c5b6072
-
+ 
 class User extends Realm.Object { }
 User.schema = {
     name: "User",
@@ -20,21 +20,21 @@ User.schema = {
     },
     primaryKey: 'firstName',
 };
-
+ 
 class Job extends Realm.Object { }
 Job.schema = {
     name: "Job",
     properties: {
-        id: 'int',
+        id: 'objectId',
         employer: 'string',
         client: 'string',
-        location: 'string',
+        color: 'string',
         //Eventually location should be an array of lat/long + diameter(or maybe z-index of map?)
     },
     primaryKey: 'id',
 };
-
-
+ 
+ 
 // const JobSchema = {
 //     name: "Job",
 //     properties: {
@@ -46,7 +46,7 @@ Job.schema = {
 //     },
 //     primaryKey: 'id',
 // };
-
+ 
 class GeofenceLocation extends Realm.Object { }
 GeofenceLocation.schema = {
     name: "GeofenceLocation",
@@ -59,8 +59,8 @@ GeofenceLocation.schema = {
     },
     primaryKey: 'id',
 };
-
-
+ 
+ 
 class WorkLog extends Realm.Object { }
 WorkLog.schema = {
     name: 'WorkLog',
@@ -77,7 +77,7 @@ WorkLog.schema = {
     },
     primaryKey: 'id',
 };
-
+ 
 class LogNote extends Realm.Object { }
 LogNote.schema = {
     name: 'LogNote',
@@ -92,15 +92,17 @@ LogNote.schema = {
 //making it impossible to store an unknown number of file attachment objects
 //Instead, we will store all attachments in a separate file, associate each file
 //with a workLogId, and store the file name in the LogNote object
-
+ 
 export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 7 });
-
+ 
 // async function startRealm() {
 //     let realm = await Realm.open({
 //         schema: [User, Job, WorkLog],
 //     });
 //     return realm;
 // }
-
-
+ 
+ 
 // export default startRealm();
+ 
+

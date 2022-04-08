@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -11,6 +11,7 @@ import styles from '../../styles/stylesheet';
 //import JobLocationSetup from '../setupScreens/AddJobLocation';
 
 import realm from '../../userData/realm';
+import {ObjectId} from 'bson'
 
 //import realm from '../../userData/realm';
 
@@ -29,7 +30,7 @@ const mapDispatchToProps = (dispatch, props) => {
   }
 }
 
-const debugInfo = false;
+const debugInfo = true;
 
 const _Tracking = (props) => {
 
@@ -39,16 +40,18 @@ const _Tracking = (props) => {
   //triggering warnings in editor but not in app.
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'No Jobs', value: -1 },
-    { label: 'No Jobs', value: -2 },
-    { label: 'No Jobs', value: -3 },
+    { label: 'No Jobs', value: new ObjectId() },
+    { label: 'No Jobs', value: new ObjectId() },
+    { label: 'No Jobs', value: new ObjectId() },
   ]);
+
+
 
   //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
   //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
   //with proper elements.
 
-  if (realm && !jobsLoaded) {
+  /*if (realm && !jobsLoaded) {
     const jobExists = realm.objects('Job').length > 0;
     if (jobExists) {
       const allJobs = realm.objects('Job');
@@ -73,9 +76,72 @@ const _Tracking = (props) => {
       //setItems(Job.name);
       jobsLoaded = true;
     }
-  }
+  }*/
 
   //setItems([{ label: 'No Jobs', value: -5 },]);
+  const [jobsAdded,setJobsAdded] = useState(false);
+  const [allJobs,getAllJobs] = useState([]);
+  const [test,setTest] = useState([]);
+  useEffect(()=>{
+    if (jobsAdded){
+      setItems(allJobs.map((e)=>{
+        return {label:e.employer,value:e.id}
+      }
+      ))
+    }
+  },[jobsAdded])
+
+  const job1 = {
+    id: new ObjectId(),
+    employer: 'Kyle',
+    client: 'elyk',
+    color: 'rgba(245, 40, 145, 0.35)'
+  }
+  const job2 = {
+    id: new ObjectId(),
+    employer: 'Jack',
+    client: 'kcaj',
+    color: 'rgba(245, 40, 145, 0.35)'
+  }
+  const job3 = {
+    id: new ObjectId(),
+    employer: 'Brett',
+    client: 'tterb',
+    color: 'rgba(245, 40, 145, 0.35)'
+  }
+  const addJobs = async () =>{
+    try{
+      realm.write(()=>{
+        realm.create('Job',job1)
+      })
+
+    }catch(error){
+      if(error){
+        console.log(error)
+      }
+    }
+  }
+
+
+  const handleAddJobButton = async () =>{
+    try{
+  
+      addJobs()
+      getAllJobs(realm.objects('Job'))
+      setJobsAdded(true);
+  
+    }catch(error){
+      console.log(error)
+    }
+ 
+  }
+  const testing =()=>{
+    setItems(allJobs.map((e)=>{
+      return {label:e.employer,value:e.id}
+    }
+    ))
+  }
+
 
   return (
 
@@ -90,31 +156,50 @@ const _Tracking = (props) => {
               <Text>changeJobId</Text>
             </TouchableOpacity>
             <Text>jobId: {jobId}</Text>
+            <Text>JobsArray: {JSON.stringify(items)}</Text>
+            <Text>Jobs: {JSON.stringify(allJobs)}</Text>
+
           </View>
         : <View></View>
       }
 
 
-      <DropDownPicker
-        style={styles.picker}
-        placeholder="Select a Job"
-        containerStyle={styles.pickerContainer}
-        placeholderStyle={styles.pickerLabel}
-        labelStyle={styles.pickerLabel}
-        itemSeparator={true}
-        open={open}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        //Still seems to work properly despite undeclared setValue property warning
-        setValue={setValue}
-        setItems={setItems}
+      {
+        jobsAdded
+        ?<View>
+          <DropDownPicker
+          style={styles.picker}
+          placeholder="Select a Job"
+          containerStyle={styles.pickerContainer}
+          placeholderStyle={styles.pickerLabel}
+          labelStyle={styles.pickerLabel}
+          itemSeparator={true}
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          //Still seems to work properly despite undeclared setValue property warning
+          setValue={setValue}
+          setItems={setItems}
 
-        onSelectItem={(item) => {
-          //This is where we'll record the job selection and pass to 'ActiveTracking' DB
-          console.log(item);
-        }}
-      />
+          onSelectItem={(item) => {
+            //This is where we'll record the job selection and pass to 'ActiveTracking' DB
+            console.log(item);
+          }}
+          //displaying the jobs:
+        />
+        </View>
+        :<View>
+          <Text>No Jobs Added</Text>
+          <TouchableOpacity onPress={handleAddJobButton}>
+            <Text>Add The Jobs</Text>
+          </TouchableOpacity>
+
+        </View>
+      }
+      <TouchableOpacity onPress={testing}>
+        <Text>test</Text>
+      </TouchableOpacity>
 
       <LocationMap />
     </View>
