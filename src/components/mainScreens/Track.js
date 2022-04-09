@@ -30,14 +30,14 @@ const mapDispatchToProps = (dispatch, props) => {
   }
 }
 
-const debugInfo = true;
+const debugInfo = false;
 const showTimer = true;
 const showAddDeleteJerbs = true;
 const workLogDebugInfo = true;
 
 const _Tracking = (props) => {
 
-  const {setJobId,jobId} = props
+  const {setJobId,jobId,isTracking} = props
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.
@@ -272,28 +272,33 @@ const _Tracking = (props) => {
       {
         jobsExist
         ?<View>
-          <DropDownPicker
-          style={styles.picker}
-          placeholder="Select a Job"
-          containerStyle={styles.pickerContainer}
-          placeholderStyle={styles.pickerLabel}
-          labelStyle={styles.pickerLabel}
-          itemSeparator={true}
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          //Still seems to work properly despite undeclared setValue property warning
-          setValue={setValue}
-          setItems={setItems}
-
-          onSelectItem={(item) => {
-            //This is where we'll record the job selection and pass to 'ActiveTracking' DB
-            setLocalJobId(item.value);
-            console.log(item);
-          }}
-          //displaying the jobs:
-          />
+          {
+            isTracking
+            ?<Text>Currently tracking a selected job, stop location tracking first to switch jobs</Text>
+            :<DropDownPicker
+              style={styles.picker}
+              placeholder="Select a Job"
+              containerStyle={styles.pickerContainer}
+              placeholderStyle={styles.pickerLabel}
+              labelStyle={styles.pickerLabel}
+              itemSeparator={true}
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              //Still seems to work properly despite undeclared setValue property warning
+              setValue={setValue}
+              setItems={setItems}
+    
+              onSelectItem={(item) => {
+                //This is where we'll record the job selection and pass to 'ActiveTracking' DB
+    
+                setLocalJobId(item.value);
+                console.log(item);
+              }}
+            //displaying the jobs:
+            />
+          }
 
           <LocationMap/>
         </View>
