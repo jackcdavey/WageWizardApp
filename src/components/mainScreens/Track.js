@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch, props) => {
   }
 }
 
-const debugInfo = false;
+const debugInfo = true;
 const showTimer = true;
 const showAddDeleteJerbs = true;
 const workLogDebugInfo = true;
@@ -196,6 +196,7 @@ const _Tracking = (props) => {
       id: generateIDInt(),
       employer: 'Kyle',
       client: 'elyk',
+      location: 'test location',
       color: 'rgba(245, 40, 145, 0.35)'
     }
     realm.write(()=>{
@@ -213,16 +214,7 @@ const _Tracking = (props) => {
 
   }
 
-  const handleAddJobButton = async () =>{
-    try{
-  
-      addJobs()
-  
-    }catch(error){
-      console.log(error)
-    }
- 
-  }
+
  
 
  
@@ -265,7 +257,7 @@ const _Tracking = (props) => {
     {
       showAddDeleteJerbs
       ?<View>
-        <TouchableOpacity onPress={handleAddJobButton}>
+        <TouchableOpacity onPress={()=>{addJobs()}}>
           <Text>Add Jerbs</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>{clearJobs()}}>
@@ -307,7 +299,7 @@ const _Tracking = (props) => {
         </View>
         :<View>
           <Text>No jobs to track, add jobs from the setup screen to begin tracking</Text>
-          <TouchableOpacity onPress={handleAddJobButton}>
+          <TouchableOpacity onPress={()=>{addJobs()}}>
             <Text>Or click me to add some jobs</Text>
           </TouchableOpacity>
         </View>

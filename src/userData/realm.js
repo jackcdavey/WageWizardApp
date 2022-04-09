@@ -28,6 +28,7 @@ Job.schema = {
         id: 'int',
         employer: 'string',
         client: 'string',
+        location: 'string',
         color: 'string',
         //Eventually location should be an array of lat/long + diameter(or maybe z-index of map?)
     },
@@ -93,7 +94,7 @@ LogNote.schema = {
 //Instead, we will store all attachments in a separate file, associate each file
 //with a workLogId, and store the file name in the LogNote object
  
-export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 9 });
+export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 10 });
  
 // async function startRealm() {
 //     let realm = await Realm.open({
