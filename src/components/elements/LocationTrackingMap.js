@@ -155,8 +155,8 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
 /************************************************************** */
 
 const mapStateToProps = (state, props) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId } = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId };
+  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, selectedJob, jobId } = state;
+  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, selectedJob, jobId };
 }
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -179,7 +179,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob, jobId } = props;
+  const { isIdle, isRunning, isPaused, region, time, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob, jobId } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -253,7 +253,6 @@ const _LocationMap = (props) => {
 
   //Stop Background Location Updates and Geofencing updates
   const stopBackgroundUpdate = async () => {
-    createLog();
     const hasStarted = await Location.hasStartedLocationUpdatesAsync(
       BACKROUND_LOCATION_TRACKING
     )
@@ -277,6 +276,10 @@ const _LocationMap = (props) => {
       setLocationButtonColor('green')
       setLocationButtonText('Start Tracking Location')
       //if person is not tracking, timer should end as there is no proof of their location
+      //ensure to create a log only if the user was inside a geofence
+      if (time!==0){
+        createLog();
+      }
       endTimer();
       stopBackgroundUpdate();
     }
