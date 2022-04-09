@@ -15,6 +15,7 @@ export default function JobSetup({ navigation }) {
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
+    const [jobColor, setJobColor] = useState('#000000');
 
     if (realm) {
         //Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
@@ -47,6 +48,12 @@ export default function JobSetup({ navigation }) {
 
     const submitInfo = () => {
         //Save job to realm here
+
+        (() => {
+            const color = Math.floor(Math.random() * 16777215).toString(16);
+            setJobColor('#' + color);
+        })();
+
         navigation.navigate('JobLocationSetup');
         let newJob;
         try {
@@ -58,7 +65,8 @@ export default function JobSetup({ navigation }) {
                             id: id,
                             employer: employer,
                             client: client,
-                            location: location
+                            location: location,
+                            color: jobColor
                         });
                         Alert.alert('New job created: ', JSON.stringify(newJob));
                         console.log(newJob);
