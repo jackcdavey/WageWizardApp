@@ -33,6 +33,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const debugInfo = false;
 const showTimer = true;
 const showAddDeleteJerbs = true;
+const workLogDebugInfo = true;
 
 const _Tracking = (props) => {
 
@@ -84,6 +85,50 @@ const _Tracking = (props) => {
   realm.addListener((jobs,changes)=>{
     setJobsFromDB(realm.objects("Job"))
   })*/
+
+  /******REALM WORK LOG LOGIC************************* */
+  const [logsExist, setLogsExist] = useState (realm.objects('WorkLog').length>0)
+  const [logsFromDB, setLogsFromDB] = useState([]);
+
+  const realmWorkLogListener = ()=>{
+    setLogsFromDB(realm.objects('WorkLog'));
+    setLogsExist(realm.objects('WorkLog').length>0)
+  }
+  realm.addListener("change",realmWorkLogListener)
+  useEffect(()=>{
+    //clean up function
+    return ()=>{
+      realm.removeListener("change",realmWorkLogListener)
+    }
+  },[])
+
+
+  useEffect(()=>{
+    //set it to run only if the logs collection from mongodb is not empty
+    if(logsExist){
+      setLogsFromDB(realm.objects('WorkLog'));
+      //somehow jobsFromDB after this line has not data
+      /*setItems(jobsFromDB.map((e)=>{
+        return {label:e.employer,value:e.id}
+      }))
+      */
+    }
+  },[logsExist])
+
+
+  const clearLogs = ()=>{
+
+    realm.write(()=>{
+      let allLogs = realm.objects('WorkLog');
+      realm.delete(allLogs);
+      console.log('all logs deleted')
+    })
+
+  }
+
+
+
+  /******REALM JOB LOGIC ***************************** */
 
   const realmListener = ()=>{
     setJobsFromDB(realm.objects('Job'))
@@ -205,6 +250,18 @@ const _Tracking = (props) => {
         </View>
       : <View></View>
     }
+
+    {
+      workLogDebugInfo
+      ?<View>
+        <Text>worklogs: {JSON.stringify(logsFromDB)}</Text>
+        <TouchableOpacity onPress={()=>{clearLogs()}}>
+          <Text>clear Logs</Text>
+        </TouchableOpacity>
+      </View>
+      :<View></View>
+    }
+
     {
       showAddDeleteJerbs
       ?<View>
@@ -217,6 +274,8 @@ const _Tracking = (props) => {
       </View>
       :<View></View>
     }
+
+
 
       {
         jobsExist

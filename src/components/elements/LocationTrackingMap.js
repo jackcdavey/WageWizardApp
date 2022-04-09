@@ -84,6 +84,29 @@ const generateGeofence = (selectedJob) => {
   return geofences
 }
 
+const createLog = () => {
+  //Triggered when a new log needs to be created
+  try {
+    const logSize = realm.objects('WorkLog').length;
+    realm.write(() => {
+      realm.create('WorkLog', {
+        id: logSize + 1,
+        //jobId: store.getState().jobId,
+        jobId:store.getState().jobId,
+        notes: "Notes from Tracking",
+        startTime: 3, //Change to initial start time of log
+        endTime: 3,
+        breakCount: 0, //Logic for determining break count here
+        totalBreakTime: 0, //Logic for determining total break time here
+      })
+    });
+    
+  }
+  catch (error) {
+    console.log('Error creating Log: ' + error);
+  }
+}
+
 /************************************************************** */
 /* GLOBAL SCOPE TASK MANGEMENT FOR BACKGROUND LOCATION SERVICES */
 /************************************************************** */
@@ -114,6 +137,8 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
         }
       } else {
         if (!store.getState().isIdle) {
+          //create the log
+          createLog();
           store.dispatch(endTimer())
         }
       }
@@ -228,6 +253,7 @@ const _LocationMap = (props) => {
 
   //Stop Background Location Updates and Geofencing updates
   const stopBackgroundUpdate = async () => {
+    createLog();
     const hasStarted = await Location.hasStartedLocationUpdatesAsync(
       BACKROUND_LOCATION_TRACKING
     )
@@ -266,18 +292,47 @@ const _LocationMap = (props) => {
   const handlePause = () => {
     pauseTimer();
   }
+
+  const createDog = () => {
+    //Triggered when a new log needs to be created
+    try {
+      const logSize = realm.objects('WorkLog').length;
+      realm.write(() => {
+        realm.create('WorkLog', {
+          id: logSize + 1,
+          jobId: store.getState().jobId,
+          notes: "Notes from Tracking",
+          startTime: new Date(), //Change to initial start time of log
+          endTime: new Date(),
+          breakCount: 0, //Logic for determining break count here
+          totalBreakTime: 0, //Logic for determining total break time here
+        })
+      });
+      
+    }
+    catch (error) {
+      console.log('Error creating Log: ' + error);
+    }
+  }
   const handleEnd = () => {
-    stopBackgroundUpdate();
+    stopBackgroundUpdate();;
     endTimer();
   }
 
 
+  //Realm Stuff
+
 
   //Realm Stuff
-  if (realm) {
+  /*if (realm) {
     const currLog = ' '; //realm.getObjectByPrimaryKey(getCurrLogID()) - Logic for determining current job or new job here
     const currJob = ' '; //Logic for determining chosen job from picker here
   }
+  const generateIDInt = ()=>{
+    return Math.floor(Math.random()*100000);
+  }
+
+
 
   const updateLog = () => {
     //Triggered when a log needs to be updated after a pause
@@ -298,7 +353,7 @@ const _LocationMap = (props) => {
         realm.write(() => {
           realm.create('WorkLog', {
             id: logSize + 1,
-            jobId: currJob.id,
+            jobId: jobId,
             notes: "Notes from Tracking",
             startTime: new Date(), //Change to initial start time of log
             endTime: new Date(),
@@ -311,7 +366,7 @@ const _LocationMap = (props) => {
     catch (error) {
       console.log('Error creating Log: ' + error);
     }
-  }
+  }*/
 
 
 
@@ -393,9 +448,6 @@ const _LocationMap = (props) => {
   );
 }
 
-const LocationMap = connect(mapStateToProps, mapDispatchToProps)(_LocationMap);
-export default LocationMap
-
 const styles = StyleSheet.create({
   map: {
     borderRadius: 15,
@@ -404,4 +456,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.9,
     height: Dimensions.get('window').height * 0.35,
   },
-});
+})
+
+const LocationMap = connect(mapStateToProps, mapDispatchToProps)(_LocationMap);
+export default LocationMap
+
