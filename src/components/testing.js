@@ -11,6 +11,12 @@ import getLocation from '../hooks/getLocation';
 
 const Tab = createBottomTabNavigator();
 
+import { connect } from 'react-redux';
+const mapStateToProps = (state, props) => {
+    const { isTracking} = state;
+    return { isTracking};
+  }
+
 const clearJobs = () => {
     try {
         if (realm) {
@@ -151,7 +157,8 @@ const clearGeofences = () => {
 
 
 
-const TestingView = ({ navigation }) => {
+const _TestingView = (props) => {
+    const {navigation, isTracking} = props
     getLocation();
     return (
         <>
@@ -165,10 +172,17 @@ const TestingView = ({ navigation }) => {
                         START INITIAL SETUP
                     </Text>
                 </TouchableOpacity>
+                {/**DO NOT CLEAR ALL JOBS WHILE USER IS TRACKING, WILL BREAK LOGIC SEVERELY */}
+                {
+                    isTracking
+                    ?
+                        <Text>Person is Tracking, do not clear jobs, will break logic</Text>
+                    :
+                        <TouchableOpacity style={styles.btn} onPress={() => clearJobs()}>
+                            <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
+                        </TouchableOpacity>
+                }
 
-                <TouchableOpacity style={styles.btn} onPress={() => clearJobs()}>
-                    <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
-                </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btn} onPress={() => createLog()}>
                     <Text style={{ color: COLORS.secondary }}>CREATE EMPTY LOG</Text>
@@ -190,10 +204,11 @@ const TestingView = ({ navigation }) => {
         </>
     );
 }
+const TestingView = connect(mapStateToProps)(_TestingView);
 
 export default function Testing({ navigation }) {
 
-    return (
+    return ( 
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 headerStyle: {
@@ -286,3 +301,6 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height * 0.06,
     },
 });
+
+
+
