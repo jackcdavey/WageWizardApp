@@ -214,8 +214,19 @@ const _Tracking = (props) => {
 
   }
 
+  const [showWorkLogs, setShowWorkLogs] = useState(false)
+  const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
+  const showWorkLogButton = ()=>{
+    if (showWorkLogs){
+      setShowWorkLogsText('show work logs')
+      setShowWorkLogs(false)
+    }
+    else{
+      setShowWorkLogsText('hide work logs')
+      setShowWorkLogs(true)
+    }
+  }
 
- 
 
  
 
@@ -242,8 +253,12 @@ const _Tracking = (props) => {
       : <View></View>
     }
 
+
+    <TouchableOpacity onPress={showWorkLogButton}>
+      <Text>{showWorkLogsText}</Text>
+    </TouchableOpacity>
     {
-      workLogDebugInfo
+      showWorkLogs
       ?<View>
         <Text>worklogs: {JSON.stringify(logsFromDB)}</Text>
       </View>
