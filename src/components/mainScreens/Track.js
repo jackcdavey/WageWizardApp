@@ -30,7 +30,8 @@ const mapDispatchToProps = (dispatch, props) => {
   }
 }
 
-const debugInfo = true;
+const debugInfo = false;
+const showTimer = true;
 
 const _Tracking = (props) => {
 
@@ -78,6 +79,25 @@ const _Tracking = (props) => {
 
   //setItems([{ label: 'No Jobs', value: -5 },]);
 
+  /*const jobsUpdate = realm.objects("Job");
+  realm.addListener((jobs,changes)=>{
+    setJobsFromDB(realm.objects("Job"))
+  })*/
+
+  const realmListener = ()=>{
+    setJobsFromDB(realm.objects('Job'))
+    //update jobsExists
+    setJobsExist(realm.objects('Job').length>0)
+  }
+  realm.addListener("change",realmListener)
+  useEffect(()=>{
+    //clean up function
+    return ()=>{
+      realm.removeListener("change",realmListener)
+    }
+  },[])
+  
+
   const [jobsExist, setJobsExist] = useState (realm.objects('Job').length>0)
   const [jobsFromDB, setJobsFromDB] = useState([]);
 
@@ -104,6 +124,9 @@ const _Tracking = (props) => {
       setItems(jobsFromDB.map((e)=>{
         return {label:e.employer,value:e.id}
       }))
+    }else{
+      //empty the items
+      setItems([])
     }
   },[jobsFromDB])
 
@@ -172,7 +195,11 @@ const _Tracking = (props) => {
     <View style={styles.container}>
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
      
-      <Timer /> 
+     {showTimer
+      ?<Timer /> 
+      :<View></View>
+     }
+  
       {
         debugInfo
         ?
@@ -184,10 +211,12 @@ const _Tracking = (props) => {
             <TouchableOpacity onPress={handleAddJobButton}>
               <Text>Add Jerbs</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={()=>{clearJobs()}}>
+            <Text>clear Jerbs</Text>
+          </TouchableOpacity>
           </View>
         : <View></View>
       }
-
 
       {
         jobsExist
@@ -214,9 +243,7 @@ const _Tracking = (props) => {
           }}
           //displaying the jobs:
           />
-          <TouchableOpacity onPress={()=>{clearJobs()}}>
-            <Text>clear Jerbs</Text>
-          </TouchableOpacity>
+
           <LocationMap/>
         </View>
         :<View>
