@@ -69,13 +69,8 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
         return (
             <>
                 <Map
-                    //style={styles.setupMap}
-                    initialRegion={{
-                        latitude: 38.78825,
-                        longitude: -122.4324,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
+                    latitude={resultCoordinates.latitude}
+                    longitude={resultCoordinates.longitude}
                 />
             </>
         );
