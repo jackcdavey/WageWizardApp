@@ -237,7 +237,6 @@ const _Tracking = (props) => {
           <Text>localJobId: {JSON.stringify(localJobId)}</Text>
           <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
           <Text>jobs stored in the picker: {JSON.stringify(items)}</Text>
-          <Text>jobs from realm: {JSON.stringify(jobsFromDB)}</Text>
 
         </View>
       : <View></View>
@@ -247,25 +246,10 @@ const _Tracking = (props) => {
       workLogDebugInfo
       ?<View>
         <Text>worklogs: {JSON.stringify(logsFromDB)}</Text>
-        <TouchableOpacity onPress={()=>{clearLogs()}}>
-          <Text>clear Logs</Text>
-        </TouchableOpacity>
       </View>
       :<View></View>
     }
 
-    {
-      showAddDeleteJerbs
-      ?<View>
-        <TouchableOpacity onPress={()=>{addJobs()}}>
-          <Text>Add Jerbs</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{clearJobs()}}>
-          <Text>clear Jerbs</Text>
-        </TouchableOpacity>
-      </View>
-      :<View></View>
-    }
 
 
 
