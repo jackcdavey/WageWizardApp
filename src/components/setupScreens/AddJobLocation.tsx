@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, TextInput, Text } from "react-native";
+import { View, TouchableOpacity, TextInput, Text, Alert } from "react-native";
 import Map from '../elements/Map.js';
 
 import styles from '../../styles/stylesheet.js';
+
+import realm from '../../userData/realm.js';
 
 
 
@@ -76,7 +78,35 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
         );
     }
 
+    const createNewGeofence = () => {
+        let newGeofence;
+        let newGeofenceId = realm.objects('GeofenceLocation').length + 1;
 
+        try {
+            if (realm) {
+                realm.write(() => {
+                    const lat = resultCoordinates.latitude;
+                    const long = resultCoordinates.longitude;
+
+                    //This may not be the correct jobId....
+                    const currJob = realm.objects('Job').length;
+                    newGeofence = realm.create('GeofenceLocation', {
+                        id: newGeofenceId,
+                        jobId: currJob,
+                        latitude: lat,
+                        longitude: long,
+                        radius: 50,
+                    });
+                    Alert.alert('Geofence created with: id=' + newGeofenceId + ' lat=' + lat + ' long=' + long);
+                });
+            } else {
+                Alert.alert('Realm not initialized');
+            }
+        } catch (error) {
+            Alert.alert('Error: ' + error);
+        }
+        navigation.navigate("SetupComplete");
+    }
 
 
 
@@ -95,7 +125,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
             </View>
 
             <View style={styles.searchContainer}>
-                <TextInput style={styles.searchText} placeholder="Search Address..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
+                <TextInput style={styles.searchText} placeholder="Search By Address..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
                 <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates()}>
                     <Text style={{ color: COLORS.secondary }}>Search</Text>
                 </TouchableOpacity>
@@ -108,7 +138,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                 <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
                     <Text>Back</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SetupComplete")}>
+                <TouchableOpacity style={styles.button} onPress={() => createNewGeofence()}>
                     <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
             </View>
