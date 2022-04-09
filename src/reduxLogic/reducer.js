@@ -13,32 +13,32 @@ const sampleJob = {
     locations: [
         {
             name: "nobili",
-            latLng: {latitude: 37.348899, longitude: -121.942312},
+            latLng: { latitude: 37.348899, longitude: -121.942312 },
             radius: 30
         },
         {
             name: "scdi",
-            latLng: {latitude: 37.349036, longitude: -121.938545},
+            latLng: { latitude: 37.349036, longitude: -121.938545 },
             radius: 30
         },
         {
             name: "heafey",
-            latLng: {latitude: 37.349090, longitude: -121.939589},
+            latLng: { latitude: 37.349090, longitude: -121.939589 },
             radius: 30
         },
         {
             name: "benson",
-            latLng: {latitude: 37.347578,longitude: -121.939423},
+            latLng: { latitude: 37.347578, longitude: -121.939423 },
             radius: 40
         },
         {
             name: "my_house",
-            latLng: {latitude: 37.379903,longitude: -121.851886},
+            latLng: { latitude: 37.379903, longitude: -121.851886 },
             radius: 30
         },
         {
             name: "cassa",
-            latLng: {latitude: 37.347120,longitude: -121.935115},
+            latLng: { latitude: 37.347120, longitude: -121.935115 },
             radius: 30
         },
 
@@ -48,7 +48,7 @@ const sampleJob = {
 const initialState = {
     isTracking: false,
     isInsideGeofence: false,
-    time:0,
+    time: 0,
     isIdle: true,
     isRunning: false,
     isPaused: false,
@@ -62,8 +62,8 @@ const initialState = {
     }
 }
 
-export default function Reducer(state = initialState, action){
-    switch(action.type){
+export default function Reducer(state = initialState, action) {
+    switch (action.type) {
         case 'START_TIMER': {
             return {
                 ...state,
@@ -94,13 +94,13 @@ export default function Reducer(state = initialState, action){
                 isIdle: action.isIdle,
                 isRunning: action.isRunning,
                 isPaused: action.isPaused,
-                time:0
+                time: 0
             }
         }
-        case 'INCREMENT_TIME':{
+        case 'INCREMENT_TIME': {
             return {
                 ...state,
-                time:state.time+=1
+                time: state.time += 1
             }
         }
 
@@ -124,27 +124,27 @@ export default function Reducer(state = initialState, action){
         }
 
         case 'SET_IS_TRACKING': {
-            return{
+            return {
                 ...state,
                 isTracking: action.isTracking
             }
         }
 
         case 'SET_SELECTED_JOB': {
-            return{
+            return {
                 ...state,
                 selectedJob: action.selectedJob
             }
         }
-        
+
         case 'SET_JOBID': {
-            return{
+            return {
                 ...state,
                 jobId: action.jobId
             }
         }
 
-        
+
         default:
             return state
     }
