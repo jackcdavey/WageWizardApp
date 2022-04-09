@@ -12,6 +12,7 @@ import styles from '../../styles/stylesheet.js';
 export default function JobLocationSetup({ navigation }: { navigation: any }) {
 
     const [searchText, setSearchText] = useState('500 El Camino Real San Jose CA');
+    const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': 66.666, 'longitude': -122.696 });
     function getCoordinatesFromAddress() {
         return new Promise((resolve) => {
             const txt = JSON.stringify(searchText);
@@ -54,7 +55,11 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
     async function fetchCoordinates() {
         const coordinates = await getCoordinatesFromAddress();
         console.log('Coordinates: ' + JSON.stringify(coordinates));
+        setResultCoordinates(coordinates);
+        console.log('Result coordinates: ' + resultCoordinates.latitude + ' ' + resultCoordinates.longitude);
+        //return coordinates;
     }
+
 
 
     //const responseCoordinates = await getCoordinatesFromAddress(searchtext);
