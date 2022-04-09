@@ -338,30 +338,35 @@ const _LocationMap = (props) => {
       </MapView>
 
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
-      {isTracking
-        ? isInsideGeofence
-          ? <View>
-            <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-              <Text>{locationButtonText}</Text>
-            </TouchableOpacity>
-            {isPaused
-              ? <TouchableOpacity onPress={handleResume}>
+      {(jobId===-5)
+        ?<Text>Select Job First to Start Tracking</Text>
+        :<View>
+          {isTracking
+          ? isInsideGeofence
+            ? <View>
+                <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+                <Text>{locationButtonText}</Text>
+                </TouchableOpacity>
+                {isPaused
+                ? <TouchableOpacity onPress={handleResume}>
                 <Text>Resume</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity onPress={handlePause}>
+                </TouchableOpacity>
+                : <TouchableOpacity onPress={handlePause}>
                 <Text>Pause</Text>
-              </TouchableOpacity>
-            }
-          </View>
-          : <View>
-            <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-              <Text>{locationButtonText}</Text>
-            </TouchableOpacity>
-            <Text>---Tracking---</Text>
-          </View>
-        : <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+                </TouchableOpacity>
+                }
+              </View>
+            : <View>
+                <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+                <Text>{locationButtonText}</Text>
+                </TouchableOpacity>
+                <Text>---Tracking---</Text>
+              </View>
+          : <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
           <Text>{locationButtonText}</Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
+          }
+        </View>
       }
 
       {/*DUBUG_INFO STATS*/}

@@ -32,6 +32,7 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const debugInfo = false;
 const showTimer = true;
+const showAddDeleteJerbs = true;
 
 const _Tracking = (props) => {
 
@@ -127,6 +128,7 @@ const _Tracking = (props) => {
     }else{
       //empty the items
       setItems([])
+      //set the jobID back to default
     }
   },[jobsFromDB])
 
@@ -143,36 +145,27 @@ const _Tracking = (props) => {
     return Math.floor(Math.random()*100000);
   }
 
-  const addJobs = async () =>{
-    try{
-      let object = {
-        id: generateIDInt(),
-        employer: 'Kyle',
-        client: 'elyk',
-        color: 'rgba(245, 40, 145, 0.35)'
-      }
-      realm.write(()=>{
-        realm.create('Job',object)
-      })
-
-    }catch(error){
-      if(error){
-        console.log(error)
-      }
+  //no longer async, had to remove them to get rid of memory leaks
+  const addJobs = () =>{
+    let object = {
+      id: generateIDInt(),
+      employer: 'Kyle',
+      client: 'elyk',
+      color: 'rgba(245, 40, 145, 0.35)'
     }
+    realm.write(()=>{
+      realm.create('Job',object)
+    })
   }
-  const clearJobs = async ()=>{
-    try{
-      realm.write(()=>{
-        let allJobs = realm.objects('Job');
-        realm.delete(allJobs);
-        console.log('all jobs deleted')
-      })
-    }catch(error){
-      if(error){
-        console.log(error)
-      }
-    }
+  const clearJobs = ()=>{
+    setLocalJobId(-5)
+
+    realm.write(()=>{
+      let allJobs = realm.objects('Job');
+      realm.delete(allJobs);
+      console.log('all jobs deleted')
+    })
+
   }
 
   const handleAddJobButton = async () =>{
@@ -200,23 +193,30 @@ const _Tracking = (props) => {
       :<View></View>
      }
   
-      {
-        debugInfo
-        ?
-          <View>
-            <Text>localJobId: {JSON.stringify(localJobId)}</Text>
-            <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
-            <Text>jobs stored in the picker: {JSON.stringify(items)}</Text>
-            <Text>jobs from realm: {JSON.stringify(jobsFromDB)}</Text>
-            <TouchableOpacity onPress={handleAddJobButton}>
-              <Text>Add Jerbs</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{clearJobs()}}>
-            <Text>clear Jerbs</Text>
-          </TouchableOpacity>
-          </View>
-        : <View></View>
-      }
+    {
+      debugInfo
+      ?
+        <View>
+          <Text>localJobId: {JSON.stringify(localJobId)}</Text>
+          <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
+          <Text>jobs stored in the picker: {JSON.stringify(items)}</Text>
+          <Text>jobs from realm: {JSON.stringify(jobsFromDB)}</Text>
+
+        </View>
+      : <View></View>
+    }
+    {
+      showAddDeleteJerbs
+      ?<View>
+        <TouchableOpacity onPress={handleAddJobButton}>
+          <Text>Add Jerbs</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{clearJobs()}}>
+          <Text>clear Jerbs</Text>
+        </TouchableOpacity>
+      </View>
+      :<View></View>
+    }
 
       {
         jobsExist
