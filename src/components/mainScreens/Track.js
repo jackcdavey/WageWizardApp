@@ -45,8 +45,6 @@ const _Tracking = (props) => {
     { label: 'No Jobs', value: 7 },
   ]);
 
-
-
   //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
   //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
   //with proper elements.
@@ -79,46 +77,59 @@ const _Tracking = (props) => {
   }*/
 
   //setItems([{ label: 'No Jobs', value: -5 },]);
-  const [jobsAdded,setJobsAdded] = useState(false);
-  const [allJobs,getAllJobs] = useState([]);
+
+  const [jobsExist, setJobsExist] = useState (realm.objects('Job').length>0)
+  const [jobsFromDB, setJobsFromDB] = useState([]);
+
+  //debug check:
+  //edit* actually no, an important function needed to circumvent redux's weird dispatch rules 
   const [localJobId, setLocalJobId] = useState(jobId)
 
-
+  //used to populate the item array for the dropdown picker
   useEffect(()=>{
-    if (jobsAdded){
-      setItems(allJobs.map((e)=>{
+    //set it to run only if the jobs collection from mongodb is not empty
+    if(jobsExist){
+      setJobsFromDB(realm.objects('Job'));
+      //somehow jobsFromDB after this line has not data
+      /*setItems(jobsFromDB.map((e)=>{
         return {label:e.employer,value:e.id}
-      }
-      ))
+      }))
+      */
     }
-  },[jobsAdded])
+  },[jobsExist])
 
+  //second function to update items in picker if jobsFromDB gets updated
   useEffect(()=>{
-    setJobId(localJobId.toString())
+    if(jobsFromDB.length!==0){
+      setItems(jobsFromDB.map((e)=>{
+        return {label:e.employer,value:e.id}
+      }))
+    }
+  },[jobsFromDB])
+
+  //debug function to compare the current selected job id with the job id at the global state
+  //edit* not acutally a debug functiion, necessary to call setJobId indirectly outside the picker
+  useEffect(()=>{
+    setJobId(localJobId)
   },[localJobId])
 
-  const job1 = {
-    id: 1,
-    employer: 'Kyle',
-    client: 'elyk',
-    color: 'rgba(245, 40, 145, 0.35)'
+
+
+  //sample jobs for testing purposes, will be discarded
+  const generateIDInt = ()=>{
+    return Math.floor(Math.random()*100000);
   }
-  const job2 = {
-    id: 2,
-    employer: 'Jack',
-    client: 'kcaj',
-    color: 'rgba(245, 40, 145, 0.35)'
-  }
-  const job3 = {
-    id: 3,
-    employer: 'Brett',
-    client: 'tterb',
-    color: 'rgba(245, 40, 145, 0.35)'
-  }
+
   const addJobs = async () =>{
     try{
+      let object = {
+        id: generateIDInt(),
+        employer: 'Kyle',
+        client: 'elyk',
+        color: 'rgba(245, 40, 145, 0.35)'
+      }
       realm.write(()=>{
-        realm.create('Job',job1)
+        realm.create('Job',object)
       })
 
     }catch(error){
@@ -127,56 +138,59 @@ const _Tracking = (props) => {
       }
     }
   }
-
+  const clearJobs = async ()=>{
+    try{
+      realm.write(()=>{
+        let allJobs = realm.objects('Job');
+        realm.delete(allJobs);
+        console.log('all jobs deleted')
+      })
+    }catch(error){
+      if(error){
+        console.log(error)
+      }
+    }
+  }
 
   const handleAddJobButton = async () =>{
     try{
   
       addJobs()
-      getAllJobs(realm.objects('Job'))
-      setJobsAdded(true);
   
     }catch(error){
       console.log(error)
     }
  
   }
-  const testing =()=>{
-    setItems(allJobs.map((e)=>{
-      return {label:e.employer,value:e.id}
-    }
-    ))
-  }
+ 
 
-  const updateJobId = (jobId) =>{
-    setJobId(jobId);
-  }
+ 
 
 
   return (
 
     <View style={styles.container}>
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
-      <Timer />
+     
+      <Timer /> 
       {
         debugInfo
         ?
           <View>
-            <TouchableOpacity onPress={()=>{setJobId(3)}}>
-              <Text>changeJobId</Text>
-            </TouchableOpacity>
             <Text>localJobId: {JSON.stringify(localJobId)}</Text>
-            <Text>jobId: {JSON.stringify(jobId)}</Text>
-            <Text>JobsArray: {JSON.stringify(items)}</Text>
-            <Text>Jobs: {JSON.stringify(allJobs)}</Text>
-
+            <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
+            <Text>jobs stored in the picker: {JSON.stringify(items)}</Text>
+            <Text>jobs from realm: {JSON.stringify(jobsFromDB)}</Text>
+            <TouchableOpacity onPress={handleAddJobButton}>
+              <Text>Add Jerbs</Text>
+            </TouchableOpacity>
           </View>
         : <View></View>
       }
 
 
       {
-        jobsAdded
+        jobsExist
         ?<View>
           <DropDownPicker
           style={styles.picker}
@@ -199,21 +213,20 @@ const _Tracking = (props) => {
             console.log(item);
           }}
           //displaying the jobs:
-        />
+          />
+          <TouchableOpacity onPress={()=>{clearJobs()}}>
+            <Text>clear Jerbs</Text>
+          </TouchableOpacity>
+          <LocationMap/>
         </View>
         :<View>
-          <Text>No Jobs Added</Text>
+          <Text>No jobs to track, add jobs from the setup screen to begin tracking</Text>
           <TouchableOpacity onPress={handleAddJobButton}>
-            <Text>Add The Jobs</Text>
+            <Text>Or click me to add some jobs</Text>
           </TouchableOpacity>
-
         </View>
       }
-      <TouchableOpacity onPress={testing}>
-        <Text>test</Text>
-      </TouchableOpacity>
 
-      <LocationMap />
     </View>
   );
 }

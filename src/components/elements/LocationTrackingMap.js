@@ -19,7 +19,7 @@ import realm from '../../userData/realm.js';
 import COLORS from '../../styles/colors';
 
 //realms db import
-const debug_info = true;
+const debug_info = false;
 
 
 
