@@ -6,6 +6,8 @@ import Header from './elements/Header.js';
 
 import realm from '../userData/realm.js';
 
+import getLocation from '../hooks/getLocation';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -150,6 +152,7 @@ const clearGeofences = () => {
 
 
 const TestingView = ({ navigation }) => {
+    getLocation();
     return (
         <>
             <View>
