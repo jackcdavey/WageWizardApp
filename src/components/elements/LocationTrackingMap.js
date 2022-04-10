@@ -1,6 +1,6 @@
 //standard react location imports
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
@@ -284,6 +284,11 @@ const _LocationMap = (props) => {
     }
   }
 
+  const [geofences,setGeofences] = useState([])
+  useEffect(()=>{
+    setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + jobId))
+  },[jobId])
+
   const handleStart = () => {
     startBackgroundUpdate();
   }
@@ -315,8 +320,8 @@ const _LocationMap = (props) => {
         <View>
           {
             jobId!==-5
-            ?selectedJob.locations.map((location)=>{
-              return(<Circle key = {location.name} center={location.latLng} radius={location.radius} fillColor={selectedJob.color} />)
+            ?geofences.map((location)=>{
+              return(<Circle key = {location.id} center={{latitude:location.latitude,longitude:location.longitude}} radius={location.radius} fillColor={selectedJob.color} />)
              })
             :<View></View>
           }
