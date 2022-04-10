@@ -222,7 +222,7 @@ const _LocationMap = (props) => {
       return
     }
     // Make sure the task is defined otherwise do not start tracking
-    const isTaskDefined = await TaskManager.isTaskDefined(BACKROUND_LOCATION_TRACKING)
+    const isTaskDefined = await TaskManager.isTaskDefined(BACKGROUND_LOCATION_TRACKING)
     if (!isTaskDefined) {
       console.log("Task is not defined")
       return
@@ -230,14 +230,14 @@ const _LocationMap = (props) => {
 
     // Don't track if it is already running in background
     const hasStarted = await Location.hasStartedLocationUpdatesAsync(
-      BACKROUND_LOCATION_TRACKING
+      BACKGROUND_LOCATION_TRACKING
     )
     if (hasStarted) {
       console.log("Already started")
       return
     }
 
-    await Location.startLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING, {
+    await Location.startLocationUpdatesAsync(BACKGROUND_LOCATION_TRACKING, {
       // For better logs, we set the accuracy to the most sensitive option
       accuracy: Location.Accuracy.BestForNavigation,
       // Make sure to enable this notification if you want to consistently track in the background
@@ -253,10 +253,10 @@ const _LocationMap = (props) => {
   //Stop Background Location Updates and Geofencing updates
   const stopBackgroundUpdate = async () => {
     const hasStarted = await Location.hasStartedLocationUpdatesAsync(
-      BACKROUND_LOCATION_TRACKING
+      BACKGROUND_LOCATION_TRACKING
     )
     if (hasStarted) {
-      await Location.stopLocationUpdatesAsync(BACKROUND_LOCATION_TRACKING)
+      await Location.stopLocationUpdatesAsync(BACKGROUND_LOCATION_TRACKING)
       console.log("Location tacking stopped")
     }
   }
