@@ -127,7 +127,6 @@ const styles = EStyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         paddingLeft: '15%',
-        alignItems: 'center',
         paddingBottom: '5%',
 
     },
@@ -232,9 +231,8 @@ const styles = EStyleSheet.create({
         justifyContent: 'flex-end',
     },
     button: {
-        minWidth: '30%',
-        minHeight: '5%',
-        maxHeight: Dimensions.get('window').height * 0.06,
+        minWidth: Dimensions.get('window').width * 0.3,
+        height: Dimensions.get('window').height * 0.05,
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.primary,

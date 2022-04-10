@@ -4,7 +4,7 @@ import { TouchableOpacity, Image, Text } from 'react-native';
 
 import COLORS from '../../styles/colors.js';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Tracking from '../mainScreens/Track';
 import Resources from '../mainScreens/Resources';
 import WorkLogs from '../mainScreens/WorkLogs';

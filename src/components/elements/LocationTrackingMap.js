@@ -92,7 +92,7 @@ const createLog = () => {
       realm.create('WorkLog', {
         id: logSize + 1,
         //jobId: store.getState().jobId,
-        jobId:store.getState().jobId,
+        jobId: store.getState().jobId,
         notes: "Notes from Tracking",
         startTime: 3, //Change to initial start time of log
         endTime: 3,
@@ -100,7 +100,7 @@ const createLog = () => {
         totalBreakTime: 0, //Logic for determining total break time here
       })
     });
-    
+
   }
   catch (error) {
     console.log('Error creating Log: ' + error);
@@ -154,12 +154,12 @@ TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
 /**************** REDUX STORE CONNECTION ************************/
 /************************************************************** */
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, selectedJob, jobId } = state;
   return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, selectedJob, jobId };
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     startTimer: () => dispatch(startTimer()),
     pauseTimer: () => dispatch(pauseTimer()),
@@ -277,7 +277,7 @@ const _LocationMap = (props) => {
       setLocationButtonText('Start Tracking Location')
       //if person is not tracking, timer should end as there is no proof of their location
       //ensure to create a log only if the user was inside a geofence
-      if (time!==0){
+      if (time !== 0) {
         createLog();
       }
       endTimer();
@@ -311,7 +311,7 @@ const _LocationMap = (props) => {
           totalBreakTime: 0, //Logic for determining total break time here
         })
       });
-      
+
     }
     catch (error) {
       console.log('Error creating Log: ' + error);
@@ -396,33 +396,33 @@ const _LocationMap = (props) => {
       </MapView>
 
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
-      {(jobId===-5)
-        ?<Text>Select Job First to Start Tracking</Text>
-        :<View>
+      {(jobId === -5)
+        ? <Text>Select Job First to Start Tracking</Text>
+        : <View>
           {isTracking
-          ? isInsideGeofence
-            ? <View>
+            ? isInsideGeofence
+              ? <View>
                 <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-                <Text>{locationButtonText}</Text>
+                  <Text>{locationButtonText}</Text>
                 </TouchableOpacity>
                 {isPaused
-                ? <TouchableOpacity onPress={handleResume}>
-                <Text>Resume</Text>
-                </TouchableOpacity>
-                : <TouchableOpacity onPress={handlePause}>
-                <Text>Pause</Text>
-                </TouchableOpacity>
+                  ? <TouchableOpacity onPress={handleResume}>
+                    <Text>Resume</Text>
+                  </TouchableOpacity>
+                  : <TouchableOpacity onPress={handlePause}>
+                    <Text>Pause</Text>
+                  </TouchableOpacity>
                 }
               </View>
-            : <View>
+              : <View>
                 <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-                <Text>{locationButtonText}</Text>
+                  <Text>{locationButtonText}</Text>
                 </TouchableOpacity>
                 <Text>---Tracking---</Text>
               </View>
-          : <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-          <Text>{locationButtonText}</Text>
-          </TouchableOpacity>
+            : <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
+              <Text>{locationButtonText}</Text>
+            </TouchableOpacity>
           }
         </View>
       }

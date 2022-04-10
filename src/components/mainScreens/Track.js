@@ -11,20 +11,20 @@ import styles from '../../styles/stylesheet';
 //import JobLocationSetup from '../setupScreens/AddJobLocation';
 
 import realm from '../../userData/realm';
-import { ObjectId } from 'bson'
+
 
 //import realm from '../../userData/realm';
 
-var jobsLoaded = false;
+//var jobsLoaded = false;
 
 import { connect } from 'react-redux';
 import { setJobId } from '../../reduxLogic/actions'
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId } = state;
   return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId };
 }
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     setJobId: (jobId) => { dispatch(setJobId(jobId)) }
   }
@@ -32,8 +32,6 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const debugInfo = false;
 const showTimer = true;
-const showAddDeleteJerbs = true;
-const workLogDebugInfo = true;
 
 const _Tracking = (props) => {
 
@@ -114,18 +112,6 @@ const _Tracking = (props) => {
       */
     }
   }, [logsExist])
-
-
-  const clearLogs = () => {
-
-    realm.write(() => {
-      let allLogs = realm.objects('WorkLog');
-      realm.delete(allLogs);
-      console.log('all logs deleted')
-    })
-
-  }
-
 
 
   /******REALM JOB LOGIC ***************************** */

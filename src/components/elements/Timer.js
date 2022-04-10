@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
 
 });
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { isIdle, isRunning, isPaused, time } = state;
   return { isIdle, isRunning, isPaused, time };
 }
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     startTimer: () => dispatch(startTimer()),
     pauseTimer: () => dispatch(pauseTimer()),

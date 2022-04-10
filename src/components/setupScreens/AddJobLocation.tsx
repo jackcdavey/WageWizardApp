@@ -97,13 +97,15 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                         longitude: long,
                         radius: 50,
                     });
-                    Alert.alert('Geofence created with: id=' + newGeofenceId + ' lat=' + lat + ' long=' + long);
+                    console.log('New Geofence created: ' + JSON.stringify(newGeofence));
                 });
             } else {
                 Alert.alert('Realm not initialized');
+                console.log('Realm not initialized');
             }
         } catch (error) {
             Alert.alert('Error: ' + error);
+            console.log('Error: ' + error);
         }
         navigation.navigate("SetupComplete");
     }
