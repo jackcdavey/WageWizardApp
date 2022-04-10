@@ -3,6 +3,8 @@ import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
 import { View, TouchableOpacity, StyleSheet, Dimensions, Text } from "react-native";
 
+import RNRestart from 'react-native-restart';
+
 //Eventually, the route will need to be checked to ensure this screen only appears 
 //on first time setup. Currently, it is shown every time a job is added.
 
@@ -23,7 +25,7 @@ export default function SetupComplete({ navigation }: { navigation: any }) {
                 </Text>
 
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Main")}>
+                <TouchableOpacity style={styles.button} onPress={() => RNRestart.Restart()}>
                     <Text style={{ color: COLORS.secondary }}>Finish</Text>
                 </TouchableOpacity>
             </View>
