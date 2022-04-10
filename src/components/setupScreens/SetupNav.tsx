@@ -34,16 +34,17 @@ export default function SetupNav({ navigation }: { navigation: any }) {
 
             })}
         >
+
             <Tab.Screen
-                name="JobSetup"
-                component={JobSetup}
+                name="InitialSetup"
+                component={InitialSetupView}
                 options={{
                     tabBarStyle: { display: 'none' },
                 }}
             />
             <Tab.Screen
-                name="InitialSetup"
-                component={InitialSetupView}
+                name="JobSetup"
+                component={JobSetup}
                 options={{
                     tabBarStyle: { display: 'none' },
                 }}

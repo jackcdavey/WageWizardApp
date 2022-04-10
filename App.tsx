@@ -6,6 +6,8 @@ import Account from './src/components/mainScreens/Account';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
+import realm from './src/userData/realm';
+
 import Testing from './src/components/testing.js';
 
 import { store } from './src/reduxLogic/store';
@@ -43,6 +45,8 @@ const Stack = createNativeStackNavigator();
 
 
 const App = () => {
+  var accountExists = false;
+
   const [IsReady, SetIsReady] = useState(false);
   const LoadFonts = async () => {
     await useFonts();
@@ -57,20 +61,37 @@ const App = () => {
     );
   }
 
-  return (
-    <Provider store={store}>
+  if (realm) {
+    accountExists = realm.objects('User').length > 0;
+  }
+
+  if (!accountExists) {
+    console.log("No account exists");
+    return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
-          <Stack.Screen name="Testing" component={Testing} options={{ headerShown: false }} />
-          <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
           <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
-          <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
-    </Provider>
+    );
+  } else {
+    console.log("Account exists");
+    return (
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
+            <Stack.Screen name="Testing" component={Testing} options={{ headerShown: false }} />
+            <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
+            <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
+            <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
+            {/* <Stack.Screen name="DetailedLog" options={{ headerShown: false }}>{props => <DetailedLogView logId = 0 {...props} />}</Stack.Screen> */}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
 
-  );
+    );
+  }
 }
 
 /* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/

@@ -5,10 +5,19 @@ import Header from '../elements/Header';
 import { View, Text, StyleSheet, Dimensions, Alert, Image } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import COLORS from '../../styles/colors';
+import { produceWithPatches } from 'immer';
+
+
+// const getDetailedLog = (props) => {
+//     const id = props.route.params.id;
+
+
+
 
 //Possibly add some sqeuomorphic styling for the log sheet?
 //Animate a slide up when a user presses a log
 export default function DetailedLogView({ navigation }: { navigation: any }) {
+    //console.log("DetailedLogView props: ", props.logId);
     return (
         <>
             {/* Implement card styling here */}
@@ -16,9 +25,7 @@ export default function DetailedLogView({ navigation }: { navigation: any }) {
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={(require('../../assets/images/icons/Back.png'))} style={{ marginLeft: 25, width: Dimensions.get('window').width * 0.04, height: Dimensions.get('window').width * 0.07 }} />
                 </TouchableOpacity>
-
-                <Header title="Detailed Log View" />
-
+                <Header title="Details" />
             </View>
 
             {/*This is all temporary data for prototyping purposes. Eventually logs will be 
