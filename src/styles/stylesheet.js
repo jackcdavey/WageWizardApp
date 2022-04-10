@@ -34,8 +34,9 @@ const styles = EStyleSheet.create({
     },
 
     testButton: {
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').height * 0.05,
+        //width: Dimensions.get('window').width * 0.3,
+        //height: Dimensions.get('window').height * 0.05,
+        padding: '3%',
         backgroundColor: 'red',
         borderRadius: 15,
         borderColor: COLORS.primary,
@@ -127,7 +128,9 @@ const styles = EStyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         paddingLeft: '15%',
-        paddingTop: '10%',
+        alignItems: 'center',
+        paddingBottom: '5%',
+
     },
 
     /////////////OLD STYLES BELOW//////////////
@@ -230,8 +233,9 @@ const styles = EStyleSheet.create({
         justifyContent: 'flex-end',
     },
     button: {
-        width: '30%',
-        height: '23%',
+        minWidth: '30%',
+        minHeight: '15%',
+        maxHeight: Dimensions.get('window').height * 0.06,
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.primary,

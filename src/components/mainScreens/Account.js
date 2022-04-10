@@ -81,32 +81,32 @@ const AcccountView = ({ navigation }) => {
         <Text> {jobList}</Text>
         <Text style={styles.title}>Saved Locations</Text>
         <Text> {locationList}</Text>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
-            <View style={styles.button}>
-              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
-                Add New Job
-              </Text>
-            </View>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={() => setIsEditing(true)}>
+          <View style={styles.button}>
+            <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+              Edit
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
+          <View style={styles.button}>
+            <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+              Add New Job
+            </Text>
+          </View>
+        </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-            <View style={styles.testButton}>
-              <Text style={styles.item}>
-                TESTING
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setIsEditing(true)}>
-            <View style={styles.button}>
-              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
-                Edit
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+          <View style={styles.testButton}>
+            <Text style={styles.item}>
+              TESTING
+            </Text>
+          </View>
+        </TouchableOpacity>
 
       </View>
+
+      // </View>
 
     );
   } else {
