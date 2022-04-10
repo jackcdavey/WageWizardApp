@@ -1,8 +1,9 @@
-import COLORS from '../../styles/colors.js';
+
 import React from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, Dimensions, View, TouchableOpacity } from 'react-native';
+import { Text, Dimensions, View, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import styles from '../../styles/stylesheet.js';
 
 export default function MyWage({ navigation }: { navigation: any }) {
 
@@ -61,72 +62,3 @@ export default function MyWage({ navigation }: { navigation: any }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  infoBox: {
-    display: 'flex',
-    minWidth: Dimensions.get('window').width * 0.9,
-    minHeight: Dimensions.get('window').height * 0.07,
-    margin: 15,
-    padding: 10,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 15,
-    borderColor: COLORS.dark,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  item: {
-    margin: 25,
-    padding: 10,
-    backgroundColor: COLORS.active,
-    fontSize: 18,
-    height: 44,
-  },
-  label: {
-    fontSize: 23,
-  },
-  infoTxt: {
-    fontSize: 50,
-  },
-  btn: {
-    width: Dimensions.get('window').width * 0.6,
-    height: Dimensions.get('window').width * 0.2,
-    backgroundColor: COLORS.primary,
-    borderRadius: 15,
-    borderColor: COLORS.primary,
-    borderWidth: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnTxt: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: COLORS.secondary,
-  },
-  picker: {
-    //width: Dimensions.get('window').width * 0.9,
-    //height: Dimensions.get('window').height * 0.07,
-    margin: 15, padding: 10,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 15,
-    borderColor: COLORS.primary,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pickerContainer: {
-    width: Dimensions.get('window').width * 0.9,
-    height: Dimensions.get('window').height * 0.07,
-    margin: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: COLORS.primary,
-  },
-  pickerLabel: {
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: COLORS.primary,
-  },
-});

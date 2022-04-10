@@ -109,10 +109,10 @@ const createLog = () => {
 /************************************************************** */
 /* GLOBAL SCOPE TASK MANGEMENT FOR BACKGROUND LOCATION SERVICES */
 /************************************************************** */
-const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
+const BACKGROUND_LOCATION_TRACKING = "BACKGROUND_LOCATION_TRACKING "
 const geofences = generateGeofence(store.getState().selectedJob)
 //Background Location Tracker
-TaskManager.defineTask(BACKROUND_LOCATION_TRACKING, async ({ data, error }) => {
+TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => {
   if (error) {
     console.error(error)
     return

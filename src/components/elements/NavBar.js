@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity, Image, Text } from 'react-native';
+import { TouchableOpacity, Image, Text, Dimensions } from 'react-native';
 
 
 import COLORS from '../../styles/colors.js';
@@ -33,6 +33,7 @@ export default function NavBar({ navigation }) {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         lazy: false,
+
         headerStyle: {
           backgroundColor: COLORS.primary,
         },
@@ -56,8 +57,12 @@ export default function NavBar({ navigation }) {
 
         tabBarInactiveBackgroundColor: COLORS.primary,
         tabBarActiveBackgroundColor: COLORS.active,
-        tabBarInactiveTintColor: COLORS.icon,
+        tabBarInactiveTintColor: 'white',
         tabBarActiveTintColor: "black",
+        tabBarStyle: {
+          maxHeight: '10%',
+        },
+
       })}
 
     >

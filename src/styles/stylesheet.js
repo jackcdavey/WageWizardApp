@@ -155,6 +155,47 @@ const styles = EStyleSheet.create({
         width: Dimensions.get('window').width * 0.9,
         height: Dimensions.get('window').height * 0.35,
     },
+    infoBox: {
+        display: 'flex',
+        minWidth: Dimensions.get('window').width * 0.9,
+        minHeight: Dimensions.get('window').height * 0.07,
+        margin: 15,
+        padding: 10,
+        backgroundColor: COLORS.secondary,
+        borderRadius: 15,
+        borderColor: COLORS.dark,
+        borderWidth: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    item: {
+        margin: 25,
+        padding: 10,
+        backgroundColor: COLORS.active,
+        fontSize: 18,
+        height: 44,
+    },
+    label: {
+        fontSize: 23,
+    },
+    infoTxt: {
+        fontSize: 50,
+    },
+    btn: {
+        width: Dimensions.get('window').width * 0.6,
+        height: Dimensions.get('window').width * 0.2,
+        backgroundColor: COLORS.primary,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    btnTxt: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: COLORS.secondary,
+    },
 
     ////////////////Track View Styles///////////////
     start: {
