@@ -161,12 +161,19 @@ const styles = EStyleSheet.create({
         fontSize: 40,
     },
     map: {
+        width: '100%',
+        height: '100%',
+    },
+    mapContainer: {
+        width: Dimensions.get('window').width * 0.9,
+        height: Dimensions.get('window').height * 0.35,
         borderRadius: 15,
         borderColor: COLORS.dark,
         borderWidth: 2,
-        margin: '2%',
-        width: Dimensions.get('window').width * 0.9,
-        height: Dimensions.get('window').height * 0.35,
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+        overflow: 'hidden',
     },
     infoBox: {
         display: 'flex',

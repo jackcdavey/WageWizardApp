@@ -126,9 +126,9 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
       //update that store according to background locaiton updates
 
       //first check for geofences:
-      const geofences = realm.objects("GeofenceLocation").filtered("jobId = "+ store.getState().jobId)
-      const formattedGeofences = geofences.map((item)=>{
-        return({
+      const geofences = realm.objects("GeofenceLocation").filtered("jobId = " + store.getState().jobId)
+      const formattedGeofences = geofences.map((item) => {
+        return ({
           latitude: item.latitude,
           longitude: item.longitude,
           radius: item.radius
@@ -292,10 +292,10 @@ const _LocationMap = (props) => {
     }
   }
 
-  const [geofences,setGeofences] = useState([])
-  useEffect(()=>{
+  const [geofences, setGeofences] = useState([])
+  useEffect(() => {
     setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + jobId))
-  },[jobId])
+  }, [jobId])
 
   const handleStart = () => {
     startBackgroundUpdate();
@@ -313,31 +313,33 @@ const _LocationMap = (props) => {
   }
   return (
     <View style={{ alignItems: 'center' }}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: region.latitude,
-          longitude: region.longitude,
-          latitudeDelta: region.latitudeDelta,
-          longitudeDelta: region.longitudeDelta,
-        }}
-        region={region}
-      >
-        <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
+      <View style={styles.mapContainer}>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: region.latitude,
+            longitude: region.longitude,
+            latitudeDelta: region.latitudeDelta,
+            longitudeDelta: region.longitudeDelta,
+          }}
+          region={region}
+        >
+          <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
 
-        <View>
-          {
-            (geofences.length>0)
-            ?geofences.map((location)=>{
-              return(<Circle key = {location.id} center={{latitude:location.latitude,longitude:location.longitude}} radius={location.radius} fillColor={selectedJob.color} />)
-             })
-            :<View></View>
-          }
-        </View>
+          <View>
+            {
+              (geofences.length > 0)
+                ? geofences.map((location) => {
+                  return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={selectedJob.color} />)
+                })
+                : <View></View>
+            }
+          </View>
 
 
 
-      </MapView>
+        </MapView>
+      </View>
 
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
       {(jobId === -5)
