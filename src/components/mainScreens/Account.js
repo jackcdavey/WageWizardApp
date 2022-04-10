@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styles from '../../styles/stylesheet.js';
 import {
-  StyleSheet,
   TextInput,
   Text,
   View,

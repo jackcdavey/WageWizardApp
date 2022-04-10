@@ -12,10 +12,10 @@ import getLocation from '../hooks/getLocation';
 const Tab = createBottomTabNavigator();
 
 import { connect } from 'react-redux';
-const mapStateToProps = (state, props) => {
-    const { isTracking} = state;
-    return { isTracking};
-  }
+const mapStateToProps = (state) => {
+    const { isTracking } = state;
+    return { isTracking };
+}
 
 const clearJobs = () => {
     try {
@@ -158,7 +158,7 @@ const clearGeofences = () => {
 
 
 const _TestingView = (props) => {
-    const {navigation, isTracking} = props
+    const { navigation, isTracking } = props
     getLocation();
     return (
         <>
@@ -175,9 +175,9 @@ const _TestingView = (props) => {
                 {/**DO NOT CLEAR ALL JOBS WHILE USER IS TRACKING, WILL BREAK LOGIC SEVERELY */}
                 {
                     isTracking
-                    ?
+                        ?
                         <Text>Person is Tracking, do not clear jobs, will break logic</Text>
-                    :
+                        :
                         <TouchableOpacity style={styles.btn} onPress={() => clearJobs()}>
                             <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
                         </TouchableOpacity>
@@ -208,7 +208,7 @@ const TestingView = connect(mapStateToProps)(_TestingView);
 
 export default function Testing({ navigation }) {
 
-    return ( 
+    return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 headerStyle: {

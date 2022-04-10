@@ -179,7 +179,7 @@ const mapDispatchToProps = (dispatch) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isRunning, isPaused, region, time, startTimer, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, setSelectedJob, jobId } = props;
+  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, jobId } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -295,84 +295,10 @@ const _LocationMap = (props) => {
   const handlePause = () => {
     pauseTimer();
   }
-
-  const createDog = () => {
-    //Triggered when a new log needs to be created
-    try {
-      const logSize = realm.objects('WorkLog').length;
-      realm.write(() => {
-        realm.create('WorkLog', {
-          id: logSize + 1,
-          jobId: store.getState().jobId,
-          notes: "Notes from Tracking",
-          startTime: new Date(), //Change to initial start time of log
-          endTime: new Date(),
-          breakCount: 0, //Logic for determining break count here
-          totalBreakTime: 0, //Logic for determining total break time here
-        })
-      });
-
-    }
-    catch (error) {
-      console.log('Error creating Log: ' + error);
-    }
-  }
   const handleEnd = () => {
     stopBackgroundUpdate();;
     endTimer();
   }
-
-
-  //Realm Stuff
-
-
-  //Realm Stuff
-  /*if (realm) {
-    const currLog = ' '; //realm.getObjectByPrimaryKey(getCurrLogID()) - Logic for determining current job or new job here
-    const currJob = ' '; //Logic for determining chosen job from picker here
-  }
-  const generateIDInt = ()=>{
-    return Math.floor(Math.random()*100000);
-  }
-
-
-
-  const updateLog = () => {
-    //Triggered when a log needs to be updated after a pause
-    try {
-      if (realm) {
-
-      }
-    } catch (error) {
-      console.log('Error updating Log: ' + error);
-    }
-  }
-
-  const createLog = () => {
-    //Triggered when a new log needs to be created
-    try {
-      if (realm) {
-        const logSize = realm.objects('WorkLog').length;
-        realm.write(() => {
-          realm.create('WorkLog', {
-            id: logSize + 1,
-            jobId: jobId,
-            notes: "Notes from Tracking",
-            startTime: new Date(), //Change to initial start time of log
-            endTime: new Date(),
-            breakCount: 0, //Logic for determining break count here
-            totalBreakTime: 0, //Logic for determining total break time here
-          })
-        });
-      }
-    }
-    catch (error) {
-      console.log('Error creating Log: ' + error);
-    }
-  }*/
-
-
-
   return (
     <View>
       <MapView

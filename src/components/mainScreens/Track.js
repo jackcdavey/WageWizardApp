@@ -189,16 +189,6 @@ const _Tracking = (props) => {
       realm.create('Job', object)
     })
   }
-  const clearJobs = () => {
-    setLocalJobId(-5)
-
-    realm.write(() => {
-      let allJobs = realm.objects('Job');
-      realm.delete(allJobs);
-      console.log('all jobs deleted')
-    })
-
-  }
 
   const [showWorkLogs, setShowWorkLogs] = useState(false)
   const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
