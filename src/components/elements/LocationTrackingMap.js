@@ -311,11 +311,17 @@ const _LocationMap = (props) => {
         region={region}
       >
         <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
-        <Circle center={selectedJob.locations[0].latLng} radius={selectedJob.locations[0].radius} fillColor={selectedJob.color} />
-        <Circle center={selectedJob.locations[1].latLng} radius={selectedJob.locations[1].radius} fillColor={selectedJob.color} />
-        <Circle center={selectedJob.locations[2].latLng} radius={selectedJob.locations[2].radius} fillColor={selectedJob.color} />
-        <Circle center={selectedJob.locations[3].latLng} radius={selectedJob.locations[3].radius} fillColor={selectedJob.color} />
-        <Circle center={selectedJob.locations[4].latLng} radius={selectedJob.locations[4].radius} fillColor={selectedJob.color} />
+
+        <View>
+          {
+            jobId!==-5
+            ?selectedJob.locations.map((location)=>{
+              return(<Circle key = {location.name} center={location.latLng} radius={location.radius} fillColor={selectedJob.color} />)
+             })
+            :<View></View>
+          }
+        </View>
+
 
 
       </MapView>

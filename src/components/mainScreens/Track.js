@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const debugInfo = false;
+const debugInfo = true;
 const showTimer = true;
 
 const _Tracking = (props) => {
@@ -177,16 +177,95 @@ const _Tracking = (props) => {
   }
 
   //no longer async, had to remove them to get rid of memory leaks
-  const addJobs = () => {
-    let object = {
-      id: generateIDInt(),
-      employer: 'Kyle',
-      client: 'elyk',
-      location: 'test location',
+  //fucntions for temporary development testing, functions will be removed after development
+
+  const addJob1 = () =>{
+    //locations are nobili, and scdi
+    let jobId = realm.objects("Job").length+1
+    let job = {
+      id: jobId,
+      employer: "Kyle",
+      client: "StarBucks",
+      location: "test location",
       color: 'rgba(245, 40, 145, 0.35)'
     }
-    realm.write(() => {
-      realm.create('Job', object)
+    let locId1 = realm.objects("GeofenceLocation").length+1
+    let loc1 = {
+      id:locId1,
+      jobId:jobId,
+      latitude: 37.348899, 
+      longitude: -121.942312,
+      radius: 30
+    }
+    let locId2 = realm.objects("GeofenceLocation").length+2
+    let loc2 = {
+      id:locId2,
+      jobId:jobId,
+      latitude: 37.349036, 
+      longitude: -121.938545,
+      radius: 30
+    }
+    realm.write(()=>{
+      realm.create("Job",job)
+      realm.create("GeofenceLocation",loc1)
+      realm.create("GeofenceLocation",loc2)
+    })
+  }
+
+  const addJob2 = () =>{
+    //locations are heafey and benson
+    let jobId = realm.objects("Job").length+1
+    let job = {
+      id: jobId,
+      employer: "Jack",
+      client: "StarBucks",
+      location: "test location",
+      color: 'rgba(245, 40, 145, 0.35)'
+    }
+    let locId1 = realm.objects("GeofenceLocation").length+2
+    let loc1 = {
+      id:locId1,
+      jobId:jobId,
+      latitude: 37.347578, 
+      longitude: -121.939423,
+      radius: 40
+    }
+    let locId2 = realm.objects("GeofenceLocation").length+1
+    let loc2 = {
+      id:locId2,
+      jobId:jobId,
+      latitude: 37.349090, 
+      longitude: -121.939589,
+      radius: 30
+    }
+    realm.write(()=>{
+      realm.create("Job",job)
+      realm.create("GeofenceLocation",loc1)
+      realm.create("GeofenceLocation",loc2)
+    })
+  }
+
+  const addJob3 = () =>{
+    //locations are casa
+    let jobId = realm.objects("Job").length+1
+    let job = {
+      id: jobId,
+      employer: "Brett",
+      client: "StarBucks",
+      location: "test location",
+      color: 'rgba(245, 40, 145, 0.35)'
+    }
+    let locId1 = realm.objects("GeofenceLocation").length+1
+    let loc1 = {
+      id:locId1,
+      jobId:jobId,
+      latitude: 37.379903, 
+      longitude: -121.851886,
+      radius: 30
+    }
+    realm.write(()=>{
+      realm.create("Job",job)
+      realm.create("GeofenceLocation",loc1)
     })
   }
 
@@ -212,6 +291,16 @@ const _Tracking = (props) => {
     <View style={styles.container}>
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
 
+      {/*development testing buttons for testing geofences*/}
+      <TouchableOpacity onPress={addJob1}>
+        <Text>Add Job of Type 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={addJob2}>
+        <Text>Add Job of Type 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={addJob3}>
+        <Text>Add Job of Type 3</Text>
+      </TouchableOpacity>
       {showTimer
         ? <Timer />
         : <View></View>
@@ -223,8 +312,6 @@ const _Tracking = (props) => {
           <View>
             <Text>localJobId: {JSON.stringify(localJobId)}</Text>
             <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
-            <Text>jobs stored in the picker: {JSON.stringify(items)}</Text>
-
           </View>
           : <View></View>
       }
@@ -277,8 +364,7 @@ const _Tracking = (props) => {
 
             <LocationMap />
           </View>
-          : <View>
-          </View>
+          :<Text>add a job to begin tracking</Text>
       }
 
     </View>
