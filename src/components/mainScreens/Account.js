@@ -79,13 +79,13 @@ const AcccountView = ({ navigation }) => {
         </View >
 
         <Text style={styles.title}>Saved Jobs</Text>
-        <View style={{ height: '20%', width: '100%', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <View style={{ height: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
           <ScrollView>
             <Text> {jobList}</Text>
           </ScrollView>
         </View>
         <Text style={styles.title}>Saved Locations</Text>
-        <View style={{ height: '20%', width: '100%', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <View style={{ height: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
           <ScrollView>
             <Text> {locationList}</Text>
           </ScrollView>

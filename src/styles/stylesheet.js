@@ -133,9 +133,9 @@ const styles = EStyleSheet.create({
     profileInformationContainer: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'flex-start',
         paddingLeft: '15%',
-        paddingBottom: '5%',
+        marginTop: '5%',
+        marginBottom: '5%',
 
     },
 
@@ -145,10 +145,9 @@ const styles = EStyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        paddingTop: Dimensions.get('window').height * 0.05,
+
     },
     elements: {
         paddingBottom: Dimensions.get('window').height * 0.02,
