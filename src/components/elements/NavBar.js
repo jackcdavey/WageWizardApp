@@ -4,7 +4,7 @@ import { TouchableOpacity, Image, Text } from 'react-native';
 
 import COLORS from '../../styles/colors.js';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Tracking from '../mainScreens/Track';
 import Resources from '../mainScreens/Resources';
 import WorkLogs from '../mainScreens/WorkLogs';
@@ -20,6 +20,7 @@ import {
 const Tab = createBottomTabNavigator();
 
 export default function NavBar({ navigation }) {
+  //const [userName, setUserName] = useState('no name');
   var userName = 'no name';
   if (realm) {
     if (realm.objects('User').length > 0) {

@@ -1,6 +1,7 @@
 import COLORS from '../../styles/colors.js';
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import styles from '../../styles/stylesheet.js';
 import {
   StyleSheet,
   TextInput,
@@ -35,11 +36,13 @@ const AcccountView = ({ navigation }) => {
   var birthday = 'no Birthday';
   var email = 'no Email';
   var jobList = [];
+  var locationList = [];
 
   if (realm) {
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
     jobList = JSON.stringify(realm.objects('Job'));
+    locationList = JSON.stringify(realm.objects('GeofenceLocation'));
     if (userExists) {
       //Alert.alert('There is a user in the database.');
       //Alert.alert('User: ' + user[0].firstName);
@@ -58,29 +61,44 @@ const AcccountView = ({ navigation }) => {
   if (!isEditing) {
     //Static version of the page
     return (
-      <><View style={{ alignItems: 'center' }}>
-
-        <View style={{ flexDirection: 'row', paddingTop: 25 }}>
-          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20, maxHeight: profilePicDimensions }}>
-            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
-          </View>
+      <View style={styles.container}>
+        <View style={styles.profileInformationContainer}>
+          <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
           <View>
-            <View style={styles.field}>
+            <View style={styles.profileAccountInfoField}>
               <Text style={styles.input}>{fullName}</Text>
             </View>
-            <View style={styles.field}>
+            <View style={styles.profileAccountInfoField}>
               <Text style={styles.input}>{email}</Text>
             </View>
 
-            <View style={styles.field}>
+            <View style={styles.profileAccountInfoField}>
               <Text style={styles.input}>{birthday}</Text>
             </View>
           </View>
-        </View>
+        </View >
+        <Text style={styles.title}>Saved Jobs</Text>
+        <Text> {jobList}</Text>
+        <Text style={styles.title}>Saved Locations</Text>
+        <Text> {locationList}</Text>
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
+            <View style={styles.button}>
+              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+                Add New Job
+              </Text>
+            </View>
+          </TouchableOpacity>
 
-        <View style={{ justifyContent: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+            <View style={styles.testButton}>
+              <Text style={styles.item}>
+                TESTING
+              </Text>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => setIsEditing(true)}>
-            <View style={styles.btn}>
+            <View style={styles.button}>
               <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
                 Edit
               </Text>
@@ -88,32 +106,8 @@ const AcccountView = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <View style={{ justifyContent: 'center' }}>
-          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
-          </View>
-          <Text> {jobList}</Text>
+      </View>
 
-          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
-              <View style={styles.btn}>
-                <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
-                  Add New Job
-                </Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-              <View style={styles.testBtn}>
-                <Text style={styles.item}>
-                  TESTING
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
-        </View>
-      </View></>
     );
   } else {
 
@@ -228,63 +222,63 @@ export default function Account({ navigation }) {
 }
 
 
-const styles = StyleSheet.create({
-  infoTxt: {
-    fontSize: 50,
-  },
-  field: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.6,
+// const styles = StyleSheet.create({
+//   infoTxt: {
+//     fontSize: 50,
+//   },
+//   field: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     width: Dimensions.get('window').width * 0.6,
 
-  },
-  input: {
-    width: Dimensions.get('window').width * 0.5,
-    borderRadius: 15,
-    margin: 10,
-    borderColor: COLORS.primary,
-    backgroundColor: COLORS.secondary,
-    borderWidth: 2,
-    padding: 10,
-    alignItems: 'center',
-  },
-  info: {
-    margin: 25,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 15,
-    borderWidth: 2,
-    alignItems: 'center',
-  },
-  btn: {
-    margin: 25,
-    backgroundColor: COLORS.primary,
-    borderRadius: 15,
-    borderColor: COLORS.primary,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.4,
-    height: Dimensions.get('window').height * 0.06,
-  },
-  item: {
-    margin: 25,
-    padding: 10,
-    color: COLORS.dark,
-    fontSize: 20,
-    height: 44,
-    fontWeight: 'bold',
-  },
-  testBtn: {
-    margin: 25,
-    backgroundColor: 'red',
-    borderRadius: 15,
-    borderColor: COLORS.primary,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width * 0.4,
-    height: Dimensions.get('window').height * 0.06,
-  },
-});
+//   },
+//   input: {
+//     width: Dimensions.get('window').width * 0.5,
+//     borderRadius: 15,
+//     margin: 10,
+//     borderColor: COLORS.primary,
+//     backgroundColor: COLORS.secondary,
+//     borderWidth: 2,
+//     padding: 10,
+//     alignItems: 'center',
+//   },
+//   info: {
+//     margin: 25,
+//     backgroundColor: COLORS.secondary,
+//     borderRadius: 15,
+//     borderWidth: 2,
+//     alignItems: 'center',
+//   },
+//   btn: {
+//     margin: 25,
+//     backgroundColor: COLORS.primary,
+//     borderRadius: 15,
+//     borderColor: COLORS.primary,
+//     borderWidth: 2,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     width: Dimensions.get('window').width * 0.4,
+//     height: Dimensions.get('window').height * 0.06,
+//   },
+//   item: {
+//     margin: 25,
+//     padding: 10,
+//     color: COLORS.dark,
+//     fontSize: 20,
+//     height: 44,
+//     fontWeight: 'bold',
+//   },
+//   testBtn: {
+//     margin: 25,
+//     backgroundColor: 'red',
+//     borderRadius: 15,
+//     borderColor: COLORS.primary,
+//     borderWidth: 2,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     width: Dimensions.get('window').width * 0.4,
+//     height: Dimensions.get('window').height * 0.06,
+//   },
+// });

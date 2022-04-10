@@ -88,6 +88,8 @@ class Map extends React.Component {
           onLayout={() => { }}
 
           initialRegion={{
+
+            //Should be user's current location
             latitude: 37.78825,
             longitude: -122.4324,
             latitudeDelta: LATITUDE_DELTA,

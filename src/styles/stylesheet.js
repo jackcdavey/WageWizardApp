@@ -84,6 +84,15 @@ const styles = EStyleSheet.create({
 
     //STATIC ELEMENTS
     //Text//
+    profileAccountInfoField: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '90%',
+        marginTop: '2%',
+    },
+
 
     //Text//
 
@@ -113,6 +122,13 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
     },
 
+    profileInformationContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        paddingLeft: '15%',
+        paddingTop: '10%',
+    },
 
     /////////////OLD STYLES BELOW//////////////
 
@@ -180,7 +196,7 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '90%',
-        maxHeight: '10%',
+        //maxHeight: '10%',
         //margin: '2%',
     },
     input: {
@@ -222,7 +238,7 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 30,
+        //margin: 30,
     },
 
     ////////////////Initial Setup View Styles///////////////
