@@ -364,7 +364,7 @@ const _LocationMap = (props) => {
                 <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
                   <Text style={styles.buttonText}>{locationButtonText}</Text>
                 </TouchableOpacity>
-                <Text>---Tracking---</Text>
+                {/* {console.log('Now Tracking')} */}
               </View>
             : <TouchableOpacity style={styles.startButton} onPress={handleLocationButton}>
               <Text style={styles.buttonText}>{locationButtonText}</Text>

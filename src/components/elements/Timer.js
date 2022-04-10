@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
+import styles from '../../styles/stylesheet';
+
 import { startTimer, pauseTimer, resumeTimer, endTimer, incrementTime } from '../../reduxLogic/actions'
 import { connect } from 'react-redux';
 import BackgroundTimer from 'react-native-background-timer';
@@ -55,44 +57,14 @@ const _Timer = (props) => {
   }
 
   return (
-    <View>
-      <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Timer: {hours}: {minutes}: {seconds}</Text>
+    <View style={{ display: 'flex', flexDirection: 'row', padding: '2%' }}>
+      <Text style={styles.timerLabel}>Timer:</Text><Text style={styles.timerText}> {hours}: {minutes}: {seconds}</Text>
 
 
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  },
-  elements: {
-    paddingBottom: Dimensions.get('window').height * 0.02,
-    paddingTop: Dimensions.get('window').height * 0.02,
-    fontSize: 40,
-  },
-  map: {
-    width: Dimensions.get('window').width * 0.9,
-    height: Dimensions.get('window').height * 0.35,
-  },
-  start: {
-    width: Dimensions.get('window').height * 0.2,
-    height: Dimensions.get('window').height * 0.2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: Dimensions.get('window').height * 0.2 / 2,
-    borderColor: COLORS.dark,
-    borderWidth: 2,
-    backgroundColor: "green",
-  },
-
-});
 
 const mapStateToProps = (state) => {
   const { isIdle, isRunning, isPaused, time } = state;

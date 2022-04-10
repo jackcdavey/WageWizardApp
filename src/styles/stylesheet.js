@@ -53,7 +53,7 @@ const styles = EStyleSheet.create({
         backgroundColor: 'green',
         borderColor: COLORS.primary,
         borderWidth: 2,
-        margin: '2%',
+        margin: '5%',
         justifyContent: 'center',
         alignItems: 'center',
 
@@ -65,10 +65,11 @@ const styles = EStyleSheet.create({
         backgroundColor: 'red',
         borderColor: COLORS.primary,
         borderWidth: 2,
-        margin: '2%',
+        margin: '5%',
         justifyContent: 'center',
         alignItems: 'center',
     },
+
 
     //Buttons//
 
@@ -136,6 +137,41 @@ const styles = EStyleSheet.create({
         width: '90%',
         marginTop: '2%',
     },
+    headerTxt: {
+        fontSize: '30rem',
+        color: COLORS.secondary,
+        fontFamily: 'Comfortaa-Bold',
+        alignContent: 'flex-start',
+    },
+    timerText: {
+
+        fontSize: '35rem',
+        fontWeight: '400',
+        fontFamily: 'SFPro-Regular',
+        color: COLORS.dark,
+        textAlign: 'center',
+    },
+    timerLabel: {
+
+        fontSize: '35rem',
+        fontWeight: '400',
+        fontFamily: 'SFPro-Regular',
+        color: 'gray',
+        textAlign: 'center',
+    },
+    currentJobLabel: {
+        fontSize: '15rem',
+        fontWeight: '500',
+        textAlign: 'center',
+        color: 'gray',
+    },
+    currentJobValue: {
+        fontSize: '15rem',
+        fontWeight: '500',
+        textAlign: 'center',
+        color: COLORS.dark,
+    },
+
 
 
     //Text//
@@ -353,14 +389,7 @@ const styles = EStyleSheet.create({
 
 
     },
-    headerTxt: {
-        fontSize: '30rem',
-        color: COLORS.secondary,
-        fontFamily: 'Comfortaa-Bold',
 
-        alignContent: 'flex-start',
-        //marginBottom: 5,
-    },
 
 
     ////////////////Header Styles///////////////

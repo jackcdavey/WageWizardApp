@@ -336,7 +336,10 @@ const _Tracking = (props) => {
             {
 
               isTracking
-                ? <Text>Currently tracking job: {realm.objectForPrimaryKey('Job', value).employer} </Text>
+                ? <View style={{ display: 'flex', flexDirection: 'row', paddingBottom: '2%' }}>
+                  <Text style={styles.currentJobLabel}>Currently tracking job:</Text>
+                  <Text style={styles.currentJobValue}> {realm.objectForPrimaryKey('Job', value).employer} </Text>
+                </View>
                 : <DropDownPicker
                   style={styles.picker}
                   placeholder="Select a Job"
