@@ -319,7 +319,7 @@ const _LocationMap = (props) => {
 
         <View>
           {
-            jobId!==-5
+            (geofences.length>0)
             ?geofences.map((location)=>{
               return(<Circle key = {location.id} center={{latitude:location.latitude,longitude:location.longitude}} radius={location.radius} fillColor={selectedJob.color} />)
              })
