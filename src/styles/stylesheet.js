@@ -34,15 +34,15 @@ const styles = EStyleSheet.create({
     },
 
     testButton: {
-        padding: '3%',
-        margin: '2%',
+        margin: '1%',
         backgroundColor: 'red',
         borderRadius: 15,
         borderColor: COLORS.primary,
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-
+        height: Dimensions.get('window').height * 0.05,
+        width: Dimensions.get('window').width * 0.4,
     },
     //Buttons//
 
@@ -98,6 +98,14 @@ const styles = EStyleSheet.create({
 
 
     //Labels//
+    buttonText: {
+        margin: 5,
+        padding: 10,
+        color: COLORS.light,
+        fontSize: 20,
+        height: 44,
+        fontWeight: 'bold'
+    },
 
     //Labels//
 
@@ -276,16 +284,15 @@ const styles = EStyleSheet.create({
         justifyContent: 'flex-end',
     },
     button: {
-        minWidth: Dimensions.get('window').width * 0.3,
         height: Dimensions.get('window').height * 0.05,
+        width: Dimensions.get('window').width * 0.4,
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.primary,
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '2%',
-        padding: '2%',
+        margin: '1%',
     },
 
     ////////////////Initial Setup View Styles///////////////

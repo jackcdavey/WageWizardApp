@@ -15,6 +15,7 @@ import {
 import Header from '../elements/Header.js';
 
 import realm from '../../userData/realm.js';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Tab = createBottomTabNavigator();
@@ -76,20 +77,29 @@ const AcccountView = ({ navigation }) => {
             </View>
           </View>
         </View >
+
         <Text style={styles.title}>Saved Jobs</Text>
-        <Text> {jobList}</Text>
+        <View style={{ height: '20%', width: '100%', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <ScrollView>
+            <Text> {jobList}</Text>
+          </ScrollView>
+        </View>
         <Text style={styles.title}>Saved Locations</Text>
-        <Text> {locationList}</Text>
+        <View style={{ height: '20%', width: '100%', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <ScrollView>
+            <Text> {locationList}</Text>
+          </ScrollView>
+        </View>
         <TouchableOpacity onPress={() => setIsEditing(true)}>
           <View style={styles.button}>
-            <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+            <Text style={styles.buttonText}>
               Edit
             </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
           <View style={styles.button}>
-            <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
+            <Text style={styles.buttonText}>
               Add New Job
             </Text>
           </View>
@@ -97,7 +107,7 @@ const AcccountView = ({ navigation }) => {
 
         <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
           <View style={styles.testButton}>
-            <Text style={styles.item}>
+            <Text style={styles.buttonText}>
               TESTING
             </Text>
           </View>
@@ -219,65 +229,3 @@ export default function Account({ navigation }) {
     </Tab.Navigator>
   );
 }
-
-
-// const styles = StyleSheet.create({
-//   infoTxt: {
-//     fontSize: 50,
-//   },
-//   field: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     width: Dimensions.get('window').width * 0.6,
-
-//   },
-//   input: {
-//     width: Dimensions.get('window').width * 0.5,
-//     borderRadius: 15,
-//     margin: 10,
-//     borderColor: COLORS.primary,
-//     backgroundColor: COLORS.secondary,
-//     borderWidth: 2,
-//     padding: 10,
-//     alignItems: 'center',
-//   },
-//   info: {
-//     margin: 25,
-//     backgroundColor: COLORS.secondary,
-//     borderRadius: 15,
-//     borderWidth: 2,
-//     alignItems: 'center',
-//   },
-//   btn: {
-//     margin: 25,
-//     backgroundColor: COLORS.primary,
-//     borderRadius: 15,
-//     borderColor: COLORS.primary,
-//     borderWidth: 2,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     width: Dimensions.get('window').width * 0.4,
-//     height: Dimensions.get('window').height * 0.06,
-//   },
-//   item: {
-//     margin: 25,
-//     padding: 10,
-//     color: COLORS.dark,
-//     fontSize: 20,
-//     height: 44,
-//     fontWeight: 'bold',
-//   },
-//   testBtn: {
-//     margin: 25,
-//     backgroundColor: 'red',
-//     borderRadius: 15,
-//     borderColor: COLORS.primary,
-//     borderWidth: 2,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     width: Dimensions.get('window').width * 0.4,
-//     height: Dimensions.get('window').height * 0.06,
-//   },
-// });
