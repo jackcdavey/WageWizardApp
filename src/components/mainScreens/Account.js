@@ -37,12 +37,14 @@ const AcccountView = ({ navigation }) => {
   var email = 'no Email';
   var jobList = [];
   var locationList = [];
+  var logsList = [];
 
   if (realm) {
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
     jobList = JSON.stringify(realm.objects('Job'));
     locationList = JSON.stringify(realm.objects('GeofenceLocation'));
+    logsList = JSON.stringify(realm.objects('WorkLog'));
     if (userExists) {
       //Alert.alert('There is a user in the database.');
       //Alert.alert('User: ' + user[0].firstName);
@@ -78,17 +80,24 @@ const AcccountView = ({ navigation }) => {
           </View>
         </View >
 
-        <Text style={styles.title}>Saved Jobs</Text>
+        <Text style={styles.subtitle}>Saved Jobs</Text>
         <View style={{ maxHeight: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
           <ScrollView>
             <Text> {jobList}</Text>
           </ScrollView>
         </View>
-        <Text style={styles.title}>Saved Locations</Text>
-        <View style={{ maxHeight: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <Text style={styles.subtitle}>Saved Locations</Text>
+        <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
           <ScrollView>
             <Text> {locationList}</Text>
           </ScrollView>
+        </View>
+        <Text style={styles.subtitle}>Saved Logs</Text>
+        <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+          <ScrollView>
+            <Text> {logsList}</Text>
+          </ScrollView>
+
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={() => setIsEditing(true)}>

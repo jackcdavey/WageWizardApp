@@ -271,17 +271,17 @@ const _LocationMap = (props) => {
 
   //code to handle the location tracking button, pressing the button starts/stops location tracking and geofencing
   const [locationButtonColor, setLocationButtonColor] = useState('green')
-  const [locationButtonText, setLocationButtonText] = useState('Start Tracking Location')
+  const [locationButtonText, setLocationButtonText] = useState('Start')
   const handleLocationButton = () => {
     if (!isTracking) {
       setIsTracking(true)
       setLocationButtonColor('red')
-      setLocationButtonText('Stop Tracking Location')
+      setLocationButtonText('Stop')
       startBackgroundUpdate();
     } else {
       setIsTracking(false)
       setLocationButtonColor('green')
-      setLocationButtonText('Start Tracking Location')
+      setLocationButtonText('Start')
       //if person is not tracking, timer should end as there is no proof of their location
       //ensure to create a log only if the user was inside a geofence
       if (time !== 0) {
@@ -348,8 +348,8 @@ const _LocationMap = (props) => {
           {isTracking
             ? isInsideGeofence
               ? <View>
-                <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-                  <Text>{locationButtonText}</Text>
+                <TouchableOpacity style={styles.button} onPress={handleLocationButton}>
+                  <Text style={styles.buttonText}>{locationButtonText}</Text>
                 </TouchableOpacity>
                 {isPaused
                   ? <TouchableOpacity onPress={handleResume}>
@@ -361,13 +361,13 @@ const _LocationMap = (props) => {
                 }
               </View>
               : <View>
-                <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-                  <Text>{locationButtonText}</Text>
+                <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
+                  <Text style={styles.buttonText}>{locationButtonText}</Text>
                 </TouchableOpacity>
                 <Text>---Tracking---</Text>
               </View>
-            : <TouchableOpacity style={{ backgroundColor: locationButtonColor }} onPress={handleLocationButton}>
-              <Text>{locationButtonText}</Text>
+            : <TouchableOpacity style={styles.startButton} onPress={handleLocationButton}>
+              <Text style={styles.buttonText}>{locationButtonText}</Text>
             </TouchableOpacity>
           }
         </View>

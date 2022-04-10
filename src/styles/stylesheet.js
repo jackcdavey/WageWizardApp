@@ -11,8 +11,8 @@ import EStyleSheet from "react-native-extended-stylesheet";
 import { Dimensions } from "react-native";
 //import COLORS from "../styles/colors.js";
 
-const styles = EStyleSheet.create({
 
+const styles = EStyleSheet.create({
 
 
     //Thisll get messy really fast, so we'll need a way to organize the styles
@@ -44,6 +44,32 @@ const styles = EStyleSheet.create({
         height: Dimensions.get('window').height * 0.05,
         width: Dimensions.get('window').width * 0.4,
     },
+
+
+    startButton: {
+        width: Dimensions.get('window').height * 0.15,
+        height: Dimensions.get('window').height * 0.15,
+        borderRadius: Dimensions.get('window').height * 0.15 / 1.5,
+        backgroundColor: 'green',
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        margin: '2%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    stopButton: {
+        width: Dimensions.get('window').height * 0.15,
+        height: Dimensions.get('window').height * 0.15,
+        borderRadius: Dimensions.get('window').height * 0.15 / 1.5,
+        backgroundColor: 'red',
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        margin: '2%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     //Buttons//
 
 
@@ -84,6 +110,24 @@ const styles = EStyleSheet.create({
 
     //STATIC ELEMENTS
     //Text//
+    title: {
+        fontSize: '35rem',
+        fontFamily: 'Comfortaa-Bold',
+        color: COLORS.dark,
+        textAlign: 'center',
+    },
+    subtitle: {
+        fontSize: '25rem',
+        fontFamily: 'Comfortaa-Bold',
+        color: COLORS.dark,
+        textAlign: 'center',
+    },
+    directions: {
+        fontSize: '15rem',
+        fontWeight: '300',
+        textAlign: 'center',
+        color: COLORS.dark,
+    },
     profileAccountInfoField: {
         display: 'flex',
         flexDirection: 'row',
@@ -274,18 +318,7 @@ const styles = EStyleSheet.create({
         padding: 10,
         alignItems: 'center',
     },
-    title: {
-        fontSize: '35rem',
-        fontFamily: 'Comfortaa-Bold',
-        color: COLORS.dark,
-        textAlign: 'center',
-    },
-    directions: {
-        fontSize: '15rem',
-        fontWeight: '300',
-        textAlign: 'center',
-        color: COLORS.dark,
-    },
+
     directionsWrap: {
         width: Dimensions.get('window').width * 0.8,
         marginBottom: '5%',
