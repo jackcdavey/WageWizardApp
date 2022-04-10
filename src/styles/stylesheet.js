@@ -138,6 +138,12 @@ const styles = EStyleSheet.create({
         marginBottom: '5%',
 
     },
+    buttonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
+    },
 
     /////////////OLD STYLES BELOW//////////////
 

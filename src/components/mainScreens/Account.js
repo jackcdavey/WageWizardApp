@@ -90,28 +90,30 @@ const AcccountView = ({ navigation }) => {
             <Text> {locationList}</Text>
           </ScrollView>
         </View>
-        <TouchableOpacity onPress={() => setIsEditing(true)}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>
-              Edit
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>
-              Add New Job
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={() => setIsEditing(true)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>
+                Edit
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>
+                Add New Job
+              </Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-          <View style={styles.testButton}>
-            <Text style={styles.buttonText}>
-              TESTING
-            </Text>
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+            <View style={styles.testButton}>
+              <Text style={styles.buttonText}>
+                TESTING
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
       </View>
 
