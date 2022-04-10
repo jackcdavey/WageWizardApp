@@ -107,7 +107,11 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
             Alert.alert('Error: ' + error);
             console.log('Error: ' + error);
         }
+
+        //if user has just been created
         navigation.navigate("SetupComplete");
+        //else if a new job has been created for an existng user
+        //navigation.navigate("Main");
     }
 
 
