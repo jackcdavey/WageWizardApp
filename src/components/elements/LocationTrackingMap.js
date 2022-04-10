@@ -1,8 +1,8 @@
 //standard react location imports
 import * as React from 'react';
 import { useState } from 'react';
-import { Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
+import { Text, View, TouchableOpacity } from 'react-native';
+import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
 import MapView, { Circle, Marker } from 'react-native-maps';
@@ -15,8 +15,7 @@ import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsIns
 
 import realm from '../../userData/realm.js';
 
-//standardized styling import
-import COLORS from '../../styles/colors';
+
 
 //realms db import
 const debug_info = false;
@@ -300,7 +299,7 @@ const _LocationMap = (props) => {
     endTimer();
   }
   return (
-    <View>
+    <View style={{ alignItems: 'center' }}>
       <MapView
         style={styles.map}
         initialRegion={{
@@ -323,7 +322,7 @@ const _LocationMap = (props) => {
 
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
       {(jobId === -5)
-        ? <Text>Select Job First to Start Tracking</Text>
+        ? <Text>Select a Job</Text>
         : <View>
           {isTracking
             ? isInsideGeofence
@@ -377,15 +376,6 @@ const _LocationMap = (props) => {
   );
 }
 
-const styles = StyleSheet.create({
-  map: {
-    borderRadius: 15,
-    borderColor: COLORS.dark,
-    borderWidth: 2,
-    width: Dimensions.get('window').width * 0.9,
-    height: Dimensions.get('window').height * 0.35,
-  },
-})
 
 const LocationMap = connect(mapStateToProps, mapDispatchToProps)(_LocationMap);
 export default LocationMap

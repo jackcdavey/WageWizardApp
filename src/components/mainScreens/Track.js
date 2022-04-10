@@ -246,7 +246,7 @@ const _Tracking = (props) => {
 
       {
         jobsExist
-          ? <View style={styles.container}>
+          ? <View style={{ alignItems: 'center' }}>
             {
               isTracking
                 ? <Text>Currently tracking a selected job, stop location tracking first to switch jobs</Text>
@@ -278,10 +278,6 @@ const _Tracking = (props) => {
             <LocationMap />
           </View>
           : <View>
-            <Text>No jobs to track, add jobs from the setup screen to begin tracking</Text>
-            <TouchableOpacity onPress={() => { addJobs() }}>
-              <Text>Or click me to add some jobs</Text>
-            </TouchableOpacity>
           </View>
       }
 

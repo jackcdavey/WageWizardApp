@@ -147,12 +147,16 @@ const styles = EStyleSheet.create({
         paddingTop: Dimensions.get('window').height * 0.02,
         fontSize: 40,
     },
-
-    ////////////////Track View Styles///////////////
     map: {
+        borderRadius: 15,
+        borderColor: COLORS.dark,
+        borderWidth: 2,
+        margin: '2%',
         width: Dimensions.get('window').width * 0.9,
         height: Dimensions.get('window').height * 0.35,
     },
+
+    ////////////////Track View Styles///////////////
     start: {
         width: Dimensions.get('window').height * 0.2,
         height: Dimensions.get('window').height * 0.2,
