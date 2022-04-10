@@ -126,7 +126,15 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
       //update that store according to background locaiton updates
 
       //first check for geofences:
-      checkIfInsideAnyGeofence({ latitude: location.coords.latitude, longitude: location.coords.longitude }, geofences)
+      const geofences = realm.objects("GeofenceLocation").filtered("jobId = "+ store.getState().jobId)
+      const formattedGeofences = geofences.map((item)=>{
+        return({
+          latitude: item.latitude,
+          longitude: item.longitude,
+          radius: item.radius
+        })
+      })
+      checkIfInsideAnyGeofence({ latitude: location.coords.latitude, longitude: location.coords.longitude }, formattedGeofences)
 
       if (store.getState().isInsideGeofence) {
         if (store.getState().isTracking) {
