@@ -97,7 +97,7 @@ const AcccountView = ({ navigation }) => {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>
               Add New Job
