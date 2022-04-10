@@ -34,9 +34,8 @@ const styles = EStyleSheet.create({
     },
 
     testButton: {
-        //width: Dimensions.get('window').width * 0.3,
-        //height: Dimensions.get('window').height * 0.05,
         padding: '3%',
+        margin: '2%',
         backgroundColor: 'red',
         borderRadius: 15,
         borderColor: COLORS.primary,
@@ -234,7 +233,7 @@ const styles = EStyleSheet.create({
     },
     button: {
         minWidth: '30%',
-        minHeight: '15%',
+        minHeight: '5%',
         maxHeight: Dimensions.get('window').height * 0.06,
         backgroundColor: COLORS.primary,
         borderRadius: 15,
@@ -242,7 +241,8 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        //margin: 30,
+        margin: '2%',
+        padding: '2%',
     },
 
     ////////////////Initial Setup View Styles///////////////
