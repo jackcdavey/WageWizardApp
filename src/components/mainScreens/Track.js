@@ -18,15 +18,16 @@ import realm from '../../userData/realm';
 //var jobsLoaded = false;
 
 import { connect } from 'react-redux';
-import { setJobId } from '../../reduxLogic/actions'
+import { setJobId, addNote } from '../../reduxLogic/actions'
 
 const mapStateToProps = (state) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, jobId } = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, jobId };
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, jobId, note } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, jobId, note };
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    setJobId: (jobId) => { dispatch(setJobId(jobId)) }
+    setJobId: (jobId) => { dispatch(setJobId(jobId)) },
+    addNote: (note) => {dispatch(addNote(note))}
   }
 }
 
@@ -36,7 +37,7 @@ const showTimer = true;
 
 const _Tracking = (props) => {
 
-  const { setJobId, jobId, isTracking } = props
+  const { setJobId, jobId, isTracking , note, addNote} = props
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.
@@ -302,6 +303,7 @@ const _Tracking = (props) => {
             <TouchableOpacity onPress={addJob3}>
               <Text>Add Job of Type 3</Text>
             </TouchableOpacity>
+            <Text>Note: {note}</Text>
           </View>
           : <View></View>
       }

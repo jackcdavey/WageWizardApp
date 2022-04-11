@@ -35,7 +35,7 @@ export function setJobId(jobId) {
     return { type: "SET_JOBID", jobId: jobId }
 }
 
-export function addNotes(note) {
+export function addNote(note) {
     return { type: "ADD_NOTE", note: note}
 }
 

@@ -11,7 +11,7 @@ import * as TaskManager from "expo-task-manager"
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
 import { TextInput } from 'react-native-gesture-handler';
@@ -163,8 +163,8 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
 /************************************************************** */
 
 const mapStateToProps = (state) => {
-  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId } = state;
-  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId };
+  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId, note } = state;
+  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId, note };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -174,6 +174,7 @@ const mapDispatchToProps = (dispatch) => {
     resumeTimer: () => dispatch(resumeTimer()),
     endTimer: () => dispatch(endTimer()),
     setIsTracking: (bool_val) => dispatch(setIsTracking(bool_val)),
+    addNote: (note) => dispatch(addNote(note))
 
   }
 }
@@ -187,7 +188,7 @@ const mapDispatchToProps = (dispatch) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId } = props;
+  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId, note, addNote } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -318,6 +319,8 @@ const _LocationMap = (props) => {
     stopBackgroundUpdate();;
     endTimer();
   }
+
+  const [noteText, setNoteText] = useState(' ')
   return (
     <View style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
 
@@ -327,16 +330,25 @@ const _LocationMap = (props) => {
         visible={noteModalVisible}
         onRequestClose={() => {
           setNoteModalVisible(false);
+          //addNote(noteText);
+          
         }}
       >
         <View style={styles.modalContainer}>
           <View style={styles.noteModal}>
             <TouchableOpacity style={styles.closeButton} onPress={() => {
+              addNote(noteText)
               setNoteModalVisible(false);
             }}>
               <Text style={styles.closeButtonText}>X</Text>
             </TouchableOpacity>
-            <TextInput style={styles.noteField} placeholder='Add notes here...' placeholderTextColor={COLORS.lightPlaceholder}></TextInput>
+            <TextInput 
+              style={styles.noteField} 
+              placeholder='Add notes here...' 
+              placeholderTextColor={COLORS.lightPlaceholder}
+              onChangeText = {newText => setNoteText(newText)}
+            >
+            </TextInput>
 
           </View>
         </View>
@@ -426,6 +438,7 @@ const _LocationMap = (props) => {
             <Text>isIdle: {isIdle.toString()}</Text>
             <Text>coordinates: {region.latitude}, {region.longitude}</Text>
             <Text>jobId: {jobId}</Text>
+            <Text>Note: {note}</Text>
           </View>
           :
           <Text></Text>
