@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+const developmentView = true;
 const debugInfo = true;
 const showTimer = true;
 
@@ -184,7 +185,7 @@ const _Tracking = (props) => {
     let jobId = realm.objects("Job").length + 1
     let job = {
       id: jobId,
-      employer: "Kyle",
+      employer: "Nobily Care Homes",
       client: "StarBucks",
       location: "test location",
       color: 'rgba(245, 40, 145, 0.35)'
@@ -217,7 +218,7 @@ const _Tracking = (props) => {
     let jobId = realm.objects("Job").length + 1
     let job = {
       id: jobId,
-      employer: "Jack",
+      employer: "Santa Clara University Care Homes",
       client: "StarBucks",
       location: "test location",
       color: 'rgba(245, 40, 145, 0.35)'
@@ -250,7 +251,7 @@ const _Tracking = (props) => {
     let jobId = realm.objects("Job").length + 1
     let job = {
       id: jobId,
-      employer: "Brett",
+      employer: "Mabury Square Care Homes",
       client: "StarBucks",
       location: "test location",
       color: 'rgba(245, 40, 145, 0.35)'
@@ -289,6 +290,21 @@ const _Tracking = (props) => {
     <View style={styles.container}>
       {/* <Text style={[styles.elements, global.globalCustomFontUse ? { fontFamily: 'SFPro-Regular' } : {}]}>Job: Default Job</Text> */}
 
+      {
+        developmentView
+        ?<View>
+          <TouchableOpacity onPress={addJob1}>
+          <Text>Add Job of Type 1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={addJob2}>
+          <Text>Add Job of Type 2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={addJob3}>
+          <Text>Add Job of Type 3</Text>
+          </TouchableOpacity>
+        </View>
+        :<View></View>
+      }
       {/*development testing buttons for testing geofences*/}
       {/* <TouchableOpacity onPress={addJob1}>
         <Text>Add Job of Type 1</Text>
