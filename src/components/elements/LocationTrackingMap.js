@@ -1,7 +1,7 @@
 //standard react location imports
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Modal } from 'react-native';
+import { Text, View, TouchableOpacity, Modal, Image } from 'react-native';
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
@@ -379,7 +379,8 @@ const _LocationMap = (props) => {
               ? <View>
                 <View style={{ display: 'flex', flexDirection: 'row' }}>
                   <TouchableOpacity style={styles.noteButton} onPress={createNote}>
-                    <Text style={styles.buttonText}>Note</Text>
+                    <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: 40, maxHeight: 40 }} resizeMode='contain'></Image>
+
                     {/* switch from txt to note pencil icon later */}
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
@@ -397,7 +398,7 @@ const _LocationMap = (props) => {
               </View>
               : <View style={{ display: 'flex', flexDirection: 'row' }} >
                 <TouchableOpacity style={styles.noteButton} onPress={createNote}>
-                  <Text style={styles.buttonText}>Note</Text>
+                  <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: 40, maxHeight: 40 }} resizeMode='contain'></Image>
                   {/* switch from txt to note pencil icon later */}
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>

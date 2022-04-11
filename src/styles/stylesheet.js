@@ -78,6 +78,7 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         margin: '5%',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     closeButton: {
         width: Dimensions.get('window').height * 0.05,
