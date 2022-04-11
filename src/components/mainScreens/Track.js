@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
@@ -292,18 +292,18 @@ const _Tracking = (props) => {
 
       {
         developmentView
-        ?<View>
-          <TouchableOpacity onPress={addJob1}>
-          <Text>Add Job of Type 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={addJob2}>
-          <Text>Add Job of Type 2</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={addJob3}>
-          <Text>Add Job of Type 3</Text>
-          </TouchableOpacity>
-        </View>
-        :<View></View>
+          ? <View>
+            <TouchableOpacity onPress={addJob1}>
+              <Text>Add Job of Type 1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={addJob2}>
+              <Text>Add Job of Type 2</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={addJob3}>
+              <Text>Add Job of Type 3</Text>
+            </TouchableOpacity>
+          </View>
+          : <View></View>
       }
       {/*development testing buttons for testing geofences*/}
       {/* <TouchableOpacity onPress={addJob1}>
@@ -348,7 +348,7 @@ const _Tracking = (props) => {
       {
         jobsExist
 
-          ? <View style={{ alignItems: 'center' }}>
+          ? <View style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-evenly', height: '80%' }}>
             {
 
               isTracking
@@ -380,8 +380,8 @@ const _Tracking = (props) => {
                 //displaying the jobs:
                 />
             }
-
             <LocationMap />
+
           </View>
           : <Text>add a job to begin tracking</Text>
       }

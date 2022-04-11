@@ -162,6 +162,13 @@ const styles = EStyleSheet.create({
         textAlign: 'center',
         color: COLORS.dark,
     },
+    prompt: {
+        fontSize: '20rem',
+        fontWeight: '500',
+        paddingTop: '10%',
+        textAlign: 'center',
+        color: COLORS.dark,
+    },
     profileAccountInfoField: {
         display: 'flex',
         flexDirection: 'row',

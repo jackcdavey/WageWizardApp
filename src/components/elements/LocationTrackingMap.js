@@ -163,8 +163,8 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
 /************************************************************** */
 
 const mapStateToProps = (state) => {
-  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking,  jobId } = state;
-  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking,  jobId };
+  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId } = state;
+  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -187,7 +187,7 @@ const mapDispatchToProps = (dispatch) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking,jobId } = props;
+  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -319,7 +319,7 @@ const _LocationMap = (props) => {
     endTimer();
   }
   return (
-    <View style={{ alignItems: 'center' }}>
+    <View style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
 
       <Modal
         animationType="slide"
@@ -372,7 +372,7 @@ const _LocationMap = (props) => {
 
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
       {(jobId === -5)
-        ? <Text>Select a Job</Text>
+        ? <Text style={styles.prompt}>Select a Job to Start Tracking</Text>
         : <View style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', paddingTop: '5%' }}>
           {isTracking
             ? isInsideGeofence
