@@ -293,8 +293,13 @@ const styles = EStyleSheet.create({
         elevation: 5,
         display: 'flex',
         flexDirection: 'row',
-
     },
+    arrowContainer: {
+        width: Dimensions.get('window').height * 0.023,
+        height: Dimensions.get('window').height * 0.04,
+        justifyContent: 'flex-start',
+    },
+
 
     /////////////OLD STYLES BELOW//////////////
 

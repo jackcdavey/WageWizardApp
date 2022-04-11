@@ -141,8 +141,8 @@ export default function InitialSetupView({ navigation }) {
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
                     Please enter the information
-                    below.  Required fields are
-                    denoted by a red arrow. [ARROW HERE]</Text>
+                    below. Required fields are
+                    marked with an arrow. </Text>
             </View>
 
             <View style={{ padding: 10 }} >
@@ -152,22 +152,22 @@ export default function InitialSetupView({ navigation }) {
             </View>
 
             <View style={styles.field}>
-                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
                 <TextInput style={styles.setupTextField} placeholder="First Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
             </View>
 
             <View style={styles.field}>
-                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
                 <TextInput style={styles.setupTextField} placeholder="Last Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
             </View>
 
             <View style={styles.field}>
-                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
                 <TextInput style={styles.setupTextField} placeholderTextColor={COLORS.lightPlaceholder} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
             </View>
 
             <View style={styles.field}>
-                <Text style={{ backgroundColor: 'red' }}> [ARROW]</Text>
+                {/* <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} /> */}
                 <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setBirthday(newText)} />
             </View>
             <View style={[styles.field, { padding: '2%' }]}>
