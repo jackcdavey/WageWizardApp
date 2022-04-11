@@ -10,12 +10,11 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  ScrollView,
 } from 'react-native';
 
 import Header from '../elements/Header.js';
-
 import realm from '../../userData/realm.js';
-import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Tab = createBottomTabNavigator();

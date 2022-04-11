@@ -2,8 +2,7 @@
 // as will this https://reactnavigation.org/docs/stack-navigator/
 import React from 'react';
 import Header from '../elements/Header';
-import { View, Text, StyleSheet, Dimensions, Alert, Image } from "react-native";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, Dimensions, Alert, Image, TouchableOpacity } from "react-native";
 import COLORS from '../../styles/colors';
 import { produceWithPatches } from 'immer';
 
@@ -21,9 +20,9 @@ export default function DetailedLogView({ navigation }: { navigation: any }) {
     return (
         <>
             {/* Implement card styling here */}
-            <View style={{ display: 'flex', flexDirection: 'row', backgroundColor: COLORS.primary, paddingTop: Dimensions.get('window').height * 0.06 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image source={(require('../../assets/images/icons/Back.png'))} style={{ marginLeft: 25, width: Dimensions.get('window').width * 0.04, height: Dimensions.get('window').width * 0.07 }} />
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: COLORS.primary, paddingTop: Dimensions.get('window').height * 0.04 }}>
+                <TouchableOpacity style={{ minWidth: Dimensions.get('window').width * 0.15 }} onPress={() => navigation.goBack()}>
+                    <Image source={(require('../../assets/images/icons/Back.png'))} style={{ marginLeft: 25, marginTop: 8, width: Dimensions.get('window').width * 0.04, height: Dimensions.get('window').width * 0.07 }} />
                 </TouchableOpacity>
                 <Header title="Details" />
             </View>
