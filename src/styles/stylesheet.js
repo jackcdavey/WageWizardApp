@@ -87,6 +87,7 @@ const styles = EStyleSheet.create({
         backgroundColor: 'red',
         borderColor: COLORS.primary,
         borderWidth: 2,
+        margin: '2%',
         justifyContent: 'flex-start',
 
     },

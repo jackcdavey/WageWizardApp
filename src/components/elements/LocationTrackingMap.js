@@ -336,7 +336,7 @@ const _LocationMap = (props) => {
             }}>
               <Text style={styles.closeButtonText}>X</Text>
             </TouchableOpacity>
-            <TextInput style={styles.noteField} placeholder="Add notes here..." placeholderTextColor={COLORS.lightPlaceholder}></TextInput>
+            <TextInput style={styles.noteField} placeholder='Add notes here...' placeholderTextColor={COLORS.lightPlaceholder}></TextInput>
 
           </View>
         </View>
