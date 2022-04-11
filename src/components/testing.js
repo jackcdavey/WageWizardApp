@@ -3,7 +3,7 @@ import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Alert, Image } fr
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Header from './elements/Header.js';
-
+import styles from '../styles/stylesheet.js';
 import realm from '../userData/realm.js';
 
 import getLocation from '../hooks/getLocation';
@@ -162,12 +162,12 @@ const _TestingView = (props) => {
     getLocation();
     return (
         <>
-            <View>
-                <TouchableOpacity style={styles.btn} onPress={() => clearUsers()}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.button} onPress={() => clearUsers()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE PROFILE DATA</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
                     <Text style={{ color: COLORS.secondary }}>
                         START INITIAL SETUP
                     </Text>
@@ -178,25 +178,25 @@ const _TestingView = (props) => {
                         ?
                         <Text>Person is Tracking, do not clear jobs, will break logic</Text>
                         :
-                        <TouchableOpacity style={styles.btn} onPress={() => clearJobs()}>
+                        <TouchableOpacity style={styles.button} onPress={() => clearJobs()}>
                             <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
                         </TouchableOpacity>
                 }
 
 
-                <TouchableOpacity style={styles.btn} onPress={() => createLog()}>
+                <TouchableOpacity style={styles.button} onPress={() => createLog()}>
                     <Text style={{ color: COLORS.secondary }}>CREATE EMPTY LOG</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={() => clearLogs()}>
+                <TouchableOpacity style={styles.button} onPress={() => clearLogs()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE ALL LOGS</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={() => addGeofence()}>
+                <TouchableOpacity style={styles.button} onPress={() => addGeofence()}>
                     <Text style={{ color: COLORS.secondary }}>ADD GEOFENCE</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={() => clearGeofences()}>
+                <TouchableOpacity style={styles.button} onPress={() => clearGeofences()}>
                     <Text style={{ color: COLORS.secondary }}>CLEAR GEOFENCES</Text>
                 </TouchableOpacity>
 
@@ -239,68 +239,6 @@ export default function Testing({ navigation }) {
 }
 
 
-
-
-const styles = StyleSheet.create({
-    infoTxt: {
-        fontSize: 50,
-    },
-    field: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('window').width * 0.6,
-
-    },
-    input: {
-        width: Dimensions.get('window').width * 0.5,
-        borderRadius: 15,
-        margin: 10,
-        borderColor: COLORS.primary,
-        backgroundColor: COLORS.secondary,
-        borderWidth: 2,
-        padding: 10,
-        alignItems: 'center',
-    },
-    info: {
-        margin: 25,
-        backgroundColor: COLORS.secondary,
-        borderRadius: 15,
-        borderWidth: 2,
-        alignItems: 'center',
-    },
-    btn: {
-        margin: 15,
-        backgroundColor: COLORS.primary,
-        borderRadius: 15,
-        borderColor: COLORS.primary,
-        borderWidth: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('window').width * 0.4,
-        height: Dimensions.get('window').height * 0.06,
-    },
-    item: {
-        margin: 25,
-        padding: 10,
-        color: COLORS.dark,
-        fontSize: 20,
-        height: 44,
-        fontWeight: 'bold',
-    },
-    testBtn: {
-        margin: 25,
-        backgroundColor: 'red',
-        borderRadius: 15,
-        borderColor: COLORS.primary,
-        borderWidth: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('window').width * 0.4,
-        height: Dimensions.get('window').height * 0.06,
-    },
-});
 
 
 
