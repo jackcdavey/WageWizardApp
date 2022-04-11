@@ -78,6 +78,13 @@ const AcccountView = ({ navigation }) => {
             </View>
           </View>
         </View >
+        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+            <View style={styles.testButton}>
+              <Text style={styles.buttonText}>
+                TESTING
+              </Text>
+            </View>
+          </TouchableOpacity>
 
         <Text style={styles.subtitle}>Saved Jobs</Text>
         <View style={{ maxHeight: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
@@ -114,13 +121,7 @@ const AcccountView = ({ navigation }) => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-            <View style={styles.testButton}>
-              <Text style={styles.buttonText}>
-                TESTING
-              </Text>
-            </View>
-          </TouchableOpacity>
+
         </View>
 
       </View>
