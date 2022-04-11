@@ -304,6 +304,7 @@ const styles = EStyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
 
+
     },
     elements: {
         paddingBottom: Dimensions.get('window').height * 0.02,

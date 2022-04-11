@@ -377,9 +377,15 @@ const _LocationMap = (props) => {
           {isTracking
             ? isInsideGeofence
               ? <View>
-                <TouchableOpacity style={styles.button} onPress={handleLocationButton}>
-                  <Text style={styles.buttonText}>{locationButtonText}</Text>
-                </TouchableOpacity>
+                <View style={{ display: 'flex', flexDirection: 'row' }}>
+                  <TouchableOpacity style={styles.noteButton} onPress={createNote}>
+                    <Text style={styles.buttonText}>Note</Text>
+                    {/* switch from txt to note pencil icon later */}
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
+                    <Text style={styles.buttonText}>{locationButtonText}</Text>
+                  </TouchableOpacity>
+                </View>
                 {isPaused
                   ? <TouchableOpacity onPress={handleResume}>
                     <Text>Resume</Text>
