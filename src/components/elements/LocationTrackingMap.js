@@ -377,9 +377,9 @@ const _LocationMap = (props) => {
           {isTracking
             ? isInsideGeofence
               ? <View>
-                <View style={{ display: 'flex', flexDirection: 'row' }}>
+                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                   <TouchableOpacity style={styles.noteButton} onPress={createNote}>
-                    <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: 40, maxHeight: 40 }} resizeMode='contain'></Image>
+                    <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: '65%', height: '100%' }} resizeMode='contain'></Image>
 
                     {/* switch from txt to note pencil icon later */}
                   </TouchableOpacity>
@@ -396,9 +396,9 @@ const _LocationMap = (props) => {
                   </TouchableOpacity>
                 }
               </View>
-              : <View style={{ display: 'flex', flexDirection: 'row' }} >
+              : <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
                 <TouchableOpacity style={styles.noteButton} onPress={createNote}>
-                  <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: 40, maxHeight: 40 }} resizeMode='contain'></Image>
+                  <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: '65%', height: '100%' }} resizeMode='contain'></Image>
                   {/* switch from txt to note pencil icon later */}
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
