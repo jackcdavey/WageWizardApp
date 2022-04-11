@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import 'react-native-gesture-handler';
-import { View, TouchableOpacity, Alert, TextInput, Text } from "react-native";
+import { View, TouchableOpacity, Alert, TextInput, Text, Image, StyleSheet } from "react-native";
 import realm from '../../userData/realm';
 
 import styles from '../../styles/stylesheet.js';
@@ -68,10 +68,9 @@ export default function JobSetup({ navigation }) {
                             location: location,
                             color: jobColor
                         });
-                        Alert.alert('New job created: ', JSON.stringify(newJob));
-                        console.log(newJob);
+                        console.log('New job created: ', JSON.stringify(newJob));
                     } else {
-                        Alert.alert('Job already exists. (idk how that is possible)');
+                        console.log('Job already exists.');
                     }
 
 
@@ -91,18 +90,21 @@ export default function JobSetup({ navigation }) {
             </View>
             <View style={styles.directionsWrap}>
                 <Text style={styles.directions}>
-                    Provide the information below to set up your first job. All fields are optional, but incomplete information may limit functionality.
+                    Provide the information below to set up your first job.
                 </Text>
             </View>
             <View style={styles.userSetupFieldsContainer}>
-                <View>
+                <View style={styles.field}>
+                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
                     <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
                 </View>
 
-                <View>
+                <View style={styles.field}>
+
                     <TextInput style={styles.setupTextField} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
                 </View>
-                <View>
+                <View style={styles.field}>
+                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
                     <TextInput style={styles.setupTextField} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
                     {/* this will be changed in future build */}
                 </View>
