@@ -334,7 +334,7 @@ const _LocationMap = (props) => {
             <TouchableOpacity style={styles.closeButton} onPress={() => {
               setNoteModalVisible(false);
             }}>
-              <Text style={styles.buttonText}>X</Text>
+              <Text style={styles.closeButtonText}>X</Text>
             </TouchableOpacity>
             <TextInput style={styles.noteField} placeholder="Add notes here..." placeholderTextColor={COLORS.lightPlaceholder}></TextInput>
 

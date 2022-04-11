@@ -77,7 +77,6 @@ const styles = EStyleSheet.create({
         borderColor: COLORS.primary,
         borderWidth: 2,
         margin: '5%',
-        justifyContent: 'flex-end',
         alignItems: 'center',
     },
     closeButton: {
@@ -87,8 +86,8 @@ const styles = EStyleSheet.create({
         backgroundColor: 'red',
         borderColor: COLORS.primary,
         borderWidth: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+
     },
 
 
@@ -222,11 +221,18 @@ const styles = EStyleSheet.create({
         margin: 5,
         padding: 10,
         color: COLORS.light,
-        fontSize: 20,
+        fontSize: '20rem',
         height: 44,
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    closeButtonText: {
+        margin: 5,
+        padding: 10,
+        color: COLORS.light,
+        fontSize: '15rem',
+        fontWeight: 'bold',
     },
 
     //Labels//

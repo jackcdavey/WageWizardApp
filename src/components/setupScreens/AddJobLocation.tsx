@@ -14,7 +14,8 @@ import realm from '../../userData/realm.js';
 export default function JobLocationSetup({ navigation }: { navigation: any }) {
 
     const [searchText, setSearchText] = useState('500 El Camino Real San Jose CA');
-    const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': 66.666, 'longitude': -122.696 });
+
+    const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': 37.3499, 'longitude': -121.9406 });
     function getCoordinatesFromAddress() {
         return new Promise((resolve) => {
             const txt = JSON.stringify(searchText);
