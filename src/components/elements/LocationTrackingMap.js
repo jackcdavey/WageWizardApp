@@ -1,7 +1,7 @@
 //standard react location imports
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Modal } from 'react-native';
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
@@ -14,6 +14,7 @@ import { store } from '../../reduxLogic/store';
 import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, setSelectedJob } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
+import { TextInput } from 'react-native-gesture-handler';
 
 
 
@@ -292,6 +293,12 @@ const _LocationMap = (props) => {
     }
   }
 
+  const [noteModalVisible, setNoteModalVisible] = useState(false);
+  const createNote = () => {
+    setNoteModalVisible(true);
+  }
+
+
   const [geofences, setGeofences] = useState([])
   useEffect(() => {
     setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + jobId))
@@ -313,6 +320,28 @@ const _LocationMap = (props) => {
   }
   return (
     <View style={{ alignItems: 'center' }}>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={noteModalVisible}
+        onRequestClose={() => {
+          setNoteModalVisible(false);
+        }}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.noteModal}>
+            <TouchableOpacity style={styles.closeButton} onPress={() => {
+              setNoteModalVisible(false);
+            }}>
+              <Text style={styles.buttonText}>X</Text>
+            </TouchableOpacity>
+            <TextInput style={styles.noteField} placeholder="Add notes here..." placeholderTextColor={COLORS.lightPlaceholder}></TextInput>
+
+          </View>
+        </View>
+      </Modal>
+
       <View style={styles.mapContainer}>
         <MapView
           style={styles.map}
@@ -344,7 +373,7 @@ const _LocationMap = (props) => {
       {/*lOCATION BUTTON, WHEN TRACKING IS DISABLED, LOGIC IS SET UP SO THAT THE USER CANNOT FALSELY START THE TIMER*/}
       {(jobId === -5)
         ? <Text>Select a Job</Text>
-        : <View>
+        : <View style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', paddingTop: '5%' }}>
           {isTracking
             ? isInsideGeofence
               ? <View>
@@ -360,10 +389,16 @@ const _LocationMap = (props) => {
                   </TouchableOpacity>
                 }
               </View>
-              : <View>
+              : <View style={{ display: 'flex', flexDirection: 'row' }} >
+                <TouchableOpacity style={styles.noteButton} onPress={createNote}>
+                  <Text style={styles.buttonText}>Note</Text>
+                  {/* switch from txt to note pencil icon later */}
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
                   <Text style={styles.buttonText}>{locationButtonText}</Text>
                 </TouchableOpacity>
+
+
                 {/* {console.log('Now Tracking')} */}
               </View>
             : <TouchableOpacity style={styles.startButton} onPress={handleLocationButton}>

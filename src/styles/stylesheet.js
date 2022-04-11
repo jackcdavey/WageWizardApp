@@ -69,6 +69,28 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    noteButton: {
+        width: Dimensions.get('window').height * 0.08,
+        height: Dimensions.get('window').height * 0.08,
+        borderRadius: Dimensions.get('window').height * 0.08 / 0.8,
+        backgroundColor: COLORS.active,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        margin: '5%',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    closeButton: {
+        width: Dimensions.get('window').height * 0.05,
+        height: Dimensions.get('window').height * 0.05,
+        borderRadius: Dimensions.get('window').height * 0.05 / 0.5,
+        backgroundColor: 'red',
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
 
 
     //Buttons//
@@ -97,6 +119,17 @@ const styles = EStyleSheet.create({
     setupTextField: {
         width: Dimensions.get('window').width * 0.8,
         maxHeight: Dimensions.get('window').height * 0.1,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
+        borderWidth: 2,
+        padding: '2%',
+        margin: '2%',
+        alignItems: 'center',
+    },
+    noteTextField: {
+        width: Dimensions.get('window').width * 0.8,
+        minHeight: Dimensions.get('window').height * 0.1,
         borderRadius: 15,
         borderColor: COLORS.primary,
         backgroundColor: COLORS.secondary,
@@ -146,7 +179,7 @@ const styles = EStyleSheet.create({
     timerText: {
 
         fontSize: '35rem',
-        fontWeight: '400',
+        fontWeight: '700',
         fontFamily: 'SFPro-Regular',
         color: COLORS.dark,
         textAlign: 'center',
@@ -154,7 +187,7 @@ const styles = EStyleSheet.create({
     timerLabel: {
 
         fontSize: '35rem',
-        fontWeight: '400',
+        fontWeight: '500',
         fontFamily: 'SFPro-Regular',
         color: 'gray',
         textAlign: 'center',
@@ -165,9 +198,9 @@ const styles = EStyleSheet.create({
         textAlign: 'center',
         color: 'gray',
     },
-    currentJobValue: {
+    currentJobText: {
         fontSize: '15rem',
-        fontWeight: '500',
+        fontWeight: '700',
         textAlign: 'center',
         color: COLORS.dark,
     },
@@ -184,7 +217,9 @@ const styles = EStyleSheet.create({
         color: COLORS.light,
         fontSize: 20,
         height: 44,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     //Labels//
@@ -223,6 +258,27 @@ const styles = EStyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    noteModal: {
+        margin: '5%',
+        width: Dimensions.get('window').width * 0.8,
+        minHeight: Dimensions.get('window').height * 0.2,
+        backgroundColor: 'white',
+        borderRadius: 15,
+        borderColor: COLORS.dark,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        elevation: 5,
+        display: 'flex',
+        flexDirection: 'row',
+
     },
 
     /////////////OLD STYLES BELOW//////////////

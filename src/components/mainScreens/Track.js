@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 //import Map from '../elements/Map.js';
@@ -338,7 +338,7 @@ const _Tracking = (props) => {
               isTracking
                 ? <View style={{ display: 'flex', flexDirection: 'row', paddingBottom: '2%' }}>
                   <Text style={styles.currentJobLabel}>Currently tracking job:</Text>
-                  <Text style={styles.currentJobValue}> {realm.objectForPrimaryKey('Job', value).employer} </Text>
+                  <Text style={styles.currentJobText}> {realm.objectForPrimaryKey('Job', value).employer} </Text>
                 </View>
                 : <DropDownPicker
                   style={styles.picker}
