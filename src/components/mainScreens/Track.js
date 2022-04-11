@@ -21,8 +21,8 @@ import { connect } from 'react-redux';
 import { setJobId } from '../../reduxLogic/actions'
 
 const mapStateToProps = (state) => {
-  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId } = state;
-  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, selectedJob, jobId };
+  const { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, jobId } = state;
+  return { isIdle, isRunning, isPaused, region, isInsideGeofence, isTracking, jobId };
 }
 const mapDispatchToProps = (dispatch) => {
   return {

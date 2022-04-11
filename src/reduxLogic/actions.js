@@ -35,9 +35,6 @@ export function setJobId(jobId) {
     return { type: "SET_JOBID", jobId: jobId }
 }
 
-export function setSelectedJob(selectedJob) {
-    return { type: 'SET_SELECTED_JOB', selectedJob: selectedJob }
-}
 
 
 

@@ -11,7 +11,7 @@ import * as TaskManager from "expo-task-manager"
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, setSelectedJob } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
 import { TextInput } from 'react-native-gesture-handler';
@@ -111,7 +111,7 @@ const createLog = () => {
 /* GLOBAL SCOPE TASK MANGEMENT FOR BACKGROUND LOCATION SERVICES */
 /************************************************************** */
 const BACKGROUND_LOCATION_TRACKING = "BACKGROUND_LOCATION_TRACKING "
-const geofences = generateGeofence(store.getState().selectedJob)
+//const geofences = generateGeofence(store.getState().selectedJob)
 //Background Location Tracker
 TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => {
   if (error) {
@@ -163,8 +163,8 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
 /************************************************************** */
 
 const mapStateToProps = (state) => {
-  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, selectedJob, jobId } = state;
-  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, selectedJob, jobId };
+  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking,  jobId } = state;
+  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking,  jobId };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -174,7 +174,7 @@ const mapDispatchToProps = (dispatch) => {
     resumeTimer: () => dispatch(resumeTimer()),
     endTimer: () => dispatch(endTimer()),
     setIsTracking: (bool_val) => dispatch(setIsTracking(bool_val)),
-    setSelectedJob: (selectedJob) => dispatch(setSelectedJob(selectedJob))
+
   }
 }
 
@@ -187,7 +187,7 @@ const mapDispatchToProps = (dispatch) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, selectedJob, jobId } = props;
+  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking,jobId } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -359,7 +359,7 @@ const _LocationMap = (props) => {
             {
               (geofences.length > 0)
                 ? geofences.map((location) => {
-                  return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={selectedJob.color} />)
+                  return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={'rgba(245, 40, 145, 0.35)'} />)
                 })
                 : <View></View>
             }
