@@ -93,7 +93,8 @@ export default function JobSetup({ navigation }) {
                     Provide the information below to set up your first job.
                 </Text>
             </View>
-            <View style={styles.userSetupFieldsContainer}>
+
+            <View>
                 <View style={styles.field}>
                     <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
                     <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
@@ -113,6 +114,7 @@ export default function JobSetup({ navigation }) {
                     <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
                 </View>
             </View>
+
 
             <View style={styles.buttonWrap}>
 

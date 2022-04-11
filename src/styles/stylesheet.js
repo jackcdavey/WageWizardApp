@@ -22,15 +22,17 @@ const styles = EStyleSheet.create({
     //INTERACTIVE ELEMENTS
     //Buttons//
     searchButton: {
-        width: '15%',
-        height: '100%',
+        width: Dimensions.get('window').width * 0.2,
+        maxHeight: '100%',
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.primary,
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: '5%',
+        alignContent: 'center',
+        padding: '2%',
+        margin: '2%',
     },
 
     testButton: {
@@ -108,12 +110,14 @@ const styles = EStyleSheet.create({
 
     //TextInputs//
     searchText: {
-        width: '80%',
+        width: Dimensions.get('window').width * 0.6,
+        maxHeight: '75%',
         borderRadius: 15,
         borderColor: COLORS.primary,
         backgroundColor: COLORS.secondary,
         borderWidth: 2,
-        padding: 10,
+        padding: '2%',
+        margin: '2%',
         alignItems: 'center',
     },
 
