@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import 'react-native-gesture-handler';
+
 import { View, TouchableOpacity, TextInput, Text, Alert } from "react-native";
 import Map from '../elements/Map.js';
-import MapView, { Circle, Marker } from 'react-native-maps';
+import { Circle } from 'react-native-maps';
 
 import styles from '../../styles/stylesheet.js';
 
@@ -76,7 +76,7 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                     latitude={resultCoordinates.latitude}
                     longitude={resultCoordinates.longitude}
                 >
-                    <Circle  center={{ latitude: resultCoordinates.latitude, longitude: resultCoordinates.longitude }} radius={50} fillColor={'rgba(245, 40, 145, 0.35)'} />
+                    <Circle center={{ latitude: resultCoordinates.latitude, longitude: resultCoordinates.longitude }} radius={50} fillColor={'rgba(245, 40, 145, 0.35)'} />
                 </Map>
             </>
         );

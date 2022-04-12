@@ -1,6 +1,5 @@
 import React from 'react';
 import COLORS from '../../styles/colors.js';
-import 'react-native-gesture-handler';
 import { View, TouchableOpacity, StyleSheet, Dimensions, Text } from "react-native";
 
 import RNRestart from 'react-native-restart';

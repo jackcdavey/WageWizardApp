@@ -1,7 +1,7 @@
 //standard react location imports
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Modal, Image, Dimensions } from 'react-native';
+import { Text, View, TouchableOpacity, Modal, Image, TextInput } from 'react-native';
 import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
@@ -15,7 +15,6 @@ import { store } from '../../reduxLogic/store';
 import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote, setNote } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
-import { TextInput } from 'react-native-gesture-handler';
 
 
 

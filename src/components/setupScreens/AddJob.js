@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import 'react-native-gesture-handler';
 import { View, TouchableOpacity, Alert, TextInput, Text, Image, StyleSheet } from "react-native";
 import realm from '../../userData/realm';
 

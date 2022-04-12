@@ -1,10 +1,7 @@
 // gonna be useful: https://reactnavigation.org/docs/hiding-tabbar-in-screens
 // as will this https://reactnavigation.org/docs/stack-navigator/
-
-import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import 'react-native-gesture-handler';
 import styles from '../../styles/stylesheet.js';
 import { View, TouchableOpacity, Alert, Dimensions, TextInput, Text, Switch, Image } from "react-native";
 
