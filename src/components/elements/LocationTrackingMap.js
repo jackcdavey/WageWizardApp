@@ -99,6 +99,8 @@ const createLog = () => {
         endTime: 3,
         breakCount: 0, //Logic for determining break count here
         totalBreakTime: 0, //Logic for determining total break time here
+        date: new Date(),
+        time: store.getState().time
       })
     });
 

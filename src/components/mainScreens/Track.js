@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const developmentView = true;
+const developmentView = false;
 const debugInfo = true;
 const showTimer = true;
 
@@ -228,8 +228,8 @@ const _Tracking = (props) => {
     let loc1 = {
       id: locId1,
       jobId: jobId,
-      latitude: 37.347578,
-      longitude: -121.939423,
+      latitude: 37.349680,
+      longitude: -121.931317,
       radius: 40
     }
     let locId2 = realm.objects("GeofenceLocation").length + 1

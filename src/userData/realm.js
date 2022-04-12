@@ -73,6 +73,8 @@ WorkLog.schema = {
         endTime: 'int', //will be a date
         breakCount: 'int',
         totalBreakTime: 'int',
+        date: 'date',
+        time: 'int'
         //Perhaps store breaks in an array to allow for multiple breaks with fewer lines of code
         //Orrr create a new model for breaks
     },
@@ -94,7 +96,7 @@ LogNote.schema = {
 //Instead, we will store all attachments in a separate file, associate each file
 //with a workLogId, and store the file name in the LogNote object
  
-export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 10 });
+export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 12 });
  
 // async function startRealm() {
 //     let realm = await Realm.open({

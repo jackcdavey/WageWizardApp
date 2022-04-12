@@ -48,7 +48,15 @@ export default function WorkLogs(props) {
   useEffect(() => {
     if (logsFromDB.length !== 0) {
       setItems(logsFromDB.map((e) => {
-        return { key: e.id }
+        return ({
+          key: e.id, 
+          jobId:e.jobId,
+          employer:realm.objects("Job").filtered("id = "+e.jobId)[0].employer,
+          client:realm.objects("Job").filtered("id = "+e.jobId)[0].client,
+          date:e.date,
+          time:e.time,
+          notes:e.notes
+        })
       }))
     } else {
       //empty the items
@@ -66,10 +74,16 @@ export default function WorkLogs(props) {
               data={items}
 
               renderItem={({ item }) =>
-                <TouchableOpacity onPress={() => navigation.navigate('DetailedLog')}>
+                <TouchableOpacity onPress={() => navigation.navigate('DetailedLog', {
+                  employer:item.employer,
+                  client:item.client,
+                  date:item.date,
+                  time:item.time,
+                  notes:item.notes
+                })}>
                   {/* Alert.alert('This will navigate to the ' + item.key + ' detailed work log') */}
                   <View style={styles.item}>
-                    <Text style={styles.info}>{item.key}</Text>
+                    <Text style={styles.info}>{JSON.stringify(realm.objects("Job").filtered("id = "+item.jobId)[0].employer)}</Text>
                   </View>
                 </TouchableOpacity>}
             />
