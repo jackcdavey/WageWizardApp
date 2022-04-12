@@ -39,6 +39,10 @@ export function addNote(note) {
     return { type: "ADD_NOTE", note: note}
 }
 
+export function setNote(note){
+    return {type: "SET_NOTE", note: note}
+}
+
 
 
 

@@ -14,7 +14,7 @@ const initialState = {
     isRunning: false,
     isPaused: false,
     jobId: -5,
-    note: 'cookies',
+    note: '',
     region: {
         latitude: 37.347934,
         longitude: -121.940310,
@@ -103,6 +103,13 @@ export default function Reducer(state = initialState, action) {
             return {
                 ...state,
                 note: state.note += action.note
+            }
+        }
+
+        case 'SET_NOTE':{
+            return{
+                ...state,
+                note: action.note
             }
         }
 

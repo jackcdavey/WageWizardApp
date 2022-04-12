@@ -261,8 +261,8 @@ const _Tracking = (props) => {
     let loc1 = {
       id: locId1,
       jobId: jobId,
-      latitude: 37.379903,
-      longitude: -121.851886,
+      latitude: 37.346959,
+      longitude: -121.935043,
       radius: 30
     }
     realm.write(() => {

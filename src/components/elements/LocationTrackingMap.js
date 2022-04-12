@@ -11,7 +11,7 @@ import * as TaskManager from "expo-task-manager"
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote, setNote } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
 import { TextInput } from 'react-native-gesture-handler';
@@ -86,6 +86,7 @@ const generateGeofence = (selectedJob) => {
 
 const createLog = () => {
   //Triggered when a new log needs to be created
+  
   try {
     const logSize = realm.objects('WorkLog').length;
     realm.write(() => {
@@ -93,7 +94,7 @@ const createLog = () => {
         id: logSize + 1,
         //jobId: store.getState().jobId,
         jobId: store.getState().jobId,
-        notes: "Notes from Tracking",
+        notes: store.getState().note,
         startTime: 3, //Change to initial start time of log
         endTime: 3,
         breakCount: 0, //Logic for determining break count here
@@ -105,6 +106,8 @@ const createLog = () => {
   catch (error) {
     console.log('Error creating Log: ' + error);
   }
+  console.log("hi created")
+  store.dispatch(setNote(""))
 }
 
 /************************************************************** */
@@ -324,35 +327,7 @@ const _LocationMap = (props) => {
   return (
     <View style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
 
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={noteModalVisible}
-        onRequestClose={() => {
-          setNoteModalVisible(false);
-          //addNote(noteText);
-          
-        }}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.noteModal}>
-            <TouchableOpacity style={styles.closeButton} onPress={() => {
-              addNote(noteText)
-              setNoteModalVisible(false);
-            }}>
-              <Text style={styles.closeButtonText}>X</Text>
-            </TouchableOpacity>
-            <TextInput 
-              style={styles.noteField} 
-              placeholder='Add notes here...' 
-              placeholderTextColor={COLORS.lightPlaceholder}
-              onChangeText = {newText => setNoteText(newText)}
-            >
-            </TextInput>
 
-          </View>
-        </View>
-      </Modal>
 
       <View style={styles.mapContainer}>
         <MapView
@@ -398,6 +373,35 @@ const _LocationMap = (props) => {
                   <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
                     <Text style={styles.buttonText}>{locationButtonText}</Text>
                   </TouchableOpacity>
+                  <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={noteModalVisible}
+                  onRequestClose={() => {
+                  setNoteModalVisible(false);
+                  //addNote(noteText);
+
+                  }}
+                  >
+                    <View style={styles.modalContainer}>
+                      <View style={styles.noteModal}>
+                        <TouchableOpacity style={styles.closeButton} onPress={() => {
+                        addNote(noteText)
+                        setNoteModalVisible(false);
+                        }}>
+                        <Text style={styles.closeButtonText}>X</Text>
+                        </TouchableOpacity>
+                        <TextInput 
+                        style={styles.noteField} 
+                        placeholder='Add notes here...' 
+                        placeholderTextColor={COLORS.lightPlaceholder}
+                        onChangeText = {newText => setNoteText(newText)}
+                        >
+                        </TextInput>
+
+                      </View>
+                    </View>
+                  </Modal>
                 </View>
                 {isPaused
                   ? <TouchableOpacity onPress={handleResume}>
