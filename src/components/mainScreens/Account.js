@@ -78,16 +78,32 @@ const AcccountView = ({ navigation }) => {
             </View>
           </View>
         </View >
-        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-          <View style={styles.testButton}>
-            <Text style={styles.buttonText}>
-              TESTING
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={() => setIsEditing(true)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>
+                Edit Info
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>
+                Add Job
+              </Text>
+            </View>
+          </TouchableOpacity>
 
+          <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+            <View style={styles.testButton}>
+              <Text style={styles.buttonText}>
+                TESTING
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.subtitle}>Saved Jobs</Text>
-        <View style={{ maxHeight: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
           <ScrollView>
             <Text> {jobList}</Text>
           </ScrollView>
@@ -105,24 +121,7 @@ const AcccountView = ({ navigation }) => {
           </ScrollView>
 
         </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => setIsEditing(true)}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>
-                Edit Info
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>
-                Add Job
-              </Text>
-            </View>
-          </TouchableOpacity>
 
-
-        </View>
 
       </View>
 

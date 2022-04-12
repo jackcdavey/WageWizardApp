@@ -73,10 +73,10 @@ WorkLog.schema = {
         endTime: 'int', //will be a date
         breakCount: 'int',
         totalBreakTime: 'int',
+
+        //These are redundant and can be determined by startTime and endTime, no? -Jack
         date: 'date',
         time: 'int'
-        //Perhaps store breaks in an array to allow for multiple breaks with fewer lines of code
-        //Orrr create a new model for breaks
     },
     primaryKey: 'id',
 };

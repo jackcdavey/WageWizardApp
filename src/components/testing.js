@@ -91,6 +91,9 @@ const createLog = () => {
                         endTime: 5,
                         breakCount: 0,
                         totalBreakTime: 0,
+                        //temp
+                        date: new Date(),
+                        time: 0,
                     });
                     Alert.alert('New log created: ', JSON.stringify(newLog));
                     console.log('New log created: ', newLog);
