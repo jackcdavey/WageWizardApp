@@ -93,6 +93,7 @@ const createLog = () => {
                         totalBreakTime: 0,
                     });
                     Alert.alert('New log created: ', JSON.stringify(newLog));
+                    console.log('New log created: ', newLog);
                 } else {
                     Alert.alert('Log already exists. (idk how that is possible)');
                 }
@@ -125,6 +126,7 @@ const addGeofence = () => {
                         radius: 50
                     });
                     Alert.alert('New geofence created: ', JSON.stringify(newGeofence));
+                    console.log('New geofence created: ', newGeofence);
                 } else {
                     Alert.alert('Geofence already exists. (idk how that is possible)');
                 }
@@ -145,6 +147,7 @@ const clearGeofences = () => {
             realm.write(() => {
                 var allGeofences = realm.objects('GeofenceLocation');
                 realm.delete(allGeofences);
+                Alert.alert('All geofences have been deleted.');
                 console.log('All geofences deleted.');
             });
         } else {

@@ -1,7 +1,7 @@
 //standard react location imports
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Modal, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Modal, Image, Dimensions } from 'react-native';
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
@@ -86,7 +86,7 @@ const generateGeofence = (selectedJob) => {
 
 const createLog = () => {
   //Triggered when a new log needs to be created
-  
+
   try {
     const logSize = realm.objects('WorkLog').length;
     realm.write(() => {
@@ -364,38 +364,47 @@ const _LocationMap = (props) => {
           {isTracking
             ? isInsideGeofence
               ? <View>
-                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <TouchableOpacity style={styles.noteButton} onPress={createNote}>
-                    <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: '65%', height: '100%' }} resizeMode='contain'></Image>
+                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
+                  <View style={{}}>
+                    <TouchableOpacity style={styles.noteButton} onPress={createNote}>
+                      <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: '65%', height: '100%' }} resizeMode='contain'></Image>
 
-                    {/* switch from txt to note pencil icon later */}
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
-                    <Text style={styles.buttonText}>{locationButtonText}</Text>
-                  </TouchableOpacity>
+                      {/* switch from txt to note pencil icon later */}
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{}}>
+                    <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
+                      <Text style={styles.buttonText}>{locationButtonText}</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{ width: Dimensions.get('window').width / 4 }}>
+
+                  </View>
+
+
                   <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={noteModalVisible}
-                  onRequestClose={() => {
-                  setNoteModalVisible(false);
-                  //addNote(noteText);
+                    animationType="slide"
+                    transparent={true}
+                    visible={noteModalVisible}
+                    onRequestClose={() => {
+                      setNoteModalVisible(false);
+                      //addNote(noteText);
 
-                  }}
+                    }}
                   >
                     <View style={styles.modalContainer}>
                       <View style={styles.noteModal}>
                         <TouchableOpacity style={styles.closeButton} onPress={() => {
-                        addNote(noteText)
-                        setNoteModalVisible(false);
+                          addNote(noteText)
+                          setNoteModalVisible(false);
                         }}>
-                        <Text style={styles.closeButtonText}>X</Text>
+                          <Text style={styles.closeButtonText}>X</Text>
                         </TouchableOpacity>
-                        <TextInput 
-                        style={styles.noteField} 
-                        placeholder='Add notes here...' 
-                        placeholderTextColor={COLORS.lightPlaceholder}
-                        onChangeText = {newText => setNoteText(newText)}
+                        <TextInput
+                          style={styles.noteField}
+                          placeholder='Add notes here...'
+                          placeholderTextColor={COLORS.lightPlaceholder}
+                          onChangeText={newText => setNoteText(newText)}
                         >
                         </TextInput>
 

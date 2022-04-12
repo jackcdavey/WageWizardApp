@@ -79,12 +79,12 @@ const AcccountView = ({ navigation }) => {
           </View>
         </View >
         <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-            <View style={styles.testButton}>
-              <Text style={styles.buttonText}>
-                TESTING
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <View style={styles.testButton}>
+            <Text style={styles.buttonText}>
+              TESTING
+            </Text>
+          </View>
+        </TouchableOpacity>
 
         <Text style={styles.subtitle}>Saved Jobs</Text>
         <View style={{ maxHeight: '20%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
@@ -109,14 +109,14 @@ const AcccountView = ({ navigation }) => {
           <TouchableOpacity onPress={() => setIsEditing(true)}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>
-                Edit
+                Edit Info
               </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>
-                Add New Job
+                Add Job
               </Text>
             </View>
           </TouchableOpacity>
@@ -184,7 +184,7 @@ const AcccountView = ({ navigation }) => {
                 height: 44,
                 fontWeight: 'bold',
               }}>
-                Add New Job
+                Add Job
               </Text>
             </View>
           </TouchableOpacity>
