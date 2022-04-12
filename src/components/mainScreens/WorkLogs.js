@@ -1,7 +1,5 @@
 import React from 'react';
-import COLORS from '../../styles/colors.js';
 import {
-  StyleSheet,
   Text,
   FlatList,
   View,
@@ -89,7 +87,6 @@ export default function WorkLogs(props) {
                   time: item.time,
                   notes: item.notes
                 })}>
-                  {/* Alert.alert('This will navigate to the ' + item.key + ' detailed work log') */}
                   <View style={styles.logItemButton}>
                     <Text style={styles.logItemLabel}>{item.date.getMonth() + "/" + item.date.getDate()} </Text><Text style={styles.logItemLabel}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
                     <Image source={require('../../assets/images/icons/Expand.png')} style={{ width: Dimensions.get('window').width * 0.08, height: Dimensions.get('window').width * 0.08 }}></Image>

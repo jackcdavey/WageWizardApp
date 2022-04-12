@@ -1,55 +1,50 @@
-import COLORS from '../../styles/colors.js';
 import React from 'react';
-import { StyleSheet, View, Dimensions, TouchableOpacity, Alert } from 'react-native';
-
-const styles = StyleSheet.create({
-  article: {
-    width: Dimensions.get('window').width * 0.3,
-    height: Dimensions.get('window').width * 0.2,
-    margin: 25,
-    backgroundColor: COLORS.primary,
-    borderRadius: 15,
-    borderColor: COLORS.dark,
-    borderWidth: 2,
-  },
-  item: {
-    margin: 25,
-    padding: 10,
-    backgroundColor: COLORS.active,
-    fontSize: 18,
-    height: 44,
-  },
-});
+import { View, Dimensions, TouchableOpacity, Alert, Text } from 'react-native';
+import { BlurView } from "@react-native-community/blur";
+import styles from '../../styles/stylesheet.js';
 
 export default function Resources() {
   return (
-    <View style={{
-      flexDirection: 'row',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      <View>
-        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
-          <View style={styles.article} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
-          <View style={styles.article} />
-        </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <View>
+          <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
+            <View style={styles.article} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
+            <View style={styles.article} />
+          </TouchableOpacity>
+        </View>
+
+
+        <View>
+          <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
+
+            <View style={styles.article} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
+            <View style={styles.article} />
+          </TouchableOpacity>
+        </View>
+
+
+
+
       </View>
-
-      <View>
-        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
-
-          <View style={styles.article} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
-          <View style={styles.article} />
-        </TouchableOpacity>
+      <BlurView
+        style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+        blurType="light"
+        blurAmount={20}
+        reducedTransparencyFallbackColor="white"
+      />
+      <View style={{ position: 'absolute', top: Dimensions.get('window').height / 3 }}>
+        <Text style={styles.title}>Resource Page Coming Soon!</Text>
       </View>
-
-
-
     </View>
   );
 }

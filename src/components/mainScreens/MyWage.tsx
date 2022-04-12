@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import styles from '../../styles/stylesheet.js';
+import { BlurView } from "@react-native-community/blur";
 
 export default function MyWage({ navigation }: { navigation: any }) {
 
@@ -59,6 +60,15 @@ export default function MyWage({ navigation }: { navigation: any }) {
           <Text style={styles.btnTxt}>See Recordings Here</Text>
         </View>
       </TouchableOpacity>
+      <BlurView
+        style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, zIndex: 1 }}
+        blurType="light"
+        blurAmount={20}
+        reducedTransparencyFallbackColor="white"
+      />
+      <View style={{ position: 'absolute', top: Dimensions.get('window').height / 3, zIndex: 1 }}>
+        <Text style={styles.title}>My Wage Page Coming Soon!</Text>
+      </View>
     </View>
   );
 }

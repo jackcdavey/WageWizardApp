@@ -329,8 +329,15 @@ const styles = EStyleSheet.create({
         justifyContent: 'space-evenly',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-
-
+    },
+    article: {
+        width: Dimensions.get('window').width * 0.3,
+        height: Dimensions.get('window').width * 0.2,
+        margin: 25,
+        backgroundColor: COLORS.primary,
+        borderRadius: 15,
+        borderColor: COLORS.dark,
+        borderWidth: 2,
     },
     elements: {
         paddingBottom: Dimensions.get('window').height * 0.02,
