@@ -7,13 +7,18 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
+  LogBox,
 } from 'react-native';
 
 import { useState, useEffect } from 'react';
 import realm from '../../userData/realm.js';
 
 
+LogBox.ignoreLogs(['Non-serializable values were found in the navigation state']);
+
+
 export default function WorkLogs(props) {
+
   const { navigation } = props
 
   const [logsExist, setLogsExist] = useState(realm.objects('WorkLog').length > 0)
@@ -49,13 +54,13 @@ export default function WorkLogs(props) {
     if (logsFromDB.length !== 0) {
       setItems(logsFromDB.map((e) => {
         return ({
-          key: e.id, 
-          jobId:e.jobId,
-          employer:realm.objects("Job").filtered("id = "+e.jobId)[0].employer,
-          client:realm.objects("Job").filtered("id = "+e.jobId)[0].client,
-          date:e.date,
-          time:e.time,
-          notes:e.notes
+          key: e.id,
+          jobId: e.jobId,
+          employer: realm.objects("Job").filtered("id = " + e.jobId)[0].employer,
+          client: realm.objects("Job").filtered("id = " + e.jobId)[0].client,
+          date: e.date,
+          time: e.time,
+          notes: e.notes
         })
       }))
     } else {
@@ -75,15 +80,15 @@ export default function WorkLogs(props) {
 
               renderItem={({ item }) =>
                 <TouchableOpacity onPress={() => navigation.navigate('DetailedLog', {
-                  employer:item.employer,
-                  client:item.client,
-                  date:item.date,
-                  time:item.time,
-                  notes:item.notes
+                  employer: item.employer,
+                  client: item.client,
+                  date: item.date,
+                  time: item.time,
+                  notes: item.notes
                 })}>
                   {/* Alert.alert('This will navigate to the ' + item.key + ' detailed work log') */}
                   <View style={styles.item}>
-                    <Text style={styles.info}>{JSON.stringify(realm.objects("Job").filtered("id = "+item.jobId)[0].employer)}</Text>
+                    <Text style={styles.info}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
                   </View>
                 </TouchableOpacity>}
             />
