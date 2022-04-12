@@ -91,11 +91,20 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         margin: '2%',
         justifyContent: 'flex-start',
-
     },
-
-
-
+    logItemButton: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        margin: '3%',
+        backgroundColor: COLORS.active,
+        height: Dimensions.get('window').height * 0.07,
+        width: Dimensions.get('window').width * 0.9,
+        borderRadius: 15,
+        borderColor: COLORS.dark,
+        borderWidth: 2,
+    },
     //Buttons//
 
 
@@ -215,6 +224,12 @@ const styles = EStyleSheet.create({
         fontWeight: '700',
         textAlign: 'center',
         color: COLORS.dark,
+    },
+    logItemLabel: {
+        fontSize: '20rem',
+        fontFamily: 'SFPro-Regular',
+        color: COLORS.dark,
+        textAlign: 'center',
     },
 
 

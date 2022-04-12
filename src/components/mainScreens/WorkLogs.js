@@ -8,7 +8,10 @@ import {
   Dimensions,
   TouchableOpacity,
   LogBox,
+  Image
 } from 'react-native';
+
+import styles from '../../styles/stylesheet.js';
 
 import { useState, useEffect } from 'react';
 import realm from '../../userData/realm.js';
@@ -87,8 +90,9 @@ export default function WorkLogs(props) {
                   notes: item.notes
                 })}>
                   {/* Alert.alert('This will navigate to the ' + item.key + ' detailed work log') */}
-                  <View style={styles.item}>
-                    <Text style={styles.info}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
+                  <View style={styles.logItemButton}>
+                    <Text style={styles.logItemLabel}>{item.date.getMonth() + "/" + item.date.getDate()} </Text><Text style={styles.logItemLabel}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
+                    <Image source={require('../../assets/images/icons/Expand.png')} style={{ width: Dimensions.get('window').width * 0.08, height: Dimensions.get('window').width * 0.08 }}></Image>
                   </View>
                 </TouchableOpacity>}
             />
@@ -101,27 +105,3 @@ export default function WorkLogs(props) {
 
 
 }
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flex: 1,
-  },
-  item: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 20,
-    padding: 10,
-    backgroundColor: COLORS.active,
-    height: Dimensions.get('window').height * 0.07,
-    width: Dimensions.get('window').width * 0.9,
-    borderRadius: 15,
-    borderColor: COLORS.dark,
-    borderWidth: 2,
-  },
-  info: {
-    fontSize: 20,
-  }
-});
