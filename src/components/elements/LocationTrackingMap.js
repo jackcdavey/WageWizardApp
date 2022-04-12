@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, Modal, Image, Dimensions } from 'react-native';
+import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
@@ -395,6 +396,12 @@ const _LocationMap = (props) => {
                     }}
                   >
                     <View style={styles.modalContainer}>
+                      <BlurView
+                        style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+                        blurType="light"
+                        blurAmount={20}
+                        reducedTransparencyFallbackColor="white"
+                      />
                       <View style={styles.noteModal}>
                         <TouchableOpacity style={styles.closeButton} onPress={() => {
                           addNote(noteText)
@@ -412,7 +419,9 @@ const _LocationMap = (props) => {
 
                       </View>
                     </View>
+
                   </Modal>
+
                 </View>
                 {isPaused
                   ? <TouchableOpacity onPress={handleResume}>
