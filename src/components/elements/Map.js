@@ -1,5 +1,6 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+//import MapView from 'react-native-maps';
+import MapView, { Circle, Marker } from 'react-native-maps';
 import { Dimensions, StyleSheet } from 'react-native';
 import COLORS from '../../styles/colors';
 
@@ -73,7 +74,10 @@ class Map extends React.Component {
             longitudeDelta: LONGITUDE_DELTA,
           }
           }
-        />
+        >
+          <Circle  center={{ latitude: this.props.latitude, longitude: this.props.longitude }} radius={500} fillColor={'rgba(245, 40, 145, 0.35)'} />
+
+        </MapView>
       );
     }
     else {
