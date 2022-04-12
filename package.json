@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@expo-google-fonts/comfortaa": "^0.2.2",
@@ -27,6 +28,7 @@
     "expo-location": "~14.0.1",
     "expo-status-bar": "~1.2.0",
     "expo-task-manager": "~10.1.0",
+    "patch-package": "^6.4.7",
     "react": "17.0.2",
     "react-native": "0.67.1",
     "react-native-background-timer": "^2.4.1",

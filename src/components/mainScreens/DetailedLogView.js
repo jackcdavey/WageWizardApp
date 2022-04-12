@@ -4,7 +4,7 @@ import React from 'react';
 import Header from '../elements/Header';
 import { View, Text, StyleSheet, Dimensions, Alert, Image, TouchableOpacity } from "react-native";
 import COLORS from '../../styles/colors';
-import { produceWithPatches } from 'immer';
+//import { produceWithPatches } from 'immer';
 
 
 // const getDetailedLog = (props) => {
@@ -15,15 +15,15 @@ import { produceWithPatches } from 'immer';
 
 //Possibly add some sqeuomorphic styling for the log sheet?
 //Animate a slide up when a user presses a log
-export default function DetailedLogView({route,navigation}) {
-    const {employer,client,date,time,notes} = route.params
+export default function DetailedLogView({ route, navigation }) {
+    const { employer, client, date, time, notes } = route.params
     let seconds = ("0" + ((time / 1) % 60)).slice(-2)
     let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
     let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
     //console.log("DetailedLogView props: ", props.logId);
     return (
         <>
-            
+
             {/* Implement card styling here */}
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: COLORS.primary, paddingTop: Dimensions.get('window').height * 0.04 }}>
                 <TouchableOpacity style={{ minWidth: Dimensions.get('window').width * 0.15 }} onPress={() => navigation.goBack()}>
@@ -62,7 +62,7 @@ export default function DetailedLogView({route,navigation}) {
                     <Text style={styles.logText}>
                         {hours} : {minutes} : {seconds}
                     </Text>
-                    
+
                 </View>
                 <View style={styles.textWrap}>
                     <Text style={styles.logLabel}>
@@ -71,7 +71,7 @@ export default function DetailedLogView({route,navigation}) {
                     <Text style={styles.logText}>
                         {notes}
                     </Text>
-                    
+
                 </View>
 
             </View>
