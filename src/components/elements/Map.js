@@ -40,6 +40,16 @@ class Map extends React.Component {
     };
   }
 
+  onRegionChange = (region)=>{
+    this.setState({
+      region: region
+    });
+    console.log((this.state.region.longitudeDelta)*10000)
+
+  }
+
+
+
 
   /////here//
 
@@ -74,8 +84,10 @@ class Map extends React.Component {
             longitudeDelta: LONGITUDE_DELTA,
           }
           }
+
+          onRegionChange={this.onRegionChange}
         >
-          <Circle  center={{ latitude: this.props.latitude, longitude: this.props.longitude }} radius={500} fillColor={'rgba(245, 40, 145, 0.35)'} />
+          <Circle  center={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }} radius={(this.state.region.latitudeDelta)*10000} fillColor={'rgba(245, 40, 145, 0.35)'} />
 
         </MapView>
       );
