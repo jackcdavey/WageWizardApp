@@ -12,11 +12,23 @@ import realm from '../../userData/realm.js';
 
 
 
-export default function JobLocationSetup({ navigation }: { navigation: any }) {
+export default function JobLocationSetup({ navigation }) {
 
     const [searchText, setSearchText] = useState('500 El Camino Real San Jose CA');
 
     const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': 37.3499, 'longitude': -121.9406 });
+    //const [geoLats, setGeoLats] = useState(37.3499)
+    //const [geoLong, setGeoLong] = useState(-121.9406)
+    //const [geoRad, setGeoRad] = useState(50)
+    let geoLat = 37.3499
+    let geoLong = -121.9406
+    let geoRad = 50
+    const updateGeofence = (lats,longs,rads)=>{
+        geoLat = lats
+        geoLong = longs
+        geoRad = rads
+        //console.log(geoLat)
+    }
     function getCoordinatesFromAddress() {
         return new Promise((resolve) => {
             const txt = JSON.stringify(searchText);
@@ -75,8 +87,8 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
                 <Map
                     latitude={resultCoordinates.latitude}
                     longitude={resultCoordinates.longitude}
+                    updateGeofence = {updateGeofence}
                 >
-                    <Circle  center={{ latitude: resultCoordinates.latitude, longitude: resultCoordinates.longitude }} radius={50} fillColor={'rgba(245, 40, 145, 0.35)'} />
                 </Map>
             </>
         );
@@ -89,17 +101,17 @@ export default function JobLocationSetup({ navigation }: { navigation: any }) {
         try {
             if (realm) {
                 realm.write(() => {
-                    const lat = resultCoordinates.latitude;
-                    const long = resultCoordinates.longitude;
+                    //const lat = resultCoordinates.latitude;
+                    //const long = resultCoordinates.longitude;
 
                     //This may not be the correct jobId....
                     const currJob = realm.objects('Job').length;
                     newGeofence = realm.create('GeofenceLocation', {
                         id: newGeofenceId,
                         jobId: currJob,
-                        latitude: lat,
-                        longitude: long,
-                        radius: 50,
+                        latitude: geoLat,
+                        longitude: geoLong,
+                        radius: geoRad,
                     });
                     console.log('New Geofence created: ' + JSON.stringify(newGeofence));
                 });

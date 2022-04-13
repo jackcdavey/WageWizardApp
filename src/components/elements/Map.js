@@ -44,8 +44,17 @@ class Map extends React.Component {
     this.setState({
       region: region
     });
+    //this.props.updateGeofence(this.state.region.latitude,this.state.region.longitude,(this.state.region.longitudeDelta)*10000);
     console.log((this.state.region.longitudeDelta)*10000)
 
+  }
+
+  onRegionChangeComplete = (region)=>{
+    this.setState({
+      region: region
+    });
+    this.props.updateGeofence(this.state.region.latitude,this.state.region.longitude,(this.state.region.longitudeDelta)*10000);
+    console.log("Done")
   }
 
 
@@ -86,6 +95,7 @@ class Map extends React.Component {
           }
 
           onRegionChange={this.onRegionChange}
+          onRegionChangeComplete={this.onRegionChangeComplete}
         >
           <Circle  center={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }} radius={(this.state.region.latitudeDelta)*10000} fillColor={'rgba(245, 40, 145, 0.35)'} />
 
