@@ -205,32 +205,25 @@ const styles = EStyleSheet.create({
         color: COLORS.dark,
         textAlign: 'center',
     },
-    timerLabel: {
-
-        fontSize: '35rem',
-        fontWeight: '500',
-        fontFamily: 'SFPro-Regular',
-        color: 'gray',
-        textAlign: 'center',
-    },
-    currentJobLabel: {
-        fontSize: '15rem',
-        fontWeight: '500',
-        textAlign: 'center',
-        color: 'gray',
-    },
     currentJobText: {
         fontSize: '15rem',
         fontWeight: '700',
         textAlign: 'center',
         color: COLORS.dark,
     },
-    logItemLabel: {
-        fontSize: '20rem',
-        fontFamily: 'SFPro-Regular',
+
+    logTitle: {
+        fontSize: 42,
+        fontWeight: 'bold',
         color: COLORS.dark,
         textAlign: 'center',
     },
+    logText: {
+        fontSize: 18,
+        color: COLORS.dark,
+        textAlign: 'right',
+    },
+
 
 
 
@@ -262,7 +255,33 @@ const styles = EStyleSheet.create({
         fontSize: '15rem',
         fontWeight: 'bold',
     },
+    timerLabel: {
 
+        fontSize: '35rem',
+        fontWeight: '500',
+        fontFamily: 'SFPro-Regular',
+        color: 'gray',
+        textAlign: 'center',
+    },
+    currentJobLabel: {
+        fontSize: '15rem',
+        fontWeight: '500',
+        textAlign: 'center',
+        color: 'gray',
+    },
+    logItemLabel: {
+        fontSize: '20rem',
+        fontFamily: 'SFPro-Regular',
+        color: COLORS.dark,
+        textAlign: 'center',
+    },
+    logLabel: {
+        fontSize: 18,
+        color: COLORS.dark,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        padding: 10,
+    },
     //Labels//
 
 
@@ -324,6 +343,32 @@ const styles = EStyleSheet.create({
         width: Dimensions.get('window').height * 0.023,
         height: Dimensions.get('window').height * 0.04,
         justifyContent: 'flex-start',
+    },
+
+    logContainer: {
+        backgroundColor: COLORS.secondary,
+        borderRadius: 15,
+        borderColor: COLORS.dark,
+        borderWidth: 2,
+        width: Dimensions.get('window').width * 0.9,
+        height: Dimensions.get('window').height * 0.7,
+        margin: 20,
+        padding: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    logSectionContainer: {
+        width: Dimensions.get('window').width * 0.8,
+        minHeight: Dimensions.get('window').height * 0.05,
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 20,
+        alignItems: 'center',
+        borderColor: COLORS.dark,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderRadius: 15,
     },
 
 
