@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../elements/Header';
-import { View, Text, Dimensions, Image, TouchableOpacity, Share } from "react-native";
+import { View, Text, Dimensions, Image, TouchableOpacity, Share, Alert } from "react-native";
 import COLORS from '../../styles/colors';
 import styles from '../../styles/stylesheet.js';
 
@@ -26,8 +26,17 @@ const onShare = async () => {
     }
 };
 
-export default function DetailedLogView({ route, navigation }) {
+const deleteLog = () => {
+    Alert.alert('Are you sure you want to delete this log?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel' }, {
+        text: 'Delete', style: 'destructive', onPress: () => {
+            //Delete log here
+            console.log('Log deleted.');
 
+        }
+    }]);
+};
+
+export default function DetailedLogView({ route, navigation }) {
 
     const { employer, client, date, startTime, endTime, time, notes } = route.params
     let seconds = ("0" + ((time / 1) % 60)).slice(-2)
@@ -101,6 +110,9 @@ export default function DetailedLogView({ route, navigation }) {
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={() => onShare()}>
                     <Text style={styles.buttonText}>Export</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteLog()}>
+                    <Text style={styles.buttonText}>Delete</Text>
                 </TouchableOpacity>
             </View>
         </>
