@@ -3,6 +3,7 @@ import Header from '../elements/Header';
 import { View, Text, Dimensions, Image, TouchableOpacity, Share, Alert } from "react-native";
 import COLORS from '../../styles/colors';
 import styles from '../../styles/stylesheet.js';
+import { ScrollView } from 'react-native-gesture-handler';
 
 //Possibly add some sqeuomorphic styling for the log sheet?
 //Animate a slide up when a user presses a log
@@ -101,9 +102,11 @@ export default function DetailedLogView({ route, navigation }) {
                     <Text style={styles.logLabel}>
                         Notes:
                     </Text>
-                    <Text style={styles.logText}>
-                        {notes}
-                    </Text>
+                    <ScrollView>
+                        <Text style={styles.logText}>
+                            {notes}
+                        </Text>
+                    </ScrollView>
 
                 </View>
             </View>

@@ -221,7 +221,7 @@ const styles = EStyleSheet.create({
     logText: {
         fontSize: 18,
         color: COLORS.dark,
-        textAlign: 'right',
+
     },
 
 
