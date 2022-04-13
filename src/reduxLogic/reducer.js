@@ -14,6 +14,8 @@ const initialState = {
     isRunning: false,
     isPaused: false,
     jobId: -5,
+    start_time: new Date(),
+    end_time: new Date(),
     note: '',
     region: {
         latitude: 37.347934,
@@ -113,6 +115,19 @@ export default function Reducer(state = initialState, action) {
             }
         }
 
+        case 'UPDATE_START_TIME':{
+            return{
+                ...state,
+                start_time: action.start_time
+            }
+        }
+
+        case 'UPDATE_END_TIME':{
+            return {
+                ...state,
+                end_time: action.end_time
+            }
+        }
 
         default:
             return state

@@ -90,7 +90,7 @@ export default function JobLocationSetup({ navigation }) {
                     updateGeofence = {updateGeofence}
                 >
 
-                    <Circle center={{ latitude: resultCoordinates.latitude, longitude: resultCoordinates.longitude }} radius={50} fillColor={'rgba(245, 40, 145, 0.35)'} />
+                    
                 </Map>
             </>
         );

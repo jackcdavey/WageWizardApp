@@ -43,6 +43,14 @@ export function setNote(note){
     return {type: "SET_NOTE", note: note}
 }
 
+export function updateStartTime(startTime){
+    return {type: "UPDATE_START_TIME", start_time: startTime}
+}
+
+export function updateEndTime(endTime){
+    return {type: "UPDATE_END_TIME", end_time: endTime}
+}
+
 
 
 

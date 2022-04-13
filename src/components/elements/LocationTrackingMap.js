@@ -12,7 +12,7 @@ import * as TaskManager from "expo-task-manager"
 //redux logic imports
 import { connect } from 'react-redux';
 import { store } from '../../reduxLogic/store';
-import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote, setNote } from '../../reduxLogic/actions'
+import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote, setNote, updateStartTime, updateEndTime } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
 
@@ -95,8 +95,8 @@ const createLog = () => {
         //jobId: store.getState().jobId,
         jobId: store.getState().jobId,
         notes: store.getState().note,
-        startTime: 3, //Change to initial start time of log
-        endTime: 3,
+        startTime: store.getState().start_time,
+        endTime: store.getState().end_time,
         breakCount: 0, //Logic for determining break count here
         totalBreakTime: 0, //Logic for determining total break time here
         date: new Date(),
@@ -145,12 +145,14 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
       if (store.getState().isInsideGeofence) {
         if (store.getState().isTracking) {
           if (store.getState().isIdle) {
+            store.dispatch(updateStartTime(new Date()))
             store.dispatch(startTimer())
           }
         }
       } else {
         if (!store.getState().isIdle) {
           //create the log
+          store.dispatch(updateEndTime(new Date()))
           createLog();
           store.dispatch(endTimer())
         }
@@ -168,8 +170,8 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TRACKING, async ({ data, error }) => 
 /************************************************************** */
 
 const mapStateToProps = (state) => {
-  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId, note } = state;
-  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId, note };
+  const { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId, note, start_time, end_time } = state;
+  return { isIdle, isRunning, isPaused, region, time, isInsideGeofence, isTracking, jobId, note, start_time, end_time };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -179,7 +181,9 @@ const mapDispatchToProps = (dispatch) => {
     resumeTimer: () => dispatch(resumeTimer()),
     endTimer: () => dispatch(endTimer()),
     setIsTracking: (bool_val) => dispatch(setIsTracking(bool_val)),
-    addNote: (note) => dispatch(addNote(note))
+    addNote: (note) => dispatch(addNote(note)),
+    updateStartTime: (start_time) => dispatch(updateStartTime(start_time)),
+    updateEndTime: (end_time) => dispatch(updateEndTime(end_time))
 
   }
 }
@@ -193,7 +197,7 @@ const mapDispatchToProps = (dispatch) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId, note, addNote } = props;
+  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId, note, addNote, start_time, end_time, updateStartTime, updateEndTime } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 
@@ -292,6 +296,7 @@ const _LocationMap = (props) => {
       //if person is not tracking, timer should end as there is no proof of their location
       //ensure to create a log only if the user was inside a geofence
       if (time !== 0) {
+        updateEndTime(new Date())
         createLog();
       }
       endTimer();

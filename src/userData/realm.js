@@ -69,8 +69,8 @@ WorkLog.schema = {
         id: 'int',
         jobId: 'int',
         notes: 'string',
-        startTime: 'int', //will be a date
-        endTime: 'int', //will be a date
+        startTime: 'date', //will be a date
+        endTime: 'date', //will be a date
         breakCount: 'int',
         totalBreakTime: 'int',
 

@@ -16,7 +16,7 @@ import COLORS from '../../styles/colors';
 //Possibly add some sqeuomorphic styling for the log sheet?
 //Animate a slide up when a user presses a log
 export default function DetailedLogView({ route, navigation }) {
-    const { employer, client, date, time, notes } = route.params
+    const { employer, client, date, startTime, endTime, time, notes } = route.params
     let seconds = ("0" + ((time / 1) % 60)).slice(-2)
     let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
     let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
@@ -53,6 +53,22 @@ export default function DetailedLogView({ route, navigation }) {
                     </Text>
                     <Text style={styles.logText}>
                         {client}
+                    </Text>
+                </View>
+                <View style={styles.textWrap}>
+                    <Text style={styles.logLabel}>
+                        Start Time:
+                    </Text>
+                    <Text style={styles.logText}>
+                        {startTime.getHours()+":"+startTime.getMinutes()}
+                    </Text>
+                </View>
+                <View style={styles.textWrap}>
+                    <Text style={styles.logLabel}>
+                        End Time:
+                    </Text>
+                    <Text style={styles.logText}>
+                        {endTime.getHours()+":"+endTime.getMinutes()}
                     </Text>
                 </View>
                 <View style={styles.textWrap}>

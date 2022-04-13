@@ -60,6 +60,8 @@ export default function WorkLogs(props) {
           employer: realm.objects("Job").filtered("id = " + e.jobId)[0].employer,
           client: realm.objects("Job").filtered("id = " + e.jobId)[0].client,
           date: e.date,
+          startTime: e.startTime,
+          endTime: e.endTime,
           time: e.time,
           notes: e.notes
         })
@@ -84,6 +86,8 @@ export default function WorkLogs(props) {
                   employer: item.employer,
                   client: item.client,
                   date: item.date,
+                  startTime: item.startTime,
+                  endTime: item.endTime,
                   time: item.time,
                   notes: item.notes
                 })}>
