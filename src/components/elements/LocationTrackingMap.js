@@ -348,18 +348,13 @@ const _LocationMap = (props) => {
           region={region}
         >
           <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
-
-          <View>
-            {
-              (geofences.length > 0)
-                ? geofences.map((location) => {
-                  return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={'rgba(245, 40, 145, 0.35)'} />)
-                })
-                : <View></View>
-            }
-          </View>
-
-
+          {
+            (geofences.length > 0)
+              ? geofences.map((location) => {
+                return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={'rgba(245, 40, 145, 0.35)'} />)
+              })
+              : <></>
+          }
 
         </MapView>
       </View>
