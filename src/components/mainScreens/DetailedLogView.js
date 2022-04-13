@@ -77,7 +77,7 @@ export default function DetailedLogView({ route, navigation }) {
                         Start Time:
                     </Text>
                     <Text style={styles.logText}>
-                        {startTime.getHours() + ":" + startTime.getMinutes()}
+                        {startTime.getHours() % 12 + ":" + startTime.getMinutes()}
                     </Text>
                 </View>
                 <View style={styles.logSectionContainer}>
@@ -85,7 +85,7 @@ export default function DetailedLogView({ route, navigation }) {
                         End Time:
                     </Text>
                     <Text style={styles.logText}>
-                        {endTime.getHours() + ":" + endTime.getMinutes()}
+                        {endTime.getHours() % 12 + ":" + endTime.getMinutes()}
                     </Text>
                 </View>
                 <View style={styles.logSectionContainer}>
