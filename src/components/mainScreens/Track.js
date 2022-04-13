@@ -27,17 +27,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setJobId: (jobId) => { dispatch(setJobId(jobId)) },
-    addNote: (note) => {dispatch(addNote(note))}
+    addNote: (note) => { dispatch(addNote(note)) }
   }
 }
 
 const developmentView = false;
-const debugInfo = true;
+const debugInfo = false;
 const showTimer = true;
 
 const _Tracking = (props) => {
 
-  const { setJobId, jobId, isTracking , note, addNote} = props
+  const { setJobId, jobId, isTracking, note, addNote } = props
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.
@@ -47,44 +47,6 @@ const _Tracking = (props) => {
     { label: 'No Jobs', value: 0 },
     { label: 'No Jobs', value: 7 },
   ]);
-
-  //Eventually, we'll want pressing "Start" to trigger an animation that adjusts screen elements to fit
-  //the note section and remove job selection, but a temp workaround is to just to add a "TrackActive" screen
-  //with proper elements.
-
-  /*if (realm && !jobsLoaded) {
-    const jobExists = realm.objects('Job').length > 0;
-    if (jobExists) {
-      const allJobs = realm.objects('Job');
-      const numJobs = allJobs.length;
-      const jobList = [];
-
-      for (let Job of allJobs) {
-        const a = { label: Job.employer, value: Job.id };
-        jobList.push({ label: Job.employer, value: Job.id });
-        //Still not working
-        //This position should technically cause only the last job to be displayed, but that doesnt work either...
-
-        //{ () => setItems(items => ({ ...items, label: Job.employer, value: Job.id })) };
-      }
-
-      //console.log('label: ' + jobList[0].label);
-      //console.log('value: ' + jobList[0].value);
-
-      console.log('Jobs in picker: ' + JSON.stringify(jobList));
-      //console.log('Job options for tracking: ', JSON.stringify(allJobs));
-
-      //setItems(Job.name);
-      jobsLoaded = true;
-    }
-  }*/
-
-  //setItems([{ label: 'No Jobs', value: -5 },]);
-
-  /*const jobsUpdate = realm.objects("Job");
-  realm.addListener((jobs,changes)=>{
-    setJobsFromDB(realm.objects("Job"))
-  })*/
 
   /******REALM WORK LOG LOGIC************************* */
   const [logsExist, setLogsExist] = useState(realm.objects('WorkLog').length > 0)
@@ -171,12 +133,6 @@ const _Tracking = (props) => {
     setJobId(localJobId)
   }, [localJobId])
 
-
-
-  //sample jobs for testing purposes, will be discarded
-  const generateIDInt = () => {
-    return Math.floor(Math.random() * 100000);
-  }
 
   //no longer async, had to remove them to get rid of memory leaks
   //fucntions for temporary development testing, functions will be removed after development
@@ -271,18 +227,18 @@ const _Tracking = (props) => {
     })
   }
 
-  // const [showWorkLogs, setShowWorkLogs] = useState(false)
-  // const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
-  // const showWorkLogButton = () => {
-  //   if (showWorkLogs) {
-  //     setShowWorkLogsText('show work logs')
-  //     setShowWorkLogs(false)
-  //   }
-  //   else {
-  //     setShowWorkLogsText('hide work logs')
-  //     setShowWorkLogs(true)
-  //   }
-  // }
+  const [showWorkLogs, setShowWorkLogs] = useState(false)
+  const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
+  const showWorkLogButton = () => {
+    if (showWorkLogs) {
+      setShowWorkLogsText('show work logs')
+      setShowWorkLogs(false)
+    }
+    else {
+      setShowWorkLogsText('hide work logs')
+      setShowWorkLogs(true)
+    }
+  }
 
 
 
@@ -307,21 +263,10 @@ const _Tracking = (props) => {
           </View>
           : <View></View>
       }
-      {/*development testing buttons for testing geofences*/}
-      {/* <TouchableOpacity onPress={addJob1}>
-        <Text>Add Job of Type 1</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={addJob2}>
-        <Text>Add Job of Type 2</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={addJob3}>
-        <Text>Add Job of Type 3</Text>
-      </TouchableOpacity> */}
       {showTimer
         ? <Timer />
         : <View></View>
       }
-      {/* 
       {
         debugInfo
           ?
@@ -331,21 +276,6 @@ const _Tracking = (props) => {
           </View>
           : <View></View>
       }
-
-
-      <TouchableOpacity onPress={showWorkLogButton}>
-        <Text>{showWorkLogsText}</Text>
-      </TouchableOpacity>
-      {
-        showWorkLogs
-          ? <View>
-            <Text>worklogs: {JSON.stringify(logsFromDB)}</Text>
-          </View>
-          : <View></View>
-      } */}
-
-
-
 
       {
         jobsExist
@@ -363,6 +293,8 @@ const _Tracking = (props) => {
                   placeholder="Select a Job"
                   containerStyle={styles.pickerContainer}
                   placeholderStyle={styles.pickerLabel}
+                  dropDownContainerStyle={styles.pickerDropDownContainer}
+                  listItemLabelStyle={styles.pickerListItemLabel}
                   labelStyle={styles.pickerLabel}
                   itemSeparator={true}
                   open={open}

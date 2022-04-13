@@ -1,5 +1,5 @@
 
-import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Alert, Image } from 'react-native';
+import { View, TouchableOpacity, Dimensions, Text, Alert, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Header from './elements/Header.js';

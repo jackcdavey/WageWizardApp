@@ -263,6 +263,14 @@ const styles = EStyleSheet.create({
         color: 'gray',
         textAlign: 'center',
     },
+    pickerListItemLabel: {
+        fontSize: '15rem',
+        color: COLORS.dark,
+        fontFamily: 'SFPro-Regular',
+        fontWeight: '600',
+        textAlign: 'center',
+        padding: '2%',
+    },
     currentJobLabel: {
         fontSize: '15rem',
         fontWeight: '500',
@@ -370,6 +378,26 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         borderRadius: 15,
     },
+    pickerContainer: {
+        width: Dimensions.get('window').width * 0.9,
+        height: Dimensions.get('window').height * 0.07,
+        margin: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: COLORS.primary,
+        zIndex: 2,
+    },
+    pickerDropDownContainer: {
+        backgroundColor: COLORS.secondary,
+        width: Dimensions.get('window').width * 0.9,
+        borderWidth: 2,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        padding: '5%',
+        zIndex: 1,
+    },
+
+    //CONTAINERS//
 
 
     /////////////OLD STYLES BELOW//////////////
@@ -473,15 +501,7 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    pickerContainer: {
-        width: Dimensions.get('window').width * 0.9,
-        height: Dimensions.get('window').height * 0.07,
-        margin: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: COLORS.primary,
-        zIndex: 1,
-    },
+
     pickerLabel: {
         textAlign: 'center',
         fontSize: 20,
