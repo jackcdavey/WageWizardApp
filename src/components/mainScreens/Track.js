@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { BlurView } from "@react-native-community/blur";
+
 
 //import Map from '../elements/Map.js';
 import Timer from '../elements/Timer'
@@ -288,6 +290,9 @@ const _Tracking = (props) => {
                   <Text style={styles.currentJobLabel}>Currently tracking job:</Text>
                   <Text style={styles.currentJobText}> {realm.objectForPrimaryKey('Job', value).employer} </Text>
                 </View>
+
+                //If open is true, then display blur layer here
+
                 : <DropDownPicker
                   style={styles.picker}
                   placeholder="Select a Job"
@@ -300,8 +305,10 @@ const _Tracking = (props) => {
                   open={open}
                   value={value}
                   items={items}
+                  modalProps={{
+                    animationType: 'slide'
+                  }}
                   setOpen={setOpen}
-                  //Still seems to work properly despite undeclared setValue property warning
                   setValue={setValue}
                   setItems={setItems}
 
@@ -313,9 +320,15 @@ const _Tracking = (props) => {
                   }}
                 //displaying the jobs:
                 />
-            }
-            <LocationMap />
 
+            }
+
+            <LocationMap />
+            {
+              open
+                ? <BlurView style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, height: Dimensions.get('window').height }} blurType="light" blurAmount={20} reducedTransparencyFallbackColor="white" />
+                : <></>
+            }
           </View>
           : <Text>add a job to begin tracking</Text>
       }
