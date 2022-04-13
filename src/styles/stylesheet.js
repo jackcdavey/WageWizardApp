@@ -248,6 +248,13 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    smallButtonText: {
+        margin: 5,
+        color: COLORS.light,
+        fontSize: '10rem',
+        fontWeight: 'bold',
+        justifyContent: 'center',
+    },
     closeButtonText: {
         margin: 5,
         padding: 10,

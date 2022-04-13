@@ -1,7 +1,8 @@
 //standard react location imports
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Modal, Image, Dimensions } from 'react-native';
+import { Text, View, TouchableOpacity, Modal, Image, TextInput } from 'react-native';
+import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
@@ -14,7 +15,6 @@ import { store } from '../../reduxLogic/store';
 import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote, setNote } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
-import { TextInput } from 'react-native-gesture-handler';
 
 
 
@@ -370,18 +370,22 @@ const _LocationMap = (props) => {
                   <View style={{}}>
                     <TouchableOpacity style={styles.noteButton} onPress={createNote}>
                       <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: '65%', height: '100%' }} resizeMode='contain'></Image>
-
-                      {/* switch from txt to note pencil icon later */}
                     </TouchableOpacity>
                   </View>
-                  <View style={{}}>
+                  <View style={{ alignItems: 'flex-end' }}>
                     <TouchableOpacity style={styles.stopButton} onPress={handleLocationButton}>
                       <Text style={styles.buttonText}>{locationButtonText}</Text>
                     </TouchableOpacity>
                   </View>
-                  <View style={{ width: Dimensions.get('window').width / 4 }}>
+                  {isPaused
+                    ? <View style={{ alignItems: 'flex-end' }}><TouchableOpacity style={styles.noteButton} onPress={handleResume}>
+                      <Text style={styles.smallButtonText}>Resume</Text>
+                    </TouchableOpacity ></View>
+                    : <View style={{ alignItems: 'flex-end' }}><TouchableOpacity style={styles.noteButton} onPress={handlePause}>
+                      <Text style={styles.smallButtonText}>Pause</Text>
+                    </TouchableOpacity></View>
+                  }
 
-                  </View>
 
 
                   <Modal
@@ -395,6 +399,12 @@ const _LocationMap = (props) => {
                     }}
                   >
                     <View style={styles.modalContainer}>
+                      <BlurView
+                        style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+                        blurType="light"
+                        blurAmount={20}
+                        reducedTransparencyFallbackColor="white"
+                      />
                       <View style={styles.noteModal}>
                         <TouchableOpacity style={styles.closeButton} onPress={() => {
                           addNote(noteText)
@@ -412,16 +422,11 @@ const _LocationMap = (props) => {
 
                       </View>
                     </View>
+
                   </Modal>
+
                 </View>
-                {isPaused
-                  ? <TouchableOpacity onPress={handleResume}>
-                    <Text>Resume</Text>
-                  </TouchableOpacity>
-                  : <TouchableOpacity onPress={handlePause}>
-                    <Text>Pause</Text>
-                  </TouchableOpacity>
-                }
+
               </View>
               : <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
                 <TouchableOpacity style={styles.noteButton} onPress={createNote}>
