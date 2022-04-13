@@ -75,7 +75,7 @@ const styles = EStyleSheet.create({
         width: Dimensions.get('window').height * 0.07,
         height: Dimensions.get('window').height * 0.07,
         borderRadius: Dimensions.get('window').height * 0.07 / 0.7,
-        backgroundColor: COLORS.primary,
+        backgroundColor: COLORS.active,
         borderColor: COLORS.primary,
         borderWidth: 2,
         margin: '5%',

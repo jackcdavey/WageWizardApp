@@ -379,10 +379,10 @@ const _LocationMap = (props) => {
                   </View>
                   {isPaused
                     ? <View style={{ alignItems: 'flex-end' }}><TouchableOpacity style={styles.noteButton} onPress={handleResume}>
-                      <Text style={styles.smallButtonText}>Resume</Text>
+                      <Image source={require('../../assets/images/icons/Resume.png')} style={{ maxWidth: '30%' }} resizeMode='contain'></Image>
                     </TouchableOpacity ></View>
                     : <View style={{ alignItems: 'flex-end' }}><TouchableOpacity style={styles.noteButton} onPress={handlePause}>
-                      <Text style={styles.smallButtonText}>Pause</Text>
+                      <Image source={require('../../assets/images/icons/Pause.png')} style={{ maxWidth: '30%' }} resizeMode='contain'></Image>
                     </TouchableOpacity></View>
                   }
 
