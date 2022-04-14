@@ -18,15 +18,14 @@
 [![Issues][issues-shield]][issues-url]
 
 
-Add each of our linkedin profiles with these
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 -->
 [![DeepScan grade](https://deepscan.io/api/teams/17323/projects/20675/branches/570240/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17323&pid=20675&bid=570240)
 [![Contributors][contributors-shield]][contributors-url]
 [![MIT License][license-shield]][license-url]
 [![Stargazers][stars-shield]][stars-url]
+[![LinkedIn][linkedin-shield]][linkedin-url-jack]
+[![LinkedIn][linkedin-shield]][linkedin-url-kyle]
+[![LinkedIn][linkedin-shield]][linkedin-url-brett]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -229,7 +228,9 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=flat
 [issues-url]: https://github.com/github_username/repo_name/issues
 [license-shield]: https://img.shields.io/github/license/jackcdavey/WageWizardApp.svg?style=flat
-[license-url]: https://github.com/jackcdavey/WageWizardApp/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[license-url]: https://github.com/jackcdavey/WageWizardApp/blob/main/LICENSE.md
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat&logo=linkedin&colorB=555
+[linkedin-url-jack]: https://linkedin.com/in/john-c-davey/
+[linkedin-url-kyle]: https://linkedin.com/in/kyle-felip-mondina-831088204/
+[linkedin-url-brett]: https://linkedin.com/in/brett-rimmer-60bb02b9/
 [product-screenshot]: images/screenshot.png
