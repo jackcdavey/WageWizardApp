@@ -20,12 +20,12 @@
 
 -->
 [![DeepScan grade](https://deepscan.io/api/teams/17323/projects/20675/branches/570240/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17323&pid=20675&bid=570240)
-[![Contributors][contributors-shield]][contributors-url]
-[![MIT License][license-shield]][license-url]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Stargazers][stars-shield]][stars-url]
-[![LinkedIn][linkedin-shield]][linkedin-url-jack]
-[![LinkedIn][linkedin-shield]][linkedin-url-kyle]
-[![LinkedIn][linkedin-shield]][linkedin-url-brett]
+[![Contributors][contributors-shield]][contributors-url]
+[![LinkedIn][linkedin-shield-jack]][linkedin-url-jack]
+[![LinkedIn][linkedin-shield-kyle]][linkedin-url-kyle]
+[![LinkedIn][linkedin-shield-brett]][linkedin-url-brett]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -86,15 +86,18 @@
   <img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70%>
 </div
 
-<iframe src="https://drive.google.com/viewerng/viewer?url=https://cdn.jsdelivr.net/gh/jackcdavey/WageWizardApp/src/assets/images/DesignThesis.pdf" frameborder="0"></iframe>
+ <div align="center">
+  <img src="/src/assets/images/ThesisCover.png" alt="Thesis Cover" width=30% height=30%>
+</div
 
-
+  
 ### Built With
 
 * [React Native](https://reactnative.dev/)
 * [Expo](https://expo.dev/)
+* [MongoDB Realm](https://www.mongodb.com/docs/realm/sdk/react-native/)
 * [Figma](https://www.figma.com/)
-* [JQuery](https://jquery.com)
+  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -189,7 +192,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE.md` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
