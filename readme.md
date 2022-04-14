@@ -84,11 +84,14 @@
 ## About The Project
 <div align="center">
   <img src="/src/assets/images/prototypeCapture.png" alt="Prototype Screenshot" width=70%>
-</div
-
- <div align="center">
-  <img src="/src/assets/images/ThesisCover.png" alt="Thesis Cover" width=30% height=30%>
-</div
+</div>
+<br>
+ <div align="center" width=100%>
+  <a href="/src/assets/images/DesignThesis.pdf">
+<img src="/src/assets/images/ThesisCover.png" alt="Thesis Cover" width=30% height=30%>
+        <p> Wage Wizard Design Thesis </p>
+  </a>
+</div>
 
   
 ### Built With
