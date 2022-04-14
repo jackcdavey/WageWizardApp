@@ -405,7 +405,7 @@ const _LocationMap = (props) => {
                         blurAmount={20}
                         reducedTransparencyFallbackColor="white"
                       />
-                      <View style={styles.noteModal}>
+                      <View style={styles.noteTextField}>
                         <TouchableOpacity style={styles.closeButton} onPress={() => {
                           addNote(noteText)
                           setNoteModalVisible(false);
@@ -413,9 +413,10 @@ const _LocationMap = (props) => {
                           <Text style={styles.closeButtonText}>X</Text>
                         </TouchableOpacity>
                         <TextInput
-                          style={styles.noteField}
+                          style={styles.noteText}
                           placeholder='Add notes here...'
                           placeholderTextColor={COLORS.lightPlaceholder}
+                          multiline={true}
                           onChangeText={newText => setNoteText(newText)}
                         >
                         </TextInput>

@@ -83,9 +83,9 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
     },
     closeButton: {
-        width: Dimensions.get('window').height * 0.05,
-        height: Dimensions.get('window').height * 0.05,
-        borderRadius: Dimensions.get('window').height * 0.05 / 0.5,
+        width: Dimensions.get('window').height * 0.04,
+        height: Dimensions.get('window').height * 0.04,
+        borderRadius: Dimensions.get('window').height * 0.04 / 0.4,
         backgroundColor: 'red',
         borderColor: COLORS.primary,
         borderWidth: 2,
@@ -150,7 +150,7 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         padding: '2%',
         margin: '2%',
-        alignItems: 'center',
+
     },
 
     //TextInputs//
@@ -211,6 +211,10 @@ const styles = EStyleSheet.create({
         textAlign: 'center',
         color: COLORS.dark,
     },
+    noteText: {
+        fontSize: '20rem',
+        padding: '10%',
+    },
 
     logTitle: {
         fontSize: 42,
@@ -248,8 +252,9 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
     },
     closeButtonText: {
-        margin: 5,
-        padding: 10,
+        paddingTop: '20%',
+        textAlign: 'center',
+
         color: COLORS.light,
         fontSize: '15rem',
         fontWeight: 'bold',
