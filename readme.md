@@ -228,9 +228,11 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=flat
 [issues-url]: https://github.com/github_username/repo_name/issues
 [license-shield]: https://img.shields.io/github/license/jackcdavey/WageWizardApp.svg?style=flat
-[license-url]: https://github.com/jackcdavey/WageWizardApp/blob/main/LICENSE.md
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat&logo=linkedin&colorB=555
+[license-url]: https://github.com/jackcdavey/WageWizardApp/blob/main/LICENSE
+[linkedin-shield-jack]: https://img.shields.io/badge/LinkedIn-Jack-blue?style=flat&logo=linkedin
 [linkedin-url-jack]: https://linkedin.com/in/john-c-davey/
+[linkedin-shield-kyle]:https://img.shields.io/badge/LinkedIn-Kyle-blue?style=flat&logo=linkedin
 [linkedin-url-kyle]: https://linkedin.com/in/kyle-felip-mondina-831088204/
+[linkedin-shield-brett]: https://img.shields.io/badge/LinkedIn-Brett-blue?style=flat&logo=linkedin
 [linkedin-url-brett]: https://linkedin.com/in/brett-rimmer-60bb02b9/
 [product-screenshot]: images/screenshot.png
