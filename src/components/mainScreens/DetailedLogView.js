@@ -14,7 +14,7 @@ const onShare = async () => {
         });
         if (result.action === Share.sharedAction) {
             if (result.activityType) {
-                // shared with activity type of result.activityType
+                // shared with acivity type of result.activityType
             } else {
                 // shared
             }
@@ -39,9 +39,15 @@ const deleteLog = () => {
 export default function DetailedLogView({ route, navigation }) {
 
     const { employer, client, date, startTime, endTime, time, notes } = route.params
+    let ampm = '';
     let seconds = ("0" + ((time / 1) % 60)).slice(-2)
     let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
     let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
+    if (startTime.getHours() >= 12)
+        ampm = "PM";
+    else
+        ampm = "AM";
+
     return (
         <>
             {/* Implement card styling here */}
@@ -77,7 +83,7 @@ export default function DetailedLogView({ route, navigation }) {
                         Start Time:
                     </Text>
                     <Text style={styles.logText}>
-                        {startTime.getHours() % 12 + ":" + startTime.getMinutes()}
+                        {startTime.getHours() % 12 + ":" + startTime.getMinutes() + ' ' + ampm}
                     </Text>
                 </View>
                 <View style={styles.logSectionContainer}>
@@ -85,7 +91,7 @@ export default function DetailedLogView({ route, navigation }) {
                         End Time:
                     </Text>
                     <Text style={styles.logText}>
-                        {endTime.getHours() % 12 + ":" + endTime.getMinutes()}
+                        {endTime.getHours() % 12 + ":" + endTime.getMinutes() + ' ' + ampm}
                     </Text>
                 </View>
                 <View style={styles.logSectionContainer}>

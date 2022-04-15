@@ -75,6 +75,16 @@ export default function WorkLogs(props) {
       //set the jobID back to default
     }
   }, [logsFromDB])
+  let ampm = '';
+
+
+  const getAMPM = (x) => {
+    if (x >= 12)
+      return ampm = "PM";
+    else
+      return ampm = "AM";
+  }
+
 
   return (
     <View style={styles.container}>
@@ -95,8 +105,8 @@ export default function WorkLogs(props) {
                   notes: item.notes
                 })}>
                   <View style={styles.logItemButton}>
-                    <Text style={styles.logItemLabel}>{item.date.getMonth() + "/" + item.date.getDate() + '  -  ' + item.startTime.getHours() % 12 + ':' + item.startTime.getMinutes()} </Text><Text style={styles.logItemLabel}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
-                    <Image source={require('../../assets/images/icons/Expand.png')} style={{ width: Dimensions.get('window').width * 0.08, height: Dimensions.get('window').width * 0.08 }}></Image>
+                    <Text style={styles.logItemLabel}>{item.date.getMonth() + "/" + item.date.getDate() + ',  ' + item.startTime.getHours() % 12 + ':' + item.startTime.getMinutes() + ' ' + getAMPM(item.startTime.getHours())} </Text><Text style={styles.logItemLabel}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
+                    <Image source={require('../../assets/images/icons/Expand.png')} style={{ width: Dimensions.get('window').width * 0.06, height: Dimensions.get('window').width * 0.06 }}></Image>
                   </View>
                 </TouchableOpacity>}
             />
