@@ -137,25 +137,22 @@ export default function InitialSetupView({ navigation }) {
 
     }
 
-
-    // const clearUsers = () => {
-    //     try {
-    //         if (realm) {
-    //             realm.write(() => {
-    //                 var allUsers = realm.objects('User');
-    //                 realm.delete(allUsers);
-    //                 console.log('All users deleted');
-    //             });
-    //         } else {
-    //             Alert.alert('Realm not initialized.');
-    //         }
-    //     }
-    //     catch (error) {
-    //         Alert.alert('Error deleting users.');
-    //     }
-    // }
-
-
+    const showBackButton = () => {
+        userExists = realm.objects('User').length > 0;
+        if (userExists) {
+            return (
+                <>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
+                        <Text style={{ color: COLORS.dark }}>Back</Text>
+                    </TouchableOpacity>
+                </>
+            );
+        } else {
+            return (
+                <></>
+            );
+        }
+    }
 
 
     return (
@@ -226,6 +223,7 @@ export default function InitialSetupView({ navigation }) {
 
 
                     <View style={styles.buttonWrap}>
+                        {showBackButton()}
                         <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
                             <Text style={{ color: COLORS.secondary }}>Continue</Text>
                         </TouchableOpacity>

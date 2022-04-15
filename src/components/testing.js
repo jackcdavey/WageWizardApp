@@ -88,13 +88,13 @@ const createLog = () => {
                         id: newLogId,
                         jobId: 1,
                         notes: '',
-                        startTime: 1,
-                        endTime: 5,
+                        startTime: new Date(),
+                        endTime: new Date(),
                         breakCount: 0,
                         totalBreakTime: 0,
                         //temp
                         date: new Date(),
-                        time: 0,
+                        time: 5,
                     });
                     Alert.alert('New log created: ', JSON.stringify(newLog));
                     console.log('New log created: ', newLog);
