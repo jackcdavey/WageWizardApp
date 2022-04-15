@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import styles from '../../styles/stylesheet.js';
-import { View, TouchableOpacity, Alert, Dimensions, TextInput, Text, Switch, Image } from "react-native";
+import { View, TouchableOpacity, Alert, Dimensions, TextInput, Text, Switch, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 
 import { launchImageLibrary } from 'react-native-image-picker';
 
@@ -155,80 +155,82 @@ export default function InitialSetupView({ navigation }) {
 
 
     return (
-        <View style={styles.container}>
-            <View style={styles.directionsWrap}>
-                <Text style={styles.title}>Welcome to Wage Wizard!</Text>
-            </View>
-            <View style={styles.directionsWrap}>
-                <Text style={styles.directions}>
-                    Please enter the information
-                    below. Required fields are
-                    marked with an arrow. </Text>
-            </View>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.container}>
+                    <View style={styles.directionsWrap}>
+                        <Text style={styles.title}>Welcome to Wage Wizard!</Text>
+                    </View>
+                    <View style={styles.directionsWrap}>
+                        <Text style={styles.directions}>
+                            Please enter the information
+                            below. Required fields are
+                            marked with an arrow. </Text>
+                    </View>
 
-            <View style={{ padding: 10 }} >
-                <TouchableOpacity onPress={() => setProfilePicture()}>
-                    <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').width * 0.3 }} />
-                </TouchableOpacity>
-            </View>
+                    <View style={{ padding: 10 }} >
+                        <TouchableOpacity onPress={() => setProfilePicture()}>
+                            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').width * 0.3 }} />
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={styles.field}>
-                <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                <TextInput style={styles.setupTextField} placeholder="First Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
-            </View>
+                    <View style={styles.field}>
+                        <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                        <TextInput style={styles.setupTextField} placeholder="First Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
+                    </View>
 
-            <View style={styles.field}>
-                <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                <TextInput style={styles.setupTextField} placeholder="Last Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
-            </View>
+                    <View style={styles.field}>
+                        <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                        <TextInput style={styles.setupTextField} placeholder="Last Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
+                    </View>
 
-            <View style={styles.field}>
-                <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                <TextInput style={styles.setupTextField} placeholderTextColor={COLORS.lightPlaceholder} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
-            </View>
+                    <View style={styles.field}>
+                        <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                        <TextInput style={styles.setupTextField} placeholderTextColor={COLORS.lightPlaceholder} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
+                    </View>
 
-            <View style={styles.field}>
-                {/* <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} /> */}
-                <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setBirthday(newText)} />
-            </View>
-            <View style={[styles.field, { padding: '2%' }]}>
-                <Text style={{ marginRight: 25 }}>Use Pin?</Text>
+                    <View style={styles.field}>
+                        {/* <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} /> */}
+                        <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setBirthday(newText)} />
+                    </View>
+                    <View style={[styles.field, { padding: '2%' }]}>
+                        <Text style={{ marginRight: 25 }}>Use Pin?</Text>
 
-                <Switch
-                    trackColor={{ false: COLORS.red, true: COLORS.green }}
-                    onValueChange={togglePin}
-                    value={usePin}
-                />
-            </View>
-            <View style={styles.field}>
-                {/* Prevent interaction until usePin is true */}
-                <Text style={{ marginRight: 25 }}>Use Biometrics?</Text>
+                        <Switch
+                            trackColor={{ false: COLORS.red, true: COLORS.green }}
+                            onValueChange={togglePin}
+                            value={usePin}
+                        />
+                    </View>
+                    <View style={styles.field}>
+                        {/* Prevent interaction until usePin is true */}
+                        <Text style={{ marginRight: 25 }}>Use Biometrics?</Text>
 
-                <Switch
-                    trackColor={{ false: COLORS.red, true: COLORS.green }}
-                    onValueChange={toggleBiometric}
-                    value={useBiometric}
-                    disabled={!usePin}
-                />
-            </View>
-
-
-            {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
-            {/* <TextInput style={styles.input} placeholder="Pin" /> */}
-            {/* Needs to be a number import, breaking account saving */}
+                        <Switch
+                            trackColor={{ false: COLORS.red, true: COLORS.green }}
+                            onValueChange={toggleBiometric}
+                            value={useBiometric}
+                            disabled={!usePin}
+                        />
+                    </View>
 
 
+                    {/* <Text style={{ marginRight: 10, backgroundColor: 'red' }}> [ARROW]</Text> */}
+                    {/* <TextInput style={styles.input} placeholder="Pin" /> */}
+                    {/* Needs to be a number import, breaking account saving */}
 
-            <View style={styles.buttonWrap}>
-                <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
-                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
-                </TouchableOpacity>
-                {/* <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearUsers()}>
+
+
+                    <View style={styles.buttonWrap}>
+                        <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
+                            <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                        </TouchableOpacity>
+                        {/* <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearUsers()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE PROFILE DATA</Text>
                 </TouchableOpacity> */}
-            </View>
-
-
-        </View>
+                    </View>
+                </View>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
