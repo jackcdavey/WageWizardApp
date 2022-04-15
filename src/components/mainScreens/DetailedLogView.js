@@ -3,6 +3,7 @@ import Header from '../elements/Header';
 import { View, Text, Dimensions, Image, TouchableOpacity, Share, Alert, ScrollView } from "react-native";
 import COLORS from '../../styles/colors';
 import styles from '../../styles/stylesheet.js';
+import realm from '../../userData/realm';
 
 //Possibly add some sqeuomorphic styling for the log sheet?
 //Animate a slide up when a user presses a log
@@ -26,23 +27,33 @@ const onShare = async () => {
     }
 };
 
-const deleteLog = () => {
-    Alert.alert('Are you sure you want to delete this log?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel' }, {
-        text: 'Delete', style: 'destructive', onPress: () => {
-            //Delete log here
-            console.log('Log deleted.');
 
-        }
-    }]);
-};
+
 
 export default function DetailedLogView({ route, navigation }) {
 
-    const { employer, client, date, startTime, endTime, time, notes } = route.params
-    let ampm = '';
+    const deleteLog = (logId) => {
+        Alert.alert('Are you sure you want to delete this log?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel' }, {
+            text: 'Delete', style: 'destructive', onPress: () => {
+                //Delete log here
+                try {
+                    realm.write(() => {
+                        realm.delete(realm.objects('WorkLog').filtered(`id = ${logId}`));
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+                console.log('Log deleted.');
+                navigation.goBack();
+            }
+        }]);
+    };
+
+    const { logId, employer, client, date, startTime, endTime, time, notes } = route.params
     let seconds = ("0" + ((time / 1) % 60)).slice(-2)
     let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)
     let hours = ("0" + (Math.floor((time / 3600)) % 24)).slice(-2)
+    let ampm = '';
     if (startTime.getHours() >= 12)
         ampm = "PM";
     else
@@ -119,7 +130,7 @@ export default function DetailedLogView({ route, navigation }) {
                 <TouchableOpacity style={styles.button} onPress={() => onShare()}>
                     <Text style={styles.buttonText}>Export</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteLog()}>
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteLog(logId)}>
                     <Text style={styles.buttonText}>Delete</Text>
                 </TouchableOpacity>
             </View>

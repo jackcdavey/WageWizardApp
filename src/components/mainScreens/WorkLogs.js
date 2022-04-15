@@ -96,6 +96,7 @@ export default function WorkLogs(props) {
 
               renderItem={({ item }) =>
                 <TouchableOpacity onPress={() => navigation.navigate('DetailedLog', {
+                  logId: item.key,
                   employer: item.employer,
                   client: item.client,
                   date: item.date,
