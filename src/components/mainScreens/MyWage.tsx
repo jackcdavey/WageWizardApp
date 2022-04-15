@@ -19,12 +19,7 @@ export default function MyWage({ navigation }: { navigation: any }) {
   ]);
 
   return (
-    <View style={{
-      flexDirection: 'column',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
+    <View style={styles.container}>
       <Text style={styles.label}>San Jose Minimum Wage:</Text>
       <Text style={styles.infoTxt}>$XX.XX</Text>
       <View style={{ zIndex: 1 }}>
