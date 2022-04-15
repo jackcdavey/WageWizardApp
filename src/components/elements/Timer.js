@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import styles from '../../styles/stylesheet';
 

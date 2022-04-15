@@ -1,9 +1,8 @@
 import React from 'react';
 import Header from '../elements/Header';
-import { View, Text, Dimensions, Image, TouchableOpacity, Share, Alert } from "react-native";
+import { View, Text, Dimensions, Image, TouchableOpacity, Share, Alert, ScrollView } from "react-native";
 import COLORS from '../../styles/colors';
 import styles from '../../styles/stylesheet.js';
-import { ScrollView } from 'react-native-gesture-handler';
 
 //Possibly add some sqeuomorphic styling for the log sheet?
 //Animate a slide up when a user presses a log

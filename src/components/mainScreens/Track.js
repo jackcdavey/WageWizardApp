@@ -39,7 +39,7 @@ const showTimer = true;
 
 const _Tracking = (props) => {
 
-  const { setJobId, jobId, isTracking, note, addNote } = props
+  const { setJobId, jobId, isTracking, note } = props
   const [open, setOpen] = useState(false);
   //Something messy going on with setValue being passed to the dropdown picker,
   //triggering warnings in editor but not in app.

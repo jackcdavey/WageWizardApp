@@ -24,7 +24,7 @@ export default function InitialSetupView({ navigation }) {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
-    const [pin, setPin] = useState(0);
+    const [pin, setPin] = useState(0); //remove later
 
     const [usePin, setUsePin] = useState(false);
     const [useBiometric, setUseBiometric] = useState(false);
@@ -60,11 +60,7 @@ export default function InitialSetupView({ navigation }) {
         });
     }
 
-
-    const submitInfo = () => {
-
-        //Check usePin and useBiometric
-        //if usePin is true, navigate to pin setup screen
+    const createRealmUser = () => {
         let newUser;
         try {
             if (realm) {
@@ -76,56 +72,84 @@ export default function InitialSetupView({ navigation }) {
                             lastName: lastName,
                             email: email,
                             birthday: birthday,
-                            pin: pin,
+                            pin: pin, //Remove later here and in realm
                             usePin: usePin,
                             useBiometric: useBiometric
                         });
-                        if (usePin) {
-                            Alert.alert('Navigate to pin screen');
-                            //Navigate here
-                        }
-                        navigation.navigate("JobSetup");
-                    }
-                    else {
-                        Alert.alert('A user already exists, clear profile data first to create a new user.');
+                        console.log('User created:', newUser);
+                    } else {
+                        console.log('User still exists');
                     }
                 });
-
-                //Get rid of this later 
-                realm.write(() => {
-                    var allUsers = realm.objects('User');
-                    console.log('allUsers', allUsers);
-                    // Alert.alert('allUsers', JSON.stringify(allUsers));
-                });
-                //
             }
-            else {
-                Alert.alert('Realm is not defined, navigating anyway');
-                navigation.navigate("JobSetup");
-            }
-
-        }
-        catch (error) {
-            Alert.alert('Error saving user.');
+        } catch (error) {
+            console.log(error);
         }
     }
 
-    const clearUsers = () => {
-        try {
-            if (realm) {
-                realm.write(() => {
-                    var allUsers = realm.objects('User');
-                    realm.delete(allUsers);
-                    Alert.alert('All users have been deleted.');
-                });
+    const updateRealmUser = () => {
+        userExists = realm.objects('User').length > 0;
+        if (userExists) {
+            realm.write(() => {
+                let existingUser = realm.objects('User')[0];
+                existingUser.firstName = firstName;
+                existingUser.lastName = lastName;
+                existingUser.email = email;
+                existingUser.birthday = birthday;
+                existingUser.pin = pin; //Remove later here and in realm
+                existingUser.usePin = usePin;
+                existingUser.useBiometric = useBiometric;
+                console.log('User updated:', existingUser);
+            });
+        } else {
+            console.log('User does not exist');
+        }
+    }
+
+    const submitInfo = () => {
+
+        //Check usePin and useBiometric
+        //if usePin is true, navigate to pin setup screen
+        userExists = realm.objects('User').length > 0;
+        if (!userExists) {
+            createRealmUser();
+            if (usePin) {
+                navigation.navigate('PinSetup');
             } else {
-                Alert.alert('Realm not initialized.');
+                navigation.navigate('JobSetup');
             }
+        } else {
+            Alert.alert('A user already exists, do you wish to overwrite account data?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel', onPress: () => navigation.goBack() }, {
+                text: 'Overwrite', style: 'destructive', onPress: () => {
+                    updateRealmUser();
+                    if (usePin) {
+                        navigation.navigate('PinSetup');
+                    } else {
+                        navigation.navigate('JobSetup');
+                    }
+                }
+            }]);
         }
-        catch (error) {
-            Alert.alert('Error deleting users.');
-        }
+
     }
+
+
+    // const clearUsers = () => {
+    //     try {
+    //         if (realm) {
+    //             realm.write(() => {
+    //                 var allUsers = realm.objects('User');
+    //                 realm.delete(allUsers);
+    //                 console.log('All users deleted');
+    //             });
+    //         } else {
+    //             Alert.alert('Realm not initialized.');
+    //         }
+    //     }
+    //     catch (error) {
+    //         Alert.alert('Error deleting users.');
+    //     }
+    // }
 
 
 
@@ -199,9 +223,9 @@ export default function InitialSetupView({ navigation }) {
                 <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
                     <Text style={{ color: COLORS.secondary }}>Continue</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearUsers()}>
+                {/* <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearUsers()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE PROFILE DATA</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
 
 

@@ -9,6 +9,7 @@ import JobSetup from './AddJob';
 import JobLocationSetup from './AddJobLocation';
 import InitialSetupView from './InitialSetupView';
 import SetupComplete from './SetupComplete';
+import PinSetup from './PinSetup';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,6 +63,14 @@ export default function SetupNav({ navigation }: { navigation: any }) {
                     tabBarStyle: { display: 'none' },
                 }}
             />
+            <Tab.Screen
+                name="PinSetup"
+                component={PinSetup}
+                options={{
+                    tabBarStyle: { display: 'none' },
+                }}
+            />
+
         </Tab.Navigator>
     );
 }

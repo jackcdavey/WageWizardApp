@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import { View, TouchableOpacity, Alert, TextInput, Text, Image, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Alert, TextInput, Text, Image } from "react-native";
 import realm from '../../userData/realm';
 
 import styles from '../../styles/stylesheet.js';

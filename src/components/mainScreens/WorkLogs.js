@@ -1,3 +1,6 @@
+//For cleaning up the appearance of the worklog list
+//https://www.npmjs.com/package/react-native-timeline-flatlist
+
 import React from 'react';
 import {
   Text,

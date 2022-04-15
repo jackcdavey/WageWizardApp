@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-
 import { View, TouchableOpacity, TextInput, Text, Alert } from "react-native";
 import Map from '../elements/Map.js';
-import { Circle } from 'react-native-maps';
-
 import styles from '../../styles/stylesheet.js';
-
 import realm from '../../userData/realm.js';
 
 
@@ -23,7 +19,7 @@ export default function JobLocationSetup({ navigation }) {
     let geoLat = 37.3499
     let geoLong = -121.9406
     let geoRad = 50
-    const updateGeofence = (lats,longs,rads)=>{
+    const updateGeofence = (lats, longs, rads) => {
         geoLat = lats
         geoLong = longs
         geoRad = rads
@@ -87,10 +83,10 @@ export default function JobLocationSetup({ navigation }) {
                 <Map
                     latitude={resultCoordinates.latitude}
                     longitude={resultCoordinates.longitude}
-                    updateGeofence = {updateGeofence}
+                    updateGeofence={updateGeofence}
                 >
 
-                    
+
                 </Map>
             </>
         );
