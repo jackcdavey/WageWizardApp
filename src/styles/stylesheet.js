@@ -183,14 +183,7 @@ const styles = EStyleSheet.create({
         textAlign: 'center',
         color: COLORS.dark,
     },
-    profileAccountInfoField: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '90%',
-        marginTop: '2%',
-    },
+
     headerTxt: {
         fontSize: '30rem',
         color: COLORS.secondary,
@@ -225,6 +218,11 @@ const styles = EStyleSheet.create({
     logText: {
         fontSize: 18,
         color: COLORS.dark,
+    },
+    profileAccountInfoText: {
+        fontSize: '15rem',
+        color: COLORS.dark,
+        textAlign: 'center',
     },
 
 
@@ -320,6 +318,7 @@ const styles = EStyleSheet.create({
     profileInformationContainer: {
         display: 'flex',
         flexDirection: 'row',
+
         paddingLeft: '15%',
         marginTop: '5%',
         marginBottom: '5%',
@@ -400,6 +399,20 @@ const styles = EStyleSheet.create({
         padding: '5%',
         zIndex: 1,
     },
+    profileAccountInfoField: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: COLORS.secondary,
+        width: '80%',
+        margin: '2%',
+        marginLeft: '5%',
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        padding: '4%',
+    },
 
     //CONTAINERS//
 
@@ -408,7 +421,7 @@ const styles = EStyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: COLORS.light,
         alignItems: 'center',
         justifyContent: 'space-evenly',
         width: Dimensions.get('window').width,
@@ -526,13 +539,15 @@ const styles = EStyleSheet.create({
         //margin: '2%',
     },
     input: {
+        backgroundColor: COLORS.secondary,
+        color: COLORS.primary,
         width: '80%',
         borderRadius: 15,
         borderColor: COLORS.primary,
-        backgroundColor: COLORS.secondary,
         borderWidth: 2,
         padding: 10,
         alignItems: 'center',
+
     },
 
     directionsWrap: {

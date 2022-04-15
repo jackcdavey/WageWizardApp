@@ -67,14 +67,14 @@ const AcccountView = ({ navigation }) => {
           <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
           <View>
             <View style={styles.profileAccountInfoField}>
-              <Text style={styles.input}>{fullName}</Text>
+              <Text style={styles.profileAccountInfoText}>{fullName}</Text>
             </View>
             <View style={styles.profileAccountInfoField}>
-              <Text style={styles.input}>{email}</Text>
+              <Text style={styles.profileAccountInfoText}>{email}</Text>
             </View>
 
             <View style={styles.profileAccountInfoField}>
-              <Text style={styles.input}>{birthday}</Text>
+              <Text style={styles.profileAccountInfoText}>{birthday}</Text>
             </View>
           </View>
         </View >
