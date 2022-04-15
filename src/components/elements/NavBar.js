@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity, Image, Text } from 'react-native';
+import { TouchableOpacity, Image, Text, Platform } from 'react-native';
 
 
 import COLORS from '../../styles/colors.js';
@@ -61,7 +61,11 @@ export default function NavBar({ navigation }) {
         tabBarActiveTintColor: "black",
         tabBarStyle: {
           maxHeight: '10%',
+          paddingBottom: 0,
         },
+        tabBarItemStyle: {
+          paddingBottom: Platform.OS === 'ios' ? '5%' : 0,
+        }
 
       })}
 

@@ -23,7 +23,7 @@ import SetupNav from './src/components/setupScreens/SetupNav';
 import EStyleSheet from "react-native-extended-stylesheet";
 EStyleSheet.build({ $rem: Dimensions.get('window').width / 380 });
 
-LogBox.ignoreLogs(['RCTBridge required dispatch_sync to load RNGestureHandlerModule. This may lead to deadlocks']);
+//LogBox.ignoreLogs(['RCTBridge required dispatch_sync to load RNGestureHandlerModule. This may lead to deadlocks']);
 
 
 
