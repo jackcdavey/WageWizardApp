@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import { View, TouchableOpacity, Alert, TextInput, Text, Image } from "react-native";
+import { View, TouchableOpacity, Alert, TextInput, Text, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import realm from '../../userData/realm';
 
 import styles from '../../styles/stylesheet.js';
@@ -83,55 +83,59 @@ export default function JobSetup({ navigation }) {
 
 
     return (
-        <View style={styles.container}>
-            <View style={styles.directionsWrap}>
-                <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
-            </View>
-            <View style={styles.directionsWrap}>
-                <Text style={styles.directions}>
-                    Provide the information below to set up your first job.
-                </Text>
-            </View>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.container}>
+                    <View style={styles.directionsWrap}>
+                        <Text style={[styles.title, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Add A Job</Text>
+                    </View>
+                    <View style={styles.directionsWrap}>
+                        <Text style={styles.directions}>
+                            Provide the information below to set up your first job.
+                        </Text>
+                    </View>
 
-            <View>
-                <View style={styles.field}>
-                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                    <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
-                </View>
+                    <View>
+                        <View style={styles.field}>
+                            <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                            <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
+                        </View>
 
-                <View style={styles.field}>
+                        <View style={styles.field}>
 
-                    <TextInput style={styles.setupTextField} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
-                </View>
-                <View style={styles.field}>
-                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                    <TextInput style={styles.setupTextField} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
-                    {/* this will be changed in future build */}
-                </View>
+                            <TextInput style={styles.setupTextField} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
+                        </View>
+                        <View style={styles.field}>
+                            <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                            <TextInput style={styles.setupTextField} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
+                            {/* this will be changed in future build */}
+                        </View>
 
-                <View>
-                    <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
-                </View>
-            </View>
+                        <View>
+                            <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
+                        </View>
+                    </View>
 
 
-            <View style={styles.buttonWrap}>
+                    <View style={styles.buttonWrap}>
 
-                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                    {/* This does not properly navigate to previous screen, always returns to account page
+                        <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
+                            {/* This does not properly navigate to previous screen, always returns to account page
                     even when accessed through InitialSetupView */}
-                    <Text>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
-                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
-                </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
-                <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
-            </TouchableOpacity>
+                            <Text>Back</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
+                            <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
+                        <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
+                    </TouchableOpacity>
 
 
-        </View>
+                </View>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
 

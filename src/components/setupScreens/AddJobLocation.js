@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import { View, TouchableOpacity, TextInput, Text, Alert } from "react-native";
+import { View, TouchableOpacity, TextInput, Text, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Map from '../elements/Map.js';
 import styles from '../../styles/stylesheet.js';
 import realm from '../../userData/realm.js';
@@ -132,38 +132,42 @@ export default function JobLocationSetup({ navigation }) {
 
     //fetchCoordinates(searchtext);
     return (
-        <View style={styles.container}>
-            <View style={styles.directionsWrap}>
-                <Text style={styles.title}>Add A Job</Text>
-            </View>
-            <View style={styles.directionsWrap}>
-                <Text style={styles.directions}>
-                    To configure automatic tracking,
-                    adjust the cicle below until your
-                    place of work is inside.
-                </Text>
-            </View>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.container}>
+                    <View style={styles.directionsWrap}>
+                        <Text style={styles.title}>Add A Job</Text>
+                    </View>
+                    <View style={styles.directionsWrap}>
+                        <Text style={styles.directions}>
+                            To configure automatic tracking,
+                            adjust the cicle below until your
+                            place of work is inside.
+                        </Text>
+                    </View>
 
-            <View style={styles.field}>
-                <TextInput style={styles.searchText} placeholder="Search By Address..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
-                <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates()}>
-                    <Text style={{ color: COLORS.secondary }}>Search</Text>
-                </TouchableOpacity>
-            </View>
-            <View>
-                <JobLocationSetupMap />
-            </View>
-            <View style={styles.buttonWrap}>
+                    <View style={styles.field}>
+                        <TextInput style={styles.searchText} placeholder="Search By Address..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
+                        <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates()}>
+                            <Text style={{ color: COLORS.secondary }}>Search</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <JobLocationSetupMap />
+                    </View>
+                    <View style={styles.buttonWrap}>
 
-                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                    <Text>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => createNewGeofence()}>
-                    <Text style={{ color: COLORS.secondary }}>Continue</Text>
-                </TouchableOpacity>
-            </View>
+                        <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
+                            <Text>Back</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => createNewGeofence()}>
+                            <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                        </TouchableOpacity>
+                    </View>
 
 
-        </View>
+                </View>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
