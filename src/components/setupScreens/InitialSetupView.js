@@ -125,7 +125,11 @@ export default function InitialSetupView({ navigation }) {
                     if (usePin) {
                         navigation.navigate('PinSetup');
                     } else {
-                        navigation.navigate('JobSetup');
+                        if (realm.objects('Job').length > 0) {
+                            navigation.navigate('SetupComplete');
+                        } else {
+                            navigation.navigate('JobSetup');
+                        }
                     }
                 }
             }]);

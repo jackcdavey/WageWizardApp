@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
 const clearJobs = () => {
     try {
         if (realm) {
+            clearLogs();
             realm.write(() => {
                 var allJobs = realm.objects('Job');
                 realm.delete(allJobs);

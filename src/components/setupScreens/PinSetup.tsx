@@ -4,13 +4,18 @@ import { View, TouchableOpacity, Text } from "react-native";
 //import realm from '../../userData/realm';
 import COLORS from "../../styles/colors.js";
 import styles from "../../styles/stylesheet.js";
+import realm from '../../userData/realm';
 
 
 
 
 export default function PinSetup({ navigation }: { navigation: any }) {
     const submitInfo = () => {
-        navigation.navigate('JobSetup');
+        if (realm.objects('Job').length > 0) {
+            navigation.navigate('SetupComplete');
+        } else {
+            navigation.navigate('JobSetup');
+        }
         // let newPin;
         // try {
         //     if (realm) {
