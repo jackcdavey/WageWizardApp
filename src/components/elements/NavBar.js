@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TouchableOpacity, Image, Text, Platform } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 
 import COLORS from '../../styles/colors.js';
@@ -54,7 +55,6 @@ export default function NavBar({ navigation }) {
         headerLeft: () => (
           <Header title={route.name} />
         ),
-
         tabBarInactiveBackgroundColor: COLORS.primary,
         tabBarActiveBackgroundColor: COLORS.active,
         tabBarInactiveTintColor: 'white',
@@ -64,11 +64,10 @@ export default function NavBar({ navigation }) {
           paddingBottom: 0,
         },
         tabBarItemStyle: {
-          paddingBottom: Platform.OS === 'ios' ? '5%' : 0,
+          paddingBottom: DeviceInfo.hasNotch() ? '5%' : 0,
         }
 
       })}
-
     >
 
       <Tab.Screen
