@@ -323,6 +323,8 @@ PODS:
     - React-Core
   - react-native-blur (0.8.0):
     - React
+  - react-native-geolocation-service (5.3.0-beta.4):
+    - React
   - react-native-image-picker (4.7.3):
     - React-Core
   - react-native-maps (0.30.1):
@@ -505,6 +507,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-background-timer (from `../node_modules/react-native-background-timer`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
+  - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-restart (from `../node_modules/react-native-restart`)
@@ -616,6 +619,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-background-timer"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
+  react-native-geolocation-service:
+    :path: "../node_modules/react-native-geolocation-service"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
   react-native-maps:
@@ -718,6 +723,7 @@ SPEC CHECKSUMS:
   React-logger: b08f354e4c928ff794ca477347fea0922aaf11c3
   react-native-background-timer: 17ea5e06803401a379ebf1f20505b793ac44d0fe
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
+  react-native-geolocation-service: c0efb872258ed9240f1003a70fca9e9757e5c785
   react-native-image-picker: 4e6008ad8c2321622affa2c85432a5ebd02d480c
   react-native-maps: d752b0dd0e1951d815b1336332835aab6b4a836f
   react-native-restart: 45c8dca02491980f2958595333cbccd6877cb57e

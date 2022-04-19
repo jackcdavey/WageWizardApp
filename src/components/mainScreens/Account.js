@@ -59,149 +59,75 @@ const AcccountView = ({ navigation }) => {
   }
   //If editButtonPressed is true, then render the version of the page with the TextInputs 
   //rather than Text elements.
-  if (!isEditing) {
-    //Static version of the page
-    return (
-      <View style={styles.container}>
-        <View style={styles.profileInformationContainer}>
-          <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
-          <View>
-            <View style={styles.profileAccountInfoField}>
-              <Text style={styles.profileAccountInfoText}>{fullName}</Text>
-            </View>
-            <View style={styles.profileAccountInfoField}>
-              <Text style={styles.profileAccountInfoText}>{email}</Text>
-            </View>
-
-            <View style={styles.profileAccountInfoField}>
-              <Text style={styles.profileAccountInfoText}>{birthday}</Text>
-            </View>
+  //Static version of the page
+  return (
+    <View style={styles.container}>
+      <View style={styles.profileInformationContainer}>
+        <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
+        <View>
+          <View style={styles.profileAccountInfoField}>
+            <Text style={styles.profileAccountInfoText}>{fullName}</Text>
           </View>
-        </View >
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => setIsEditing(true)}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>
-                Edit Info
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>
-                Add Job
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <View style={styles.profileAccountInfoField}>
+            <Text style={styles.profileAccountInfoText}>{email}</Text>
+          </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-            <View style={styles.testButton}>
-              <Text style={styles.buttonText}>
-                TESTING
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <View style={styles.profileAccountInfoField}>
+            <Text style={styles.profileAccountInfoText}>{birthday}</Text>
+          </View>
         </View>
-        <Text style={styles.subtitle}>Saved Jobs</Text>
-        <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-          <ScrollView>
-            <Text> {jobList}</Text>
-          </ScrollView>
-        </View>
-        <Text style={styles.subtitle}>Saved Locations</Text>
-        <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-          <ScrollView>
-            <Text> {locationList}</Text>
-          </ScrollView>
-        </View>
-        <Text style={styles.subtitle}>Saved Logs</Text>
-        <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-          <ScrollView>
-            <Text> {logsList}</Text>
-          </ScrollView>
+      </View >
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>
+              Edit Info
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'JobSetup' })}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>
+              Add Job
+            </Text>
+          </View>
+        </TouchableOpacity>
 
-        </View>
-
+        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+          <View style={styles.testButton}>
+            <Text style={styles.buttonText}>
+              TESTING
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.subtitle}>Saved Jobs</Text>
+      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <ScrollView>
+          <Text> {jobList}</Text>
+        </ScrollView>
+      </View>
+      <Text style={styles.subtitle}>Saved Locations</Text>
+      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <ScrollView>
+          <Text> {locationList}</Text>
+        </ScrollView>
+      </View>
+      <Text style={styles.subtitle}>Saved Logs</Text>
+      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <ScrollView>
+          <Text> {logsList}</Text>
+        </ScrollView>
 
       </View>
 
-      // </View>
 
-    );
-  } else {
+    </View>
 
-    //Editable version of the page
+    // </View>
 
-    //IMPORTANT
-    //This:
-    //  - will need to be updated as the static version is updated.
-    //  - does not currently update user info
-    //  
-    //There is definitely a better way to do this.
-    //
-    return (
-      <View>
-        <View style={{ flexDirection: 'row', paddingTop: 25 }}>
-          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
-            <TouchableOpacity onPress={() => Alert.alert("Edit Profile Picture")}>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 145, maxHeight: 145 }} />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Full Name" defaultValue={fullName} />
-            </View>
-            <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Email Address" defaultValue={email} />
-            </View>
-
-            <View style={styles.field}>
-              <TextInput style={styles.input} placeholder="Birthday" defaultValue={birthday} />
-            </View>
-          </View>
-        </View>
-        <View style={{ justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => setIsEditing(false)}>
-            <View style={styles.btn}>
-              <Text style={{ margin: 5, padding: 10, color: COLORS.light, fontSize: 20, height: 44, fontWeight: 'bold', }}>
-                Done Editing
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={{ justifyContent: 'center' }}>
-          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={[styles.infoTxt, global.globalCustomFontUse ? { fontFamily: 'Comfortaa-Bold' } : {}]}>Saved Jobs</Text>
-          </View>
-          <TouchableOpacity onPress={() => navigation.navigate("Setup")}>
-            <View style={styles.btn}>
-              <Text style={{
-                margin: 5,
-                padding: 10,
-                color: COLORS.light,
-                fontSize: 20,
-                height: 44,
-                fontWeight: 'bold',
-              }}>
-                Add Job
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-
-          <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
-            <View style={styles.testBtn}>
-              <Text style={styles.item}>
-                [SETUP]
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
+  );
 }
-
 
 
 //Handles stack navigation settings for account//

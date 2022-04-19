@@ -239,6 +239,9 @@ const _LocationMap = (props) => {
       console.log("location tracking denied")
       requestPermissions();
       return
+    } else {
+      //store.dispatch(locationUpdate(location.coords.latitude, location.coords.longitude));
+      console.log("location tracking already granted");
     }
     // Make sure the task is defined otherwise do not start tracking
     const isTaskDefined = await TaskManager.isTaskDefined(BACKGROUND_LOCATION_TRACKING)
@@ -331,6 +334,7 @@ const _LocationMap = (props) => {
   }
 
   const [noteText, setNoteText] = useState(' ')
+
   return (
     <View style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
 

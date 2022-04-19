@@ -1,24 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import { View, TouchableOpacity, TextInput, Text, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Map from '../elements/Map.js';
 import styles from '../../styles/stylesheet.js';
 import realm from '../../userData/realm.js';
 
-
+import Geolocation from "react-native-geolocation-service";
 
 
 export default function JobLocationSetup({ navigation }) {
-
-    const [searchText, setSearchText] = useState('500 El Camino Real San Jose CA');
-
-    const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': 37.3499, 'longitude': -121.9406 });
-    //const [geoLats, setGeoLats] = useState(37.3499)
-    //const [geoLong, setGeoLong] = useState(-121.9406)
-    //const [geoRad, setGeoRad] = useState(50)
     let geoLat = 37.3499
     let geoLong = -121.9406
     let geoRad = 50
+    let initialLocationSet = false
+
+    const [searchText, setSearchText] = useState('500 El Camino Real San Jose CA');
+    const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': geoLat, 'longitude': geoLong });
+
+
+
+
+    // Function to render the map at the user's current location, but causing crashes
+
+    // useEffect(async () => {
+    //     async function getInitialLocation() {
+    //         Geolocation.getCurrentPosition(
+    //             position => {
+    //                 console.log('Job Location Setup position:' + position.coords.latitude + ', ' + position.coords.longitude);
+    //                 //setResultCoordinates({ 'latitude': position.coords.latitude, 'longitude': position.coords.longitude });
+    //                 geoLat = position.coords.latitude
+    //                 geoLong = position.coords.longitude
+    //                 console.log('Job Location Setup geoLat:' + geoLat + ', geoLong:' + geoLong);
+    //             },
+    //             error => {
+    //                 console.log('Map componentDidMount error', error);
+    //             },
+    //             { showLocationDialog: true, enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
+    //         );
+    //     }
+    //     if (!initialLocationSet) {
+    //         //setResultCoordinates({ 'latitude': geoLat, 'longitude': geoLong });
+    //         initialLocationSet = true
+    //     }
+    //     getInitialLocation();
+    //     //setResultCoordinates({ 'latitude': getInitialLocation().latitude, 'longitude': getInitialLocation().longitude });
+    // });
+
+    //const [geoLats, setGeoLats] = useState(37.3499)
+    //const [geoLong, setGeoLong] = useState(-121.9406)
+    //const [geoRad, setGeoRad] = useState(50)
+
     const updateGeofence = (lats, longs, rads) => {
         geoLat = lats
         geoLong = longs
