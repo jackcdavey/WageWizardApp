@@ -16,7 +16,7 @@ import { Provider } from 'react-redux';
 //import * as LocalAuthentication from 'expo-local-authentication';
 
 
-import { Dimensions, LogBox } from 'react-native';
+import { Dimensions } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SetupNav from './src/components/setupScreens/SetupNav';
 

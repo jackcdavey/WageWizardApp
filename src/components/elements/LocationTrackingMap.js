@@ -72,17 +72,18 @@ function checkIfInsideAnyGeofence(coord, regions) {
 
 }
 
-const generateGeofence = (selectedJob) => {
-  const geofences = selectedJob.locations.map((location) => {
-    return {
-      latitude: location.latLng.latitude,
-      longitude: location.latLng.longitude,
-      radius: location.radius
-    }
-  })
-  console.log(geofences)
-  return geofences
-}
+//Unused
+// const generateGeofence = (selectedJob) => {
+//   const geofences = selectedJob.locations.map((location) => {
+//     return {
+//       latitude: location.latLng.latitude,
+//       longitude: location.latLng.longitude,
+//       radius: location.radius
+//     }
+//   })
+//   console.log(geofences)
+//   return geofences
+// }
 
 const createLog = () => {
   //Triggered when a new log needs to be created
@@ -318,9 +319,9 @@ const _LocationMap = (props) => {
     setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + jobId))
   }, [jobId])
 
-  const handleStart = () => {
-    startBackgroundUpdate();
-  }
+  // const handleStart = () => {
+  //   startBackgroundUpdate();
+  // }
 
   const handleResume = () => {
     resumeTimer();
@@ -328,10 +329,10 @@ const _LocationMap = (props) => {
   const handlePause = () => {
     pauseTimer();
   }
-  const handleEnd = () => {
-    stopBackgroundUpdate();;
-    endTimer();
-  }
+  // const handleEnd = () => {
+  //   stopBackgroundUpdate();;
+  //   endTimer();
+  // }
 
   const [noteText, setNoteText] = useState(' ')
 

@@ -27,7 +27,6 @@ const AcccountView = ({ navigation }) => {
   const profilePicDimensions = Dimensions.get('window').width * 0.35;
 
   var userExists = false;
-  const [isEditing, setIsEditing] = useState(false);
 
   var firstName = 'no First Name';
   var lastName = 'no Last Name';

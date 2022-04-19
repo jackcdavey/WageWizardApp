@@ -10,7 +10,7 @@ import BackgroundTimer from 'react-native-background-timer';
 
 const _Timer = (props) => {
 
-  const { isIdle, isRunning, isPaused, time, startTimer, pauseTimer, resumeTimer, endTimer, incrementTime } = props;
+  const { isIdle, isRunning, isPaused, time, incrementTime } = props;
 
   let seconds = ("0" + ((time / 1) % 60)).slice(-2)
   let minutes = ("0" + (Math.floor((time / 60)) % 60)).slice(-2)

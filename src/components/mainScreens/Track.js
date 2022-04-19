@@ -229,18 +229,20 @@ const _Tracking = (props) => {
     })
   }
 
-  const [showWorkLogs, setShowWorkLogs] = useState(false)
-  const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
-  const showWorkLogButton = () => {
-    if (showWorkLogs) {
-      setShowWorkLogsText('show work logs')
-      setShowWorkLogs(false)
-    }
-    else {
-      setShowWorkLogsText('hide work logs')
-      setShowWorkLogs(true)
-    }
-  }
+  //Unused
+  //
+  // const [showWorkLogs, setShowWorkLogs] = useState(false)
+  // const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
+  // const showWorkLogButton = () => {
+  //   if (showWorkLogs) {
+  //     setShowWorkLogsText('show work logs')
+  //     setShowWorkLogs(false)
+  //   }
+  //   else {
+  //     setShowWorkLogsText('hide work logs')
+  //     setShowWorkLogs(true)
+  //   }
+  // }
 
 
 

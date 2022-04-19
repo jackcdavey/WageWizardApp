@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity, Image, Text, Platform } from 'react-native';
+import { TouchableOpacity, Image, Text } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
 
