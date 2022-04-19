@@ -5,6 +5,8 @@ import {
 } from 'expo-local-authentication';
 import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import styles from '../../styles/stylesheet';
 
 
 const Tab = createBottomTabNavigator();
@@ -34,6 +36,13 @@ const pinView = () => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Pin code here</Text>
+            <TouchableOpacity onPress={VerifyPin}>
+
+                <View style={styles.button}>
+                    <Text style={styles.buttonText}>Verify</Text>
+                </View>
+            </TouchableOpacity>
+
         </View>
     );
 }

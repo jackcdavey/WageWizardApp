@@ -1,6 +1,6 @@
 import React from 'react';
 //import MapView from 'react-native-maps';
-import MapView, { Circle, Marker } from 'react-native-maps';
+import MapView, { Circle } from 'react-native-maps';
 import { Dimensions, StyleSheet } from 'react-native';
 import COLORS from '../../styles/colors';
 

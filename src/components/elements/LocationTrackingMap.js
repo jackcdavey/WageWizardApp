@@ -197,7 +197,7 @@ const mapDispatchToProps = (dispatch) => {
 const _LocationMap = (props) => {
 
   //grabing all of the redux states and dispatches from the props
-  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId, note, addNote, start_time, end_time, updateStartTime, updateEndTime } = props;
+  const { isIdle, isPaused, region, time, endTimer, pauseTimer, resumeTimer, isInsideGeofence, isTracking, setIsTracking, jobId, note, addNote, updateEndTime } = props;
 
   //useEffect to ask the user for location permissions, must be run first 
 

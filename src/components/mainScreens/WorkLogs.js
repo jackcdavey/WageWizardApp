@@ -80,9 +80,10 @@ export default function WorkLogs(props) {
 
   const getAMPM = (x) => {
     if (x >= 12)
-      return ampm = "PM";
+      ampm = "PM";
     else
-      return ampm = "AM";
+      ampm = "AM";
+    return ampm;
   }
 
 

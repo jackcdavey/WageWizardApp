@@ -43,24 +43,23 @@ const _Timer = (props) => {
   }, [isIdle, isRunning, isPaused]);
 
   //helper function to handle the timer's state, we will be addding more in these functions (geofencing, recording entry to the database)
-  const handleStart = () => {
-    startTimer();
-  }
-  const handlePause = () => {
-    pauseTimer();
-  }
-  const handleResume = () => {
-    resumeTimer();
-  }
-  const handleEnd = () => {
-    endTimer()
-  }
+  //These are seeemingly unused, commenting out to test
+  // const handleStart = () => {
+  //   startTimer();
+  // }
+  // const handlePause = () => {
+  //   pauseTimer();
+  // }
+  // const handleResume = () => {
+  //   resumeTimer();
+  // }
+  // const handleEnd = () => {
+  //   endTimer()
+  // }
 
   return (
     <View style={{ display: 'flex', flexDirection: 'row', padding: '2%', alignItems: 'center' }}>
       <Text style={styles.timerLabel}>Timer:</Text><Text style={styles.timerText}> {hours}: {minutes}: {seconds}</Text>
-
-
     </View>
   )
 }
