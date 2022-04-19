@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Alert } from "react-native"
 
 
 //we will need this ////////////////////////////////////////////
-import * as TaskManager from "expo-task-manager"
+//import * as TaskManager from "expo-task-manager"
 import * as Location from "expo-location"
 
-const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
-let foregroundSubscription = null
+//const BACKROUND_LOCATION_TRACKING = "BACKROUND_LOCATION_TRACKING "
+//let foregroundSubscription = null
 //////////////////////////////////////////////////////////////
 
 //call first thing
@@ -18,7 +18,7 @@ let foregroundSubscription = null
 
 
 
-const [position, setPosition] = useState(null)
+//const [position, setPosition] = useState(null)
 
 //called first thing when the user opens the tracking page 
 //request for forground and background location permissions

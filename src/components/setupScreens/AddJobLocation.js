@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
 import { View, TouchableOpacity, TextInput, Text, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Map from '../elements/Map.js';
 import styles from '../../styles/stylesheet.js';
 import realm from '../../userData/realm.js';
 
-import Geolocation from "react-native-geolocation-service";
+//import Geolocation from "react-native-geolocation-service";
 
 
 export default function JobLocationSetup({ navigation }) {
     let geoLat = 37.3499
     let geoLong = -121.9406
     let geoRad = 50
-    let initialLocationSet = false
+    //let initialLocationSet = false
 
     const [searchText, setSearchText] = useState('500 El Camino Real San Jose CA');
     const [resultCoordinates, setResultCoordinates] = useState({ 'latitude': geoLat, 'longitude': geoLong });
