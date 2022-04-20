@@ -91,33 +91,23 @@ const AcccountView = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
           <View style={styles.testButton}>
             <Text style={styles.buttonText}>
               TESTING
             </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
-      <Text style={styles.subtitle}>Saved Jobs</Text>
+
       <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <Text style={styles.subtitle}>Saved Jobs</Text>
         <ScrollView>
           <Text> {jobList}</Text>
         </ScrollView>
       </View>
-      <Text style={styles.subtitle}>Saved Locations</Text>
-      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-        <ScrollView>
-          <Text> {locationList}</Text>
-        </ScrollView>
-      </View>
-      <Text style={styles.subtitle}>Saved Logs</Text>
-      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-        <ScrollView>
-          <Text> {logsList}</Text>
-        </ScrollView>
 
-      </View>
+
 
 
     </View>

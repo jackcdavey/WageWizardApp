@@ -111,9 +111,9 @@ export default function JobSetup({ navigation }) {
                             {/* this will be changed in future build */}
                         </View>
 
-                        <View>
+                        {/* <View>
                             <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
-                        </View>
+                        </View> */}
                     </View>
 
 
@@ -128,9 +128,9 @@ export default function JobSetup({ navigation }) {
                             <Text style={{ color: COLORS.secondary }}>Continue</Text>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
+                    {/* <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
                         <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
 
 
                 </View>

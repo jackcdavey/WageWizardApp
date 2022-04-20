@@ -38,7 +38,7 @@ export default function PinSetup({ navigation }: { navigation: any }) {
             <View style={styles.container}>
 
                 <Text style={styles.subtitle}>
-                    The pin setup component will be added here.
+                    Pin-based security will be added soon!
                 </Text>
                 <View style={styles.buttonWrap}>
 
