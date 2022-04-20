@@ -8,8 +8,8 @@ import Geolocation from "react-native-geolocation-service";
 
 //const LATITUDE = 37.78825;
 //const LONGITUDE = -122.4324;
-const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = 0.0421;
+const LATITUDE_DELTA = 0.000922;
+const LONGITUDE_DELTA = 0.000421;
 
 class Map extends React.Component {
   async getCamera() {
@@ -68,7 +68,7 @@ class Map extends React.Component {
       region: region
     });
     //this.props.updateGeofence(this.state.region.latitude,this.state.region.longitude,(this.state.region.longitudeDelta)*10000);
-    console.log((this.state.region.longitudeDelta) * 10000)
+    console.log((this.state.region.longitudeDelta) * 350000)
 
   }
 
@@ -121,7 +121,7 @@ class Map extends React.Component {
           onRegionChange={this.onRegionChange}
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
-          <Circle center={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }} radius={(this.state.region.latitudeDelta) * 10000} fillColor={'rgba(245, 40, 145, 0.35)'} />
+          <Circle center={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }} radius={(this.state.region.latitudeDelta) * 35000} fillColor={'rgba(245, 40, 145, 0.35)'} />
 
         </MapView>
       );
