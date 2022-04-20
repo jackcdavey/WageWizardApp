@@ -4,7 +4,7 @@ import MapView, { Circle } from 'react-native-maps';
 import { Dimensions, StyleSheet } from 'react-native';
 import COLORS from '../../styles/colors';
 
-import Geolocation from "react-native-geolocation-service";
+//import Geolocation from "react-native-geolocation-service";
 
 //const LATITUDE = 37.78825;
 //const LONGITUDE = -122.4324;
