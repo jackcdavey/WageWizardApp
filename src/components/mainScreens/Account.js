@@ -1,9 +1,8 @@
 import COLORS from '../../styles/colors.js';
-import React, { useState } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styles from '../../styles/stylesheet.js';
 import {
-  TextInput,
   Text,
   View,
   Dimensions,
