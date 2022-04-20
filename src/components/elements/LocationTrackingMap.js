@@ -352,7 +352,9 @@ const _LocationMap = (props) => {
           }}
           region={region}
         >
-          <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
+          <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }}>
+            <Image source = {require('../../assets/images/icons/ProfileDefault.png')} style={{width: 30, height: 30}}/>
+          </Marker>
           {
             (geofences.length > 0)
               ? geofences.map((location) => {
