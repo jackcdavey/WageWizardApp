@@ -30,6 +30,10 @@ local.properties
 *.iml
 *.hprof
 
+#AndroidStudio
+#
+*.aab
+
 # node.js
 #
 node_modules/
