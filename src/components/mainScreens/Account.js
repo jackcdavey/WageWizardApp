@@ -79,7 +79,7 @@ const AcccountView = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("Setup", { screen: 'InitialSetup' })}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>
-              Edit Info
+              Edit Profile
             </Text>
           </View>
         </TouchableOpacity>
@@ -91,33 +91,24 @@ const AcccountView = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
-          <View style={styles.testButton}>
-            <Text style={styles.buttonText}>
-              TESTING
-            </Text>
-          </View>
-        </TouchableOpacity>
+
       </View>
-      <Text style={styles.subtitle}>Saved Jobs</Text>
+
       <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+        <Text style={styles.subtitle}>Saved Jobs</Text>
         <ScrollView>
           <Text> {jobList}</Text>
         </ScrollView>
       </View>
-      <Text style={styles.subtitle}>Saved Locations</Text>
-      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-        <ScrollView>
-          <Text> {locationList}</Text>
-        </ScrollView>
-      </View>
-      <Text style={styles.subtitle}>Saved Logs</Text>
-      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
-        <ScrollView>
-          <Text> {logsList}</Text>
-        </ScrollView>
+      <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+        <View style={styles.testButton}>
+          <Text style={styles.buttonText}>
+            TESTING
+          </Text>
+        </View>
+      </TouchableOpacity>
 
-      </View>
+
 
 
     </View>

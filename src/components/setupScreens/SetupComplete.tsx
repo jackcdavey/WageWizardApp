@@ -16,7 +16,7 @@ export default function SetupComplete({ navigation }: { navigation: any }) {
                 Congratulations! You're ready to start using Wage Wizard to
                 track your work, and defend against wage theft.
             </Text>
-            <TouchableOpacity style={styles.button} onPress={() => RNRestart.Restart()}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
                 <Text style={{ color: COLORS.secondary }}>Finish</Text>
             </TouchableOpacity>
         </View>

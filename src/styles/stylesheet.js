@@ -170,6 +170,7 @@ const styles = EStyleSheet.create({
         fontFamily: 'Comfortaa-Bold',
         color: COLORS.dark,
         textAlign: 'center',
+        padding: '2%',
     },
     directions: {
         fontSize: '15rem',
