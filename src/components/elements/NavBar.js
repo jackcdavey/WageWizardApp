@@ -5,7 +5,7 @@ import DeviceInfo from 'react-native-device-info';
 
 import COLORS from '../../styles/colors.js';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Tracking from '../mainScreens/Track';
 import Resources from '../mainScreens/Resources';
 import WorkLogs from '../mainScreens/WorkLogs';
@@ -20,15 +20,40 @@ import {
 
 const Tab = createBottomTabNavigator();
 
+
+function useForceUpdate() {
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => value + 1); // update the state to force render
+}
+
+
 export default function NavBar({ navigation }) {
+  const forceUpdate = useForceUpdate();
   //const [userName, setUserName] = useState('no name');
   var userName = 'no name';
+  // useEffect(() => {
   if (realm) {
     if (realm.objects('User').length > 0) {
       const user = realm.objects('User');
       userName = user[0].firstName;
     }
+
+    function onRealmChange() {
+      console.log('realm changed');
+      forceUpdate();
+      const user = realm.objects('User');
+      userName = user[0].firstName;
+    }
+
+    try {
+      realm.addListener("change", onRealmChange);
+    } catch (error) {
+      console.error(
+        `An exception was thrown within the change listener: ${error}`
+      );
+    }
   }
+  // }, [])
 
   return (
     <Tab.Navigator
