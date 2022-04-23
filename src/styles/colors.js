@@ -19,7 +19,7 @@ if (!darkMode) {
         secondary: '#1c1c45',
         dark: '#d9d9d9',
         light: '#28262C',
-        active: '#91BAD5',
+        active: '#5a7282',
         icon: "#F0F8FF",
         trackTimerStart: 'green',
         trackTimerStop: 'red',
