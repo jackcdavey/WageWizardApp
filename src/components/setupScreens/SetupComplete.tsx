@@ -1,6 +1,6 @@
 import React from 'react';
 import COLORS from '../../styles/colors.js';
-import { View, TouchableOpacity, StyleSheet, Dimensions, Text } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import styles from '../../styles/stylesheet.js';
 
 import RNRestart from 'react-native-restart';
