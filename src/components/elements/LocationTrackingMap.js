@@ -6,7 +6,7 @@ import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
-import MapView, { Circle, Marker } from 'react-native-maps';
+import MapView, { Circle, Marker, Icon } from 'react-native-maps';
 import * as TaskManager from "expo-task-manager"
 
 //redux logic imports
@@ -202,6 +202,8 @@ const _LocationMap = (props) => {
 
   //useEffect to ask the user for location permissions, must be run first 
 
+
+  /*
   const requestPermissions = async () => {
 
     //Check if the user has granted fg & bg location permissions
@@ -228,6 +230,32 @@ const _LocationMap = (props) => {
 
 
   }
+  */
+
+  const requestPermissions = async () => {
+
+    //Check if the user has granted fg & bg location permissions
+    const foreground = await Location.requestForegroundPermissionsAsync();
+    const background = await Location.requestBackgroundPermissionsAsync();
+
+    if (foreground.status !== 'granted') {
+      console.log("Foreground Permission Not Given");
+      console.log("Foreground value:  " + foreground);
+      return;
+    } else {
+      console.log("Foreground Permission Given");
+    }
+    if (background.status !== 'granted') {
+      console.log("Background Permission Not Given");
+      console.log("Background value:  " + background);
+      return;
+    } else {
+      console.log("Background Permission Given")
+      let location = await Location.getCurrentPositionAsync({});
+      console.log('Current location: ' + location);
+    }
+
+  }
 
 
   //Start Background Location Updates and Geofencing updates
@@ -238,7 +266,7 @@ const _LocationMap = (props) => {
     if (background.status !== 'granted') {
       console.log("Yeah uh:  " + JSON.stringify(background));
       console.log("location tracking denied")
-      requestPermissions();
+      //requestPermissions();
       return
     } else {
       //store.dispatch(locationUpdate(location.coords.latitude, location.coords.longitude));
@@ -319,6 +347,12 @@ const _LocationMap = (props) => {
     setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + jobId))
   }, [jobId])
 
+  useEffect(()=>{
+
+    requestPermissions();
+    
+  },[])
+
   // const handleStart = () => {
   //   startBackgroundUpdate();
   // }
@@ -353,7 +387,7 @@ const _LocationMap = (props) => {
           region={region}
         >
           <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} >
-            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 30, height: 30 }} />
+            <Image source = {require('../../assets/images/icons/ProfileDefault.png')} style={{width: 30, height: 30}}/>
           </Marker>
           {
             (geofences.length > 0)
