@@ -15,10 +15,9 @@ if (!darkMode) {
     };
 } else {
     COLORS = {
-
         primary: '#2374AB',
         secondary: '#1c1c45',
-        dark: '#FFFFFF',
+        dark: '#d9d9d9',
         light: '#28262C',
         active: '#91BAD5',
         icon: "#F0F8FF",

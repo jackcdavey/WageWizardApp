@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { BlurView } from "@react-native-community/blur";
 
@@ -150,8 +150,8 @@ const _Tracking = (props) => {
           : <View></View>
       }
 
-      <Timer/>
- 
+      <Timer />
+
 
       {
         jobsExist

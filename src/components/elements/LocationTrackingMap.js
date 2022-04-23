@@ -6,7 +6,7 @@ import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 //location/geofencing imports
 import * as Location from "expo-location"
-import MapView, { Circle, Marker, Icon } from 'react-native-maps';
+import MapView, { Circle, Marker } from 'react-native-maps';
 import * as TaskManager from "expo-task-manager"
 
 //redux logic imports
@@ -347,11 +347,11 @@ const _LocationMap = (props) => {
     setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + jobId))
   }, [jobId])
 
-  useEffect(()=>{
+  useEffect(() => {
 
     requestPermissions();
-    
-  },[])
+
+  }, [])
 
   // const handleStart = () => {
   //   startBackgroundUpdate();
@@ -387,7 +387,7 @@ const _LocationMap = (props) => {
           region={region}
         >
           <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} >
-            <Image source = {require('../../assets/images/icons/ProfileDefault.png')} style={{width: 30, height: 30}}/>
+            <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 30, height: 30 }} />
           </Marker>
           {
             (geofences.length > 0)

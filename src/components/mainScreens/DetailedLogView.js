@@ -68,71 +68,73 @@ export default function DetailedLogView({ route, navigation }) {
                 </TouchableOpacity>
                 <Header title="Details" />
             </View>
-            <View style={styles.logContainer}>
-                <Text style={styles.logTitle}>
-                    Job - {date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()}
-                </Text>
-
-                <View style={styles.logSectionContainer}>
-                    <Text style={styles.logLabel}>
-                        Employer:
-                    </Text>
-                    <Text style={styles.logText}>
-                        {employer}
-                    </Text>
-                </View>
-                <View style={styles.logSectionContainer}>
-                    <Text style={styles.logLabel}>
-                        Client:
-                    </Text>
-                    <Text style={styles.logText}>
-                        {client}
-                    </Text>
-                </View>
-                <View style={styles.logSectionContainer}>
-                    <Text style={styles.logLabel}>
-                        Start Time:
-                    </Text>
-                    <Text style={styles.logText}>
-                        {startTime.getHours() % 12 + ":" + startTime.getMinutes() + ' ' + ampm}
-                    </Text>
-                </View>
-                <View style={styles.logSectionContainer}>
-                    <Text style={styles.logLabel}>
-                        End Time:
-                    </Text>
-                    <Text style={styles.logText}>
-                        {endTime.getHours() % 12 + ":" + endTime.getMinutes() + ' ' + ampm}
-                    </Text>
-                </View>
-                <View style={styles.logSectionContainer}>
-                    <Text style={styles.logLabel}>
-                        Time Spent:
-                    </Text>
-                    <Text style={styles.logText}>
-                        {hours} : {minutes} : {seconds}
+            <View style={styles.container}>
+                <View style={styles.logContainer}>
+                    <Text style={styles.logTitle}>
+                        Job - {date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()}
                     </Text>
 
-                </View>
-                <View style={styles.logSectionContainer}>
-                    <Text style={styles.logLabel}>
-                        Notes:
-                    </Text>
-                    <ScrollView>
-                        <Text style={styles.logText}>
-                            {notes}
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Employer:
                         </Text>
-                    </ScrollView>
+                        <Text style={styles.logText}>
+                            {employer}
+                        </Text>
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Client:
+                        </Text>
+                        <Text style={styles.logText}>
+                            {client}
+                        </Text>
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Start Time:
+                        </Text>
+                        <Text style={styles.logText}>
+                            {startTime.getHours() % 12 + ":" + startTime.getMinutes() + ' ' + ampm}
+                        </Text>
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            End Time:
+                        </Text>
+                        <Text style={styles.logText}>
+                            {endTime.getHours() % 12 + ":" + endTime.getMinutes() + ' ' + ampm}
+                        </Text>
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Time Spent:
+                        </Text>
+                        <Text style={styles.logText}>
+                            {hours} : {minutes} : {seconds}
+                        </Text>
 
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Notes:
+                        </Text>
+                        <ScrollView>
+                            <Text style={styles.logText}>
+                                {notes}
+                            </Text>
+                        </ScrollView>
+
+                    </View>
                 </View>
-            </View>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={() => onShare()}>
-                    <Text style={styles.buttonText}>Export</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteLog(logId)}>
-                    <Text style={styles.buttonText}>Delete</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.button} onPress={() => onShare()}>
+                        <Text style={styles.buttonText}>Export</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteLog(logId)}>
+                        <Text style={styles.buttonText}>Delete</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </>
     );

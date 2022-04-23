@@ -9,6 +9,7 @@
 
 import EStyleSheet from "react-native-extended-stylesheet";
 import { Dimensions } from "react-native";
+import COLORS from "./colors";
 //import COLORS from "../styles/colors.js";
 
 
@@ -377,7 +378,7 @@ const styles = EStyleSheet.create({
         marginTop: 20,
         alignItems: 'center',
         borderColor: COLORS.dark,
-        backgroundColor: 'white',
+        backgroundColor: COLORS.light,
         borderWidth: 2,
         borderRadius: 15,
     },
