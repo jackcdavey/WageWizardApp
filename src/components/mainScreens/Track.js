@@ -34,8 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const developmentView = false;
-const debugInfo = false;
-const showTimer = true;
+
 
 const _Tracking = (props) => {
 
@@ -136,116 +135,6 @@ const _Tracking = (props) => {
   }, [localJobId])
 
 
-  //no longer async, had to remove them to get rid of memory leaks
-  //fucntions for temporary development testing, functions will be removed after development
-
-  const addJob1 = () => {
-    //locations are nobili, and scdi
-    let jobId = realm.objects("Job").length + 1
-    let job = {
-      id: jobId,
-      employer: "Nobily Care Homes",
-      client: "StarBucks",
-      location: "test location",
-      color: 'rgba(245, 40, 145, 0.35)'
-    }
-    let locId1 = realm.objects("GeofenceLocation").length + 1
-    let loc1 = {
-      id: locId1,
-      jobId: jobId,
-      latitude: 37.348899,
-      longitude: -121.942312,
-      radius: 30
-    }
-    let locId2 = realm.objects("GeofenceLocation").length + 2
-    let loc2 = {
-      id: locId2,
-      jobId: jobId,
-      latitude: 37.349036,
-      longitude: -121.938545,
-      radius: 30
-    }
-    realm.write(() => {
-      realm.create("Job", job)
-      realm.create("GeofenceLocation", loc1)
-      realm.create("GeofenceLocation", loc2)
-    })
-  }
-
-  const addJob2 = () => {
-    //locations are heafey and benson
-    let jobId = realm.objects("Job").length + 1
-    let job = {
-      id: jobId,
-      employer: "Santa Clara University Care Homes",
-      client: "StarBucks",
-      location: "test location",
-      color: 'rgba(245, 40, 145, 0.35)'
-    }
-    let locId1 = realm.objects("GeofenceLocation").length + 2
-    let loc1 = {
-      id: locId1,
-      jobId: jobId,
-      latitude: 37.349680,
-      longitude: -121.931317,
-      radius: 40
-    }
-    let locId2 = realm.objects("GeofenceLocation").length + 1
-    let loc2 = {
-      id: locId2,
-      jobId: jobId,
-      latitude: 37.349090,
-      longitude: -121.939589,
-      radius: 30
-    }
-    realm.write(() => {
-      realm.create("Job", job)
-      realm.create("GeofenceLocation", loc1)
-      realm.create("GeofenceLocation", loc2)
-    })
-  }
-
-  const addJob3 = () => {
-    //locations are casa
-    let jobId = realm.objects("Job").length + 1
-    let job = {
-      id: jobId,
-      employer: "Mabury Square Care Homes",
-      client: "StarBucks",
-      location: "test location",
-      color: 'rgba(245, 40, 145, 0.35)'
-    }
-    let locId1 = realm.objects("GeofenceLocation").length + 1
-    let loc1 = {
-      id: locId1,
-      jobId: jobId,
-      latitude: 37.346959,
-      longitude: -121.935043,
-      radius: 30
-    }
-    realm.write(() => {
-      realm.create("Job", job)
-      realm.create("GeofenceLocation", loc1)
-    })
-  }
-
-  //Unused
-  //
-  // const [showWorkLogs, setShowWorkLogs] = useState(false)
-  // const [showWorkLogsText, setShowWorkLogsText] = useState('show work logs')
-  // const showWorkLogButton = () => {
-  //   if (showWorkLogs) {
-  //     setShowWorkLogsText('show work logs')
-  //     setShowWorkLogs(false)
-  //   }
-  //   else {
-  //     setShowWorkLogsText('hide work logs')
-  //     setShowWorkLogs(true)
-  //   }
-  // }
-
-
-
   return (
 
     <View style={styles.container}>
@@ -254,32 +143,15 @@ const _Tracking = (props) => {
       {
         developmentView
           ? <View>
-            <TouchableOpacity onPress={addJob1}>
-              <Text>Add Job of Type 1</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={addJob2}>
-              <Text>Add Job of Type 2</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={addJob3}>
-              <Text>Add Job of Type 3</Text>
-            </TouchableOpacity>
+            <Text>localJobId: {JSON.stringify(localJobId)}</Text>
+            <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
             <Text>Note: {note}</Text>
           </View>
           : <View></View>
       }
-      {showTimer
-        ? <Timer />
-        : <View></View>
-      }
-      {
-        debugInfo
-          ?
-          <View>
-            <Text>localJobId: {JSON.stringify(localJobId)}</Text>
-            <Text>jobId (redux global state): {JSON.stringify(jobId)}</Text>
-          </View>
-          : <View></View>
-      }
+
+      <Timer/>
+ 
 
       {
         jobsExist
