@@ -327,7 +327,7 @@ PODS:
     - React
   - react-native-image-picker (4.7.3):
     - React-Core
-  - react-native-maps (0.30.1):
+  - react-native-maps (0.31.0-beta.4):
     - React-Core
   - react-native-restart (0.0.24):
     - React-Core
@@ -725,7 +725,7 @@ SPEC CHECKSUMS:
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-geolocation-service: c0efb872258ed9240f1003a70fca9e9757e5c785
   react-native-image-picker: 4e6008ad8c2321622affa2c85432a5ebd02d480c
-  react-native-maps: d752b0dd0e1951d815b1336332835aab6b4a836f
+  react-native-maps: 781b7cc6e2bd2743a69a48aebb55af02bcd1a2a5
   react-native-restart: 45c8dca02491980f2958595333cbccd6877cb57e
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   React-perflogger: 9a6172711d9c4c8c7ac0a426717317c3c6ecf85c

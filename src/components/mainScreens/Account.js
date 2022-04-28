@@ -100,13 +100,13 @@ const AcccountView = ({ navigation }) => {
           <Text> {jobList}</Text>
         </ScrollView>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+      {/* <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
         <View style={styles.testButton}>
           <Text style={styles.buttonText}>
             TESTING
           </Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
 
 
