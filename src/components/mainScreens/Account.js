@@ -10,7 +10,6 @@ import {
   Alert,
   Image,
   FlatList,
-  ScrollView,
 } from 'react-native';
 
 import Header from '../elements/Header.js';
@@ -81,8 +80,8 @@ function AcccountView({ navigation }) {
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
     // jobList = JSON.stringify(realm.objects('Job'));
-    locationList = JSON.stringify(realm.objects('GeofenceLocation'));
-    logsList = JSON.stringify(realm.objects('WorkLog'));
+    // locationList = JSON.stringify(realm.objects('GeofenceLocation'));
+    // logsList = JSON.stringify(realm.objects('WorkLog'));
     if (userExists) {
       //Alert.alert('There is a user in the database.');
       //Alert.alert('User: ' + user[0].firstName);

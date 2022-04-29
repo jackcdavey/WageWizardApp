@@ -1,9 +1,6 @@
 import React from 'react';
-import COLORS from '../../styles/colors.js';
 import { View, TouchableOpacity, Text } from "react-native";
 import styles from '../../styles/stylesheet.js';
-
-import RNRestart from 'react-native-restart';
 
 //Eventually, the route will need to be checked to ensure this screen only appears 
 //on first time setup. Currently, it is shown every time a job is added.
