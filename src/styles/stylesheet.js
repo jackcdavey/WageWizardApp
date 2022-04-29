@@ -106,6 +106,22 @@ const styles = EStyleSheet.create({
         borderColor: COLORS.dark,
         borderWidth: 2,
     },
+    jobItemButton: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        margin: '4%',
+        height: Dimensions.get('window').height * 0.07,
+        width: Dimensions.get('window').width * 0.9,
+        backgroundColor: COLORS.active,
+        elevation: 10,
+        borderRadius: 15,
+        borderWidth: 3,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.9,
+        shadowRadius: 10,
+    },
     //Buttons//
 
 

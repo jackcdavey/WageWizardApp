@@ -10,11 +10,15 @@ import styles from '../../styles/stylesheet.js';
 //job should be deleted.
 export default function JobSetup({ navigation }) {
 
+
+
     var id = -1;
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
     const [jobColor, setJobColor] = useState('#000000');
+
+
 
     if (realm) {
         //Alert.alert('There are ' + realm.objects('Job').length + ' jobs in the database.');
@@ -46,15 +50,14 @@ export default function JobSetup({ navigation }) {
     }
 
     const submitInfo = () => {
-        //Save job to realm here
+        // //Save job to realm here
+        // const color = Math.floor(Math.random() * 16777215).toString(16);
+        // setJobColor('#' + color);
 
-        (() => {
-            const color = Math.floor(Math.random() * 16777215).toString(16);
-            setJobColor('#' + color);
-        })();
 
         navigation.navigate('JobLocationSetup');
         let newJob;
+        const color = Math.floor(Math.random() * 16777215).toString(16);
         try {
             if (realm) {
                 realm.write(() => {
@@ -65,7 +68,7 @@ export default function JobSetup({ navigation }) {
                             employer: employer,
                             client: client,
                             location: location,
-                            color: jobColor
+                            color: '#' + color
                         });
                         console.log('New job created: ', JSON.stringify(newJob));
                     } else {
@@ -80,6 +83,7 @@ export default function JobSetup({ navigation }) {
             console.log(error);
         }
     }
+
 
 
     return (
