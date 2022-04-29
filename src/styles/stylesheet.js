@@ -370,6 +370,21 @@ const styles = EStyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
     },
+    modalCardContainer: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    jobEditContainer: {
+        width: '100%',
+        height: '80%',
+        borderRadius: 50,
+        borderColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
+        borderWidth: 2,
+        padding: '2%',
+        margin: '2%',
+    },
     arrowContainer: {
         width: Dimensions.get('window').height * 0.023,
         height: Dimensions.get('window').height * 0.04,
@@ -577,7 +592,7 @@ const styles = EStyleSheet.create({
     },
     buttonWrap: {
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-evenly',
     },
     button: {
         height: Dimensions.get('window').height * 0.05,

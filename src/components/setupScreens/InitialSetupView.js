@@ -195,7 +195,7 @@ export default function InitialSetupView({ navigation }) {
                         <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} defaultValue={existingUser.birthday} onChangeText={newText => setBirthday(newText)} />
                     </View>
                     <View style={[styles.field, { padding: '2%' }]}>
-                        <Text style={{ marginRight: 25 }}>Use Pin?</Text>
+                        <Text style={[styles.directions, { paddingRight: '5%' }]}>Use Pin?</Text>
 
                         <Switch
                             trackColor={{ false: COLORS.red, true: COLORS.green }}
@@ -205,7 +205,7 @@ export default function InitialSetupView({ navigation }) {
                     </View>
                     <View style={styles.field}>
                         {/* Prevent interaction until usePin is true */}
-                        <Text style={{ marginRight: 25 }}>Use Biometrics?</Text>
+                        <Text style={[styles.directions, { paddingRight: '5%' }]}>Use Biometrics?</Text>
 
                         <Switch
                             trackColor={{ false: COLORS.red, true: COLORS.green }}

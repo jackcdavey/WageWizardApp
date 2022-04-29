@@ -10,7 +10,10 @@ import {
   Alert,
   Image,
   FlatList,
+  Modal,
+  TextInput,
 } from 'react-native';
+import { BlurView } from "@react-native-community/blur";
 
 import Header from '../elements/Header.js';
 import realm from '../../userData/realm.js';
@@ -24,9 +27,48 @@ const Tab = createBottomTabNavigator();
 //Account Page Content
 function AcccountView({ navigation }) {
 
+  const [editingId, setEditingId] = useState(-1);
   const [jobsExist, setJobsExist] = useState(realm.objects('Job').length > 0)
   const [jobList, setJobList] = useState([]);
   const [items, setItems] = useState([]);
+
+  const [editJobModalVisible, setEditJobModalVisible] = useState(false);
+  const editJob = x => {
+    setEditingId(x);
+    console.log('edit job: ' + editingId);
+    setEditJobModalVisible(true);
+  }
+
+  const submitInfo = () => {
+
+    //Check usePin and useBiometric
+    //if usePin is true, navigate to pin setup screen
+    selectedJob = realm.objectForPrimaryKey('Job', editingId);
+    if (!userExists) {
+      createRealmUser();
+      if (usePin) {
+        navigation.navigate('PinSetup');
+      } else {
+        navigation.navigate('JobSetup');
+      }
+    } else {
+      Alert.alert('A user already exists, do you wish to overwrite account data?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel', onPress: () => navigation.goBack() }, {
+        text: 'Overwrite', style: 'destructive', onPress: () => {
+          updateRealmUser();
+          if (usePin) {
+            navigation.navigate('PinSetup');
+          } else {
+            if (realm.objects('Job').length > 0) {
+              navigation.navigate('SetupComplete');
+            } else {
+              navigation.navigate('JobSetup');
+            }
+          }
+        }
+      }]);
+    }
+
+  }
 
 
   useEffect(() => {
@@ -73,8 +115,8 @@ function AcccountView({ navigation }) {
   var birthday = 'no Birthday';
   var email = 'no Email';
   //var jobList = [];
-  var locationList = [];
-  var logsList = [];
+  // var locationList = [];
+  // var logsList = [];
 
   if (realm) {
     userExists = realm.objects('User').length > 0;
@@ -142,7 +184,7 @@ function AcccountView({ navigation }) {
           data={items}
 
           renderItem={({ item }) =>
-            <TouchableOpacity onPress={() => Alert.alert("Job Editing Coming Soon")}>
+            <TouchableOpacity onPress={() => editJob(item.key)}>
               <View style={[styles.jobItemButton, { borderColor: item.color, shadowColor: item.color }]}>
                 <Text style={styles.logItemLabel}>{item.employer} </Text><Text style={styles.logItemLabel}>{item.key}</Text>
                 <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: Dimensions.get('window').width * 0.07, height: Dimensions.get('window').width * 0.07 }}></Image>
@@ -160,6 +202,51 @@ function AcccountView({ navigation }) {
           </Text>
         </View>
       </TouchableOpacity> */}
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={editJobModalVisible}
+        onRequestClose={() => {
+          setEditJobModalVisible(false);
+        }}
+      >
+        <View style={styles.modalCardContainer}>
+          <BlurView
+            style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+            blurType="light"
+            blurAmount={20}
+            reducedTransparencyFallbackColor="white"
+          />
+          <View style={styles.jobEditContainer}>
+
+
+            <Text style={styles.subtitle}>Editing Job: {editingId}</Text>
+            {/*             
+            <TextInput
+              style={styles.noteText}
+              placeholder='Add notes here...'
+              placeholderTextColor={COLORS.lightPlaceholder}
+              multiline={true}
+              onChangeText={newText => setNoteText(newText)}
+            >
+            </TextInput> */}
+            <View style={styles.buttonWrap}>
+
+              <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => setEditJobModalVisible(false)}>
+                {/* This does not properly navigate to previous screen, always returns to account page
+                    even when accessed through InitialSetupView */}
+                <Text style={styles.buttonText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
+                <Text style={styles.buttonText}>Save</Text>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+        </View>
+
+      </Modal>
 
 
 
