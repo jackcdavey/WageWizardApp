@@ -188,7 +188,7 @@ function AcccountView({ navigation }) {
           renderItem={({ item }) =>
             <TouchableOpacity onPress={() => editJob(item.key)}>
               <View style={[styles.jobItemButton, { borderColor: item.color, shadowColor: item.color }]}>
-                <Text style={styles.logItemLabel}>{item.employer} </Text><Text style={styles.logItemLabel}>{item.key}</Text>
+                <Text style={styles.logItemLabel}>{item.key}</Text><Text style={styles.logItemLabel}>{item.employer} </Text>
                 <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: Dimensions.get('window').width * 0.07, height: Dimensions.get('window').width * 0.07 }}></Image>
               </View>
             </TouchableOpacity>}
