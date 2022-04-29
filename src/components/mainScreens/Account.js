@@ -142,7 +142,7 @@ function AcccountView({ navigation }) {
           data={items}
 
           renderItem={({ item }) =>
-            <TouchableOpacity onPress={() => Alert.alert("Navigate to job edit here")}>
+            <TouchableOpacity onPress={() => Alert.alert("Job Editing Coming Soon")}>
               <View style={[styles.jobItemButton, { borderColor: item.color, shadowColor: item.color }]}>
                 <Text style={styles.logItemLabel}>{item.employer} </Text><Text style={styles.logItemLabel}>{item.key}</Text>
                 <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: Dimensions.get('window').width * 0.07, height: Dimensions.get('window').width * 0.07 }}></Image>
@@ -152,13 +152,14 @@ function AcccountView({ navigation }) {
 
 
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+
+      {/* <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
         <View style={styles.testButton}>
           <Text style={styles.buttonText}>
             TESTING
           </Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
 
 

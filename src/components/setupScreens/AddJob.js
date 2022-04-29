@@ -132,9 +132,9 @@ export default function JobSetup({ navigation }) {
                             <Text style={styles.buttonText}>Continue</Text>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
+                    {/* <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
                         <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
 
 
                 </View>
