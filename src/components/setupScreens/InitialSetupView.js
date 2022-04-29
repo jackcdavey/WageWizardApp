@@ -142,8 +142,8 @@ export default function InitialSetupView({ navigation }) {
         if (userExists) {
             return (
                 <>
-                    <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                        <Text style={{ color: COLORS.dark }}>Back</Text>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => navigation.goBack()}>
+                        <Text style={styles.buttonText}>Back</Text>
                     </TouchableOpacity>
                 </>
             );
@@ -225,7 +225,7 @@ export default function InitialSetupView({ navigation }) {
                     <View style={styles.buttonWrap}>
                         {showBackButton()}
                         <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
-                            <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                            <Text style={styles.buttonText}>Continue</Text>
                         </TouchableOpacity>
                         {/* <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => clearUsers()}>
                     <Text style={{ color: COLORS.secondary }}>DELETE PROFILE DATA</Text>

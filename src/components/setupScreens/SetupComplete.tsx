@@ -12,12 +12,14 @@ export default function SetupComplete({ navigation }: { navigation: any }) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Setup Complete!</Text>
-            <Text style={styles.directions}>
-                Congratulations! You're ready to start using Wage Wizard to
-                track your work, and defend against wage theft.
-            </Text>
+            <View style={styles.directionsWrap}>
+                <Text style={styles.directions}>
+                    Congratulations! You're ready to start using Wage Wizard to
+                    track your work, and defend against wage theft.
+                </Text>
+            </View>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
-                <Text style={{ color: COLORS.secondary }}>Finish</Text>
+                <Text style={styles.buttonText}>Finish</Text>
             </TouchableOpacity>
         </View>
     )

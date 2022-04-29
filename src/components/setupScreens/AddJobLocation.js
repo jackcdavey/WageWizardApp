@@ -188,11 +188,11 @@ export default function JobLocationSetup({ navigation }) {
                     </View>
                     <View style={styles.buttonWrap}>
 
-                        <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
-                            <Text>Back</Text>
+                        <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => navigation.goBack()}>
+                            <Text style={styles.buttonText}>Back</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.button} onPress={() => createNewGeofence()}>
-                            <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                            <Text style={styles.buttonText}>Continue</Text>
                         </TouchableOpacity>
                     </View>
 

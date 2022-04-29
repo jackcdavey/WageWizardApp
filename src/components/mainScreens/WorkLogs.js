@@ -113,7 +113,7 @@ export default function WorkLogs(props) {
                 </TouchableOpacity>}
             />
           </View>
-          : <Text>No Logs To Show</Text>
+          : <Text style={styles.subtitle}>No Logs To Show</Text>
       }
     </View>
 

@@ -141,6 +141,7 @@ const styles = EStyleSheet.create({
         borderRadius: 15,
         borderColor: COLORS.primary,
         backgroundColor: COLORS.secondary,
+        color: COLORS.dark,
         borderWidth: 2,
         padding: '2%',
         margin: '2%',
@@ -157,6 +158,7 @@ const styles = EStyleSheet.create({
         padding: '2%',
         margin: '2%',
         alignItems: 'center',
+        color: COLORS.dark,
     },
     noteTextField: {
         width: Dimensions.get('window').width * 0.8,

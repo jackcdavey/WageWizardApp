@@ -123,13 +123,13 @@ export default function JobSetup({ navigation }) {
 
                     <View style={styles.buttonWrap}>
 
-                        <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.secondary }]} onPress={() => navigation.goBack()}>
+                        <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => navigation.goBack()}>
                             {/* This does not properly navigate to previous screen, always returns to account page
                     even when accessed through InitialSetupView */}
-                            <Text>Back</Text>
+                            <Text style={styles.buttonText}>Back</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
-                            <Text style={{ color: COLORS.secondary }}>Continue</Text>
+                            <Text style={styles.buttonText}>Continue</Text>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
