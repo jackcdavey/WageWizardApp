@@ -12,6 +12,7 @@ import {
   FlatList,
   Modal,
   TextInput,
+  KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard,
 } from 'react-native';
 import { BlurView } from "@react-native-community/blur";
 
@@ -35,7 +36,6 @@ function AcccountView({ navigation }) {
   const [editJobModalVisible, setEditJobModalVisible] = useState(false);
   const editJob = x => {
     setEditingId(x);
-    console.log('edit job: ' + editingId);
     setEditJobModalVisible(true);
   }
 
@@ -140,6 +140,7 @@ function AcccountView({ navigation }) {
   //If editButtonPressed is true, then render the version of the page with the TextInputs 
   //rather than Text elements.
   //Static version of the page
+  //let editingJob = realm.objects('Job')[editingId];
   return (
     <View style={styles.container}>
       <View style={styles.profileInformationContainer}>
@@ -195,13 +196,13 @@ function AcccountView({ navigation }) {
 
       </View>
 
-      {/* <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
         <View style={styles.testButton}>
           <Text style={styles.buttonText}>
             TESTING
           </Text>
         </View>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
 
       <Modal
         animationType="slide"
@@ -222,15 +223,34 @@ function AcccountView({ navigation }) {
 
 
             <Text style={styles.subtitle}>Editing Job: {editingId}</Text>
-            {/*             
-            <TextInput
-              style={styles.noteText}
-              placeholder='Add notes here...'
-              placeholderTextColor={COLORS.lightPlaceholder}
-              multiline={true}
-              onChangeText={newText => setNoteText(newText)}
-            >
-            </TextInput> */}
+
+            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ alignItems: 'center' }} >
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
+
+                <View>
+                  <View style={styles.field}>
+                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                    <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
+                  </View>
+
+                  <View style={styles.field}>
+
+                    <TextInput style={styles.setupTextField} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
+                  </View>
+                  <View style={styles.field}>
+                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                    <TextInput style={styles.setupTextField} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
+                    {/* this will be changed in future build */}
+                  </View>
+
+                  <View>
+                    <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
+
             <View style={styles.buttonWrap}>
 
               <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => setEditJobModalVisible(false)}>
