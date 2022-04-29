@@ -28,47 +28,19 @@ const Tab = createBottomTabNavigator();
 //Account Page Content
 function AcccountView({ navigation }) {
 
-  const [editingId, setEditingId] = useState(-1);
+  const [editingId, setEditingId] = useState(1);
   const [jobsExist, setJobsExist] = useState(realm.objects('Job').length > 0)
   const [jobList, setJobList] = useState([]);
   const [items, setItems] = useState([]);
 
+  const [employer, setEmployer] = useState('Test Employer');
+  const [client, setClient] = useState('Test Client');
+  const [location, setLocation] = useState('Test Location');
+  const [jobColor, setJobColor] = useState('#000000');
+
+
   const [editJobModalVisible, setEditJobModalVisible] = useState(false);
-  const editJob = x => {
-    setEditingId(x);
-    setEditJobModalVisible(true);
-  }
 
-  const submitInfo = () => {
-
-    //Check usePin and useBiometric
-    //if usePin is true, navigate to pin setup screen
-    selectedJob = realm.objectForPrimaryKey('Job', editingId);
-    if (!userExists) {
-      createRealmUser();
-      if (usePin) {
-        navigation.navigate('PinSetup');
-      } else {
-        navigation.navigate('JobSetup');
-      }
-    } else {
-      Alert.alert('A user already exists, do you wish to overwrite account data?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel', onPress: () => navigation.goBack() }, {
-        text: 'Overwrite', style: 'destructive', onPress: () => {
-          updateRealmUser();
-          if (usePin) {
-            navigation.navigate('PinSetup');
-          } else {
-            if (realm.objects('Job').length > 0) {
-              navigation.navigate('SetupComplete');
-            } else {
-              navigation.navigate('JobSetup');
-            }
-          }
-        }
-      }]);
-    }
-
-  }
 
 
   useEffect(() => {
@@ -141,6 +113,35 @@ function AcccountView({ navigation }) {
   //rather than Text elements.
   //Static version of the page
   //let editingJob = realm.objects('Job')[editingId];
+
+  const editJob = x => {
+    setEditingId(x);
+    let selectedJob = realm.objectForPrimaryKey('Job', editingId);
+    setEmployer(selectedJob.employer);
+    setClient(selectedJob.client);
+    setLocation(selectedJob.location);
+    setJobColor(selectedJob.color);
+    setEditJobModalVisible(true);
+  }
+
+  const submitInfo = () => {
+
+    //Check usePin and useBiometric
+    //if usePin is true, navigate to pin setup screen
+    let selectedJob = realm.objectForPrimaryKey('Job', editingId);
+    if (selectedJob) {
+      realm.write(() => {
+        selectedJob.employer = employer;
+        selectedJob.client = client;
+        selectedJob.location = location;
+        selectedJob.color = jobColor;
+      });
+      console.log('Job updated: ', selectedJob);
+    }
+
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.profileInformationContainer}>
@@ -231,16 +232,16 @@ function AcccountView({ navigation }) {
                 <View>
                   <View style={styles.field}>
                     <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                    <TextInput style={styles.setupTextField} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
+                    <TextInput style={styles.setupTextField} defaultValue={employer} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
                   </View>
 
                   <View style={styles.field}>
 
-                    <TextInput style={styles.setupTextField} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
+                    <TextInput style={styles.setupTextField} defaultValue={client} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
                   </View>
                   <View style={styles.field}>
                     <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                    <TextInput style={styles.setupTextField} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
+                    <TextInput style={styles.setupTextField} defaultValue={location} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
                     {/* this will be changed in future build */}
                   </View>
 
