@@ -1,5 +1,5 @@
 import COLORS from '../../styles/colors.js';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styles from '../../styles/stylesheet.js';
 import {
@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  FlatList,
   ScrollView,
 } from 'react-native';
 
@@ -20,8 +21,47 @@ const Tab = createBottomTabNavigator();
 
 
 
+
 //Account Page Content
-const AcccountView = ({ navigation }) => {
+function AcccountView({ navigation }) {
+
+  const [jobsExist, setJobsExist] = useState(realm.objects('Job').length > 0)
+  const [jobList, setJobList] = useState([]);
+  const [items, setItems] = useState([]);
+
+
+  useEffect(() => {
+    //set it to run only if the logs collection from mongodb is not empty
+    if (jobsExist) {
+      setJobList(realm.objects('Job'));
+      //somehow jobsFromDB after this line has not data
+      /*setItems(jobsFromDB.map((e)=>{
+        return {label:e.employer,value:e.id}
+      }))
+      */
+    }
+  }, [jobsExist])
+
+
+
+  useEffect(() => {
+    if (jobList.length > 0) {
+      setItems(jobList.map((e) => {
+        return ({
+          key: e.id,
+          employer: e.employer,
+          client: e.client,
+          location: e.location,
+          color: e.color,
+        })
+      }))
+    } else {
+      //empty the items
+      setItems([])
+      //set the jobID back to default
+    }
+  }, [jobList])
+
 
   const profilePicDimensions = Dimensions.get('window').width * 0.35;
 
@@ -32,14 +72,14 @@ const AcccountView = ({ navigation }) => {
   var fullName = 'no Name Stuff';
   var birthday = 'no Birthday';
   var email = 'no Email';
-  var jobList = [];
+  //var jobList = [];
   var locationList = [];
   var logsList = [];
 
   if (realm) {
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
-    jobList = JSON.stringify(realm.objects('Job'));
+    // jobList = JSON.stringify(realm.objects('Job'));
     locationList = JSON.stringify(realm.objects('GeofenceLocation'));
     logsList = JSON.stringify(realm.objects('WorkLog'));
     if (userExists) {
@@ -94,11 +134,23 @@ const AcccountView = ({ navigation }) => {
 
       </View>
 
-      <View style={{ maxHeight: '15%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+      <View style={{ maxHeight: '40%', width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
         <Text style={styles.subtitle}>Saved Jobs</Text>
-        <ScrollView>
-          <Text> {jobList}</Text>
-        </ScrollView>
+
+
+        <FlatList
+          data={items}
+
+          renderItem={({ item }) =>
+            <TouchableOpacity onPress={() => Alert.alert("Navigate to job edit here")}>
+              <View style={styles.logItemButton}>
+                <Text style={styles.logItemLabel}>{item.employer} </Text><Text style={styles.logItemLabel}>{item.key}</Text>
+                <Image source={require('../../assets/images/icons/Pencil.png')} style={{ width: Dimensions.get('window').width * 0.07, height: Dimensions.get('window').width * 0.07 }}></Image>
+              </View>
+            </TouchableOpacity>}
+        />
+
+
       </View>
       {/* <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
         <View style={styles.testButton}>
@@ -121,6 +173,7 @@ const AcccountView = ({ navigation }) => {
 
 //Handles stack navigation settings for account//
 export default function Account({ navigation }) {
+
   return (
     //Display header in here
     <Tab.Navigator
