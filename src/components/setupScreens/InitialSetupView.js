@@ -25,6 +25,7 @@ export default function InitialSetupView({ navigation }) {
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
     const [pin, setPin] = useState(0); //remove later
+    const [profileImageLocation, setProfileImageLocation] = useState('../../assets/images/icons/ProfileDefault.png');
 
     const [usePin, setUsePin] = useState(false);
     const [useBiometric, setUseBiometric] = useState(false);
@@ -56,6 +57,7 @@ export default function InitialSetupView({ navigation }) {
                 //     profilePicture: source,
                 // });
                 console.log('Selected image uri: ' + response.assets[0].uri);
+                setProfileImageLocation(response.assets[0].uri);
             }
         });
     }
@@ -74,7 +76,8 @@ export default function InitialSetupView({ navigation }) {
                             birthday: birthday,
                             pin: pin, //Remove later here and in realm
                             usePin: usePin,
-                            useBiometric: useBiometric
+                            useBiometric: useBiometric,
+                            profilePictureLocation: profileImageLocation
                         });
                         console.log('User created:', newUser);
                     } else {
@@ -99,6 +102,7 @@ export default function InitialSetupView({ navigation }) {
                 existingUser.pin = pin; //Remove later here and in realm
                 existingUser.usePin = usePin;
                 existingUser.useBiometric = useBiometric;
+                existingUser.profilePictureLocation = profileImageLocation;
                 console.log('User updated:', existingUser);
             });
         } else {

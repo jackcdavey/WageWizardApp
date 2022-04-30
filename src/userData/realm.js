@@ -17,6 +17,7 @@ User.schema = {
         pin: 'int?', //Remove this later, will be handled by verifyPin component
         usePin: 'bool',
         useBiometric: 'bool',
+        profilePictureLocation: 'string?',
     },
     primaryKey: 'firstName',
 };
@@ -96,7 +97,7 @@ LogNote.schema = {
 //Instead, we will store all attachments in a separate file, associate each file
 //with a workLogId, and store the file name in the LogNote object
  
-export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 12 });
+export default new Realm({ schema: [User, Job, WorkLog, GeofenceLocation], schemaVersion: 13 });
  
 // async function startRealm() {
 //     let realm = await Realm.open({

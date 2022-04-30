@@ -138,14 +138,15 @@ function AcccountView({ navigation }) {
       });
       console.log('Job updated: ', selectedJob);
     }
-
+    setEditJobModalVisible(false);
   }
 
+  const profilePicLocation = realm.objects("User")[0].profilePictureLocation;
 
   return (
     <View style={styles.container}>
       <View style={styles.profileInformationContainer}>
-        <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
+        <Image source={{ uri: profilePicLocation }} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
         <View>
           <View style={styles.profileAccountInfoField}>
             <Text style={styles.profileAccountInfoText}>{fullName}</Text>

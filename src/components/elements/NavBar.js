@@ -31,6 +31,7 @@ export default function NavBar({ navigation }) {
   const forceUpdate = useForceUpdate();
   //const [userName, setUserName] = useState('no name');
   var userName = 'no name';
+  var profilePicLocation = '../assets/images/icons/ProfileDefault.png';
   // useEffect(() => {
   if (realm) {
     if (realm.objects('User').length > 0) {
@@ -43,6 +44,7 @@ export default function NavBar({ navigation }) {
       forceUpdate();
       const user = realm.objects('User');
       userName = user[0].firstName;
+      profilePicLocation = user[0].profilePicLocation;
     }
 
     try {
