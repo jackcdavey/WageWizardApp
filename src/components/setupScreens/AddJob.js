@@ -29,26 +29,6 @@ export default function JobSetup({ navigation }) {
 
 
 
-
-    const clearJobs = () => {
-        try {
-            if (realm) {
-                realm.write(() => {
-                    var allJobs = realm.objects('Job');
-                    realm.delete(allJobs);
-                    Alert.alert('All jobs have been deleted.');
-                    console.log('Remaining jobs: ', allJobs);
-
-                });
-            } else {
-                Alert.alert('Realm not initialized.');
-            }
-        }
-        catch (error) {
-            Alert.alert('Error deleting jobs.');
-        }
-    }
-
     const submitInfo = () => {
         // //Save job to realm here
         // const color = Math.floor(Math.random() * 16777215).toString(16);
@@ -131,6 +111,7 @@ export default function JobSetup({ navigation }) {
                         <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
                             <Text style={styles.buttonText}>Continue</Text>
                         </TouchableOpacity>
+
                     </View>
                     {/* <TouchableOpacity style={styles.testButton} onPress={() => clearJobs()}>
                         <Text style={{ color: COLORS.secondary }}>DELETE ALL JOBS</Text>

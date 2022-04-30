@@ -18,6 +18,7 @@ import { BlurView } from "@react-native-community/blur";
 
 import Header from '../elements/Header.js';
 import realm from '../../userData/realm.js';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +43,23 @@ function AcccountView({ navigation }) {
   const [editJobModalVisible, setEditJobModalVisible] = useState(false);
 
 
+  const deleteJob = (jobId) => {
+    Alert.alert('Are you sure you want to delete this job?', 'You cannot undo this action.', [{ text: 'Cancel', style: 'cancel' }, {
+      text: 'Delete', style: 'destructive', onPress: () => {
+        //Delete job here
+        try {
+          realm.write(() => {
+            realm.delete(realm.objects('Job').filtered(`id = ${jobId}`));
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        console.log('Job deleted.');
+        Alert.alert('Job deleted.');
+        setEditJobModalVisible(false);
+      }
+    }]);
+  };
 
   useEffect(() => {
     //set it to run only if the logs collection from mongodb is not empty
@@ -116,7 +134,7 @@ function AcccountView({ navigation }) {
 
   const editJob = x => {
     setEditingId(x);
-    let selectedJob = realm.objectForPrimaryKey('Job', editingId);
+    let selectedJob = realm.objectForPrimaryKey('Job', x);
     setEmployer(selectedJob.employer);
     setClient(selectedJob.client);
     setLocation(selectedJob.location);
@@ -254,7 +272,6 @@ function AcccountView({ navigation }) {
             </KeyboardAvoidingView>
 
             <View style={styles.buttonWrap}>
-
               <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => setEditJobModalVisible(false)}>
                 {/* This does not properly navigate to previous screen, always returns to account page
                     even when accessed through InitialSetupView */}
@@ -262,6 +279,13 @@ function AcccountView({ navigation }) {
               </TouchableOpacity>
               <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
                 <Text style={styles.buttonText}>Save</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonWrap}>
+              <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteJob(editingId)}>
+                {/* This does not properly navigate to previous screen, always returns to account page
+                    even when accessed through InitialSetupView */}
+                <Text style={styles.buttonText}>Delete Job</Text>
               </TouchableOpacity>
             </View>
 

@@ -104,7 +104,6 @@ const styles = EStyleSheet.create({
         width: Dimensions.get('window').width * 0.9,
         borderRadius: 15,
         elevation: 10,
-        borderRadius: 15,
         borderWidth: 3,
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.9,
