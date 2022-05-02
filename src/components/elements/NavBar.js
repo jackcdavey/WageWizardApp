@@ -28,6 +28,15 @@ function useForceUpdate() {
 
 
 export default function NavBar({ navigation }) {
+
+  var accountExists = false;
+  if (realm) {
+    accountExists = realm.objects('User').length > 0;
+    if (!accountExists) {
+      navigation.navigate('Setup', { screen: 'InitialSetup' });
+    }
+  }
+
   const forceUpdate = useForceUpdate();
   //const [userName, setUserName] = useState('no name');
   var userName = 'no name';

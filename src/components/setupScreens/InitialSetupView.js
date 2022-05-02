@@ -158,7 +158,13 @@ export default function InitialSetupView({ navigation }) {
         }
     }
 
-    let existingUser = realm.objects('User')[0];
+    if (userExists) {
+        let existingUser = realm.objects('User')[0];
+        setFirstName(existingUser.firstName);
+        setLastName(existingUser.lastName);
+        setEmail(existingUser.email);
+        setBirthday(existingUser.birthday);
+    }
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -181,22 +187,22 @@ export default function InitialSetupView({ navigation }) {
 
                     <View style={styles.field}>
                         <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                        <TextInput style={styles.setupTextField} placeholder="First Name" defaultValue={existingUser.firstName} placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
+                        <TextInput style={styles.setupTextField} placeholder="First Name" defaultValue={firstName} placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setFirstName(newText)} />
                     </View>
 
                     <View style={styles.field}>
                         <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                        <TextInput style={styles.setupTextField} placeholder="Last Name" defaultValue={existingUser.lastName} placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
+                        <TextInput style={styles.setupTextField} placeholder="Last Name" defaultValue={lastName} placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLastName(newText)} />
                     </View>
 
                     <View style={styles.field}>
                         <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                        <TextInput style={styles.setupTextField} placeholderTextColor={COLORS.lightPlaceholder} defaultValue={existingUser.email} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
+                        <TextInput style={styles.setupTextField} placeholderTextColor={COLORS.lightPlaceholder} defaultValue={email} placeholder="Email Address" onChangeText={newText => setEmail(newText)} />
                     </View>
 
                     <View style={styles.field}>
                         {/* <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} /> */}
-                        <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} defaultValue={existingUser.birthday} onChangeText={newText => setBirthday(newText)} />
+                        <TextInput style={styles.setupTextField} placeholder="Birthday" placeholderTextColor={COLORS.lightPlaceholder} defaultValue={birthday} onChangeText={newText => setBirthday(newText)} />
                     </View>
                     <View style={[styles.field, { padding: '2%' }]}>
                         <Text style={[styles.directions, { paddingRight: '5%' }]}>Use Pin?</Text>

@@ -65,39 +65,23 @@ const App = () => {
       />
     );
   }
-
-  if (realm) {
-    accountExists = realm.objects('User').length > 0;
-  }
-
-  if (!accountExists) {
-    console.log("No account exists");
-    return (
+  return (
+    <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
+          <Stack.Screen name="Testing" component={Testing} options={{ headerShown: false }} />
+          <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
           <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
+          <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
+          {/* <Stack.Screen name="DetailedLog" options={{ headerShown: false }}>{props => <DetailedLogView logId = 0 {...props} />}</Stack.Screen> */}
         </Stack.Navigator>
       </NavigationContainer>
-    );
-  } else {
-    console.log("Account exists");
-    return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Main" component={NavBar} options={{ headerShown: false }} />
-            <Stack.Screen name="Testing" component={Testing} options={{ headerShown: false }} />
-            <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
-            <Stack.Screen name="Setup" component={SetupNav} options={{ headerShown: false }} />
-            <Stack.Screen name="DetailedLog" component={DetailedLogView} options={{ headerShown: false }} />
-            {/* <Stack.Screen name="DetailedLog" options={{ headerShown: false }}>{props => <DetailedLogView logId = 0 {...props} />}</Stack.Screen> */}
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
+    </Provider>
 
-    );
-  }
+  );
 }
+
 
 /* Somehow pull active tab from NavBar props to set color of bacgrkound of correspondign SafeAreaViewObjects above*/
 

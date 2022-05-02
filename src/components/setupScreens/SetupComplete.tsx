@@ -15,7 +15,7 @@ export default function SetupComplete({ navigation }: { navigation: any }) {
                     track your work, and defend against wage theft.
                 </Text>
             </View>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', { screen: 'Tracking' })}>
                 <Text style={styles.buttonText}>Finish</Text>
             </TouchableOpacity>
         </View>

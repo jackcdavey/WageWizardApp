@@ -40,6 +40,7 @@ function AcccountView({ navigation }) {
   const [jobColor, setJobColor] = useState('#000000');
 
 
+
   const [editJobModalVisible, setEditJobModalVisible] = useState(false);
 
 
@@ -159,12 +160,12 @@ function AcccountView({ navigation }) {
     setEditJobModalVisible(false);
   }
 
-  const profilePicLocation = realm.objects("User")[0].profilePictureLocation;
+  //const profilePicLocation = realm.objects("User")[0].profilePictureLocation;
 
   return (
     <View style={styles.container}>
       <View style={styles.profileInformationContainer}>
-        <Image source={{ uri: profilePicLocation }} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
+        <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: profilePicDimensions, maxHeight: profilePicDimensions }} />
         <View>
           <View style={styles.profileAccountInfoField}>
             <Text style={styles.profileAccountInfoText}>{fullName}</Text>
