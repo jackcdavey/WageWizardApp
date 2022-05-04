@@ -11,6 +11,8 @@ import COLORS from '../../styles/colors';
 const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
+//Add "getNewestJobColor" function to get the color of the newest job, and use it in circle fill color
+
 class Map extends React.Component {
   async getCamera() {
     //const camera = await this.map.getCamera();

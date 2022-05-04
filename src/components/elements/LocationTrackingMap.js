@@ -15,6 +15,7 @@ import { store } from '../../reduxLogic/store';
 import { startTimer, locationUpdate, endTimer, pauseTimer, resumeTimer, setIsInsideGeofence, setIsTracking, addNote, setNote, updateStartTime, updateEndTime } from '../../reduxLogic/actions'
 
 import realm from '../../userData/realm.js';
+import hexToRgba from 'hex-to-rgba';
 
 
 
@@ -392,7 +393,7 @@ const _LocationMap = (props) => {
           {
             (geofences.length > 0)
               ? geofences.map((location) => {
-                return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={'rgba(245, 40, 145, 0.35)'} />)
+                return (<Circle key={location.id} center={{ latitude: location.latitude, longitude: location.longitude }} radius={location.radius} fillColor={hexToRgba(realm.objectForPrimaryKey("Job", jobId).color, 0.35)} />)
               })
               : <></>
           }

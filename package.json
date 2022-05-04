@@ -28,6 +28,7 @@
     "expo-location": "~14.0.2",
     "expo-status-bar": "~1.2.0",
     "expo-task-manager": "~10.1.1",
+    "hex-to-rgba": "^2.0.1",
     "patch-package": "^6.4.7",
     "react": "17.0.2",
     "react-native": "0.67.1",
