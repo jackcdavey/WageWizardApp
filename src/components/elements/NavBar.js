@@ -40,7 +40,7 @@ export default function NavBar({ navigation }) {
   const forceUpdate = useForceUpdate();
   //const [userName, setUserName] = useState('no name');
   var userName = 'no name';
-  var profilePicLocation = '../assets/images/icons/ProfileDefault.png';
+  var profilePicLocation = '../../assets/images/icons/ProfileDefault.png';
   // useEffect(() => {
   if (realm) {
     if (realm.objects('User').length > 0) {
@@ -53,7 +53,7 @@ export default function NavBar({ navigation }) {
       forceUpdate();
       const user = realm.objects('User');
       userName = user[0].firstName;
-      profilePicLocation = user[0].profilePicLocation;
+      //profilePicLocation = user[0].profilePicLocation;
     }
 
     try {
@@ -84,7 +84,7 @@ export default function NavBar({ navigation }) {
                 <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>{userName}'s</Text>
                 <Text style={{ fontSize: 20, paddingRight: 10, color: COLORS.secondary }}>Account</Text>
               </View>
-              <Image source={require('../../assets/images/icons/ProfileDefault.png')} style={{ width: 40, maxHeight: 40 }} resizeMode="contain" />
+              <Image source={require(profilePicLocation)} style={{ width: 40, maxHeight: 40 }} resizeMode="contain" />
             </View>
           </TouchableOpacity>
         ),

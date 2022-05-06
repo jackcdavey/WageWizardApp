@@ -6,7 +6,6 @@ import Account from './src/components/mainScreens/Account';
 import useFonts from './src/hooks/useFonts.js';
 import DetailedLogView from './src/components/mainScreens/DetailedLogView';
 
-import realm from './src/userData/realm';
 
 import Testing from './src/components/testing.js';
 
@@ -50,7 +49,6 @@ const Stack = createNativeStackNavigator();
 
 
 const App = () => {
-  var accountExists = false;
 
   const [IsReady, SetIsReady] = useState(false);
   const LoadFonts = async () => {

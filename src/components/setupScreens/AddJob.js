@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import COLORS from '../../styles/colors.js';
-import { View, TouchableOpacity, Alert, TextInput, Text, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { View, TouchableOpacity, TextInput, Text, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import realm from '../../userData/realm';
 
 import styles from '../../styles/stylesheet.js';
@@ -16,7 +16,6 @@ export default function JobSetup({ navigation }) {
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
-    const [jobColor, setJobColor] = useState('#000000');
 
 
 
