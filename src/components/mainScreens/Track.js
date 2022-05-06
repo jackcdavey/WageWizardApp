@@ -188,6 +188,7 @@ const _Tracking = (props) => {
                   setOpen={setOpen}
                   setValue={setValue}
                   setItems={setItems}
+                  zIndex={1000}
 
                   onSelectItem={(item) => {
                     //This is where we'll record the job selection and pass to 'ActiveTracking' DB

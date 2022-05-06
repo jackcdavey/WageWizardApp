@@ -427,8 +427,8 @@ const styles = EStyleSheet.create({
         margin: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: COLORS.primary,
-        zIndex: 10,
+        //borderColor: COLORS.primary,
+        //zIndex: 10,
     },
     pickerDropDownContainer: {
         backgroundColor: COLORS.secondary,
