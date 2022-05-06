@@ -13,6 +13,7 @@ import {
   Modal,
   TextInput,
   KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard,
+  ScrollView,
 } from 'react-native';
 import { BlurView } from "@react-native-community/blur";
 
@@ -42,6 +43,11 @@ function AcccountView({ navigation }) {
 
 
   const [editJobModalVisible, setEditJobModalVisible] = useState(false);
+
+  const [geofences, setGeofences] = useState([])
+  useEffect(() => {
+    setGeofences(realm.objects("GeofenceLocation").filtered("jobId =" + editingId))
+  }, [editingId])
 
 
   const deleteJob = (jobId) => {
@@ -234,6 +240,7 @@ function AcccountView({ navigation }) {
         }}
       >
         <View style={styles.modalCardContainer}>
+
           <BlurView
             style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
             blurType="light"
@@ -241,57 +248,84 @@ function AcccountView({ navigation }) {
             reducedTransparencyFallbackColor="white"
           />
           <View style={styles.jobEditContainer}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+              <View style={{ minHeight: '90%' }}>
 
 
-            <Text style={styles.subtitle}>Editing Job: {editingId}</Text>
+                <Text style={styles.subtitle}>Editing Job: {editingId}</Text>
 
-            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ alignItems: 'center' }} >
-              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ alignItems: 'center' }} >
+                  <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
 
-                <View>
-                  <View style={styles.field}>
-                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                    <TextInput style={styles.setupTextField} defaultValue={employer} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
+                    <View>
+                      <View style={styles.field}>
+                        <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                        <TextInput style={styles.setupTextField} defaultValue={employer} placeholder="Employer Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setEmployer(newText)} />
+                      </View>
+
+                      <View style={styles.field}>
+
+                        <TextInput style={styles.setupTextField} defaultValue={client} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
+                      </View>
+                      <View style={styles.field}>
+                        <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
+                        <TextInput style={styles.setupTextField} defaultValue={location} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
+                        {/* this will be changed in future build */}
+                      </View>
+
+                      <View>
+                        <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
+                      </View>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </KeyboardAvoidingView>
+                <Text style={styles.subtitle}>Saved Worksites:</Text>
+
+                <TouchableOpacity onPress={() => Alert.alert("edit location")}>
+                  <View style={styles.logItemButton}>
+                    <Text style={styles.logItemLabel}>{JSON.stringify(geofences)}</Text>
                   </View>
+                </TouchableOpacity>
 
-                  <View style={styles.field}>
 
-                    <TextInput style={styles.setupTextField} defaultValue={client} placeholder="Client Name" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setClient(newText)} />
-                  </View>
-                  <View style={styles.field}>
-                    <Image source={require('../../assets/images/icons/FieldArrow.png')} style={styles.arrowContainer} />
-                    <TextInput style={styles.setupTextField} defaultValue={location} placeholder="City (Of Work)" placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setLocation(newText)} />
-                    {/* this will be changed in future build */}
-                  </View>
+                {/* NOTE:
+                Currently, the editingJobId value is not passed to the JobLocationSetup screen,
+                and new geofences will always be added to the newest job.
+                
+                To fix this, either the joblocationsetup screen will need to be modified, or a separate
+                secondary location setup / edit screen will need to be created. 
+                */}
 
-                  <View>
-                    <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
-                  </View>
+                <View style={styles.buttonWrap}>
+                  <TouchableOpacity style={[styles.button, { width: '50%' }]} onPress={() => {
+                    setEditJobModalVisible(false)
+                    navigation.navigate("Setup", { screen: 'JobLocationSetup' })
+                  }}>
+                    <Text style={styles.buttonText}>New Worksite</Text>
+                  </TouchableOpacity>
                 </View>
-              </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
+              </View>
 
-            <View style={styles.buttonWrap}>
-              <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => setEditJobModalVisible(false)}>
-                {/* This does not properly navigate to previous screen, always returns to account page
-                    even when accessed through InitialSetupView */}
-                <Text style={styles.buttonText}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
-                <Text style={styles.buttonText}>Save</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.buttonWrap}>
-              <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteJob(editingId)}>
-                {/* This does not properly navigate to previous screen, always returns to account page
-                    even when accessed through InitialSetupView */}
-                <Text style={styles.buttonText}>Delete Job</Text>
-              </TouchableOpacity>
-            </View>
+              <View style={[styles.buttonWrap, { minHeight: '10%' }]}>
+                <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.active }]} onPress={() => setEditJobModalVisible(false)}>
+                  <Text style={styles.buttonText}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => submitInfo()}>
+                  <Text style={styles.buttonText}>Save</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.buttonWrap}>
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteJob(editingId)}>
+                  <Text style={styles.buttonText}>Delete Job</Text>
+                </TouchableOpacity>
+              </View>
 
+            </ScrollView>
           </View>
+
         </View>
+
 
       </Modal>
 

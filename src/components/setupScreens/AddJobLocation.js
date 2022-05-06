@@ -167,7 +167,7 @@ export default function JobLocationSetup({ navigation }) {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
                     <View style={styles.directionsWrap}>
-                        <Text style={styles.title}>Add A Job</Text>
+                        <Text style={styles.title}>Add A Worksite</Text>
                     </View>
                     <View style={styles.directionsWrap}>
                         <Text style={styles.directions}>

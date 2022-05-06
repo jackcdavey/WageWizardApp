@@ -383,6 +383,8 @@ const styles = EStyleSheet.create({
     jobEditContainer: {
         width: '100%',
         height: '80%',
+        display: 'flex',
+        flexDirection: 'column',
         borderRadius: 50,
         borderColor: COLORS.primary,
         backgroundColor: COLORS.secondary,
