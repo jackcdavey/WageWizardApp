@@ -3,6 +3,9 @@ import React from 'react';
 import MapView, { Circle } from 'react-native-maps';
 import { Dimensions, StyleSheet } from 'react-native';
 import COLORS from '../../styles/colors';
+import hexToRgba from 'hex-to-rgba';
+
+import realm from '../../userData/realm';
 
 //import Geolocation from "react-native-geolocation-service";
 
@@ -12,6 +15,15 @@ const LATITUDE_DELTA = 0.000922;
 const LONGITUDE_DELTA = 0.000421;
 
 //Add "getNewestJobColor" function to get the color of the newest job, and use it in circle fill color
+const getNewestJobColor = () => {
+  let numJobs = realm.objects('Job').length;
+  let newestJob = realm.objects('Job')[numJobs - 1];
+  if (newestJob) {
+    return hexToRgba(newestJob.color, 0.35);
+  } else {
+    return hexToRgba(COLORS.primary, 0.35);
+  }
+}
 
 class Map extends React.Component {
   async getCamera() {
@@ -123,7 +135,8 @@ class Map extends React.Component {
           onRegionChange={this.onRegionChange}
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
-          <Circle center={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }} radius={(this.state.region.latitudeDelta) * 35000} fillColor={'rgba(245, 40, 145, 0.35)'} />
+          <Circle center={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }} radius={(this.state.region.latitudeDelta) * 35000} fillColor={getNewestJobColor()} />
+          {/* fillColor={'rgba(245, 40, 145, 0.35)'} */}
 
         </MapView>
       );

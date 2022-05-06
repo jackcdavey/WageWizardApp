@@ -19,7 +19,6 @@ import { BlurView } from "@react-native-community/blur";
 
 import Header from '../elements/Header.js';
 import realm from '../../userData/realm.js';
-import { NavigationContainer } from '@react-navigation/native';
 
 
 const Tab = createBottomTabNavigator();
