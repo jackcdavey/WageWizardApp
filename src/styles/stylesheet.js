@@ -428,7 +428,7 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: COLORS.primary,
-        zIndex: 2,
+        zIndex: 10,
     },
     pickerDropDownContainer: {
         backgroundColor: COLORS.secondary,
@@ -437,7 +437,7 @@ const styles = EStyleSheet.create({
         borderRadius: 15,
         borderColor: COLORS.primary,
         padding: '5%',
-        zIndex: 1,
+        zIndex: 10,
     },
     profileAccountInfoField: {
         display: 'flex',

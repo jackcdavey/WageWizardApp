@@ -151,13 +151,14 @@ const _Tracking = (props) => {
           : <View></View>
       }
 
-      <Timer />
+
 
 
       {
         jobsExist
 
-          ? <View style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-evenly', height: '80%' }}>
+          ? <View style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-evenly', height: '100%' }}>
+            <Timer />
             {
 
               isTracking
@@ -180,8 +181,9 @@ const _Tracking = (props) => {
                   open={open}
                   value={value}
                   items={items}
-                  modalProps={{
-                    animationType: 'slide'
+                  listMode="FLATLIST"
+                  flatListProps={{
+                    initialNumToRender: 3
                   }}
                   setOpen={setOpen}
                   setValue={setValue}
@@ -204,6 +206,7 @@ const _Tracking = (props) => {
                 ? <BlurView style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, height: Dimensions.get('window').height }} blurType="light" blurAmount={20} reducedTransparencyFallbackColor="white" />
                 : <></>
             }
+
           </View>
           : <Text>add a job to begin tracking</Text>
       }

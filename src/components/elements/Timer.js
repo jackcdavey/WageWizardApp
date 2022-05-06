@@ -58,7 +58,7 @@ const _Timer = (props) => {
   // }
 
   return (
-    <View style={{ display: 'flex', flexDirection: 'row', padding: '2%', alignItems: 'center' }}>
+    <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
       <Text style={styles.timerLabel}>Timer:</Text><Text style={styles.timerText}> {hours}: {minutes}: {seconds}</Text>
     </View>
   )
