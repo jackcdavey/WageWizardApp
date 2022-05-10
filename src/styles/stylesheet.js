@@ -258,8 +258,7 @@ const styles = EStyleSheet.create({
 
     //Labels//
     buttonText: {
-        //margin: 5,
-        padding: 10,
+        padding: '2%',
         color: COLORS.dark,
         fontSize: '19rem',
         maxHeight: '100%',
@@ -481,11 +480,23 @@ const styles = EStyleSheet.create({
         height: Dimensions.get('window').width * 0.2,
         //margin: '3%',
         marginBottom: '7%',
-        backgroundColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
         borderRadius: 15,
-        borderColor: COLORS.dark,
+        borderColor: COLORS.primary,
         borderWidth: 2,
         justifyContent: 'center',
+        alignItems: 'center',
+    },
+    allArticles: {
+        width: Dimensions.get('window').width * 0.45,
+        height: Dimensions.get('window').width * 0.15,
+        display: 'flex',
+        flexDirection: 'row',
+        backgroundColor: COLORS.secondary,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        borderWidth: 2,
+        justifyContent: 'space-evenly',
         alignItems: 'center',
     },
     elements: {

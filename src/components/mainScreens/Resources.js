@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { View, Dimensions, TouchableOpacity, Alert, Text, TextInput, Linking } from 'react-native';
+import { View, Dimensions, TouchableOpacity, Alert, Text, TextInput, Linking, Image } from 'react-native';
+import COLORS from '../../styles/colors.js';
 // import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 
@@ -40,7 +41,7 @@ export default function Resources() {
 
       <Text style={styles.subtitle}>Featured References:</Text>
       <View style={styles.field}>
-        <TextInput style={styles.searchText} placeholder="Search..." onChangeText={newText => setSearchText(newText)} />
+        <TextInput style={styles.searchText} placeholder="Search..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
         <TouchableOpacity style={styles.searchButton} onPress={() => Alert.alert('Search')}>
           <Text style={styles.searchButtonText}>Search</Text>
         </TouchableOpacity>
@@ -64,20 +65,21 @@ export default function Resources() {
 
         <View style={{
         }}>
-          <OpenURLButton url="https://wagetheftcoalition.org/know-your-rights/" >Ask a Question</OpenURLButton>
-          <OpenURLButton url="https://wagetheftcoalition.org/mission/" >Wage Theft Coalition Home</OpenURLButton>
+          <OpenURLButton url="https://www.researchgate.net/publication/351009949_Wage_Theft_in_Silicon_Valley_Building_Worker_Power" >2021 Wage Theft Report</OpenURLButton>
+          <OpenURLButton url="https://workers-stories.org/" >Silicon Valley Worker Stories</OpenURLButton>
         </View>
       </View>
 
-      <TouchableOpacity onPress={() => Alert.alert('Navigate to expanded resource view')}>
-        <View style={[styles.article, { maxHeight: Dimensions.get('window').width * 0.15 }]}>
+      <TouchableOpacity onPress={() => Alert.alert('This will display additional verified articles')}>
+        <View style={styles.allArticles}>
           <Text style={styles.buttonText}>See All</Text>
+          <Image source={require('../../assets/images/icons/Forward.png')} style={{ maxWidth: '9%', maxHeight: '50%' }} />
         </View>
       </TouchableOpacity>
 
       <Text style={styles.subtitle}>Employer Match:</Text>
       <View style={styles.field}>
-        <TextInput style={styles.searchText} placeholder="Search..." onChangeText={newText => setSearchText(newText)} />
+        <TextInput style={styles.searchText} placeholder="Search..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
         <TouchableOpacity style={styles.searchButton} onPress={() => Alert.alert('Search')}>
           <Text style={styles.searchButtonText}>Search</Text>
         </TouchableOpacity>

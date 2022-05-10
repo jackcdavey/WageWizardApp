@@ -23,7 +23,7 @@ if (!darkMode) {
         icon: "#F0F8FF",
         trackTimerStart: 'green',
         trackTimerStop: 'red',
-        lightPlaceholder: 'grey',
+        lightPlaceholder: '#aaadad',
     };
 }
 
