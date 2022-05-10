@@ -90,10 +90,13 @@ const createLog = () => {
   //Triggered when a new log needs to be created
 
   try {
-    const logSize = realm.objects('WorkLog').length;
+    let logSize = realm.objects('WorkLog').length;
     realm.write(() => {
+      while (realm.objectForPrimaryKey('WorkLog', logSize)) {
+        logSize++;
+      }
       realm.create('WorkLog', {
-        id: logSize + 1,
+        id: logSize,
         //jobId: store.getState().jobId,
         jobId: store.getState().jobId,
         notes: store.getState().note,
