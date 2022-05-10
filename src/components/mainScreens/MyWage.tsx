@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import styles from '../../styles/stylesheet.js';
-import { BlurView } from "@react-native-community/blur";
+// import { BlurView } from "@react-native-community/blur";
 
 export default function MyWage({ navigation }: { navigation: any }) {
 

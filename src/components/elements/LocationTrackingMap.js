@@ -92,12 +92,11 @@ const createLog = () => {
   try {
     let logSize = realm.objects('WorkLog').length;
     realm.write(() => {
-      while (realm.objectForPrimaryKey('WorkLog', logSize)) {
+      while (realm.objectForPrimaryKey('WorkLog', logSize)) { //Ensure the new log id is unique
         logSize++;
       }
       realm.create('WorkLog', {
         id: logSize,
-        //jobId: store.getState().jobId,
         jobId: store.getState().jobId,
         notes: store.getState().note,
         startTime: store.getState().start_time,

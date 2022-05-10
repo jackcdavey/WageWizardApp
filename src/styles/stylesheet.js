@@ -165,18 +165,6 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         color: COLORS.dark,
     },
-    setupTextField: {
-        width: Dimensions.get('window').width * 0.8,
-        maxHeight: Dimensions.get('window').height * 0.1,
-        borderRadius: 15,
-        borderColor: COLORS.primary,
-        backgroundColor: COLORS.secondary,
-        borderWidth: 2,
-        padding: '2%',
-        margin: '2%',
-        alignItems: 'center',
-        color: COLORS.dark,
-    },
     noteTextField: {
         width: Dimensions.get('window').width * 0.8,
         minHeight: Dimensions.get('window').height * 0.1,

@@ -4,7 +4,6 @@ import { View, TouchableOpacity, TextInput, Text, Image, KeyboardAvoidingView, T
 import realm from '../../userData/realm';
 
 import styles from '../../styles/stylesheet.js';
-import { CardStyleInterpolators } from '@react-navigation/stack';
 
 //Eventually this will need to listen to the route –
 //If the user has pushed the back button from the job location setup screen, the last 

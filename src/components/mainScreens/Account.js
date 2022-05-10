@@ -19,6 +19,7 @@ import { BlurView } from "@react-native-community/blur";
 
 import Header from '../elements/Header.js';
 import realm from '../../userData/realm.js';
+import AdditionalGeofenceSetup from '../setupScreens/AdditionalGeofenceSetup.js';
 
 
 const Tab = createBottomTabNavigator();
@@ -281,7 +282,7 @@ function AcccountView({ navigation }) {
                 </KeyboardAvoidingView>
                 <Text style={styles.subtitle}>Saved Worksites:</Text>
 
-                <TouchableOpacity onPress={() => Alert.alert("edit location")}>
+                <TouchableOpacity onPress={() => Alert.alert(JSON.stringify(geofences))}>
                   <View style={styles.logItemButton}>
                     <Text style={styles.logItemLabel}>{JSON.stringify(geofences)}</Text>
                   </View>
@@ -299,7 +300,7 @@ function AcccountView({ navigation }) {
                 <View style={styles.buttonWrap}>
                   <TouchableOpacity style={[styles.button, { width: '50%' }]} onPress={() => {
                     setEditJobModalVisible(false)
-                    navigation.navigate("Setup", { screen: 'JobLocationSetup' })
+                    navigation.navigate('addGeofenceView', { jobId: editingId })
                   }}>
                     <Text style={styles.buttonText}>New Worksite</Text>
                   </TouchableOpacity>
@@ -368,6 +369,13 @@ export default function Account({ navigation }) {
       <Tab.Screen
         name="accountView"
         component={AcccountView}
+        options={{
+          tabBarStyle: { display: 'none' },
+        }}
+      />
+      <Tab.Screen
+        name="addGeofenceView"
+        component={AdditionalGeofenceSetup}
         options={{
           tabBarStyle: { display: 'none' },
         }}

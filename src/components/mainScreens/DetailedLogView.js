@@ -92,26 +92,41 @@ export default function DetailedLogView({ route, navigation }) {
                     </View>
                     <View style={styles.logSectionContainer}>
                         <Text style={styles.logLabel}>
-                            Start Time:
+                            Time:
                         </Text>
                         <Text style={styles.logText}>
                             {startTime.getHours() % 12 + ":" + startTime.getMinutes() + ' ' + ampm}
-                        </Text>
-                    </View>
-                    <View style={styles.logSectionContainer}>
-                        <Text style={styles.logLabel}>
-                            End Time:
-                        </Text>
-                        <Text style={styles.logText}>
+                            {'   –   '}
                             {endTime.getHours() % 12 + ":" + endTime.getMinutes() + ' ' + ampm}
                         </Text>
                     </View>
+
                     <View style={styles.logSectionContainer}>
                         <Text style={styles.logLabel}>
-                            Time Spent:
+                            Duration:
                         </Text>
                         <Text style={styles.logText}>
                             {hours} : {minutes} : {seconds}
+                        </Text>
+
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Break Count:
+                        </Text>
+                        <Text style={styles.logText}>
+                            {/* Add break count param and display here */}
+                            0
+                        </Text>
+
+                    </View>
+                    <View style={styles.logSectionContainer}>
+                        <Text style={styles.logLabel}>
+                            Break Duration:
+                        </Text>
+                        <Text style={styles.logText}>
+                            {/* Add break duration param and display here */}
+                            {'00 : 00 : 00'}
                         </Text>
 
                     </View>
