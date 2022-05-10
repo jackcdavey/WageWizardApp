@@ -77,7 +77,7 @@ export default function Resources() {
         <TouchableOpacity onPress={() => Alert.alert('This will display additional verified articles')}>
           <View style={styles.allArticles}>
             <Text style={styles.buttonText}>See All</Text>
-            <Image source={require('../../assets/images/icons/Forward.png')} style={{ maxWidth: '9%', maxHeight: '50%' }} />
+            <Image source={appearance == 'dark' ? require('../../assets/images/icons/ForwardLight.png') : require('../../assets/images/icons/ForwardDark.png')} style={{ maxWidth: '9%', maxHeight: '50%' }} />
           </View>
         </TouchableOpacity>
       </View>
