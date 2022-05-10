@@ -25,22 +25,27 @@ export default function MyWage({ navigation }: { navigation: any }) {
       <View style={{ zIndex: 1 }}>
         <DropDownPicker
           style={styles.picker}
+          placeholder="Select a Job"
           containerStyle={styles.pickerContainer}
-          placeholder="Weekly"
           placeholderStyle={styles.pickerLabel}
+          dropDownContainerStyle={styles.pickerDropDownContainer}
+          listItemLabelStyle={styles.pickerListItemLabel}
           labelStyle={styles.pickerLabel}
           itemSeparator={true}
           open={open}
           value={value}
           items={items}
-          defaultValue={'weekly'}
+          listMode="FLATLIST"
+          flatListProps={{
+            initialNumToRender: 3
+          }}
           setOpen={setOpen}
-          //Still seems to work properly despite undeclared setValue property warning
           setValue={setValue}
           setItems={setItems}
+          zIndex={1000}
 
           onSelectItem={(item) => {
-            //This is where we'll record the job selection and pass to 'ActiveTracking' DB
+            //This is where to set the values for the Wage calculations
             console.log(item);
           }}
         />
@@ -51,8 +56,8 @@ export default function MyWage({ navigation }: { navigation: any }) {
       </View>
       <View style={styles.infoBox} />
       <TouchableOpacity onPress={() => navigation.navigate("Work Logs")}>
-        <View style={styles.btn} >
-          <Text style={styles.btnTxt}>See Recordings Here</Text>
+        <View style={styles.buttonWide} >
+          <Text style={styles.buttonText}>See Logs Here</Text>
         </View>
       </TouchableOpacity>
 

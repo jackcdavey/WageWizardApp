@@ -165,6 +165,18 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         color: COLORS.dark,
     },
+    setupTextField: {
+        width: Dimensions.get('window').width * 0.8,
+        maxHeight: Dimensions.get('window').height * 0.1,
+        borderRadius: 15,
+        borderColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
+        borderWidth: 2,
+        padding: '2%',
+        margin: '2%',
+        alignItems: 'center',
+        color: COLORS.dark,
+    },
     noteTextField: {
         width: Dimensions.get('window').width * 0.8,
         minHeight: Dimensions.get('window').height * 0.1,
@@ -260,7 +272,7 @@ const styles = EStyleSheet.create({
     buttonText: {
         margin: 5,
         padding: 10,
-        color: COLORS.light,
+        color: COLORS.dark,
         fontSize: '20rem',
         height: 44,
         fontWeight: 'bold',
@@ -470,13 +482,15 @@ const styles = EStyleSheet.create({
         height: Dimensions.get('window').height,
     },
     article: {
-        width: Dimensions.get('window').width * 0.3,
+        width: Dimensions.get('window').width * 0.4,
         height: Dimensions.get('window').width * 0.2,
-        margin: 25,
+        margin: '5%',
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.dark,
         borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     elements: {
         paddingBottom: Dimensions.get('window').height * 0.02,
@@ -527,7 +541,7 @@ const styles = EStyleSheet.create({
         fontFamily: 'Comfortaa-Bold',
         color: COLORS.dark,
     },
-    btn: {
+    buttonWide: {
         width: Dimensions.get('window').width * 0.6,
         height: Dimensions.get('window').width * 0.2,
         backgroundColor: COLORS.primary,
@@ -537,11 +551,7 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    btnTxt: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: COLORS.secondary,
-    },
+
 
     ////////////////Track View Styles///////////////
     start: {
