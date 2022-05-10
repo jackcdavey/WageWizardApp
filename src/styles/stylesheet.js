@@ -519,10 +519,13 @@ const styles = EStyleSheet.create({
         height: 44,
     },
     label: {
-        fontSize: 23,
+        fontSize: '20rem',
+        color: COLORS.dark,
     },
     infoTxt: {
-        fontSize: 50,
+        fontSize: '50rem',
+        fontFamily: 'Comfortaa-Bold',
+        color: COLORS.dark,
     },
     btn: {
         width: Dimensions.get('window').width * 0.6,

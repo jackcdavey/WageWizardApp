@@ -20,7 +20,7 @@ export default function MyWage({ navigation }: { navigation: any }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>San Jose Minimum Wage:</Text>
+      <Text style={styles.label}>Average Hourly Wage:</Text>
       <Text style={styles.infoTxt}>$XX.XX</Text>
       <View style={{ zIndex: 1 }}>
         <DropDownPicker
@@ -55,7 +55,9 @@ export default function MyWage({ navigation }: { navigation: any }) {
           <Text style={styles.btnTxt}>See Recordings Here</Text>
         </View>
       </TouchableOpacity>
-      <BlurView
+
+
+      {/* <BlurView
         style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, zIndex: 1 }}
         blurType="light"
         blurAmount={20}
@@ -63,7 +65,7 @@ export default function MyWage({ navigation }: { navigation: any }) {
       />
       <View style={{ position: 'absolute', top: Dimensions.get('window').height / 3, zIndex: 1 }}>
         <Text style={styles.title}>My Wage Page Coming Soon!</Text>
-      </View>
+      </View> */}
     </View>
   );
 }
