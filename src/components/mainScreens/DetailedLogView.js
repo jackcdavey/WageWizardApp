@@ -44,7 +44,7 @@ export default function DetailedLogView({ route, navigation }) {
                     console.log(error);
                 }
                 console.log('Log deleted.');
-                navigation.goBack();
+                navigation.navigate('Main');
             }
         }]);
     };

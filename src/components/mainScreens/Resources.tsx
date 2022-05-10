@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Dimensions, TouchableOpacity, Alert, Text, TextInput } from 'react-native';
-import { BlurView } from "@react-native-community/blur";
+// import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
 
 export default function Resources() {
@@ -9,6 +9,7 @@ export default function Resources() {
 
   return (
     <View style={styles.container}>
+
       <Text style={styles.subtitle}>Reference Articles:</Text>
       <TextInput style={styles.searchText} placeholder="Search..." onChangeText={newText => setSearchText(newText)} />
 

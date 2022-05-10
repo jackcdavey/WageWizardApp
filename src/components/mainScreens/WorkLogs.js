@@ -106,7 +106,10 @@ export default function WorkLogs(props) {
                   time: item.time,
                   notes: item.notes
                 })}>
-                  <View style={[styles.logItemButton, { borderColor: realm.objectForPrimaryKey("Job", realm.objectForPrimaryKey("WorkLog", item.key).jobId).color, shadowColor: realm.objectForPrimaryKey("Job", realm.objectForPrimaryKey("WorkLog", item.key).jobId).color }]}>
+                  <View style={[styles.logItemButton, {
+                    borderColor: realm.objectForPrimaryKey("WorkLog", item.key) ? realm.objectForPrimaryKey("Job", realm.objectForPrimaryKey("WorkLog", item.key).jobId).color : 'gray',
+                    shadowColor: realm.objectForPrimaryKey("WorkLog", item.key) ? realm.objectForPrimaryKey("Job", realm.objectForPrimaryKey("WorkLog", item.key).jobId).color : 'gray'
+                  }]}>
                     <Text style={styles.logItemLabel}>{item.date.getMonth() + "/" + item.date.getDate() + ',  ' + item.startTime.getHours() % 12 + ':' + item.startTime.getMinutes() + ' ' + getAMPM(item.startTime.getHours())} </Text><Text style={styles.logItemLabel}>{JSON.stringify(realm.objects("Job").filtered("id = " + item.jobId)[0].employer)}</Text>
                     <Image source={require('../../assets/images/icons/Expand.png')} style={{ width: Dimensions.get('window').width * 0.06, height: Dimensions.get('window').width * 0.06 }}></Image>
                   </View>
