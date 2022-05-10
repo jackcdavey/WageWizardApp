@@ -475,6 +475,17 @@ const styles = EStyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     },
+    footer: {
+        backgroundColor: COLORS.light,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: Dimensions.get('window').width,
+        //zIndex: 0,
+
+
+        //maxHeight: Dimensions.get('window').height * 0.5,
+    },
+
     article: {
         width: Dimensions.get('window').width * 0.45,
         height: Dimensions.get('window').width * 0.2,
@@ -487,6 +498,12 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    scrollViewContainer: {
+        // display: 'flex',
+        // flexDirection: 'column'
+        backgroundColor: COLORS.light,
+    },
+
     allArticles: {
         width: Dimensions.get('window').width * 0.45,
         height: Dimensions.get('window').width * 0.15,
