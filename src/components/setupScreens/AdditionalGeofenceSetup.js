@@ -176,7 +176,7 @@ export default function AdditionalGeofenceSetup({ route, navigation }) {
                     <View style={styles.field}>
                         <TextInput style={styles.searchText} placeholder="Search By Address..." placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setSearchText(newText)} />
                         <TouchableOpacity style={styles.searchButton} onPress={() => fetchCoordinates()}>
-                            <Text style={{ color: COLORS.secondary }}>Search</Text>
+                            <Text style={styles.searchButtonText}>Search</Text>
                         </TouchableOpacity>
                     </View>
                     <View>

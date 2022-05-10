@@ -258,20 +258,27 @@ const styles = EStyleSheet.create({
 
     //Labels//
     buttonText: {
-        margin: 5,
+        //margin: 5,
         padding: 10,
         color: COLORS.dark,
-        fontSize: '20rem',
-        height: 44,
+        fontSize: '19rem',
+        maxHeight: '100%',
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
+        textAlign: 'center',
+        flexWrap: 'wrap',
     },
     smallButtonText: {
         margin: 5,
         color: COLORS.light,
         fontSize: '10rem',
         fontWeight: 'bold',
+        justifyContent: 'center',
+    },
+    searchButtonText: {
+        color: COLORS.dark,
+        fontSize: '15rem',
         justifyContent: 'center',
     },
     closeButtonText: {
@@ -470,9 +477,10 @@ const styles = EStyleSheet.create({
         height: Dimensions.get('window').height,
     },
     article: {
-        width: Dimensions.get('window').width * 0.4,
+        width: Dimensions.get('window').width * 0.45,
         height: Dimensions.get('window').width * 0.2,
-        margin: '5%',
+        //margin: '3%',
+        marginBottom: '7%',
         backgroundColor: COLORS.primary,
         borderRadius: 15,
         borderColor: COLORS.dark,

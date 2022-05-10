@@ -116,6 +116,8 @@ function AcccountView({ navigation }) {
   // var locationList = [];
   // var logsList = [];
 
+  var btnPadding = 0;
+
   if (realm) {
     userExists = realm.objects('User').length > 0;
     const user = realm.objects('User');
@@ -250,7 +252,7 @@ function AcccountView({ navigation }) {
           />
           <View style={styles.jobEditContainer}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-              <View style={{ minHeight: '90%' }}>
+              <View >
 
 
                 <Text style={styles.subtitle}>Editing Job: {editingId}</Text>
@@ -287,10 +289,12 @@ function AcccountView({ navigation }) {
                   <Text style={styles.subtitle}>Saved Worksites:</Text>
 
                   {geofences.map((geofence, index) => {
+                    let count = index + 1;
+
                     return (
                       <TouchableOpacity onPress={() => Alert.alert(JSON.stringify(geofence))}>
                         <View style={styles.logItemButton}>
-                          <Text style={styles.logItemLabel}>{index + JSON.stringify(geofence)}</Text>
+                          <Text style={styles.logItemLabel}>{count + JSON.stringify(geofence)}</Text>
                         </View>
                       </TouchableOpacity>
                     )
@@ -316,7 +320,9 @@ function AcccountView({ navigation }) {
                 secondary location setup / edit screen will need to be created. 
                 */}
 
-                <View style={styles.buttonWrap}>
+
+
+                <View style={[styles.buttonWrap, { paddingBottom: Dimensions.get('window').height * 0.2 - (geofences.length * Dimensions.get('window').height * 0.05) }]}>
                   <TouchableOpacity style={[styles.button, { width: '50%' }]} onPress={() => {
                     setEditJobModalVisible(false)
                     navigation.navigate('addGeofenceView', { jobId: editingId })
@@ -334,7 +340,7 @@ function AcccountView({ navigation }) {
                   <Text style={styles.buttonText}>Save</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.buttonWrap}>
+              <View style={[styles.buttonWrap, { minHeight: '20%', margin: 0 }]}>
                 <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={() => deleteJob(editingId)}>
                   <Text style={styles.buttonText}>Delete Job</Text>
                 </TouchableOpacity>
