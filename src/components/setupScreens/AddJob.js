@@ -4,6 +4,7 @@ import { View, TouchableOpacity, TextInput, Text, Image, KeyboardAvoidingView, T
 import realm from '../../userData/realm';
 
 import styles from '../../styles/stylesheet.js';
+import { CardStyleInterpolators } from '@react-navigation/stack';
 
 //Eventually this will need to listen to the route –
 //If the user has pushed the back button from the job location setup screen, the last 
@@ -16,6 +17,7 @@ export default function JobSetup({ navigation }) {
     const [employer, setEmployer] = useState('Test Employer');
     const [client, setClient] = useState('Test Client');
     const [location, setLocation] = useState('Test Location');
+    const [wage, setWage] = useState(0.0);
 
 
 
@@ -47,6 +49,7 @@ export default function JobSetup({ navigation }) {
                             employer: employer,
                             client: client,
                             location: location,
+                            wage: wage,
                             color: '#' + color
                         });
                         console.log('New job created: ', JSON.stringify(newJob));
@@ -94,8 +97,9 @@ export default function JobSetup({ navigation }) {
                             {/* this will be changed in future build */}
                         </View>
 
-                        <View>
-                            <TextInput style={styles.setupTextField} placeholder="Other Info" placeholderTextColor={COLORS.lightPlaceholder} />
+                        <View style={styles.field}>
+                            <Text style={styles.logItemLabel}>$</Text>
+                            <TextInput style={styles.setupTextField} placeholder="Hourly Wage" keyboardType='numeric' placeholderTextColor={COLORS.lightPlaceholder} onChangeText={newText => setWage(parseFloat(newText))} />
                         </View>
                     </View>
 
