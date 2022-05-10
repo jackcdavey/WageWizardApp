@@ -14,6 +14,7 @@ import {
   TextInput,
   KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard,
   ScrollView,
+  SectionList,
 } from 'react-native';
 import { BlurView } from "@react-native-community/blur";
 
@@ -280,7 +281,25 @@ function AcccountView({ navigation }) {
                     </View>
                   </TouchableWithoutFeedback>
                 </KeyboardAvoidingView>
-                <Text style={styles.subtitle}>Saved Worksites:</Text>
+
+
+                <View style={{ width: '100%', alignItems: 'center', margin: '1%', justifyContent: 'flex-end' }}>
+                  <Text style={styles.subtitle}>Saved Worksites:</Text>
+
+                  {geofences.map((geofence, index) => {
+                    return (
+                      <TouchableOpacity onPress={() => Alert.alert(JSON.stringify(geofence))}>
+                        <View style={styles.logItemButton}>
+                          <Text style={styles.logItemLabel}>{index + JSON.stringify(geofence)}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    )
+
+                  },
+                  )}
+
+
+                </View>
 
                 <TouchableOpacity onPress={() => Alert.alert(JSON.stringify(geofences))}>
                   <View style={styles.logItemButton}>
