@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Dimensions, TouchableOpacity, Alert, Text, TextInput, Linking, Image, ScrollView } from 'react-native';
+import { View, Dimensions, TouchableOpacity, Alert, Text, TextInput, Linking, Image, ScrollView, Appearance } from 'react-native';
 import COLORS from '../../styles/colors.js';
 import { BlurView } from "@react-native-community/blur";
 import styles from '../../styles/stylesheet.js';
@@ -32,6 +32,7 @@ const OpenURLButton = ({ url, children }) => {
 
 const bodyHeight = Dimensions.get('window').height * 0.65;
 const footerHeight = Dimensions.get('window').height * 0.4;
+const appearance = Appearance.getColorScheme();
 
 
 
@@ -99,9 +100,9 @@ export default function Resources() {
 
           <BlurView
             style={{ borderRadius: 25, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, width: '100%', minHeight: '50%', zIndex: 1 }}
-            blurType="light"
+            blurType='regular'
             blurAmount={20}
-            reducedTransparencyFallbackColor="white"
+            reducedTransparencyFallbackColor="gray"
           />
 
         </View>

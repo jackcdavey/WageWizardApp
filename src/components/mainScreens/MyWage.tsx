@@ -64,7 +64,7 @@ export default function MyWage({ navigation }: { navigation: any }) {
 
       {/* <BlurView
         style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, zIndex: 1 }}
-        blurType="light"
+        blurType="regular"
         blurAmount={20}
         reducedTransparencyFallbackColor="white"
       />

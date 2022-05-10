@@ -445,7 +445,7 @@ const _LocationMap = (props) => {
                     <View style={styles.modalContainer}>
                       <BlurView
                         style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
-                        blurType="light"
+                        blurType="regular"
                         blurAmount={20}
                         reducedTransparencyFallbackColor="white"
                       />
