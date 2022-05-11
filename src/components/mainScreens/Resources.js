@@ -85,7 +85,7 @@ export default function Resources() {
 
       <View>
         <View style={{ alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.light }}>
-          <Text style={styles.subtitle}>Employer Match:</Text>
+          <Text style={styles.subtitle}>Employer Lookup:</Text>
         </View>
         <View style={[styles.footer, { minHeight: footerHeight }]}>
 

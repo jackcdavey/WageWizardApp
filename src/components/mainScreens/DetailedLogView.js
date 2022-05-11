@@ -28,7 +28,13 @@ const onShare = async () => {
 };
 
 
-
+const getMins = (x) => {
+    if (x < 10) {
+        return "0" + x;
+    } else {
+        return x;
+    }
+}
 
 export default function DetailedLogView({ route, navigation }) {
 
@@ -95,9 +101,9 @@ export default function DetailedLogView({ route, navigation }) {
                             Time:
                         </Text>
                         <Text style={styles.logText}>
-                            {startTime.getHours() % 12 + ":" + startTime.getMinutes() + ' ' + ampm}
+                            {startTime.getHours() % 12 + ":" + getMins(startTime.getMinutes()) + ' ' + ampm}
                             {'   –   '}
-                            {endTime.getHours() % 12 + ":" + endTime.getMinutes() + ' ' + ampm}
+                            {endTime.getHours() % 12 + ":" + getMins(endTime.getMinutes()) + ' ' + ampm}
                         </Text>
                     </View>
 
