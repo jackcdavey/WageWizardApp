@@ -29,6 +29,16 @@ function getTotalWageDespitePeriod() {
   let worklogs = realm.objects('WorkLog');
   let jobs = realm.objects('Job');
   let totalWage = 0.00;
+  for (let i = 0; i < jobs.length; i++) {
+    for (let j = 0; j < worklogs.length; j++) {
+      if (worklogs[j].jobId === jobs[i].id) {
+        let duration = worklogs[j].endTime - worklogs[j].startTime; //get duration of this log
+        duration = Math.floor(duration / 3600000); //convert to hours
+        totalWage += jobs[i].wage * duration; //calculate wage
+      }
+    }
+  }
+  return '$ ' + totalWage.toFixed(2);
 }
 
 //end of temporary functions
@@ -142,7 +152,7 @@ export default function MyWage({ navigation }) {
       </View>
       <View style={styles.infoBox}>
         <Text style={styles.label}>Total Earned This Week:</Text>
-        <Text style={styles.infoTxt}>$XXX</Text>
+        <Text style={styles.infoTxt}>{getTotalWageDespitePeriod()}</Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate("Work Logs")}>
         <View style={styles.buttonWide} >
