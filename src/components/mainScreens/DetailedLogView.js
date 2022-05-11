@@ -35,6 +35,12 @@ const getMins = (x) => {
         return x;
     }
 }
+const getHrs = (x) => {
+    if (x === 0)
+        return 12;
+    else
+        return x;
+}
 
 export default function DetailedLogView({ route, navigation }) {
 
@@ -101,9 +107,9 @@ export default function DetailedLogView({ route, navigation }) {
                             Time:
                         </Text>
                         <Text style={styles.logText}>
-                            {startTime.getHours() % 12 + ":" + getMins(startTime.getMinutes()) + ' ' + ampm}
+                            {getHrs(startTime.getHours() % 12) + ":" + getMins(startTime.getMinutes()) + ' ' + ampm}
                             {'   –   '}
-                            {endTime.getHours() % 12 + ":" + getMins(endTime.getMinutes()) + ' ' + ampm}
+                            {getHrs(endTime.getHours() % 12) + ":" + getMins(endTime.getMinutes()) + ' ' + ampm}
                         </Text>
                     </View>
 
@@ -112,7 +118,7 @@ export default function DetailedLogView({ route, navigation }) {
                             Duration:
                         </Text>
                         <Text style={styles.logText}>
-                            {hours} : {minutes} : {seconds}
+                            {hours}h, {minutes}m, {seconds}s
                         </Text>
 
                     </View>
@@ -132,7 +138,7 @@ export default function DetailedLogView({ route, navigation }) {
                         </Text>
                         <Text style={styles.logText}>
                             {/* Add break duration param and display here */}
-                            {'00 : 00 : 00'}
+                            {'00h, 00m, 00s'}
                         </Text>
 
                     </View>
