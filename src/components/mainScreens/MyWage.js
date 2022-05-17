@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { Text, View, TouchableOpacity, ScrollView, MaskedViewComponent } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import styles from '../../styles/stylesheet.js';
 import realm from '../../userData/realm.js';
@@ -49,15 +49,15 @@ function getTotalWageDespitePeriod() {
 function getAverageHourlyWage() {
   //Calculates the average of all the jobs' non-zero hourly wages
   let jobs = realm.objects('Job');
-  let wages = [];
+  //let wages = [];
   let totalWage = 0.0;
   for (let i = 0; i < jobs.length; i++) {
     if (jobs[i].wage > 0) {
-      wages.push(jobs[i].wage);
+      //wages.push(jobs[i].wage);
       totalWage += jobs[i].wage;
     }
   }
-  let averageWage = totalWage / wages.length;
+  let averageWage = totalWage / jobs.length;
   return averageWage.toFixed(2);
 }
 
@@ -84,9 +84,17 @@ function getTotalWorkTimeByPeriod(period) {
     //   i++;
     // }
   } else if (period === 'biweekly') {
-
+    for (let i = 0; i < worklogs.length; i++) {
+      if (currentDate - 14 < worklogs[i].startTime.toLocaleDateString()) {
+        console.log('worklog within range: ' + JSON.stringify(worklogs[i]).id);
+      }
+    }
   } else if (period === 'monthly') {
-
+    for (let i = 0; i < worklogs.length; i++) {
+      if (currentDate - 30 < worklogs[i].startTime.toLocaleDateString()) {
+        console.log('worklog within range: ' + JSON.stringify(worklogs[i]).id);
+      }
+    }
   }
   return 0;
 }

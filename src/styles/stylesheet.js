@@ -38,7 +38,7 @@ const styles = EStyleSheet.create({
 
     testButton: {
         margin: '1%',
-        backgroundColor: 'red',
+        //backgroundColor: 'red',
         borderRadius: 15,
         borderColor: COLORS.primary,
         borderWidth: 2,

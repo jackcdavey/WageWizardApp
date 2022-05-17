@@ -14,7 +14,6 @@ import {
   TextInput,
   KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard,
   ScrollView,
-  SectionList,
 } from 'react-native';
 import { BlurView } from "@react-native-community/blur";
 
@@ -229,7 +228,7 @@ function AcccountView({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate("Testing")}>
         <View style={styles.testButton}>
           <Text style={styles.buttonText}>
-            TESTING
+            Settings
           </Text>
         </View>
       </TouchableOpacity>
@@ -292,7 +291,7 @@ function AcccountView({ navigation }) {
                     let count = index + 1;
 
                     return (
-                      <TouchableOpacity onPress={() => Alert.alert(JSON.stringify(geofence))}>
+                      <TouchableOpacity key={count} onPress={() => Alert.alert(JSON.stringify(geofence))}>
                         <View style={styles.logItemButton}>
                           <Text style={styles.logItemLabel}>{count + JSON.stringify(geofence)}</Text>
                         </View>
