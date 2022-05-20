@@ -38,7 +38,7 @@
     "react-native-extended-stylesheet": "^0.12.0",
     "react-native-geolocation-service": "^5.3.0-beta.4",
     "react-native-gesture-handler": "^2.3.0",
-    "react-native-image-picker": "^4.7.3",
+    "react-native-image-picker": "4.8.3",
     "react-native-maps": "0.31.0",
     "react-native-pincode-input": "^1.0.2",
     "react-native-reanimated": "^2.4.1",
