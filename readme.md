@@ -35,6 +35,7 @@
   </a>
 
 <h3 align="center">Wage Wizard</h3>
+<a href="https://testflight.apple.com/join/1T6cIVE4">Join the Beta!</a>
 
   <p align="center">
     Wage Wizard is a mobile application for iOS and Andoid, designed by students of Santa Clara University in collaboration with the SCU Frugal Design Hub and Santa Clara Wage Theft Coalition, to help individual workers easily, securly, and verifiably log their time spent working, and combat wage theft.
