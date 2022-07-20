@@ -35,8 +35,8 @@
   </a>
 
 <h3 align="center">Wage Wizard</h3>
-<a href="https://testflight.apple.com/join/1T6cIVE4">Join the Beta!</a>
-
+<a href="https://testflight.apple.com/join/1T6cIVE4"><strong>Join the Beta!</strong></a>
+  <br />
   <p align="center">
     Wage Wizard is a mobile application for iOS and Andoid, designed by students of Santa Clara University in collaboration with the SCU Frugal Design Hub and Santa Clara Wage Theft Coalition, to help individual workers easily, securly, and verifiably log their time spent working, and combat wage theft.
     <br />
@@ -148,32 +148,6 @@ The simplest and fastest way to try out the project is by using Expo. Follow the
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/jackcdavey/WageWizardApp/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
