@@ -46,7 +46,7 @@
     "react-native-safe-area-context": "3.4.1",
     "react-native-screens": "^3.11.1",
     "react-native-vector-icons": "^9.1.0",
-    "react-redux": "^7.2.6",
+    "react-redux": "7.2.9",
     "realm": "10.20.0-beta.5"
   },
   "devDependencies": {
