@@ -41,7 +41,7 @@
     "react-native-image-picker": "^4.7.3",
     "react-native-maps": "0.31.0",
     "react-native-pincode-input": "^1.0.2",
-    "react-native-reanimated": "^2.4.1",
+    "react-native-reanimated": "2.10.0",
     "react-native-restart": "^0.0.24",
     "react-native-safe-area-context": "3.4.1",
     "react-native-screens": "^3.11.1",
